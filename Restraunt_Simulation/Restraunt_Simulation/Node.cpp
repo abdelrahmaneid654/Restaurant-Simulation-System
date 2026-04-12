@@ -13,6 +13,17 @@ void Node<T>::setnext(Node<T>* n)
 }
 
 template<class T>
+Node<T>::Node()
+{
+	next = nullptr;
+}
+template<class T>
+Node<T>::Node(T x) {
+	data = x;
+	next = nullptr;
+}
+
+template<class T>
 T Node<T>::getdata() {
 	return data;
 }

@@ -10,7 +10,9 @@ public:
 	void setdata(T x);
 	Node<T>* getnext();
 	void setnext(Node<T>*n);
+	Node();
 		
+	Node(T x);
 
 		
 };
