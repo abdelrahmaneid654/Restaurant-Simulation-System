@@ -25,8 +25,8 @@ class Restaurant
 {
 private:
 	//Action List
-	Queue <actions*> ActionListR;//Action List Request
-	Queue <actions*> ActionListC;//Action List Cancellation
+	Queue <Action*> ActionListR;//Action List Request
+	Queue <Action*> ActionListC;//Action List Cancellation
 
 	// Orders 
 	 //1- Pending Orders 
@@ -39,14 +39,14 @@ private:
 	//2-Ready Orders 
 	Queue<Order*> Ready_OT;
 	Queue<Order*> Ready_OD;
-	RDY_OV Ready - OV; //derived class from the queue 
+	RDY_OV Ready_OV; //derived class from the queue 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
-	Cook_Ords List_name; //Each cookin order points to the assigned chef
+	Cook_Order Cooking_orders; //Each cookin order points to the assigned chef
 	Queue <Order*> Cancelled_Orders;
 	Stack <Order*> Finished_Orders;
 	PriQueue <Order*> InServ;//Each inserv order points to asssigned scooter [delivery] or table [dine in] 
 	//4-Compo Orders
-	PriQueue<Order*>Compo;//It needs 4 chefs at least 1 is CS and 2 scooters or more ,They have the highest priority over all the orders type 
+	PriQueue<Order*> Compo; //It needs 4 chefs at least 1 is CS and 2 scooters or more ,They have the highest priority over all the orders type 
 
 	//Chefs
 	  // 1-Free Chefs
@@ -86,5 +86,5 @@ public:
 	int GetCurrentTimestep() const;
 	//Return the current time step need when execute actions .
 	~Restaurant();
-};;
+};
 
