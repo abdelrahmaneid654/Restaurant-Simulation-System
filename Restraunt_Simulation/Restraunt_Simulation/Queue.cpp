@@ -16,6 +16,7 @@ bool Queue<T>::peek(T &x)
 	return false;
 }
 
+
 template<class T>
 bool Queue<T>::isempty()
 {
@@ -65,7 +66,7 @@ void Queue<T>::print()
 {
 	Node<T>*temp = front;
 	while (temp) {
-		cout << temp->getdata() << " ";
+		std::cout << temp->getdata() << " ";
 		temp = temp->getnext();
 	}
 }
@@ -78,5 +79,5 @@ int Queue<T>::getcount() {
 		count++;
 		temp = temp->getnext();
 	}
-
+	return count;
 }
