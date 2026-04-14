@@ -12,7 +12,7 @@ void PriQueue<T>::enqueue(T x) {
 			this->rear = temp;
 			return;
 		}
-		if (x->calc_priority() >= ((this->front)->getdata())->calc_priority()) {
+		if (x->calc_priority() > ((this->front)->getdata())->calc_priority()) {
 			temp->setnext(this->front);
 			this->front = temp;
 			return;
