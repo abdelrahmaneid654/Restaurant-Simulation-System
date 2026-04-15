@@ -1,5 +1,9 @@
 #pragma once
-class PriQueue
+#include"Queue.h"
+template<class T>
+class PriQueue :public Queue<T>
 {
+public:
+	void enqueue(T x);
 };
 

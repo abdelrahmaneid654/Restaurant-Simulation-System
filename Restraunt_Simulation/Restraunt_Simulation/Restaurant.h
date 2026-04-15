@@ -21,8 +21,11 @@
 
 
 class Restaurant
-{
+{ 
 private:
+//POINTERS
+	UI * pUI; // to reach and control the functions in UI class
+//LISTS
 	//Action List
 	Queue <Action*> ActionListR;//Action List Request
 	Queue <Action*> ActionListC;//Action List Cancellation
@@ -51,31 +54,68 @@ private:
 	  // 1-Free Chefs
 	Queue <Chef*> Free_CS; //Free Special Chefs
 	Queue <Chef*> Free_CN; //Free Normal Chefs
+	PriQueue <Chef*> Busy_CS;//Busy Special Chefs
+	PriQueue <Chef*> Busy_CS;//Busy Normal Chefs
+	//I choose PriQueue because it has a relation to the time and we must know and implement to them the needed equations
 
 	//Scooters 
 	PriQueue<Scooter*> Free_Scooters; //assigned based for the shortest distance
-	PriQueue<Scooter*> Back_Scooters; //Leaves the list based on the distance they cut back to the restaurant
+	PriQueue<Scooter*> Busy_Scooters; //Leaves the list based on the distance they cut back to the restaurant
 	Queue<Scooter*> Maint_Scooters; //scooters in the maintainance time ,they all have the same maintainance time
 
 	//Tables 
 	Fit_Tables Free_Tables;
 	Fit_Tables Busy_Sharable;
 	Fit_Tables Busy_No_Share;
+
+//Variables 
+	int CurrTimeStep; //Current time step to calculate all time needed to each order [action happened to this order]
+	int numCN; //number of the normal chefs work in the restaurant [I need to ask teh TA about that]
+	int numCS; //number of the special chefs work in the restaurant [I need to ask teh TA about that]
+	int numScooter;//number of the scooters work in the restaurant [I need to ask teh TA about that]
+	int mainDur; //Maintainance duration for each scooter
+	int ScooterSpeed;
+	int SpeedCN;
+	int SpeedCS;
+	int BeforeMainOrders; //Number of orders that the scooter take before it goes to the maintainace list
+	int OverWaitTime; //over wait threshold [ It is made for even if the { current time - the TQ(Time request) > OverWaitTime } the order will be inc in priority it is speacial for the OVG orders
+	//Statistics VAriables for the Output file 
+		//Orders : Total number of orders and total number of each order type 
+	int TotalOrders;
+	int OrdersOD;//Dine in orders
+	int OrdersOT;//take away orders
+	int OrdersOV;//delivery orders
+	int FinishedOrders;
+	int CancelledOrders;
+	int OverWaitOrders;
+		//Chefs
+	int TotalChefs;//TotalChefs = numCS + numCN
+	//numScooter
+	double FinishedOrderPercentage;//FinishedOrderPercentage = FinishedOrders / TotalOrders
+	double CancelledOrderPercentage;// CancelledOrderPercentage = CancelledOrders / TotalOrders
+	double OverWaitOrderPercentage; //OverWaitOrderPercentage = OverWaitOrders  / TotalOrders
+		//Busy Time
+	int TotalChefsBusyTime;//each time a one chef is busy this increment by one for a one chef 
+	int TotalScootersBusyTime;//time of deliver the order and return back for a one scooter [ I need to ask TA about the maintainance time of scooters will inc this variable or not ]
+
+	//STILL I do not write the point 6 in the document num 1 page 6 
+
 public:
 	Restaurant();
 
+	/* 
+	Functions will be used in phase 2:
 	void LoadFromFile();//Load From input file 
 	void SaveToFile();//Save to Output file
-
-	int TableStatus();
-	//Check the status of the table fully available[for sharing and non_sharing tables] or partially available for [sharing tables]
-	//[return num : 1--> partially available and I want to know the number of the free seats ,2--> fully available and I want to know the number of seats ,0--> not Available]
+	void TakeOrderInputFile();
+	//it takes the order data from the user [i/p file] and then add this order to the pending list 
+	*/
+	
 	void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 
 	// Assign pending orders to chefs 
 	// Assign ready orders to scooter/table or give to customer (OT orders)
-	void TakeOrder();
-	//it takes the order data from the user [i/p file] and then add this order to the pending list 
+	void RandomSimulation();
 
 
 
