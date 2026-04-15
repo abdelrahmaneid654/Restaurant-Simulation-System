@@ -20,7 +20,6 @@
 
 
 
-template < typename  T>
 class Restaurant
 {
 private:
