@@ -1,47 +1,185 @@
-﻿  Queue.cpp
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Queue.cpp(68,3): error C3861: 'cout': identifier not found
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Queue.cpp(68,3): error C2065: 'cout': undeclared identifier
+﻿  Action.cpp
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,12): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,18): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,16): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,16): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,19): error C2086: 'PriQueue<Chef *> Restaurant::Busy_CS': redefinition
+  (compiling source file 'Action.cpp')
+  
+  CancelAction.cpp
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,12): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,18): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,16): error C2059: syntax error: '>'
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,16): error C2059: syntax error: '>'
+  (compiling source file 'CancelAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,19): error C2086: 'PriQueue<Chef *> Restaurant::Busy_CS': redefinition
+  (compiling source file 'CancelAction.cpp')
+  
+  Chef.cpp
+  Cook_Order.cpp
+  Fit_Tables.cpp
+  Node.cpp
+  Order.cpp
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(34,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
+  Pending_OVC.cpp
+  PriQueue.cpp
+  Queue.cpp
+  RDY_OV.cpp
+  RequestAction.cpp
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,12): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,18): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(30,16): error C2059: syntax error: '>'
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(31,16): error C2059: syntax error: '>'
+  (compiling source file 'RequestAction.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,19): error C2086: 'PriQueue<Chef *> Restaurant::Busy_CS': redefinition
+  (compiling source file 'RequestAction.cpp')
+  
   Restaurant.cpp
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(38,11): error C2059: syntax error: '<'
-  (compiling source file 'Restaurant.cpp')
-      C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(38,11):
-      the template instantiation context (the oldest one first) is
-          C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(24,7):
-          while compiling class template 'Restaurant'
-  
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(38,28): error C2238: unexpected token(s) preceding ';'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,12): error C2143: syntax error: missing ';' before '*'
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(46,8): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(46,32): error C2238: unexpected token(s) preceding ';'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\UI.h(11,18): error C2238: unexpected token(s) preceding ';'
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(47,11): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,12): error C2143: syntax error: missing ';' before '*'
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(47,26): error C2238: unexpected token(s) preceding ';'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,10): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,18): error C2238: unexpected token(s) preceding ';'
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,19): error C2086: 'PriQueue<Chef *> Restaurant::Busy_CS': redefinition
   (compiling source file 'Restaurant.cpp')
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(57,10): error C2059: syntax error: '<'
-  (compiling source file 'Restaurant.cpp')
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,11): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,11): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(5,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(5,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,16): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,16): error C2143: syntax error: missing ';' before '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,6): error C2182: 'Restaurant': this use of 'void' is not valid
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,16): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,21): error C2039: 'MoveOrderLists': is not a member of '`global namespace''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(50,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(50,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,15): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,15): error C2143: syntax error: missing ';' before '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,5): error C2374: 'Restaurant': redefinition; multiple initialization
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,5): error C2086: 'int Restaurant': redefinition
+      C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,6):
+      see declaration of 'Restaurant'
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(57,34): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Restaurant.cpp')
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,15): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(107,20): error C2039: 'GetCurrentTimestep': is not a member of '`global namespace''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(108,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(108,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,16): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,16): error C2143: syntax error: missing ';' before '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,6): error C2182: 'Restaurant': this use of 'void' is not valid
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,6): error C2374: 'Restaurant': redefinition; multiple initialization
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,6): error C2086: 'int Restaurant': redefinition
+      C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,6):
+      see declaration of 'Restaurant'
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,10): error C2059: syntax error: '<'
-  (compiling source file 'Restaurant.cpp')
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,16): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(113,21): error C2039: 'UpdateInterface': is not a member of '`global namespace''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(114,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(114,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,16): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,16): error C2143: syntax error: missing ';' before '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,6): error C2182: 'Restaurant': this use of 'void' is not valid
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,6): error C2374: 'Restaurant': redefinition; multiple initialization
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,6): error C2086: 'int Restaurant': redefinition
+      C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(49,6):
+      see declaration of 'Restaurant'
   
-C:\Users\DELL\source\repos\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,34): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Restaurant.cpp')
-  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,16): error C2059: syntax error: '<'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(122,21): error C2039: 'RandomSimulation': is not a member of '`global namespace''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(123,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(123,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(129,1): error C2988: unrecognizable template declaration/definition
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(129,1): error C2059: syntax error: ''symbol''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(129,17): error C2039: '{dtor}': is not a member of '`global namespace''
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(130,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(130,1): error C2447: '{': missing function header (old-style formal list?)
   Restraunt_Simulation.cpp
+  Scooter.cpp
+  Stack.cpp
+  Table.cpp
   UI.cpp
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,12): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Action.h(10,18): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(27,5): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(27,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(27,10): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'UI.cpp')
+  
+C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(58,19): error C2086: 'PriQueue<Chef *> Restaurant::Busy_CS': redefinition
+  (compiling source file 'UI.cpp')
+  
   Generating Code...
