@@ -1,10 +1,10 @@
 #pragma once
 #include "Order.h"
 #include"Scooter.h"
-enum OV_Type {
-	COLD,
-	GRILLED,
-	NORMAL
+enum OV_Type { // benfit of this in cooking orders all orders in same queue 
+	OVC,
+	OVG,
+	OVN
 };
 class OV :public Order
 {

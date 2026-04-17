@@ -8,7 +8,6 @@ T Cooking_Orders<T>::Cancel_Order(int id) {
 		if (this->front == this->rear)
 			this->rear = nullptr;  // if there is one order in queue 
 		this->front = this->front->getnext();
-		temp->getdata()->get_assigned_chef()->setstatus(AVAILABLE);
 			T deleted_order =temp->getdata();
 			delete temp;
 			return deleted_order;

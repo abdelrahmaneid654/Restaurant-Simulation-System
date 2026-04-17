@@ -11,9 +11,9 @@ OD::OD(int tq, int id, int size, double price, int t_serve,int seats, int dur, b
 
 string OD::gettype() const
 {
-    if (Type == GRILLED)
+    if (Type == ODG)
         return "ODG";
-    else if (Type == NORMAL)
+    else if (Type == ODN)
         return "ODN";
     return "UNKNOWN";
 }

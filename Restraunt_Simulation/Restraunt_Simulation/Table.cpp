@@ -31,6 +31,7 @@ void Table::set_IS_sharable(bool s)
 }
 void Table::put_order(OD*o)
 {
+	o->set_assigned_table(this);
 	free_seats -= o->get_num_of_seats();
 }
 

@@ -3,8 +3,8 @@
 #include "Table.h"
 
 enum OD_TYPE {
-	GRILLED,
-	NORMAL
+	ODG,
+	ODN
 };
 class OD : public Order
 {

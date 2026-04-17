@@ -14,14 +14,14 @@ int OV::get_distance()
 
 string OV::gettype()
 {
-	if (Type == GRILLED)
+	if (Type == OVG)
 		return "OVG";
-	else if (Type == NORMAL)
+	else if (Type == OVN)
 		return "OVN";
-	else if (Type == COLD)
+	else if (Type == OVC)
 		return "OVC";
 
-		return "unknown";
+		return "UNKNOWN";
 }
 
 Scooter* OV::get_assigned_scooter()
