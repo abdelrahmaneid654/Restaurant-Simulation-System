@@ -50,7 +50,7 @@ private:
 	Queue<Order*> Ready_OD;
 	RDY_OV Ready_OV; //derived class from the queue 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
-	Cook_Order Cooking_orders; //Each cookin order points to the assigned chef
+	Cooking_Orders Cooking_orders; //Each cookin order points to the assigned chef
 	Queue <Order*> Cancelled_Orders;
 	Stack <Order*> Finished_Orders;
 	PriQueue <Order*> InServ;//Each inserv order points to asssigned scooter [delivery] or table [dine in] 

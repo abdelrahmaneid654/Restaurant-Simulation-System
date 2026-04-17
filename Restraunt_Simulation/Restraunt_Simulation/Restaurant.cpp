@@ -52,7 +52,7 @@ void Restaurant::MoveOrderLists()
 
  */
 
-	while (!Ready_OV.isEmpty() && !Free_Scooters.isempty())
+	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
 	{
 		Order* pOrder;
 		Scooter* pScooter;
