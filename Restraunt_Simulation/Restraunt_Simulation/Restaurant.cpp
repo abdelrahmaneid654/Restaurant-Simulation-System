@@ -61,13 +61,13 @@ void Restaurant::MoveOrderLists()
 		Ready_OV.dequeue(pOrder);
 
 		InServ.enqueue(pOrder);
-		pOrder->SetScooter(pScooter);
+		pOrder->set_assigned_scooter(pScooter);
 		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-		int TravelTime = 2 * pOrder->getDistance() / ScooterSpeed;
-		pScooter->SetReturnTime(CurrTimeStep + TravelTime);
-		pScooter->update_info(pOrder->get, TravelTime);
+		int TravelTime = 2 * pOrder->get_distance()/ ScooterSpeed;
+		pScooter->set_return_time(CurrTimeStep + TravelTime);
+		pScooter->update_info(pOrder->get_distance(), TravelTime);
 
-		pOrder->SetFinishTime(CurrTimeStep + TravelTime/2);
+		pOrder->set_TF(CurrTimeStep + TravelTime/2);
 		Finished_Orders.push(pOrder);
 		Busy_Scooters.dequeue(pScooter);
 		Free_Scooters.enqueue(pScooter);
@@ -91,7 +91,7 @@ void Restaurant::MoveOrderLists()
 		Table* pTable;
 		Ready_OD.peek(pOrder);
 		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
-		Free_Tables.peek(pTable);
+		pTable=Free_Tables.getBest(pOrder);
 		bool TableFlag = pTable->get_Is_sharable();
 		int NeededSeats=pOrder->get_num_of_seats();
 		switch (ShareableFlag)
@@ -100,22 +100,11 @@ void Restaurant::MoveOrderLists()
 			if (!TableFlag)// 0 For sharable table
 			{
 				//int AvailableSeats = pTable->getAvailableSeats(); In this I tried to use variable to be better  in shape but I don't like it after that,Even It is still an option to me
-				if (NeededSeats <= pTable->getAvailableSeats())
-				{
-					pTable->SetAvailableSeats(pTable->getAvailableSeats() , NeededSeats);
-					if (pTable->getAvailableSeats() == 0)
-					{
-						Free_Tables.dequeue(pTable);
-						Busy_Sharable.enqueue(pTable);
-						InServ.enqueue(pOrder);
-						Finished_Orders.push(pOrder);
-					}
-
-				}
-
+				pOrder->set_assigned_table(pTable);
 			}
 			break;
 		case 1://Not Shareable Order
+			pOrder->set_assigned_table(pTable);
 
 			break;
 		}
@@ -146,17 +135,19 @@ void Restaurant::RandomSimulation()
 			Free_CS.enqueue(pChef);
 
 		Table* pTable = CreateRandomTables(i + 1);
-		if (pTable->gettype() == Sharable)
+		if (pTable->get_Is_sharable() == Sharable)
 		{
 			Free_Tables.enqueue(pTable);
-			pTable->setFlag(0);
+			pTable->set_IS_sharable(true);
 		}
 		else
 		{
-			pTable->setFlag(1);
+			pTable->set_IS_sharable(false);
 			Free_Tables.enqueue(pTable);
 		}
-		Scooter* pScooter = new Scooter();
+		int id = i;
+		Scooter* pScooter = new Scooter(ScooterSpeed,id,12,12);
+		pScooter->update_info(1 + i, 1 + 2 * i);//I just want to make the scooters different in the distance and the busy time to make the simulation more real but I can make them all the same if you want
 		Free_Scooters.enqueue(pScooter);
 	}
 	//This loop for creating random orders and add them to the pending lists
@@ -306,12 +297,12 @@ Order* Restaurant::CreateRandomOrder(int ArrivalTime)
 		type = OVG;
 		break;
 	}
-	Order* pOrder = new Order(ID++, type);
+	Order* pOrder = new Order(ID+2,ID++,ID*2,ID*3,ID*5);
 
 	if (type == OVN || type == OVG)
 	{
 		int distance = rand() % 100 + 1;//Distance form 1 to 100
-		pOrder->setDistance(distance);
+		pOrder->(distance);
 	}
 	else if (type == ODN || type == ODG)
 	{
