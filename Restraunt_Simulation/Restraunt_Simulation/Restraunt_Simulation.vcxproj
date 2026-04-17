@@ -126,7 +126,7 @@
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="CancelAction.cpp" />
     <ClCompile Include="Chef.cpp" />
-    <ClCompile Include="Cook_Order.cpp" />
+    <ClCompile Include="Cooking_Orders.cpp" />
     <ClCompile Include="Fit_Tables.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Order.cpp" />
@@ -146,7 +146,7 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="CancelAction.h" />
     <ClInclude Include="Chef.h" />
-    <ClInclude Include="Cook_Order.h" />
+    <ClInclude Include="Cooking_Orders.h" />
     <ClInclude Include="Fit_Tables.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Order.h" />

@@ -1,12 +1,10 @@
 #pragma once
-#include"Queue.h"
 #include"Order.h"
-
+#include"PriQueue.h"
 template<class T>
-class Pending_OVC : public Queue <Order*>
+class Cooking_Orders : public PriQueue<Order*>
 {
 public:
 	T Cancel_Order(int id);
-
 };
 

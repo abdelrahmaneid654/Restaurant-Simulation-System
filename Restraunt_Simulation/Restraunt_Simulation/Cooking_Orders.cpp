@@ -1,17 +1,17 @@
-#include "Pending_OVC.h"
+#include "Cooking_Orders.h"
 template<class T>
-T Pending_OVC<T>::Cancel_Order(int id)
-{
+T Cooking_Orders<T>::Cancel_Order(int id) {
 	Node<T>* temp = this->front;
-	if (!this->front) return nullptr;// if queue is empty
+	if (!this->front) return;// if queue is empty
 
 	if (this->front->getdata()->getID() == id) { // if order front of queue
 		if (this->front == this->rear)
 			this->rear = nullptr;  // if there is one order in queue 
-		this->front = this-> front->getnext();
-		T deleted_order = temp->getdata();
-		delete temp;
-		return deleted_order;
+		this->front = this->front->getnext();
+		temp->getdata()->get_assigned_chef()->setstatus(AVAILABLE);
+			T deleted_order =temp->getdata();
+			delete temp;
+			return deleted_order;
 	}
 
 
@@ -23,9 +23,11 @@ T Pending_OVC<T>::Cancel_Order(int id)
 				this->rear = temp;
 			}
 			temp->setnext(temp->getnext()->getnext());
-			T deleted_order = todelete->getdata(); // to return pointer of order canceled
-			delete todelete; // to delete node of canceled order
-			return deleted_order;
+
+			todelete->getdata()->get_assigned_chef()->setstatus(AVAILABLE);
+				T deleted_order =todelete->getdata() ; // to return pointer of order canceled
+				delete todelete; // to delete node of canceled order
+				return deleted_order;
 		}
 		temp = temp->getnext();
 	}

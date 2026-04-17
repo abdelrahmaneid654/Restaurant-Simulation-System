@@ -13,10 +13,31 @@ Order::Order(int tq, int id, int size, double price, int t_serve)
 	Size = size;
 	Price = price;
 	T_Serve = t_serve;
+	assigned_Chef = nullptr;
 	 TA=0;				
 	 TR=0;				
 	 TS=0;							
 	 TF=0;
+}
+
+void Order::setStatus(ORD_STATUS s)
+{
+	status = s;
+}
+
+ORD_STATUS Order::getStatus() const
+{
+	return status;
+}
+
+Chef* Order::get_assigned_chef()
+{
+	return assigned_Chef;
+}
+
+void Order::set_assigned_chef(Chef* c)
+{
+	assigned_Chef = c;
 }
 
 int Order::getsize() const
