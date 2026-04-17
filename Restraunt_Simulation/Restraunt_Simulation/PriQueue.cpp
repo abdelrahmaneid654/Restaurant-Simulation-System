@@ -7,12 +7,12 @@ void PriQueue<T>::enqueue(T x) {
 	temp->setnext(nullptr);
 	if (!this->isempty()) {
 
-		if (x->calc_priority() <= ((this->rear)->getdata())->calc_priority()) {
+		if (x->calc_priority() >= ((this->rear)->getdata())->calc_priority()) {
 			this->rear->setnext(temp);
 			this->rear = temp;
 			return;
 		}
-		if (x->calc_priority() > ((this->front)->getdata())->calc_priority()) {
+		if (x->calc_priority() < ((this->front)->getdata())->calc_priority()) {
 			temp->setnext(this->front);
 			this->front = temp;
 			return;
@@ -20,7 +20,7 @@ void PriQueue<T>::enqueue(T x) {
 
 		while (trace->getnext()) {
 
-			if (x->calc_priority() > trace->getnext()->getdata()->calc_priority()) {
+			if (x->calc_priority() < trace->getnext()->getdata()->calc_priority()) { // small number has highest priority
 				temp->setnext(trace->getnext());
 				trace->setnext(temp);
 				return;

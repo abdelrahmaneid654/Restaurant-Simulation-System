@@ -4,7 +4,7 @@ Table::Table(int id, int cap)
 {
 	ID = id;
 	Capacity = cap;
-	free_seats = 0;
+	free_seats = cap;
 	Is_sharable = false;
 }
 int Table::get_ID() const
@@ -25,16 +25,23 @@ bool Table::get_Is_sharable() const
 {
 	return Is_sharable;
 }
-void Table::put_order(bool sharable, int s)
+void Table::set_IS_sharable(bool s)
 {
-	if (sharable)
-		Is_sharable = true;
-	free_seats -= s;
+	Is_sharable = s;
+}
+void Table::put_order(OD*o)
+{
+	free_seats -= o->get_num_of_seats();
 }
 
 void Table::leave_order(int s)
 {
 	free_seats += s;
+}
+
+int Table::calc_priority()
+{
+	return free_seats;
 }
 
 ostream& operator<<(ostream& out, const Table *t)

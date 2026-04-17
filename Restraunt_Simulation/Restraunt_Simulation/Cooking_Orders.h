@@ -1,8 +1,8 @@
 #pragma once
-#include"Order.h"
+#include"OV.h"
 #include"PriQueue.h"
 template<class T>
-class Cooking_Orders : public PriQueue<Order*>
+class Cooking_Orders : public PriQueue<OV*>
 {
 public:
 	T Cancel_Order(int id);
