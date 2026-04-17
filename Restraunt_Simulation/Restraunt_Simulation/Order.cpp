@@ -114,7 +114,4 @@ int Order::get_TI() const
 	 return T_Serve;
  }
 
- OrderType Order::gettype() const
- {
-	 return Type; 
- }
+
