@@ -86,9 +86,9 @@ void Restaurant::MoveOrderLists()
 	//It is for Dine in Orders but Still not Finished
 	while (!Ready_OD.isempty())
 	{
-		OD* pOrder;
+		Order* pOrder;
 		Table* pTable;
-		Ready_OD.peek(pOrder);
+		Ready_OD.peek(((OD*)pOrder);
 		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
 		Free_Tables.peek(pTable);
 		bool TableFlag = pTable->get_Is_sharable();
