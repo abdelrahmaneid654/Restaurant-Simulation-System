@@ -18,7 +18,7 @@ enum Mode
 enum TableType
 {
 	Sharable,
-	No_Share
+	Non_Sharable
 };
 enum ChefType
 {

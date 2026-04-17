@@ -1,37 +1,14 @@
 #include "Order.h"
 ostream& operator<<(ostream& out, const Order* o) {
-	OrderType t = o->gettype();
 
 	if (o) {
-
-	switch (t)
-	{
-	case ODG:
-		out << "ODG ";
-		break;
-	case ODN:
-		out << "ODN ";
-		break;
-	case OT:
-		out << "OT ";
-		break;
-	case OVN:
-		out << "OVN ";
-		break;
-	case OVG:
-		out << "OVG ";
-		break;
-	case OVC:
-		out << "OVC ";
-		break;
-	}
 
 		out << "[" << o->getID() << "," << o->get_assigned_chef()->getID() << "]";
 	}
 	return out;
 }
 
-Order::Order(int tq, int id, int size, double price, int t_serve, OrderType t )
+Order::Order(int tq, int id, int size, double price, int t_serve)
 {
 	TQ = tq;
 	ID = id;
@@ -43,7 +20,6 @@ Order::Order(int tq, int id, int size, double price, int t_serve, OrderType t )
 	 TR=0;				
 	 TS=0;							
 	 TF = 0;
-	 Type = t;
 }
 
 

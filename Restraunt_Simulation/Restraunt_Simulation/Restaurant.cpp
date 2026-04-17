@@ -239,7 +239,7 @@ void Restaurant::RandomSimulation()
 			if (InServ.dequeue(pFinished)) 
 			{
 				ReleaseResources(pFinished);
-				Finished_Orders.enqueue(pFinished);
+				Finished_Orders.push(pFinished);
 			}
 		}
 
@@ -252,7 +252,7 @@ void Restaurant::RandomSimulation()
 }
 void Restaurant::AddToPending(Order* pOrder)
 {
-	int OrderType = pOrder->gettype(); 
+	OrderType OrderType = pOrder->gettype();  
 
 	switch (OrderType)
 	{
@@ -287,7 +287,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		Ready_OT.isempty() &&
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
-		Cooking_orders.isempty() &&//error because it is from derived class
+		Cook_orders.isempty() &&//error because it is from derived class
 		InServ.isempty())
 		return true;
 	else
@@ -342,9 +342,9 @@ Table* Restaurant::CreateRandomTables(int TableId)
 	Table* pTable = new Table(TableId);
 	int type = rand() % 2;
 	if (type)
-		pTable->setType(Sharable);
+		pTable->set_IS_sharable(Sharable);
 	else
-		pTable->setType(Non_Sharable);
+		pTable->set_IS_sharable(Non_Sharable);
 
 	return pTable;
 }
@@ -437,7 +437,7 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 {
 	if (!pOrder)
 		return NULL;
-	OrderType type = pOrder->getType();
+	OrderType type = pOrder->gettype();
 	switch(type)
 	{
 	case ODG: //Dine in Orders
@@ -472,11 +472,16 @@ bool Restaurant::CancelOrder(int id) {
 	else if (cancelledCook) 
 	{
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
-		string type = assigned->gettype(); 
-		if (type == "CN") 
-			Free_CN.enqueue(assigned); 
-		else
-			Free_CS.enqueue(assigned); 
+		ChefType type = assigned->gettype();  
+		switch(type)
+		{
+		case CN:
+			Free_CN.enqueue(assigned);
+			break;
+		case CS:
+			Free_CS.enqueue(assigned);
+			break;
+		}
 		return true;
 	}
 	return false;
