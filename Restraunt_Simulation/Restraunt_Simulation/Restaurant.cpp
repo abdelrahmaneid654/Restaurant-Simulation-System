@@ -43,6 +43,7 @@ void Restaurant::TakeOrderInputFile()
 */
 
 //Now I comment this function ,for a later time .
+
 void Restaurant::MoveOrderLists()
 {/*
  I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
@@ -60,13 +61,12 @@ void Restaurant::MoveOrderLists()
 		Ready_OV.dequeue(pOrder);
 
 		InServ.enqueue(pOrder);
-		pOrder->SetScooter(pScooter);
+		pOrder->set_assigned_scooter(pScooter);
 		Busy_Scooters.enqueue(pScooter);
 		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-		int TravelTime = 2 * pOrder->getDistance() / ScooterSpeed;
-		pScooter->SetReturnTime(CurrTimeStep + TravelTime);
-
-		pOrder->SetFinishTime(CurrTimeStep + TravelTime/2);
+		int TravelTime = 2 * pOrder->get_distance() / ScooterSpeed;
+		pScooter->set_return_time(CurrTimeStep + TravelTime);
+		pOrder->set_TF(CurrTimeStep + TravelTime/2);
 		Finished_Orders.push(pOrder);
 		Busy_Scooters.dequeue(pScooter);
 		Free_Scooters.enqueue(pScooter);
@@ -78,7 +78,7 @@ void Restaurant::MoveOrderLists()
 		Order* pOrder;
 		Ready_OT.dequeue(pOrder);
 
-		pOrder->SetFinishTime(CurrTimeStep);
+		pOrder->set_TF(CurrTimeStep);
 		Finished_Orders.push(pOrder);
 
 	}
@@ -86,13 +86,13 @@ void Restaurant::MoveOrderLists()
 	//It is for Dine in Orders but Still not Finished
 	while (!Ready_OD.isempty())
 	{
-		Order* pOrder;
+		OD* pOrder;
 		Table* pTable;
 		Ready_OD.peek(pOrder);
-		bool ShareableFlag = pOrder->getFlag();// Function getFlag is specialized only about the Sharable flag .
+		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
 		Free_Tables.peek(pTable);
-		bool TableFlag = pTable->getType();
-		int NeededSeats=pOrder->getNumSeats();
+		bool TableFlag = pTable->get_Is_sharable();
+		int NeededSeats=pOrder->get_num_of_seats();
 		switch (ShareableFlag)
 		{
 		case 0: //Shareable Order
