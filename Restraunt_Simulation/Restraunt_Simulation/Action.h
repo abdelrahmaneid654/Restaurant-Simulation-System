@@ -5,11 +5,11 @@
 class Action
 {
 protected:
-	Order* orderType;
+	Order* pOrder;
 	int timeStep;
 	Restaurant* pRes;  
 public:
-	Action();
+	Action(Restaurant* r); 
 	virtual bool Act() = 0;
 	void setTimeStep(int t);
 	int getTimeStep();
