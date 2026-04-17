@@ -16,19 +16,16 @@
 #include "Cooking_Orders.h" //Derived from Priority Queue class
 #include "Pending_OVC.h"//Derived from Queue class
 #include "RDY_OV.h"//Derived from Queue class
+#include "EnumTypes.h"
 
-enum Mode
-{
-	Silent,
-	Interactive
-};
+
 
 
 class Restaurant
 { 
 private:
 	//Mode
-	Mode RestaurantMode; 
+	Mode RestaurantMode;
 
 //POINTERS
 	UI * pUI; // to reach and control the functions in UI class
@@ -125,6 +122,7 @@ private:
 	Order* pickRandomOrderFromPendingLists();
 	Order* pickRandomOrderFromReadyLists();
 	Order* FromCookingToReadyByType(Order* pOrder);
+	bool AreAllOrdersFinishedOrCancelled();
 
 public:
 	Restaurant();

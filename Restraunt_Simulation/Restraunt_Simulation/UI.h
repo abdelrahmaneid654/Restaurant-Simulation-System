@@ -8,6 +8,7 @@
 #include"Fit_Tables.h"
 #include"RDY_OV.h"
 #include"Cook_Order.h"
+#include"EnumTypes.h"
 
 #include"Restaurant.h"
 
