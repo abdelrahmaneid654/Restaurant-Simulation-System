@@ -240,7 +240,7 @@ void Restaurant::RandomSimulation()
 }
 void Restaurant::AddToPending(Order* pOrder)
 {
-	int OrderType = pOrder->getType();
+	int OrderType = pOrder->getType(); 
 
 	switch (OrderType)
 	{
@@ -446,62 +446,18 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	return pOrder;
 	//Remember : After calling this func in any place ,You must dequeue the pOrder from the CookingList
 }
+
 bool Restaurant::CancelOrder(int id) {
-	Order* pOrd = nullptr;
-
-	// 1. SEARCH IN PENDING LISTS
-	pOrd = Pend_ODN.RemoveByID(id);
-	if (!pOrd) pOrd = Pend_ODG.RemoveByID(id);
-	if (!pOrd) pOrd = Pend_OT.RemoveByID(id);
-	if (!pOrd) pOrd = Pend_OVN.RemoveByID(id);
-	if (!pOrd) pOrd = Pend_OVC.RemoveByID(id);
-	if (!pOrd) pOrd = Pend_OVG.RemoveByID(id);
-
-	//  2. SEARCH IN PROCESSING LISTS 
-	if (!pOrd) pOrd = Cooking_orders.RemoveByID(id);
-	if (!pOrd) pOrd = Ready_OT.RemoveByID(id);
-	if (!pOrd) pOrd = Ready_OD.RemoveByID(id);
-	if (!pOrd) pOrd = Ready_OV.RemoveByID(id);
-	if (!pOrd) pOrd = InServ.RemoveByID(id);
-
-	// --- 3. RESOURCE RECLAMATION LOGIC ---
-	if (pOrd != nullptr) {
-
-		// A. If the order had a Chef, free the Chef
-		if (pOrd->getChef() != nullptr) {
-			Chef* pChef = pOrd->getChef();
-			// Return to the correct free list based on type
-			if (pChef->getType() == CN)
-				Free_CN.enqueue(pChef);
-			else
-				Free_CS.enqueue(pChef);
-
-			pOrd->setChef(nullptr); // Unlink the order from the chef
-		}
-
-		// B. If it had a Table (Dine-in), free the Table
-		if (pOrd->getTable() != nullptr) {
-			Table* pTable = pOrd->getTable();
-			// Assuming your Table has a way to reset seats or availability
-			pTable->releaseTable(pOrd->getPartySize());
-			pOrd->setTable(nullptr);
-		}
-
-		if (pOrd->getScooter() != nullptr) {
-			Scooter* pScooter = pOrd->getScooter();
-			Back_Scooters.enqueue(pScooter);
-			pOrd->setScooter(nullptr);
-		}
-
-		// --- 3. MOVE TO CANCELLED QUEUE ---
-		pOrd->setStatus(CANCELLED); // Assuming CANCELLED is in your enum
-
-		// This is the specific queue for cancelled orders
-		Cancelled_Orders.enqueue(pOrd);
-
+	
+	if (Pend_OVC.Cancel_Order(id))
 		return true;
-
-	return false; // ID was not found in any active list
+	else if (Cook_orders.Cancel_Order(id))
+		return true;
+	return false;
+}
+void Restaurant::setRestaurantMode(Mode m)
+{
+	RestaurantMode = m;
 }
 Restaurant::~Restaurant()
 {

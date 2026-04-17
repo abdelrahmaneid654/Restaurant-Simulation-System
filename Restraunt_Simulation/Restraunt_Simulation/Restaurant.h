@@ -13,7 +13,7 @@
 #include "Queue.h"
 #include "PriQueue.h"
 #include "Fit_Tables.h"//Derived from Priority Queue class
-#include "Cook_Order.h" //Derived from Priority Queue class
+#include "Cooking_Orders.h" //Derived from Priority Queue class
 #include "Pending_OVC.h"//Derived from Queue class
 #include "RDY_OV.h"//Derived from Queue class
 
@@ -43,14 +43,14 @@ private:
 	Queue <Order*> Pend_ODN;//Dine in Normal [need of table]
 	Queue <Order*> Pend_OT;// Takeaway Orders [On site picked by the user ,do not need of scooters or tables]
 	Queue <Order*> Pend_OVN;//Delivery Normal [Only need scooter] 
-	Pending_OVC Pend_OVC;// Delivery cold [Only need scooter and to be deliverd cold]  {derived class from the queue} 
+	Pending_OVC<Order*> Pend_OVC;// Delivery cold [Only need scooter and to be deliverd cold]  {derived class from the queue} 
 	PriQueue <Order*> Pend_OVG;// Delivery Grilled [ it needs a special chef CS and a scooter ]
 	//2-Ready Orders 
 	Queue<Order*> Ready_OT;
 	Queue<Order*> Ready_OD;
 	RDY_OV Ready_OV; //derived class from the queue 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
-	Cook_Order Cooking_orders; //Each cookin order points to the assigned chef
+	Cooking_Orders<Order*> Cook_orders; //Each cookin order points to the assigned chef
 	Queue <Order*> Cancelled_Orders;
 	Stack <Order*> Finished_Orders;
 	PriQueue <Order*> InServ;//Each inserv order points to asssigned scooter [delivery] or table [dine in] 
@@ -119,7 +119,6 @@ private:
 	Order* pickRandomOrderFromPendingLists();
 	Order* pickRandomOrderFromReadyLists();
 	Order* FromCookingToReadyByType(Order* pOrder);
-	bool CancelOrder(int id);
 
 public:
 	Restaurant();
@@ -131,6 +130,7 @@ public:
 	void TakeOrderInputFile();
 	//it takes the order data from the user [i/p file] and then add this order to the pending list 
 	*/
+	bool CancelOrder(int id);
 	
 	void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 

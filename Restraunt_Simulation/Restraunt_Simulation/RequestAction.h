@@ -4,8 +4,8 @@ class RequestAction : public Action
 {
 private:
 
-
 public:
+	RequestAction(Restaurant* r);
 	bool Act();
 };
 
