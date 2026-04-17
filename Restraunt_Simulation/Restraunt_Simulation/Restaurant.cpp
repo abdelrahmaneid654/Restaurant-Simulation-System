@@ -88,7 +88,7 @@ void Restaurant::MoveOrderLists()
 	{
 		Order* pOrder;
 		Table* pTable;
-		Ready_OD.peek(((OD*)pOrder);
+		Ready_OD.peek((OD*)pOrder);
 		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
 		Free_Tables.peek(pTable);
 		bool TableFlag = pTable->get_Is_sharable();
@@ -181,7 +181,7 @@ void Restaurant::RandomSimulation()
 		{
 			Order* pOrder = pickRandomOrderFromPendingLists();
 			if (pOrder)//IT is always true but I made it for double check if I forget any thing in AreAllOrdersFinishedOrCancelled function
-			{	pOrder->setChef(pickRandomChefs());
+			{	pOrder->set_assigned_chef(pickRandomChefs());
 			Cooking_orders.enqueue(pOrder);
 				//Here I will make the needed implementations for each order type like for OV make the time of cooking and then move it to the ready list and for OD make the time of cooking and then move it to the ready list and for OT make the time of cooking and then move it to the ready list 
 				//I will make a function for each order type to do all these implementations and I will call this function here
