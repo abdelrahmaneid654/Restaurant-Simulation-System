@@ -61,10 +61,9 @@ private:
 	  // 1-Free Chefs
 	Queue <Chef*> Free_CS; //Free Special Chefs
 	Queue <Chef*> Free_CN; //Free Normal Chefs
-	PriQueue <Chef*> Busy_CS;//Busy Special Chefs
-	PriQueue <Chef*> Busy_CS;//Busy Normal Chefs
-	//I choose PriQueue because it has a relation to the time and we must know and implement to them the needed equations
-
+	//I choose PriQueue for busy chefs because it has a relation to the time and we must know and implement to them the needed equations
+	//I delete busy chefs because I will make the order points to the chef and before send order to finished List I will enqueue the chef to the list again.
+	
 	//Scooters 
 	PriQueue<Scooter*> Free_Scooters; //assigned based for the shortest distance
 	PriQueue<Scooter*> Busy_Scooters; //Leaves the list based on the distance they cut back to the restaurant
@@ -107,6 +106,21 @@ private:
 
 	//STILL I do not write the point 6 in the document num 1 page 6 
 
+
+
+	//PRIVATE FUNCTIONS
+private: 
+	//All these functions are for the random simulation
+	bool AreAllOrdersFinishedOrCancelled();
+	Order* CreateRandomOrder( int  ArrivalTime);
+	Chef* CreateRandomChefs(int ChefID);
+	Table* CreateRandomTables(int TableId);
+	Chef* pickRandomChefs();
+	Order* pickRandomOrderFromPendingLists();
+	Order* pickRandomOrderFromReadyLists();
+	Order* FromCookingToReadyByType(Order* pOrder);
+	bool CancelOrder(int id);
+
 public:
 	Restaurant();
 
@@ -124,6 +138,8 @@ public:
 	// Assign ready orders to scooter/table or give to customer (OT orders)
 	void RandomSimulation();
 
+	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
+	
 
 
 	void UpdateInterface();
@@ -136,4 +152,3 @@ public:
 
 	~Restaurant();
 };
-
