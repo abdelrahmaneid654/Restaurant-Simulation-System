@@ -208,35 +208,47 @@ void Restaurant::RandomSimulation()
 			{
 				switch (pOrder->getType())
 				{
-				case OT:
-					Ready_OT.dequeue(pOrder);
-					Finished_Orders.push(pOrder);
-					break;
-				case OVN:
-				case OVG:
-				case OVC:
-					Ready_OV.dequeue(pOrder);
+					case OT:
+						Ready_OT.dequeue(pOrder);
+						Finished_Orders.push(pOrder);
+						break;
+					case OVN:
+					case OVG:
+					case OVC:
+						Ready_OV.dequeue(pOrder);
 
-					pOrder->setScooter();
-					InServ.enqueue(pOrder);
-					break;
-				case ODN:
-				case ODG:
-					Ready_OD.dequeue(pOrder);
-					pOrder->setTable();
-					InServ.enqueue(pOrder);
-					break;
+						pOrder->setScooter();
+						InServ.enqueue(pOrder);
+						break;
+					case ODN:
+					case ODG:
+						Ready_OD.dequeue(pOrder);
+						pOrder->setTable();
+						InServ.enqueue(pOrder);
+						break;
 				}
 
 			}
 
+		}
+		if (totalGenerated > 0) {
+			int randomID = (rand() % totalGenerated) + 1;
+			CancelOrder(randomID);
+		}
+		if ((rand() % 100) < 25) {
+			Order* pFinished;
+			if (InServ.dequeue(pFinished)) 
+			{
+				ReleaseResources(pFinished);
+				Finished_Orders.enqueue(pFinished);
+			}
 		}
 
 
 		pUI->UpdateInterFace();
 		pUI->WaitForClick();
 		CurrTimeStep++;
-}
+	}
 
 }
 void Restaurant::AddToPending(Order* pOrder)
@@ -449,42 +461,33 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 }
 bool Restaurant::CancelOrder(int id) {
 	Order* pOrd = nullptr;
-
-	// 1. SEARCH IN PENDING LISTS
 	pOrd = Pend_ODN.RemoveByID(id);
 	if (!pOrd) pOrd = Pend_ODG.RemoveByID(id);
 	if (!pOrd) pOrd = Pend_OT.RemoveByID(id);
 	if (!pOrd) pOrd = Pend_OVN.RemoveByID(id);
 	if (!pOrd) pOrd = Pend_OVC.RemoveByID(id);
 	if (!pOrd) pOrd = Pend_OVG.RemoveByID(id);
-
-	//  2. SEARCH IN PROCESSING LISTS 
+//////////////////////////////////////////////////
 	if (!pOrd) pOrd = Cooking_orders.RemoveByID(id);
 	if (!pOrd) pOrd = Ready_OT.RemoveByID(id);
 	if (!pOrd) pOrd = Ready_OD.RemoveByID(id);
 	if (!pOrd) pOrd = Ready_OV.RemoveByID(id);
 	if (!pOrd) pOrd = InServ.RemoveByID(id);
 
-	// --- 3. RESOURCE RECLAMATION LOGIC ---
 	if (pOrd != nullptr) {
 
-		// A. If the order had a Chef, free the Chef
 		if (pOrd->getChef() != nullptr) {
 			Chef* pChef = pOrd->getChef();
-			// Return to the correct free list based on type
 			if (pChef->getType() == CN)
 				Free_CN.enqueue(pChef);
 			else
 				Free_CS.enqueue(pChef);
 
-			pOrd->setChef(nullptr); // Unlink the order from the chef
+			pOrd->setChef(nullptr);
 		}
-
-		// B. If it had a Table (Dine-in), free the Table
 		if (pOrd->getTable() != nullptr) {
 			Table* pTable = pOrd->getTable();
-			// Assuming your Table has a way to reset seats or availability
-			pTable->releaseTable(pOrd->getPartySize());
+			Free_Tables.enqueue(pTable);
 			pOrd->setTable(nullptr);
 		}
 
@@ -493,16 +496,94 @@ bool Restaurant::CancelOrder(int id) {
 			Back_Scooters.enqueue(pScooter);
 			pOrd->setScooter(nullptr);
 		}
-
-		// --- 3. MOVE TO CANCELLED QUEUE ---
-		pOrd->setStatus(CANCELLED); // Assuming CANCELLED is in your enum
-
-		// This is the specific queue for cancelled orders
 		Cancelled_Orders.enqueue(pOrd);
-
 		return true;
+	}
+		return false; 
+}
+void Restaurant::ReleaseResources(Order* pOrd)
+{
+	if (!pOrd) return;
 
-	return false; // ID was not found in any active list
+	// 1. Release Chef (Usually handled when moving to Ready, but good for safety)
+	if (pOrd->getChef()) {
+		Chef* pC = pOrd->getChef();
+		if (pC->getType() == CN) Free_CN.enqueue(pC);
+		else Free_CS.enqueue(pC);
+		pOrd->setChef(nullptr);
+	}
+
+	// 2. Release Table
+	if (pOrd->getTable()) {
+		Free_Tables.enqueue(pOrd->getTable());
+		pOrd->setTable(nullptr);
+	}
+
+	// 3. Release Scooter
+	if (pOrd->getScooter()) {
+		Free_Scooters.enqueue(pOrd->getScooter());
+		pOrd->setScooter(nullptr);
+	}
+}
+
+/// <summary>
+/// These 2 Functions are for the sequence of the order , But there logic is not correct right now 17/4
+/// </summary>
+
+Order * Restaurant::FromReadyToInServByType(Order* pOrder)
+{
+	if (!pOrder)
+	return NULL;
+
+	OrderType type = pOrder->getType();
+	switch (type)
+	{
+	case ODG: //Dine in Orders
+	case ODN:
+		pOrder->setTable();
+		InServ.enqueue(pOrder);
+		break;
+	case OT://Take away Orders
+		pOrder->setFinishTime(CurrTimeStep);
+		Finished_Orders.push(pOrder);
+		break;
+	case OVN://Delivery Orders
+	case OVG:
+		pOrder->setScooter();
+		InServ.enqueue(pOrder);
+		break;
+	default:
+		// To avoid Crashing
+		break;
+	}
+	return pOrder;
+}
+Order* Restaurant::FromInServToFinishedByType(Order* pOrder)
+{
+	if (!pOrder)
+		return NULL;
+	OrderType type = pOrder->getType();
+	switch (type)
+	{
+	case ODG: //Dine in Orders
+	case ODN:
+		pOrder->setFinishTime(CurrTimeStep);
+		Finished_Orders.push(pOrder);
+		break;
+	case OT://Take away Orders
+		pOrder->setFinishTime(CurrTimeStep);
+		Finished_Orders.push(pOrder);
+		break;
+	case OVN://Delivery Orders
+	case OVG:
+		pOrder->setFinishTime(CurrTimeStep);
+		Finished_Orders.push(pOrder);
+		break;
+	default:
+		// To avoid Crashing
+		break;
+	}
+	return pOrder;
 }
 Restaurant::~Restaurant()
 {
