@@ -6,6 +6,7 @@ Chef::Chef(int s,int id)
 	speed = s;
 	total_busy_time = 0;
 }
+
 int Chef::getID() const
 {
 	return ID;
@@ -24,3 +25,6 @@ ostream& operator<<(ostream& out, const Chef* c) {
 	}
 	return out;
 }
+
+
+

@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include"OD.h"
 using namespace std;
 class Table
 {
@@ -13,7 +14,9 @@ public:
 	int get_capacity()const;
 	int get_free_seats() const;
 	bool get_Is_sharable() const;
-	void put_order(bool sharable, int s);
+	void set_IS_sharable(bool s);
+	void put_order(OD *o);
 	void  leave_order(int s);
+	int calc_priority();
 };
 ostream& operator<<(ostream& out, const Table *t);

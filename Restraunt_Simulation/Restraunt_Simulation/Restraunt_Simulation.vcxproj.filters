@@ -60,13 +60,13 @@
     <ClCompile Include="Fit_Tables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cook_Order.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pending_OVC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RDY_OV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cooking_Orders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,13 +113,13 @@
     <ClInclude Include="Fit_Tables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cook_Order.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pending_OVC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RDY_OV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cooking_Orders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnumTypes.h">

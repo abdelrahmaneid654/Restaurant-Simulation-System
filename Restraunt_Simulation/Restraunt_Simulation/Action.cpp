@@ -2,8 +2,9 @@
 #include<iostream>
 using namespace std;
 
-Action::Action()
+Action::Action(Restaurant* r)
 {
+	pRes = r;
 }
 
 void Action::setTimeStep(int t)
@@ -18,6 +19,6 @@ int Action::getTimeStep()
 
 void Action::setOrderType(Order* o)
 {
-	orderType = o;
+	pOrder = o;
 }
 
