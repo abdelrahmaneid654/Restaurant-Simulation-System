@@ -1,16 +1,8 @@
 #pragma once
 #include<iostream>
 #include"Chef.h"
+#include"EnumTypes.h"
 using namespace std;
-
-
-enum ORD_STATUS {
-	PENDING,
-	COOKING,
-	READY,
-	IN_SERVICE,
-	FINISHED
-};
 
 
 class Order
@@ -28,16 +20,16 @@ class Order
 						//TW				//Customer Wait Time
 	int TF;				//Order Finish Time
 	int T_Serve;		// Service Duration
-	ORD_STATUS status;
+	OrderType Type;
 
 
 public:
-	Order(int tq, int id,int size,double price,int t_serve); //TQ ,T_Serve from input file // and T_serve differ if it's OD or OV
-	void setStatus(ORD_STATUS s);
-	ORD_STATUS getStatus() const;
+	Order(int tq, int id,int size,double price,int t_serve, OrderType t ); //TQ ,T_Serve from input file // and T_serve differ if it's OD or OV
 
-	Chef* get_assigned_chef();
+	Chef* get_assigned_chef() const;
 	void set_assigned_chef(Chef* c);
+
+	
 
 	int getsize() const;
 	int getID() const;
@@ -66,9 +58,9 @@ public:
 
 	int get_T_Serve() const;
 
-	virtual int gettype()  const = 0;
+	OrderType gettype()  const;
 
-	virtual ~Order() {};
+	virtual ~Order() = 0;
 
 };
 ostream& operator<<(ostream& out, const Order* o);

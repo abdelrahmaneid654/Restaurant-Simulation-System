@@ -46,9 +46,9 @@ int Table::calc_priority()
 	return free_seats;
 }
 
-ostream& operator<<(ostream& out, const Table *t)
+ostream& operator<<(ostream& out, const Table* t)
 {
 	if (t)
-		out << t->get_ID();
+		out << "[" << t->get_ID() << "," << t->get_capacity() << "," << t->get_free_seats() << "]";
 	return out;
 }

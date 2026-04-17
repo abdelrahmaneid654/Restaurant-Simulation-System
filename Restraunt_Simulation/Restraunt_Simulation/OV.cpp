@@ -1,6 +1,6 @@
 #include "OV.h"
 
-OV::OV(int tq, int id, int size, double price, int t_serve, int dis, OV_Type type):Order(tq, id, size, price, t_serve)
+OV::OV(int tq, int id, int size, double price, int t_serve, int dis, OrderType type):Order(tq, id, size, price, t_serve)
 {
 	distance = dis;
 	assigned_scooter = nullptr;
@@ -27,4 +27,9 @@ int OV::gettype()
 Scooter* OV::get_assigned_scooter()
 {
 	return assigned_scooter;
+}
+
+void OV::set_assigned_scooter(Scooter *s)
+{
+	assigned_scooter = s;
 }

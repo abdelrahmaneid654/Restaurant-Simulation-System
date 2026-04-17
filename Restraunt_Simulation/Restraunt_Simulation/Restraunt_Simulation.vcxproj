@@ -150,6 +150,7 @@
     <ClInclude Include="CancelAction.h" />
     <ClInclude Include="Chef.h" />
     <ClInclude Include="Cooking_Orders.h" />
+    <ClInclude Include="EnumTypes.h" />
     <ClInclude Include="Fit_Tables.h" />
     <ClInclude Include="HelpingFunctions.h" />
     <ClInclude Include="Node.h" />

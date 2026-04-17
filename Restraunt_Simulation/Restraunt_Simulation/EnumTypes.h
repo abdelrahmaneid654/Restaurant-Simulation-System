@@ -6,15 +6,23 @@ enum OrderType
 	OT,
 	OVN,
 	OVG,
-	OVC
+	OVC,
+	Compo,
+	UNKNOWN
 };
-enum ChefType
+enum Mode
 {
-	CN,
-	CS
+	Interactive,
+	Silent
 };
 enum TableType
 {
 	Sharable,
-	Non_Sharable
+	No_Share
 };
+enum ChefType
+{
+	CS,
+	CN
+};
+
