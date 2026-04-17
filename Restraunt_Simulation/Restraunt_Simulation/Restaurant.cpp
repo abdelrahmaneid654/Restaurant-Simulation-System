@@ -115,6 +115,7 @@ void Restaurant::MoveOrderLists()
 			}
 			break;
 		case 1://Not Shareable Order
+
 			break;
 		}
 	}
@@ -170,8 +171,8 @@ void Restaurant::RandomSimulation()
 		{
 			Order* pOrder = pickRandomOrderFromPendingLists();
 			if (pOrder)//IT is always true but I made it for double check if I forget any thing in AreAllOrdersFinishedOrCancelled function
-			{	pOrder->setChef(pickRandomChefs());
-			Cooking_orders.enqueue(pOrder);
+			{	pOrder->set_assigned_chef(pickRandomChefs());
+			Cook_orders.enqueue(pOrder);
 				//Here I will make the needed implementations for each order type like for OV make the time of cooking and then move it to the ready list and for OD make the time of cooking and then move it to the ready list and for OT make the time of cooking and then move it to the ready list 
 				//I will make a function for each order type to do all these implementations and I will call this function here
 			}
@@ -181,7 +182,7 @@ void Restaurant::RandomSimulation()
 			Order* pOrder;
 			for (int i = 0; i < 15; i++)
 			{
-				if (Cooking_orders.dequeue(pOrder))
+				if (Cook_orders.dequeue(pOrder))
 				{
 					FromCookingToReadyByType(pOrder);
 
@@ -194,7 +195,7 @@ void Restaurant::RandomSimulation()
 			Order* pOrder = pickRandomOrderFromReadyLists();
 			if (pOrder)
 			{
-				switch (pOrder->getType())
+				switch (pOrder->gettype())
 				{
 					case OT:
 						Ready_OT.dequeue(pOrder);
@@ -204,14 +205,13 @@ void Restaurant::RandomSimulation()
 					case OVG:
 					case OVC:
 						Ready_OV.dequeue(pOrder);
-
-						pOrder->
 						InServ.enqueue(pOrder);
 						break;
 					case ODN:
 					case ODG:
 						Ready_OD.dequeue(pOrder);
-						pOrder->setTable();
+						Table* pTable;
+						((OD*)pOrder)->set_assigned_table(pTable);
 						InServ.enqueue(pOrder);
 						break;
 				}
@@ -229,12 +229,11 @@ void Restaurant::RandomSimulation()
 			if (InServ.dequeue(pFinished)) 
 			{
 				ReleaseResources(pFinished);
-				Finished_Orders.enqueue(pFinished);
+				Finished_Orders.push(pFinished);
 			}
 		}
+		UpdateInterface();
 
-
-		pUI->UpdateInterFace();
 		pUI->WaitForClick();
 		CurrTimeStep++;
 	}
@@ -313,7 +312,7 @@ Order* Restaurant::CreateRandomOrder(int ArrivalTime)
 		int distance = rand() % 100 + 1;//Distance form 1 to 100
 		pOrder->setDistance(distance);
 	}
-	else if (type == ODN || ODG)
+	else if (type == ODN || type == ODG)
 	{
 		int SharableFlag = rand() % 2;
 		int EatingTime = rand() % 35 + 10;//Eating time from 10 to 45
@@ -427,7 +426,7 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 {
 	if (!pOrder)
 		return NULL;
-	OrderType type = pOrder->getType();
+	OrderType type = pOrder->gettype();
 	switch(type)
 	{
 	case ODG: //Dine in Orders
