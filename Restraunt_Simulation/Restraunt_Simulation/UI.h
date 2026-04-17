@@ -33,6 +33,7 @@ public:
 
 	void setProgramMode(Mode m);
 
+	void WaitForClick();
 
 };
 
