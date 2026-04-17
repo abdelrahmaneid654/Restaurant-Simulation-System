@@ -12,5 +12,6 @@ public:
 	int get_distance();
 	int gettype();
 	Scooter* get_assigned_scooter();
+	void set_assigned_scooter(Scooter *s);
 };
 

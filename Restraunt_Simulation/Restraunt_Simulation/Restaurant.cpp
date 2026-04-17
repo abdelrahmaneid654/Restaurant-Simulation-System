@@ -54,7 +54,7 @@ void Restaurant::MoveOrderLists()
 
 	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
 	{
-		Order* pOrder;
+		OV* pOrder;
 		Scooter* pScooter;
 		Free_Scooters.dequeue(pScooter);
 		Ready_OV.dequeue(pOrder);

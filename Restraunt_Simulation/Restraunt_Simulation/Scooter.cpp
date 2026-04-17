@@ -58,6 +58,16 @@ void Scooter::reset_counter()
 	counter = 0;
 }
 
+void Scooter::set_return_time(int t)
+{
+	return_time = t;
+}
+
+int Scooter::get_return_time()
+{
+	return return_time;
+}
+
 ostream& operator<<(ostream& out,const Scooter* s)
 {
 	if (s)
