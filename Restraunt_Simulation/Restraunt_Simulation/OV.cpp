@@ -28,3 +28,8 @@ Scooter* OV::get_assigned_scooter()
 {
 	return assigned_scooter;
 }
+
+void OV::set_assigned_scooter(Scooter *s)
+{
+	assigned_scooter = s;
+}

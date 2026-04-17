@@ -5,6 +5,7 @@ class Scooter
 {
 	int Speed;
 	int ID;
+	int return_time;
 	int Main_Ords;
 	int	Main_Dur;
 	int counter;
@@ -23,6 +24,8 @@ public:
 	int get_Main_Dur() const;
 	void update_info(int dis,int b_time);
 	void reset_counter();
+	void set_return_time(int t);
+	int get_return_time();
 };
 ostream& operator<<(ostream& out, const Scooter* s);
 
