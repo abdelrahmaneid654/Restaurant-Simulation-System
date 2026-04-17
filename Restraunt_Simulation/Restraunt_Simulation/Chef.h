@@ -7,13 +7,14 @@ class Chef
 	int ID;
 	int speed;
 	int total_busy_time; // to calc Chefs utilization
+	string type;
 public:
 	Chef(int s, int id);
-
 	int getID() const;
 	int getspeed() const;
 	void update_info(int b_time);
-	virtual string gettype() const = 0;
+	void setType(string s);
+	string gettype() const;
 	virtual~Chef() {};
 
 };

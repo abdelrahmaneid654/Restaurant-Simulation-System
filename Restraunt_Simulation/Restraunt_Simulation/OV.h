@@ -4,7 +4,8 @@
 enum OV_Type { // benfit of this in cooking orders all orders in same queue 
 	OVC,
 	OVG,
-	OVN
+	OVN,
+	UNKNOWN
 };
 class OV :public Order
 {
@@ -14,7 +15,7 @@ class OV :public Order
 public:
 	OV(int tq, int id, int size, double price, int t_serve,int distance, OV_Type type);
 	int get_distance();
-	string gettype();
+	int gettype();
 	Scooter* get_assigned_scooter();
 };
 

@@ -12,16 +12,16 @@ int OV::get_distance()
 	return distance;
 }
 
-string OV::gettype()
+int OV::gettype()
 {
 	if (Type == OVG)
-		return "OVG";
+		return OVG; 
 	else if (Type == OVN)
-		return "OVN";
+		return OVN; 
 	else if (Type == OVC)
-		return "OVC";
+		return OVC; 
 
-		return "UNKNOWN";
+		return UNKNOWN;
 }
 
 Scooter* OV::get_assigned_scooter()

@@ -66,7 +66,7 @@ public:
 
 	int get_T_Serve() const;
 
-	virtual string gettype()  const = 0;
+	virtual int gettype()  const = 0;
 
 	virtual ~Order() {};
 

@@ -9,13 +9,13 @@ OD::OD(int tq, int id, int size, double price, int t_serve,int seats, int dur, b
     assigned_table = nullptr;
 }
 
-string OD::gettype() const
+int OD::gettype() const
 {
     if (Type == ODG)
-        return "ODG";
+        return ODG;
     else if (Type == ODN)
-        return "ODN";
-    return "UNKNOWN";
+        return ODN;
+    return UNKNOWN;
 }
 
 int OD::get_num_of_seats()

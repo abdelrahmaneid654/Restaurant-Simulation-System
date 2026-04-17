@@ -6,6 +6,6 @@ private:
 
 public:
 	RequestAction(Restaurant* r);
-	bool Act();
+	void Act();
 };
 
