@@ -252,7 +252,7 @@ void Restaurant::RandomSimulation()
 }
 void Restaurant::AddToPending(Order* pOrder)
 {
-	int OrderType = pOrder->getType(); 
+	int OrderType = pOrder->gettype(); 
 
 	switch (OrderType)
 	{
@@ -461,10 +461,24 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 
 bool Restaurant::CancelOrder(int id) {
 	
-	if (Pend_OVC.Cancel_Order(id))
+	Order* cancelledOVC = Pend_OVC.Cancel_Order(id); 
+	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
+	Order* cancelledReady = Ready_OV.Cancel_Order(id);
+
+	if (cancelledOVC || cancelledReady) 
+	{
 		return true;
-	else if (Cook_orders.Cancel_Order(id))
+	}
+	else if (cancelledCook) 
+	{
+		Chef* assigned = cancelledCook->get_assigned_chef(); 
+		string type = assigned->gettype(); 
+		if (type == "CN") 
+			Free_CN.enqueue(assigned); 
+		else
+			Free_CS.enqueue(assigned); 
 		return true;
+	}
 	return false;
 }
 void Restaurant::setRestaurantMode(Mode m)

@@ -4,7 +4,8 @@
 
 enum OD_TYPE {
 	ODG,
-	ODN
+	ODN,
+	UNKNOWN
 };
 class OD : public Order
 {
@@ -15,7 +16,7 @@ class OD : public Order
 	OD_TYPE Type;
 public:
 	OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OD_TYPE Type);
-	string gettype()  const;
+	int gettype()  const; 
 	int get_num_of_seats();
 	bool IS_Sharable();
 	int get_duration();

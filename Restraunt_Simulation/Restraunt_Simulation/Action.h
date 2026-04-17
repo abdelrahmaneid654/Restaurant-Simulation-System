@@ -10,9 +10,9 @@ protected:
 	Restaurant* pRes;  
 public:
 	Action(Restaurant* r); 
-	virtual bool Act() = 0;
+	virtual void Act() = 0; 
 	void setTimeStep(int t);
 	int getTimeStep();
-	void setOrderType(Order* o);
+	void setOrder(Order* o);
 };
 

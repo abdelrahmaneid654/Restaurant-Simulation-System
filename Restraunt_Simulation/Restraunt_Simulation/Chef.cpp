@@ -19,6 +19,14 @@ void Chef::update_info(int b_time)
 {
 	total_busy_time += b_time;
 }
+void Chef::setType(string s)
+{
+	type = s;
+}
+string Chef::gettype() const
+{
+	return type;
+}
 ostream& operator<<(ostream& out, const Chef* c) {
 	if (c) {
 		out << c->getID();

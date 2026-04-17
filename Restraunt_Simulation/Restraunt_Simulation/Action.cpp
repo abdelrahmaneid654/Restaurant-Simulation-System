@@ -17,7 +17,7 @@ int Action::getTimeStep()
 	return timeStep;
 }
 
-void Action::setOrderType(Order* o)
+void Action::setOrder(Order* o)
 {
 	pOrder = o;
 }

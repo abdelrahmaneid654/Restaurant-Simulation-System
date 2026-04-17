@@ -4,14 +4,13 @@ RequestAction::RequestAction(Restaurant* r):Action(r)
 {
 }
 
-bool RequestAction::Act()
+void RequestAction::Act()
 {
 
 	// orderType pointer will be setted when reading from file, so we just need 
 	// to send it to restaurant
 
 	pRes->AddToPending(pOrder);
-	return true;
 	
 
 }
