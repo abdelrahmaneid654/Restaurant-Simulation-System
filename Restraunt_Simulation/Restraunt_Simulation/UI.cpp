@@ -105,3 +105,8 @@ void UI::setProgramMode(Mode m)
 {
 	pRes->setRestaurantMode(m);
 }
+
+void UI::WaitForClick()
+{
+	cin.get(); // waited for enter
+}
