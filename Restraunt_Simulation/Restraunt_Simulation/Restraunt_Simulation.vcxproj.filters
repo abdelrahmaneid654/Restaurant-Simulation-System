@@ -122,5 +122,11 @@
     <ClInclude Include="Cooking_Orders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnumTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpingFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

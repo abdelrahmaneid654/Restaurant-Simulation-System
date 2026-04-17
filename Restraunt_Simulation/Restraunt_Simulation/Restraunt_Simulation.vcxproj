@@ -148,6 +148,7 @@
     <ClInclude Include="Chef.h" />
     <ClInclude Include="Cooking_Orders.h" />
     <ClInclude Include="Fit_Tables.h" />
+    <ClInclude Include="HelpingFunctions.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Pending_OVC.h" />
