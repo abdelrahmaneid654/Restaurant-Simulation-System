@@ -19,11 +19,11 @@ void Chef::update_info(int b_time)
 {
 	total_busy_time += b_time;
 }
-void Chef::setType(string s)
+void Chef::setType(OrderType s) 
 {
 	type = s;
 }
-string Chef::gettype() const
+OrderType Chef::gettype() const
 {
 	return type;
 }
