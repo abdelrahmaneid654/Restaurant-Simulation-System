@@ -110,8 +110,14 @@ private:
 
 	//PRIVATE FUNCTIONS
 private: 
-	//All these functions are for the random simulation
-	bool AreAllOrdersFinishedOrCancelled();
+	//Sequence Functions:
+	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
+	Order* FromPendingToCookingByType(Order* pOrder);//////0
+	Order* FromCookingToReadyByType(Order* pOrder);
+	Order* FromReadyToInServByType(Order* pOrder);/////
+	Order* FromInServToFinishedByType(Order* pOrder);///////
+	void ReleaseResources(Order* pOrd);
+	//Random Functions: 
 	Order* CreateRandomOrder( int  ArrivalTime);
 	Chef* CreateRandomChefs(int ChefID);
 	Table* CreateRandomTables(int TableId);
@@ -138,7 +144,6 @@ public:
 	// Assign ready orders to scooter/table or give to customer (OT orders)
 	void RandomSimulation();
 
-	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
 	
 
 

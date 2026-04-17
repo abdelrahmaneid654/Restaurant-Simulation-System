@@ -207,35 +207,47 @@ void Restaurant::RandomSimulation()
 			{
 				switch (pOrder->getType())
 				{
-				case OT:
-					Ready_OT.dequeue(pOrder);
-					Finished_Orders.push(pOrder);
-					break;
-				case OVN:
-				case OVG:
-				case OVC:
-					Ready_OV.dequeue(pOrder);
+					case OT:
+						Ready_OT.dequeue(pOrder);
+						Finished_Orders.push(pOrder);
+						break;
+					case OVN:
+					case OVG:
+					case OVC:
+						Ready_OV.dequeue(pOrder);
 
-					pOrder->setScooter();
-					InServ.enqueue(pOrder);
-					break;
-				case ODN:
-				case ODG:
-					Ready_OD.dequeue(pOrder);
-					pOrder->setTable();
-					InServ.enqueue(pOrder);
-					break;
+						pOrder->setScooter();
+						InServ.enqueue(pOrder);
+						break;
+					case ODN:
+					case ODG:
+						Ready_OD.dequeue(pOrder);
+						pOrder->setTable();
+						InServ.enqueue(pOrder);
+						break;
 				}
 
 			}
 
+		}
+		if (totalGenerated > 0) {
+			int randomID = (rand() % totalGenerated) + 1;
+			CancelOrder(randomID);
+		}
+		if ((rand() % 100) < 25) {
+			Order* pFinished;
+			if (InServ.dequeue(pFinished)) 
+			{
+				ReleaseResources(pFinished);
+				Finished_Orders.enqueue(pFinished);
+			}
 		}
 
 
 		pUI->UpdateInterFace();
 		pUI->WaitForClick();
 		CurrTimeStep++;
-}
+	}
 
 }
 void Restaurant::AddToPending(Order* pOrder)
