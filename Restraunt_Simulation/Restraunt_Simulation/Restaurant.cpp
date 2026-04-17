@@ -1,7 +1,6 @@
 #include "Restaurant.h"
 
-template <typename T>
-Restaurant<T>::Restaurant()
+Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
 	CurrTimeStep = 0;
@@ -11,11 +10,11 @@ Restaurant<T>::Restaurant()
 	OverWaitTime = 0;
 	////////////////////////////////////
 	ScooterSpeed = 0;
-	SpeedCN = SpeedCs = 0;
+	SpeedCN = SpeedCS = 0;
 	BeforeMainOrders = 0;
 	////////////////////////////////////
 	OverWaitTime = 0;
-	OrderOD = OrderOT = OrderOV = 0;
+	OrdersOD = OrdersOT = OrdersOV = 0;
 	FinishedOrders = 0;
 	CancelledOrders = 0;
 	OverWaitOrders = 0;
@@ -23,7 +22,7 @@ Restaurant<T>::Restaurant()
 	TotalChefsBusyTime = 0;
 	TotalScootersBusyTime = 0;
 	//DON'T forget the point6 variables
-	pUI = new UI();
+	pUI = new UI(this);
 
 }
 /*template <typename T>
@@ -45,8 +44,7 @@ void Restaurant<T>::TakeOrderInputFile()
 }
 */
 
-template <typename T>
-void Restaurant<T>::MoveOrderLists()
+void Restaurant::MoveOrderLists()
 {/*
  I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
  so we start from Ready lists and put the orders in the finished lists and for each type : OV make all need implementations for 
@@ -64,7 +62,7 @@ void Restaurant<T>::MoveOrderLists()
 		InServ.enqueue(pOrder);
 		Busy_Scooters.enqueue(pScooter);
 		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-		TravelTime = 2 * pOrder->distance / ScooterSpeed;
+		TravelTime = 2 * pOrder->distance / ScooterSpeed; 
 		pScooter->SetReturnTime(CurrTimeStep + TravelTime);
 
 		pOrder->SetFinishTime(CurrTimeStep + TravelTime);
@@ -103,30 +101,30 @@ while (!Ready_OD.isempty())
 
 	}*/
 }
-template <typename T>
-int Restaurant<T>::GetCurrentTimestep() const
+int Restaurant::GetCurrentTimestep() const
 {
 	return CurrTimeStep;
 }
 
-template <typename T>
-void Restaurant<T>::UpdateInterface()
+void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
 	//Joke :Cnrl C Cntrl V function
-	pUI->PrintFullLists(ActionListR, ActionListC, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG, Ready_OT, Ready_OD, Ready_OV, Cooking_orders, Cancelled_Orders, Finished_Orders, InServ, Compo, Free_CS, Free_CN, Free_Scooters, Free_Tables, Busy_Sharable, Busy_No_Share);
-	pUI->PrintFullVariables(CurrTimeStep, numCN, numCS, numScooter, SpeedCN, SpeedCS, BeforeMainOrders, OverWaitTime, TotalOrders, OrdersOD, OrdersOT, OrdersOV, FinishedOrders, CancelledOrders, OverWaitOrders, TotalChefs, FinishedOrderPercentage, CancelledOrderPercentage, OverWaitOrderPercentage, TotalChefsBusyTime, TotalScootersBusyTime);
+	pUI->Print(ActionListR, ActionListC, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG, Ready_OT, Ready_OD, Ready_OV, Cooking_orders, Cancelled_Orders, Finished_Orders, InServ, Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Busy_Scooters,Free_Tables, Busy_Sharable, Busy_No_Share);
 }
 
-template <typename T>
-void Restaurant<T>::RandomSimulation()
+void Restaurant::RandomSimulation()
 {
 
 }
 
 
-template <typename T>
-Restaurant<T>::~Restaurant()
+void Restaurant::setRestaurantMode(Mode m)
+{
+	RestaurantMode = m;
+}
+
+Restaurant::~Restaurant()
 {
 	delete pUI;
 

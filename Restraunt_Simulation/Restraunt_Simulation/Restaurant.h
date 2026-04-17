@@ -17,12 +17,19 @@
 #include "Pending_OVC.h"//Derived from Queue class
 #include "RDY_OV.h"//Derived from Queue class
 
-
+enum Mode
+{
+	Silent,
+	Interactive
+};
 
 
 class Restaurant
 { 
 private:
+	//Mode
+	Mode RestaurantMode; 
+
 //POINTERS
 	UI * pUI; // to reach and control the functions in UI class
 //LISTS
@@ -124,6 +131,9 @@ public:
 
 	int GetCurrentTimestep() const;
 	//Return the current time step need when execute actions .
+
+	void setRestaurantMode(Mode m);
+
 	~Restaurant();
 };
 
