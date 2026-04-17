@@ -1,7 +1,9 @@
-
-#include "Node.h"
+#include<iostream>
+using namespace std;
+#include"Restaurant.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Restaurant r;
+    r.UpdateInterface();
 }

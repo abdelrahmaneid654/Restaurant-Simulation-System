@@ -43,6 +43,7 @@ void Restaurant::TakeOrderInputFile()
 */
 
 //Now I comment this function ,for a later time .
+
 void Restaurant::MoveOrderLists()
 {/*
  I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
@@ -78,7 +79,7 @@ void Restaurant::MoveOrderLists()
 		Order* pOrder;
 		Ready_OT.dequeue(pOrder);
 
-		pOrder->SetFinishTime(CurrTimeStep);
+		pOrder->set_TF(CurrTimeStep);
 		Finished_Orders.push(pOrder);
 
 	}
@@ -86,13 +87,13 @@ void Restaurant::MoveOrderLists()
 	//It is for Dine in Orders but Still not Finished
 	while (!Ready_OD.isempty())
 	{
-		Order* pOrder;
+		OD* pOrder;
 		Table* pTable;
 		Ready_OD.peek(pOrder);
-		bool ShareableFlag = pOrder->getFlag();// Function getFlag is specialized only about the Sharable flag .
+		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
 		Free_Tables.peek(pTable);
-		bool TableFlag = pTable->getType();
-		int NeededSeats=pOrder->getNumSeats();
+		bool TableFlag = pTable->get_Is_sharable();
+		int NeededSeats=pOrder->get_num_of_seats();
 		switch (ShareableFlag)
 		{
 		case 0: //Shareable Order
@@ -241,7 +242,7 @@ void Restaurant::RandomSimulation()
 }
 void Restaurant::AddToPending(Order* pOrder)
 {
-	int OrderType = pOrder->gettype(); 
+	OrderType OrderType = pOrder->gettype();  
 
 	switch (OrderType)
 	{
@@ -331,9 +332,9 @@ Table* Restaurant::CreateRandomTables(int TableId)
 	Table* pTable = new Table(TableId);
 	int type = rand() % 2;
 	if (type)
-		pTable->setType(Sharable);
+		pTable->set_IS_sharable(Sharable);
 	else
-		pTable->setType(Non_Sharable);
+		pTable->set_IS_sharable(Non_Sharable);
 
 	return pTable;
 }
@@ -461,11 +462,16 @@ bool Restaurant::CancelOrder(int id) {
 	else if (cancelledCook) 
 	{
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
-		string type = assigned->gettype(); 
-		if (type == "CN") 
-			Free_CN.enqueue(assigned); 
-		else
-			Free_CS.enqueue(assigned); 
+		ChefType type = assigned->gettype();  
+		switch(type)
+		{
+		case CN:
+			Free_CN.enqueue(assigned);
+			break;
+		case CS:
+			Free_CS.enqueue(assigned);
+			break;
+		}
 		return true;
 	}
 	return false;

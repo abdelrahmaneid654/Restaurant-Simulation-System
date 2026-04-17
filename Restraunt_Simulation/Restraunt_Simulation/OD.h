@@ -8,9 +8,10 @@ class OD : public Order
 	int num_of_seats;
 	bool sharable;
 	int duration;
+	OrderType Type; 
 	 
 public:
-	OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OrderType Type); 
+	OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OrderType type); 
 	OrderType gettype()  const;
 	int get_num_of_seats();
 	bool IS_Sharable();

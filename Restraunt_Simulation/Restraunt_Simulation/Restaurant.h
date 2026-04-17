@@ -45,8 +45,8 @@ private:
 	PriQueue <Order*> Pend_OVG;// Delivery Grilled [ it needs a special chef CS and a scooter ]
 	//2-Ready Orders 
 	Queue<Order*> Ready_OT;
-	Queue<Order*> Ready_OD;
-	RDY_OV<Order*> Ready_OV; //derived class from the queue 
+	Queue<OD*> Ready_OD;
+	RDY_OV<OV*> Ready_OV; //derived class from the queue 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
 	Cooking_Orders<Order*> Cook_orders; //Each cookin order points to the assigned chef
 	Queue <Order*> Cancelled_Orders;
