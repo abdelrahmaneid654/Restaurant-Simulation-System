@@ -16,7 +16,7 @@ void PriQueue<T>::enqueue(T x) {
 	Node<T>* temp = new Node<T>;
 	temp->setdata(x);
 	temp->setnext(nullptr);
-	if (x ) {
+	if (x  ) {
 		if (!this->isempty()) {
 
 			if (x->calc_priority() >= ((this->rear)->getdata())->calc_priority()) {
