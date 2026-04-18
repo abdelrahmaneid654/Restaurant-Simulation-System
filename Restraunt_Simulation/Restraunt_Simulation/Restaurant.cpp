@@ -131,7 +131,7 @@ void Restaurant::RandomSimulation()
 {
 	CurrTimeStep = 1;
 	//This loop for creataing random chefs and tables, and create scooters
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		CreateRandomChefs(i + 1);
 
@@ -178,7 +178,7 @@ void Restaurant::RandomSimulation()
 			Order* pOrder=nullptr;
 			for (int i = 0; i < 15; i++)
 			{
-				if ((rand() % 100 + 1) <= 75)
+				if ((rand() % 100) < 75)
 				{
 					if (Cook_orders.dequeue(pOrder))
 					{
@@ -270,23 +270,23 @@ void Restaurant::AddToPending(Order* pOrder)
 
 	switch (OrderType)
 	{
-	case 0:
+	case ODG:
 		Pend_ODG.enqueue(pOrder);
 		break;
-	case 1:
+	case ODN:
 		Pend_ODN.enqueue(pOrder);
 		break;
-	case 2:
+	case OT_O:
 		Pend_OT.enqueue(pOrder);
 		break;
-	case 3:
+	case OVN:
 		Pend_OVN.enqueue(pOrder);
 		break;
-	case 4:
-		Pend_OVC.enqueue(pOrder);//erorr in enqueue because it is from derived class from the queue and there is no implementation for the class yet.
-		break;
-	case 5:
+	case OVG:
 		Pend_OVG.enqueue(pOrder);//function in enqueue should be replaced by insert because it is a priority queue
+		break;
+	case OVC:
+		Pend_OVC.enqueue(pOrder);//erorr in enqueue because it is from derived class from the queue and there is no implementation for the class yet.
 		break;
 	}
 }
@@ -356,7 +356,7 @@ void Restaurant::CreateRandomOrder(int ArrivalTime)
 	{
 		type = OVC;
 		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVC);
-		Pend_OVG.enqueue(pOrder);
+		Pend_OVC.enqueue(pOrder);
 		break;
 	}
 	}

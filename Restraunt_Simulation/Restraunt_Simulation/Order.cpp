@@ -1,9 +1,10 @@
 #include"Order.h"
 ostream& operator<<(ostream& out, const Order* o) {
 
-	if (o && o->get_assigned_chef()) {
 
-		out << "[" << o->getID() <<"] ";
+	if (o ) {
+
+		out << " [" << o->getID() <<"] ";
 	}
 	return out;
 }

@@ -48,7 +48,7 @@ inline void Cooking_Orders<T>::print() const
 {
 	Node<T>* temp = this->front;
 	while (temp) {
-		std::cout << temp->getdata() << " " <<temp->getdata()->get_assigned_chef();
+		std::cout <<"["<< temp->getdata() << " , " << temp->getdata()->get_assigned_chef()<<"]";
 		temp = temp->getnext();
 	}
 	std::cout << "\n";
