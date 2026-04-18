@@ -356,7 +356,7 @@ void Restaurant::CreateRandomOrder(int ArrivalTime)
 	{
 		type = OVC;
 		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVC);
-		Pend_OVG.enqueue(pOrder);
+		Pend_OVC.enqueue(pOrder);
 		break;
 	}
 	}
@@ -493,17 +493,19 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	{
 	case ODG: //Dine in Orders
 	case ODN: {
-		OD* temp = (OD*)pOrder;
-		Ready_OD.enqueue(temp);
+		Ready_OD.enqueue(pOrder);
 		break;
 	}
-	case OT_O :{ //Take away Orders
-				Ready_OT.enqueue(pOrder);
-				break; }
+	case OT_O :
+	{ //Take away Orders
+		Ready_OT.enqueue(pOrder);
+		break; 
+	}
 	case OVN:
-	case OVG: {
-		OV* temp1 = (OV*)pOrder;
-		Ready_OV.enqueue(temp1);
+	case OVG: 
+	case OVC:
+	{
+		Ready_OV.enqueue(pOrder);
 		break;
 	}
 	default: {
