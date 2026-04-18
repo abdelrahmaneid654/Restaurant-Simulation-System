@@ -7,10 +7,10 @@ class Node
 	Node* next;
 public:
 
+
 	template<class T>
 	Node<T>* Node<T>::getnext()
 	{
-
 		return next;
 	}
 	template<class T>
