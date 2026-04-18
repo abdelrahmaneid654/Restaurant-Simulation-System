@@ -493,17 +493,19 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	{
 	case ODG: //Dine in Orders
 	case ODN: {
-		OD* temp = (OD*)pOrder;
-		Ready_OD.enqueue(temp);
+		Ready_OD.enqueue(pOrder);
 		break;
 	}
-	case OT_O :{ //Take away Orders
-				Ready_OT.enqueue(pOrder);
-				break; }
+	case OT_O :
+	{ //Take away Orders
+		Ready_OT.enqueue(pOrder);
+		break; 
+	}
 	case OVN:
-	case OVG: {
-		OV* temp1 = (OV*)pOrder;
-		Ready_OV.enqueue(temp1);
+	case OVG: 
+	case OVC:
+	{
+		Ready_OV.enqueue(pOrder);
 		break;
 	}
 	default: {

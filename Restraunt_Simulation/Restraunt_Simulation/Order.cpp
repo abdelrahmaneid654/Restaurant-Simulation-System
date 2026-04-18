@@ -1,8 +1,7 @@
 #include"Order.h"
 ostream& operator<<(ostream& out, const Order* o) {
 
-
-	if (o ) {
+	if (o) {
 
 		out << " [" << o->getID() <<"] ";
 	}
