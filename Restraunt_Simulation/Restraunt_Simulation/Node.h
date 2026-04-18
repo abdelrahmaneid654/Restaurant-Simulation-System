@@ -21,6 +21,19 @@ public:
 template<class T>
 Node<T>* Node<T>::getnext()
 {
+		next = nullptr;
+	}
+		
+	Node(T x) {
+		data = x;
+		next = nullptr;
+	}
+		
+};
+
+template<class T>
+Node<T>* Node<T>::getnext()
+{
 
 	return next;
 }

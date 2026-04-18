@@ -1,3 +1,1657 @@
-﻿  Order.cpp
-C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(50,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  Restraunt_Simulation.vcxproj -> C:\Users\boudy\Desktop\Abdelrahman Eid\programming\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
+﻿  Action.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11):
+      see declaration of 'Node<T>::getnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(41,15): error C2995: 'void Node<T>::setnext(Node<T> *)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7):
+      see declaration of 'Node<T>::setnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(48,10): error C2995: 'Node<T>::Node(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(53,10): error C2995: 'Node<T>::Node(T)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(27,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(59,12): error C2995: 'T Node<T>::getdata(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      see declaration of 'Node<T>::getdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(64,15): error C2995: 'void Node<T>::setdata(T)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7):
+      see declaration of 'Node<T>::setdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(76,11): error C2995: 'Queue<T>::Queue(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      see declaration of 'Queue<T>::Queue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(82,16): error C2995: 'bool Queue<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7):
+      see declaration of 'Queue<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(93,16): error C2995: 'bool Queue<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7):
+      see declaration of 'Queue<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(101,16): error C2995: 'void Queue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15):
+      see declaration of 'Queue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(119,16): error C2995: 'bool Queue<T>::dequeue(T &)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7):
+      see declaration of 'Queue<T>::dequeue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(137,16): error C2995: 'void Queue<T>::print(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7):
+      see declaration of 'Queue<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(147,15): error C2995: 'int Queue<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6):
+      see declaration of 'Queue<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(43,19): error C2995: 'void PriQueue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      see declaration of 'PriQueue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(63,11): error C2995: 'Stack<T>::Stack(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      see declaration of 'Stack<T>::Stack'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(69,16): error C2995: 'bool Stack<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7):
+      see declaration of 'Stack<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(78,16): error C2995: 'bool Stack<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7):
+      see declaration of 'Stack<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(86,16): error C2995: 'void Stack<T>::push(T)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7):
+      see declaration of 'Stack<T>::push'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(95,16): error C2995: 'bool Stack<T>::pop(T &)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7):
+      see declaration of 'Stack<T>::pop'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(110,16): error C2995: 'void Stack<T>::print(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7):
+      see declaration of 'Stack<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(120,15): error C2995: 'int Stack<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6):
+      see declaration of 'Stack<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(41,19): error C2995: 'T Pending_OVC<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      see declaration of 'Pending_OVC<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.h(5,25):
+          see reference to class template instantiation 'PriQueue<Table *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Table *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(43,14): error C2995: 'T RDY_OV<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      see declaration of 'RDY_OV<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(43,22): error C2995: 'T Cooking_Orders<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      see declaration of 'Cooking_Orders<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Action *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,18):
+          see reference to class template instantiation 'Queue<Action *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Action *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Action *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Action *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Action *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Action *>::print': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Action *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Order *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(40,17):
+          see reference to class template instantiation 'Queue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Order *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4): error C2333: 'Pending_OVC<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(44,22):
+          see reference to class template instantiation 'Pending_OVC<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(45,20):
+          see reference to class template instantiation 'PriQueue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4): error C2333: 'RDY_OV<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,17):
+          see reference to class template instantiation 'RDY_OV<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4): error C2333: 'Cooking_Orders<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(51,25):
+          see reference to class template instantiation 'Cooking_Orders<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2): error C2333: 'Stack<Order *>::Stack': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(53,17):
+          see reference to class template instantiation 'Stack<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7): error C2333: 'Stack<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7): error C2333: 'Stack<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7): error C2333: 'Stack<Order *>::push': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7): error C2333: 'Stack<Order *>::pop': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7): error C2333: 'Stack<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6): error C2333: 'Stack<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Chef *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(60,16):
+          see reference to class template instantiation 'Queue<Chef *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Chef *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Chef *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Chef *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Chef *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Chef *>::print': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Chef *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Scooter *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(66,21):
+          see reference to class template instantiation 'PriQueue<Scooter *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<Scooter *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Scooter *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Scooter *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Scooter *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Scooter *>::print': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Scooter *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Action.cpp')
+  
+  Chef.cpp
+  Fit_Tables.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11):
+      see declaration of 'Node<T>::getnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(41,15): error C2995: 'void Node<T>::setnext(Node<T> *)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7):
+      see declaration of 'Node<T>::setnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(48,10): error C2995: 'Node<T>::Node(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(53,10): error C2995: 'Node<T>::Node(T)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(27,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(59,12): error C2995: 'T Node<T>::getdata(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      see declaration of 'Node<T>::getdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(64,15): error C2995: 'void Node<T>::setdata(T)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7):
+      see declaration of 'Node<T>::setdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(76,11): error C2995: 'Queue<T>::Queue(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      see declaration of 'Queue<T>::Queue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(82,16): error C2995: 'bool Queue<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7):
+      see declaration of 'Queue<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(93,16): error C2995: 'bool Queue<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7):
+      see declaration of 'Queue<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(101,16): error C2995: 'void Queue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15):
+      see declaration of 'Queue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(119,16): error C2995: 'bool Queue<T>::dequeue(T &)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7):
+      see declaration of 'Queue<T>::dequeue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(137,16): error C2995: 'void Queue<T>::print(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7):
+      see declaration of 'Queue<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(147,15): error C2995: 'int Queue<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6):
+      see declaration of 'Queue<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(43,19): error C2995: 'void PriQueue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      see declaration of 'PriQueue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.h(5,25):
+          see reference to class template instantiation 'PriQueue<Table *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Table *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4): error C2333: 'Node<T>::getdata': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.cpp(9,25):
+          see reference to class template instantiation 'Node<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7): error C2333: 'Node<T>::setdata': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11): error C2333: 'Node<T>::getnext': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7): error C2333: 'Node<T>::setnext': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2): error C2333: 'Node<T>::Node': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2): error C2333:         ]
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(28,8): error C2059: syntax error: '='
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(28,11): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(29,8): error C2059: syntax error: '='
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(29,17): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Fit_Tables.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(32,1): error C2143: syntax error: missing ';' before '}'
+  (compiling source file 'Fit_Tables.cpp')
+  
+  OD.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'OD.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+  Order.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Order.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(50,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
+  OT.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'OT.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+  OV.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'OV.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+  Restaurant.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11):
+      see declaration of 'Node<T>::getnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(41,15): error C2995: 'void Node<T>::setnext(Node<T> *)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7):
+      see declaration of 'Node<T>::setnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(48,10): error C2995: 'Node<T>::Node(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(53,10): error C2995: 'Node<T>::Node(T)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(27,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(59,12): error C2995: 'T Node<T>::getdata(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      see declaration of 'Node<T>::getdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(64,15): error C2995: 'void Node<T>::setdata(T)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7):
+      see declaration of 'Node<T>::setdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(76,11): error C2995: 'Queue<T>::Queue(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      see declaration of 'Queue<T>::Queue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(82,16): error C2995: 'bool Queue<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7):
+      see declaration of 'Queue<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(93,16): error C2995: 'bool Queue<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7):
+      see declaration of 'Queue<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(101,16): error C2995: 'void Queue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15):
+      see declaration of 'Queue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(119,16): error C2995: 'bool Queue<T>::dequeue(T &)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7):
+      see declaration of 'Queue<T>::dequeue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(137,16): error C2995: 'void Queue<T>::print(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7):
+      see declaration of 'Queue<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(147,15): error C2995: 'int Queue<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6):
+      see declaration of 'Queue<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(43,19): error C2995: 'void PriQueue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      see declaration of 'PriQueue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(63,11): error C2995: 'Stack<T>::Stack(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      see declaration of 'Stack<T>::Stack'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(69,16): error C2995: 'bool Stack<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7):
+      see declaration of 'Stack<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(78,16): error C2995: 'bool Stack<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7):
+      see declaration of 'Stack<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(86,16): error C2995: 'void Stack<T>::push(T)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7):
+      see declaration of 'Stack<T>::push'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(95,16): error C2995: 'bool Stack<T>::pop(T &)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7):
+      see declaration of 'Stack<T>::pop'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(110,16): error C2995: 'void Stack<T>::print(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7):
+      see declaration of 'Stack<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(120,15): error C2995: 'int Stack<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6):
+      see declaration of 'Stack<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(41,19): error C2995: 'T Pending_OVC<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      see declaration of 'Pending_OVC<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.h(5,25):
+          see reference to class template instantiation 'PriQueue<Table *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Table *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(43,14): error C2995: 'T RDY_OV<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      see declaration of 'RDY_OV<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(43,22): error C2995: 'T Cooking_Orders<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      see declaration of 'Cooking_Orders<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Action *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,18):
+          see reference to class template instantiation 'Queue<Action *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Action *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Action *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Action *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Action *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Action *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Action *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Order *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(40,17):
+          see reference to class template instantiation 'Queue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Order *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4): error C2333: 'Pending_OVC<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(44,22):
+          see reference to class template instantiation 'Pending_OVC<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(45,20):
+          see reference to class template instantiation 'PriQueue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4): error C2333: 'RDY_OV<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,17):
+          see reference to class template instantiation 'RDY_OV<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4): error C2333: 'Cooking_Orders<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(51,25):
+          see reference to class template instantiation 'Cooking_Orders<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2): error C2333: 'Stack<Order *>::Stack': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(53,17):
+          see reference to class template instantiation 'Stack<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7): error C2333: 'Stack<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7): error C2333: 'Stack<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7): error C2333: 'Stack<Order *>::push': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7): error C2333: 'Stack<Order *>::pop': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7): error C2333: 'Stack<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6): error C2333: 'Stack<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Chef *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(60,16):
+          see reference to class template instantiation 'Queue<Chef *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Chef *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Chef *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Chef *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Chef *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Chef *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Chef *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Scooter *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(66,21):
+          see reference to class template instantiation 'PriQueue<Scooter *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<Scooter *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Scooter *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Scooter *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Scooter *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Scooter *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Scooter *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restaurant.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,1): error C2264: 'Queue<Action *>::Queue': error in function definition or declaration; function not called
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,1): error C2264: 'Queue<Order *>::Queue': error in function definition or declaration; function not called
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,1): error C2264: 'Stack<Order *>::Stack': error in function definition or declaration; function not called
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,1): error C2264: 'Queue<Chef *>::Queue': error in function definition or declaration; function not called
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(4,1): error C2264: 'Queue<Scooter *>::Queue': error in function definition or declaration; function not called
+  Restraunt_Simulation.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11):
+      see declaration of 'Node<T>::getnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(41,15): error C2995: 'void Node<T>::setnext(Node<T> *)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7):
+      see declaration of 'Node<T>::setnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(48,10): error C2995: 'Node<T>::Node(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(53,10): error C2995: 'Node<T>::Node(T)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(27,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(59,12): error C2995: 'T Node<T>::getdata(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      see declaration of 'Node<T>::getdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(64,15): error C2995: 'void Node<T>::setdata(T)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7):
+      see declaration of 'Node<T>::setdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(76,11): error C2995: 'Queue<T>::Queue(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      see declaration of 'Queue<T>::Queue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(82,16): error C2995: 'bool Queue<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7):
+      see declaration of 'Queue<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(93,16): error C2995: 'bool Queue<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7):
+      see declaration of 'Queue<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(101,16): error C2995: 'void Queue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15):
+      see declaration of 'Queue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(119,16): error C2995: 'bool Queue<T>::dequeue(T &)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7):
+      see declaration of 'Queue<T>::dequeue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(137,16): error C2995: 'void Queue<T>::print(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7):
+      see declaration of 'Queue<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(147,15): error C2995: 'int Queue<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6):
+      see declaration of 'Queue<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(43,19): error C2995: 'void PriQueue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      see declaration of 'PriQueue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(63,11): error C2995: 'Stack<T>::Stack(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      see declaration of 'Stack<T>::Stack'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(69,16): error C2995: 'bool Stack<T>::peek(T &)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7):
+      see declaration of 'Stack<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(78,16): error C2995: 'bool Stack<T>::isempty(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7):
+      see declaration of 'Stack<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(86,16): error C2995: 'void Stack<T>::push(T)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7):
+      see declaration of 'Stack<T>::push'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(95,16): error C2995: 'bool Stack<T>::pop(T &)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7):
+      see declaration of 'Stack<T>::pop'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(110,16): error C2995: 'void Stack<T>::print(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7):
+      see declaration of 'Stack<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(120,15): error C2995: 'int Stack<T>::getcount(void)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6):
+      see declaration of 'Stack<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(41,19): error C2995: 'T Pending_OVC<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      see declaration of 'Pending_OVC<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.h(5,25):
+          see reference to class template instantiation 'PriQueue<Table *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Table *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(43,14): error C2995: 'T RDY_OV<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      see declaration of 'RDY_OV<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(43,22): error C2995: 'T Cooking_Orders<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      see declaration of 'Cooking_Orders<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Action *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,18):
+          see reference to class template instantiation 'Queue<Action *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Action *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Action *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Action *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Action *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Action *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Action *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Order *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(40,17):
+          see reference to class template instantiation 'Queue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Order *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4): error C2333: 'Pending_OVC<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(44,22):
+          see reference to class template instantiation 'Pending_OVC<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(45,20):
+          see reference to class template instantiation 'PriQueue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4): error C2333: 'RDY_OV<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,17):
+          see reference to class template instantiation 'RDY_OV<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4): error C2333: 'Cooking_Orders<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(51,25):
+          see reference to class template instantiation 'Cooking_Orders<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2): error C2333: 'Stack<Order *>::Stack': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(53,17):
+          see reference to class template instantiation 'Stack<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7): error C2333: 'Stack<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7): error C2333: 'Stack<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7): error C2333: 'Stack<Order *>::push': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7): error C2333: 'Stack<Order *>::pop': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7): error C2333: 'Stack<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6): error C2333: 'Stack<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Chef *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(60,16):
+          see reference to class template instantiation 'Queue<Chef *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Chef *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Chef *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Chef *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Chef *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Chef *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Chef *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Scooter *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(66,21):
+          see reference to class template instantiation 'PriQueue<Scooter *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<Scooter *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Scooter *>::peek': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Scooter *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Scooter *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Scooter *>::print': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Scooter *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'Restraunt_Simulation.cpp')
+  
+  Scooter.cpp
+  Table.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'Table.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.cpp(32,13): error C2039: 'put_order': is not a member of 'Table'
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(5,7):
+      see declaration of 'Table'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.cpp(34,16): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.cpp(36,2): error C2065: 'free_seats': undeclared identifier
+  UI.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(15,11):
+      see declaration of 'Node<T>::getnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(41,15): error C2995: 'void Node<T>::setnext(Node<T> *)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(19,7):
+      see declaration of 'Node<T>::setnext'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(48,10): error C2995: 'Node<T>::Node(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(23,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(53,10): error C2995: 'Node<T>::Node(T)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(27,2):
+      see declaration of 'Node<T>::Node'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(59,12): error C2995: 'T Node<T>::getdata(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(9,4):
+      see declaration of 'Node<T>::getdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(64,15): error C2995: 'void Node<T>::setdata(T)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(12,7):
+      see declaration of 'Node<T>::setdata'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(76,11): error C2995: 'Queue<T>::Queue(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      see declaration of 'Queue<T>::Queue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(82,16): error C2995: 'bool Queue<T>::peek(T &)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7):
+      see declaration of 'Queue<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(93,16): error C2995: 'bool Queue<T>::isempty(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7):
+      see declaration of 'Queue<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(101,16): error C2995: 'void Queue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15):
+      see declaration of 'Queue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(119,16): error C2995: 'bool Queue<T>::dequeue(T &)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7):
+      see declaration of 'Queue<T>::dequeue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(137,16): error C2995: 'void Queue<T>::print(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7):
+      see declaration of 'Queue<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(147,15): error C2995: 'int Queue<T>::getcount(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6):
+      see declaration of 'Queue<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(43,19): error C2995: 'void PriQueue<T>::enqueue(T)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      see declaration of 'PriQueue<T>::enqueue'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(63,11): error C2995: 'Stack<T>::Stack(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      see declaration of 'Stack<T>::Stack'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(69,16): error C2995: 'bool Stack<T>::peek(T &)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7):
+      see declaration of 'Stack<T>::peek'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(78,16): error C2995: 'bool Stack<T>::isempty(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7):
+      see declaration of 'Stack<T>::isempty'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(86,16): error C2995: 'void Stack<T>::push(T)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7):
+      see declaration of 'Stack<T>::push'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(95,16): error C2995: 'bool Stack<T>::pop(T &)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7):
+      see declaration of 'Stack<T>::pop'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(110,16): error C2995: 'void Stack<T>::print(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7):
+      see declaration of 'Stack<T>::print'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(120,15): error C2995: 'int Stack<T>::getcount(void)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6):
+      see declaration of 'Stack<T>::getcount'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
+      see declaration of 'Order::calc_priority'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Fit_Tables.h(5,25):
+          see reference to class template instantiation 'PriQueue<Table *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Table *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Table *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Table *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(43,22): error C2995: 'T Cooking_Orders<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      see declaration of 'Cooking_Orders<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(41,19): error C2995: 'T Pending_OVC<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      see declaration of 'Pending_OVC<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(43,14): error C2995: 'T RDY_OV<T>::Cancel_Order(int)': function template has already been defined
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      see declaration of 'RDY_OV<T>::Cancel_Order'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Action *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,18):
+          see reference to class template instantiation 'Queue<Action *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Action *>::peek': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Action *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Action *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Action *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Action *>::print': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Action *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Order *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(40,17):
+          see reference to class template instantiation 'Queue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Order *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4): error C2333: 'Pending_OVC<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Pending_OVC.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(44,22):
+          see reference to class template instantiation 'Pending_OVC<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Order *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(45,20):
+          see reference to class template instantiation 'PriQueue<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4): error C2333: 'RDY_OV<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\RDY_OV.h(7,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(49,17):
+          see reference to class template instantiation 'RDY_OV<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4): error C2333: 'Cooking_Orders<Order *>::Cancel_Order': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Cooking_Orders.h(8,4):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(51,25):
+          see reference to class template instantiation 'Cooking_Orders<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2): error C2333: 'Stack<Order *>::Stack': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(9,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(53,17):
+          see reference to class template instantiation 'Stack<Order *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(13,7): error C2333: 'Stack<Order *>::peek': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(20,7): error C2333: 'Stack<Order *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(25,7): error C2333: 'Stack<Order *>::push': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(31,7): error C2333: 'Stack<Order *>::pop': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(43,7): error C2333: 'Stack<Order *>::print': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Stack.h(50,6): error C2333: 'Stack<Order *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<Chef *>::Queue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(60,16):
+          see reference to class template instantiation 'Queue<Chef *>' being compiled
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<Chef *>::peek': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<Chef *>::isempty': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<Chef *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<Chef *>::dequeue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<Chef *>::print': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<Chef *>::getcount': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333: 'Queue<T>::Queue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2): error C2333:         ]
+  (compiling source file 'UI.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(10,2):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(66,21):
+          see reference to class template instantiation 'PriQueue<Scooter *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(4,24):
+          see reference to class template instantiation 'Queue<T>' being compiled
+          with
+          [
+              T=Scooter *
+          ]
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333: 'Queue<T>::peek': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(14,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333: 'Queue<T>::isempty': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(21,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333: 'Queue<T>::enqueue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(26,15): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333: 'Queue<T>::dequeue': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(41,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333: 'Queue<T>::print': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(56,7): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333: 'Queue<T>::getcount': error in function declaration; skipping function body
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         with
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         [
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:             T=Scooter *
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63,6): error C2333:         ]
+  (compiling source file 'UI.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Scooter *>::enqueue': error in function declaration; skipping function body
+  (compiling source file 'UI.cpp')
+  
+  Generating Code...
