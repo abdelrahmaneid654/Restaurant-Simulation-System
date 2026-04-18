@@ -12,7 +12,7 @@ public:
 	bool peek(T& x);
 	bool isempty();
 	void enqueue(T x);
-	void print();
+	void print() const;
 	bool dequeue(T& x);
 	int getcount();
 };
@@ -79,7 +79,7 @@ bool Queue<T>::dequeue(T& x)
 }
 
 template<class T>
-void Queue<T>::print()
+void Queue<T>::print() const
 {
 	Node<T>* temp = front;
 	while (temp) {
