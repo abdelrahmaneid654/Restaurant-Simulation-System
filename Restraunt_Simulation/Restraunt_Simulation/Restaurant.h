@@ -64,7 +64,7 @@ private:
 	
 	//Scooters 
 	PriQueue<Scooter*> Free_Scooters; //assigned based for the shortest distance
-	PriQueue<Scooter*> Busy_Scooters; //Leaves the list based on the distance they cut back to the restaurant
+	PriQueue<Scooter*> Back_Scooters; //Leaves the list based on the distance they cut back to the restaurant
 	Queue<Scooter*> Maint_Scooters; //scooters in the maintainance time ,they all have the same maintainance time
 
 	//Tables 
@@ -113,12 +113,16 @@ private:
 	Order* FromCookingToReadyByType(Order* pOrder);
 	//Order* FromReadyToInServByType(Order* pOrder);/////
 	//Order* FromInServToFinishedByType(Order* pOrder);///////
-	void ReleaseResources(Order* pOrd);
+	// 
 	//Random Functions: 
-	Order* CreateRandomOrder( int  ArrivalTime);
-	Chef* CreateRandomChefs(int ChefID);
-	Table* CreateRandomTables(int TableId);
-	Chef* pickRandomChefs();
+	void CreateRandomOrder( int  ArrivalTime);
+	void CreateRandomChefs(int ChefID);
+	void CreateRandomTables(int TableId);
+	void CreatRandomScooter(int ScooterID);
+
+	Chef* pickRandomChefs() ;
+	Scooter* pickRandomScooter();
+	Table* pickRandomTable();
 	Order* pickRandomOrderFromPendingLists();
 	Order* pickRandomOrderFromReadyLists();
 	bool AreAllOrdersFinishedOrCancelled();

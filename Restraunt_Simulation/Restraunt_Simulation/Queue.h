@@ -83,9 +83,10 @@ void Queue<T>::print() const
 {
 	Node<T>* temp = front;
 	while (temp) {
-		std::cout << temp->getdata() << " ";
+		std::cout << temp->getdata() << " "; 
 		temp = temp->getnext();
 	}
+	std::cout << "\n";
 }
 
 template<class T>

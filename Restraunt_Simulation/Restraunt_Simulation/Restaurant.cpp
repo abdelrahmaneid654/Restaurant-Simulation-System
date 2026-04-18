@@ -70,7 +70,7 @@ void Restaurant::MoveOrderLists()
 
 		pOrder->set_TF(CurrTimeStep + TravelTime/2);
 		Finished_Orders.push(pOrder);
-		Busy_Scooters.dequeue(pScooter);
+		Back_Scooters.dequeue(pScooter);
 		Free_Scooters.enqueue(pScooter);
 
 
@@ -122,7 +122,10 @@ void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
 	//Joke :Cnrl C Cntrl V function
-	pUI->Print(ActionListR, ActionListC, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG, Ready_OT, Ready_OD, Ready_OV, Cook_orders, Cancelled_Orders, Finished_Orders, InServ, Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Busy_Scooters,Free_Tables, Busy_Sharable, Busy_No_Share);
+	pUI->Print(ActionListR, ActionListC, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG, 
+		Ready_OT, Ready_OD, Ready_OV, Cook_orders, Cancelled_Orders, Finished_Orders, InServ, 
+		Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Back_Scooters,Free_Tables, 
+		Busy_Sharable, Busy_No_Share);
 }
 void Restaurant::RandomSimulation()
 {
@@ -130,44 +133,26 @@ void Restaurant::RandomSimulation()
 	//This loop for creataing random chefs and tables, and create scooters
 	for (int i = 0; i < 10; i++)
 	{
-		Chef* pChef = CreateRandomChefs(i + 1);
-		if (pChef->gettype() == CN)
-			Free_CN.enqueue(pChef);
-		else
-			Free_CS.enqueue(pChef);
+		CreateRandomChefs(i + 1);
 
-		Table* pTable = CreateRandomTables(i + 1);
-		if (pTable->get_Is_sharable() == Sharable)
-		{
-			Free_Tables.enqueue(pTable);
-			pTable->set_IS_sharable(true);
-		}
-		else
-		{
-			pTable->set_IS_sharable(false);
-			Free_Tables.enqueue(pTable);
-		}
-		int id = i;
-		Scooter* pScooter = new Scooter(ScooterSpeed,id,12,12);
-		pScooter->update_info(1 + i, 1 + 2 * i);//I just want to make the scooters different in the distance and the busy time to make the simulation more real but I can make them all the same if you want
-		Free_Scooters.enqueue(pScooter);
+		CreateRandomTables(i + 1);
+		
+		CreatRandomScooter(i + 1); 
 	}
 	//This loop for creating random orders and add them to the pending lists
 	for (int i = 0; i < 500; i++)
 	{
-		Order* pOrder = CreateRandomOrder(CurrTimeStep);
-		AddToPending(pOrder);
-
+		CreateRandomOrder(i + 1);  
 	}
 	while (!AreAllOrdersFinishedOrCancelled())
 	{
 		for (int i = 0; i < 30; i++)
 		{
-			Chef* pSelectedChef = pickRandomChefs();
+			Chef* pSelectedChef = pickRandomChefs(); // it dequeues inside it the assigned chef
 
 			if (pSelectedChef)
 			{
-				Order* pOrder = pickRandomOrderFromPendingLists();
+				Order* pOrder = pickRandomOrderFromPendingLists();// it dequeues inside it the order
 
 				if (pOrder)
 				{
@@ -176,30 +161,35 @@ void Restaurant::RandomSimulation()
 				}
 				else
 				{
-					if (pSelectedChef->gettype() == CN) Free_CN.enqueue(pSelectedChef);
-					else Free_CS.enqueue(pSelectedChef);
-					break; // مفيش داعي نكمل الـ 30 لفة
+					if (pSelectedChef->gettype() == CN) 
+						Free_CN.enqueue(pSelectedChef);
+					else 
+						Free_CS.enqueue(pSelectedChef);
+					break; // in both cases break
 				}
 			}
 			else
 			{
-				
 				break;
 			}
 		}
-		if ((rand() % 100) < 75)
+		// moving random order from cooking to pending by 75% percent
 		{
 			Order* pOrder=nullptr;
 			for (int i = 0; i < 15; i++)
 			{
-				if (Cook_orders.dequeue(pOrder))
+				if ((rand() % 100 + 1) <= 75)
 				{
-					FromCookingToReadyByType(pOrder);
-
+					if (Cook_orders.dequeue(pOrder))
+					{
+						FromCookingToReadyByType(pOrder);
+					}
+					else
+						break;
 				}
 			}
-
 		}
+
 		for (int i = 0; i < 10; i++)
 		{
 			Order* pOrder = pickRandomOrderFromReadyLists();
@@ -208,24 +198,27 @@ void Restaurant::RandomSimulation()
 				switch (pOrder->gettype())
 				{
 					case OT_O:
-
-						Ready_OT.dequeue(pOrder);
+					{
 						Finished_Orders.push(pOrder);
 						break;
+					}
 					case OVN:
 					case OVG:
 					case OVC:
-						
-						Ready_OV.dequeue(pOrder);
+					{
+						Scooter* pScooter = pickRandomScooter();
+						((OV*)pOrder)->set_assigned_scooter(pScooter);
 						InServ.enqueue(pOrder);
 						break;
+					}
 					case ODN:
 					case ODG:
-						Ready_OD.dequeue(pOrder);
-						Table* pTable=nullptr;
+					{
+						Table* pTable = pickRandomTable();
 						((OD*)pOrder)->set_assigned_table(pTable);
 						InServ.enqueue(pOrder);
 						break;
+					}
 				}
 
 			}
@@ -234,13 +227,33 @@ void Restaurant::RandomSimulation()
 		int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
 		if (totalGenerated > 0) {
 			int randomID = (rand() % totalGenerated) + 1;
-			CancelOrder(randomID);
+			CancelOrder(randomID); // handled the 3 cases inside it
 		}
 		if ((rand() % 100) < 25) {
 			Order* pFinished;
 			if (InServ.dequeue(pFinished)) 
 			{
-				ReleaseResources(pFinished);
+				OrderType type = pFinished->gettype();
+
+				switch (type)
+				{
+				case ODG:
+				case ODN:
+				{
+					Table* pTable = ((OD*)pFinished)->get_assigned_table();
+					((OD*)pFinished)->set_assigned_table(nullptr);
+					Free_Tables.enqueue(pTable); 
+				}
+				case OVC:
+				case OVG:
+				case OVN:
+				{
+					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
+					((OV*)pFinished)->set_assigned_scooter(nullptr);
+					Back_Scooters.enqueue(pScooter);  
+				}
+				}
+				
 				Finished_Orders.push(pFinished);
 			}
 		}
@@ -295,102 +308,124 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 	else
 		return false;
 }
-void Restaurant::ReleaseResources(Order* pOrd)
-{
-}
-Order* Restaurant::CreateRandomOrder(int ArrivalTime)
+
+void Restaurant::CreateRandomOrder(int ArrivalTime)
 {
 	Order* pOrder=nullptr;
-	static int ID = 1;
+	int ID = ArrivalTime; 
 	OrderType type;
-	int RandomType = rand() % 5;
+	int RandomType = rand() % 6;
 	switch (RandomType)
 	{
 	case 0:
+	{
 		type = ODG;
-		 pOrder = new OD(ID + 2, ID++, ID * 2, ID * 3, ID * 5,ID+3,ID+17,ID%2,ODG);
-
-		break;
-	case 1:
-		type = ODN;
-		 pOrder = new OD(ID + 2, ID++, ID * 1, ID * 3, ID * 4, ID + 3, ID + 11, ID % 2, ODN);
-
-		break;
-	case 2:	
-		type = OT_O;
-		 pOrder = new OT(ID + 2, ID++, ID * 1, ID * 3, ID * 4);
-
-		break;
-	case 3:
-		type = OVN;
-		 pOrder = new OV(ID+2,ID++,ID*3,ID*3,ID*5,100*ID,OVN);
-		break;
-	case 4:
-		type = OVG;
-		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVG);
-
+		pOrder = new OD(ID + 2, ID++, ID * 2, ID * 3, ID * 5, ID + 3, ID + 17, ID % 2, ODG);
+		Pend_ODG.enqueue(pOrder);
 		break;
 	}
-
-
-
-	return pOrder;
+	case 1:
+	{
+		type = ODN;
+		pOrder = new OD(ID + 2, ID++, ID * 1, ID * 3, ID * 4, ID + 3, ID + 11, ID % 2, ODN);
+		Pend_ODN.enqueue(pOrder);
+		break;
+	}
+	case 2:	
+	{
+		type = OT_O;
+		pOrder = new OT(ID + 2, ID++, ID * 1, ID * 3, ID * 4);
+		Pend_OT.enqueue(pOrder);
+		break;
+	}
+	case 3:
+	{
+		type = OVN;
+		pOrder = new OV(ID + 2, ID++, ID * 3, ID * 3, ID * 5, 100 * ID, OVN);
+		Pend_OVN.enqueue(pOrder);
+		break;
+	}
+	case 4:
+	{
+		type = OVG;
+		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVG);
+		Pend_OVG.enqueue(pOrder);
+		break;
+	}
+	case 5:
+	{
+		type = OVC;
+		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVC);
+		Pend_OVG.enqueue(pOrder);
+		break;
+	}
+	}
 }
-Table* Restaurant::CreateRandomTables(int TableId)
+void Restaurant::CreateRandomTables(int TableId)
 {
 
 	Table* pTable = new Table(TableId, TableId+5);
 	int type = rand() % 2;
 	if (type)
+	{
 		pTable->set_IS_sharable(Sharable);
+	}
 	else
+	{
 		pTable->set_IS_sharable(Non_Sharable);
-
-	return pTable;
+	}
+	Free_Tables.enqueue(pTable); 
 }
-Chef* Restaurant::CreateRandomChefs(int ChefID)
+void Restaurant::CreatRandomScooter(int ScooterID)
+{
+	Scooter* pScooter = new Scooter(ScooterID * 10, ScooterID, ScooterID + 6, ScooterID + 10);
+	Free_Scooters.enqueue(pScooter);
+}
+void Restaurant::CreateRandomChefs(int ChefID)
 {
 	Chef* pChef = new Chef(ChefID*9,ChefID);
 	int type = rand() % 2;
 	if (type)
 	{
 		pChef->setType(CN);
+		Free_CN.enqueue(pChef);
 	}
 	else {
 		pChef->setType(CS);
+		Free_CS.enqueue(pChef); 
 	}
-	return pChef;
 }
 Order * Restaurant::pickRandomOrderFromPendingLists()
 {
 	Order* pOrder=nullptr;
-	int RandomList = rand() % 5;
+	int RandomList = rand() % 6;
 	switch (RandomList)
 	{
-	case 0:
+	case ODG: 
 		if (!Pend_ODG.isempty())
-			Pend_ODG.peek(pOrder);
+			Pend_ODG.dequeue(pOrder);
 		break;
-	case 1:
+	case ODN: 
 		if (!Pend_ODN.isempty())
-			Pend_ODN.peek(pOrder);
+			Pend_ODN.dequeue(pOrder);
 		break;
-	case 2:
+	case OT_O: 
 		if (!Pend_OT.isempty())
-			Pend_OT.peek(pOrder);
+			Pend_OT.dequeue(pOrder);
 		break;
-	case 3:
+	case OVN: 
 		if (!Pend_OVN.isempty())
-			Pend_OVN.peek(pOrder);
+			Pend_OVN.dequeue(pOrder);
 		break;
-	case 4:
-		if (!Pend_OVC.isempty())
-			Pend_OVC.peek(pOrder);
-		break;
-	case 5:
+	case OVG:
 		if (!Pend_OVG.isempty())
-			Pend_OVG.peek(pOrder);
+			Pend_OVG.dequeue(pOrder);
 		break;
+	case OVC: 
+		if (!Pend_OVC.isempty())
+			Pend_OVC.dequeue(pOrder);
+		break;
+		
 	}
 	return pOrder;
 }
@@ -401,15 +436,29 @@ Chef* Restaurant::pickRandomChefs()
 	if (randomPick)
 	{
 		if (!Free_CN.isempty())
-			Free_CN.peek(pChef);
+			Free_CN.dequeue(pChef);
 
 	}
 	else
 	{
 		if (!Free_CS.isempty())
-			Free_CS.peek(pChef);
+			Free_CS.dequeue(pChef); 
 	}
 	return pChef;
+}
+Scooter* Restaurant::pickRandomScooter()
+{
+	Scooter* pScoot;
+	Free_Scooters.dequeue(pScoot);
+
+	return pScoot;
+}
+Table* Restaurant::pickRandomTable()
+{
+	Table* pTable;
+	Free_Tables.dequeue(pTable);
+
+	return pTable;  
 }
 Order* Restaurant::pickRandomOrderFromReadyLists()
 {
@@ -419,18 +468,16 @@ Order* Restaurant::pickRandomOrderFromReadyLists()
 	{
 	case 0:
 		if (!Ready_OT.isempty())
-			Ready_OT.peek(pOrder);
+			Ready_OT.dequeue(pOrder);
 		break;
 	case 1:
 		if (!Ready_OD.isempty()) {
-			
-			Ready_OD.peek(pOrder);
+			Ready_OD.dequeue(pOrder);
 		}
 		break;
 	case 2:
 		if (!Ready_OV.isempty()) {
-			OV* temp1 = (OV*)pOrder;
-			Ready_OV.peek(pOrder);
+			Ready_OV.dequeue(pOrder);
 		}
 		break;
 	

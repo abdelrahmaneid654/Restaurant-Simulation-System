@@ -71,6 +71,7 @@ void Stack<T>::print() const
 		std::cout << temp->getdata() << " ";
 		temp = temp->getnext();
 	}
+	std::cout << "\n";
 }
 
 template<class T>
