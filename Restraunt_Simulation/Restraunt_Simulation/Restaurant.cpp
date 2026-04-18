@@ -183,10 +183,10 @@ void Restaurant::RandomSimulation()
 			{
 				if ((rand() % 100) < 75)
 				{
-					if (Cook_orders.dequeue(pOrder))
+					if (Cook_orders.dequeue(pOrder)) // dequeue the cooking order
 					{
-						pOrder->set_assigned_chef(nullptr);
 						Chef* assignedChef = pOrder->get_assigned_chef();
+						pOrder->set_assigned_chef(nullptr);
 						ChefType type = assignedChef->gettype();
 
 						switch (type) //return the chef to free list
@@ -199,7 +199,8 @@ void Restaurant::RandomSimulation()
 							break;
 						}
 
-						FromCookingToReadyByType(pOrder);
+						FromCookingToReadyByType(pOrder); // add the order here according to its type  
+
 					}
 					else
 						break;
@@ -213,36 +214,20 @@ void Restaurant::RandomSimulation()
 
 			if (pOrder)
 			{
-				switch (pOrder->gettype()) // add order to finsihed
+				OrderType type = pOrder->gettype();
+
+				switch (type)
 				{
-					case OT_O:
-					{
-						Finished_Orders.push(pOrder);
-						break;
-					}
-					case OVN:
-					case OVG:
-					case OVC:
-					{
-						Scooter* pScooter = pickRandomScooter();
-						((OV*)pOrder)->set_assigned_scooter(pScooter);
-						InServ.enqueue(pOrder);
-						break;
-					}
-					case ODN:
-					case ODG:
-					{
-						Table* pTable = pickRandomTable();
-						((OD*)pOrder)->set_assigned_table(pTable);
-						InServ.enqueue(pOrder);
-						break;
-					}
+				case ODG:
+				case ODN:
+					Table* pTable = ((OD*)pOrder)->get_assigned_table();
+					((OD*)pOrder)->set_assigned_table(nullptr);
+					Free_Tables.enqueue(pTable);
+					break;
+					
 				}
-
+				Finished_Orders.push(pOrder); 
 			}
-
-			
-
 
 		}
 		int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
@@ -513,8 +498,11 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	switch(type)
 	{
 	case ODG: //Dine in Orders
-	case ODN: {
+	case ODN: 
+	{
 		Ready_OD.enqueue(pOrder);
+		Table* pTable = pickRandomTable();
+		((OD*)pOrder)->set_assigned_table(pTable); 
 		break;
 	}
 	case OT_O :
@@ -527,6 +515,8 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	case OVC:
 	{
 		Ready_OV.enqueue(pOrder);
+		Scooter* pScooter = pickRandomScooter();
+		((OV*)pOrder)->set_assigned_scooter(pScooter);
 		break;
 	}
 	default: {
@@ -535,7 +525,6 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	}
 	}
 	return pOrder;
-	//Remember : After calling this func in any place ,You must dequeue the pOrder from the CookingList
 }
 
 bool Restaurant::CancelOrder(int id) {
