@@ -6,7 +6,7 @@ class Cooking_Orders : public PriQueue<T>
 {
 public:
 	T Cancel_Order(int id);
-		
+	void print() const;
 };
 
 
@@ -41,4 +41,16 @@ T Cooking_Orders<T>::Cancel_Order(int id) {
 		temp = temp->getnext();
 	}
 	return nullptr;
+}
+
+template<class T>
+inline void Cooking_Orders<T>::print() const
+{
+	Node<T>* temp = this->front;
+	while (temp) {
+		std::cout << temp->getdata() << " " <<temp->getdata()->get_assigned_chef();
+		temp = temp->getnext();
+	}
+	std::cout << "\n";
+
 }

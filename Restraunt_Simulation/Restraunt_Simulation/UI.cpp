@@ -38,6 +38,7 @@ void UI::Print(const Queue<Action*> &ActionListR, const Queue<Action*> &ActionLi
 	cout << "\n=================Available Chefs IDs================\n";
 	cout << Free_CS.getcount() << " " << "CS ";
 	Free_CS.print();
+	cout << endl;
 	cout << Free_CN.getcount() << " " << "CN ";
 	Free_CN.print();
 	cout << "\n=================Cooking Orders [Orders ID, Chef ID]================\n";

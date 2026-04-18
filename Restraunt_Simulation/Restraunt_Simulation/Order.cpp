@@ -3,7 +3,7 @@ ostream& operator<<(ostream& out, const Order* o) {
 
 	if (o && o->get_assigned_chef()) {
 
-		out << "[" << o->getID() << "," << o->get_assigned_chef()->getID() << "]";
+		out << "[" << o->getID() <<"] ";
 	}
 	return out;
 }
