@@ -4,10 +4,11 @@ template<class T>
 class RDY_OV :public Queue<T>
 {
 public:
+	T Cancel_Order(int id); 
+};
 
-
-	template<class T>
-	T RDY_OV<T>::Cancel_Order(int id)
+template<class T>
+T RDY_OV<T>::Cancel_Order(int id) 
 	{
 		Node<T>* temp = this->front;
 		if (!this->front) return nullptr;// if queue is empty
@@ -38,4 +39,3 @@ public:
 		}
 		return nullptr;
 	}
-};
