@@ -68,6 +68,11 @@ int Scooter::get_return_time()
 	return return_time;
 }
 
+int Scooter::calc_priority()
+{
+	return total_dis;
+}
+
 ostream& operator<<(ostream& out,const Scooter* s)
 {
 	if (s)

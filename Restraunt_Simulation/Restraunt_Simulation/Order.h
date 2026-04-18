@@ -59,6 +59,7 @@ public:
 	int get_T_Serve() const;
 
 	virtual OrderType gettype()  const = 0;
+	virtual int calc_priority();
 
 	virtual ~Order() = 0;
 

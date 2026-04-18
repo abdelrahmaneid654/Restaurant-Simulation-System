@@ -114,4 +114,9 @@ int Order::get_TI() const
 	 return T_Serve;
  }
 
+ int Order::calc_priority()
+ {
+	 return 0;
+ }
+
 

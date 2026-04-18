@@ -18,19 +18,7 @@
     <ClCompile Include="Restraunt_Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Order.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Queue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Stack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PriQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Chef.cpp">
@@ -60,13 +48,16 @@
     <ClCompile Include="Fit_Tables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pending_OVC.cpp">
+    <ClCompile Include="EnumTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RDY_OV.cpp">
+    <ClCompile Include="OD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cooking_Orders.cpp">
+    <ClCompile Include="OT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -126,6 +117,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HelpingFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
