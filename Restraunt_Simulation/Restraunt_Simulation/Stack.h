@@ -12,7 +12,7 @@ public:
 	void push(T x);
 	bool pop(T& x);
 	void print() const;
-	int getcount();
+	int getcount() const;
 	~Stack();
 };
 
@@ -74,7 +74,7 @@ void Stack<T>::print() const
 }
 
 template<class T>
-int Stack<T>::getcount() {
+int Stack<T>::getcount() const {
 	int count = 0;
 	Node<T>* temp = top;
 	while (temp) {

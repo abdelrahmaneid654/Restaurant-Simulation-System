@@ -14,7 +14,7 @@ public:
 	void enqueue(T x);
 	void print() const;
 	bool dequeue(T& x);
-	int getcount();
+	int getcount() const;
 };
 
 template<class T>
@@ -89,7 +89,7 @@ void Queue<T>::print() const
 }
 
 template<class T>
-int Queue<T>::getcount() {
+int Queue<T>::getcount() const {
 	int count = 0;
 	Node<T>* temp = front;
 	while (temp) {

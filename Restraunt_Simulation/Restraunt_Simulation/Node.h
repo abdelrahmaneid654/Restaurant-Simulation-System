@@ -18,19 +18,7 @@ public:
 		
 };
 
-template<class T>
-Node<T>* Node<T>::getnext()
-{
-	next = nullptr;
-}
 
-template<class T>
-
- Node<T>::Node(T x) {
-		data = x;
-		next = nullptr;
-	}
-		
 
 template<class T>
 Node<T>* Node<T>::getnext()
@@ -39,6 +27,7 @@ Node<T>* Node<T>::getnext()
 	return next;
 }
 template<class T>
+
 void Node<T>::setnext(Node<T>* n)
 {
 	next = n;
@@ -50,6 +39,8 @@ Node<T>::Node()
 {
 	next = nullptr;
 }
+
+
 template<class T>
 Node<T>::Node(T x) {
 	data = x;
