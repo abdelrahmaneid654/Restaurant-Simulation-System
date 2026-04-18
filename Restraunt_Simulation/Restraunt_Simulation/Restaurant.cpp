@@ -155,8 +155,15 @@ void Restaurant::RandomSimulation()
 				case ODN:
 				{
 					Table* pTable = pickRandomTable();
+					if(pTable) 
+					{
 					((OD*)pOrder)->set_assigned_table(pTable);
-					InServ.enqueue(pOrder);
+						InServ.enqueue(pOrder);
+					}
+					else
+					{
+						Ready_OD.enqueue(pOrder);
+					}
 					break;
 				}
 				case OVG:
@@ -165,7 +172,14 @@ void Restaurant::RandomSimulation()
 				{
 					Scooter* pScooter = pickRandomScooter();
 					((OV*)pOrder)->set_assigned_scooter(pScooter);
-					InServ.enqueue(pOrder);
+					if(pScooter) 
+					{
+						InServ.enqueue(pOrder);
+					}
+					else
+					{
+						Ready_OV.enqueue(pOrder);
+					}
 					break;
 				}
 
@@ -203,13 +217,11 @@ void Restaurant::RandomSimulation()
 				case OVN:
 				{
 					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
-					
 					((OV*)pFinished)->set_assigned_scooter(nullptr);
 					Back_Scooters.enqueue(pScooter);  
 					break;
 				}
 				}
-				
 				Finished_Orders.push(pFinished);
 			}
 		}
@@ -404,7 +416,10 @@ Chef* Restaurant::pickRandomChefs()
 Scooter* Restaurant::pickRandomScooter()
 {
 	Scooter* pScoot;
-	Free_Scooters.dequeue(pScoot);
+	if (!Free_Scooters.dequeue(pScoot))
+	{
+		Back_Scooters.dequeue(pScoot);
+	}
 
 	return pScoot;
 }
@@ -412,6 +427,7 @@ Table* Restaurant::pickRandomTable()
 {
 	Table* pTable=nullptr;
 	Free_Tables.dequeue(pTable);
+
 	if (pTable) {
 		TableType type = pTable->get_Is_sharable();
 		switch (type) {
@@ -437,12 +453,12 @@ Order* Restaurant::pickRandomOrderFromReadyLists()
 			Ready_OT.dequeue(pOrder);
 		break;
 	case 1:
-		if (!Ready_OD.isempty()) {
+		if (!Ready_OD.isempty() && !Free_Tables.isempty()) {
 			Ready_OD.dequeue(pOrder);
 		}
 		break;
 	case 2:
-		if (!Ready_OV.isempty()) {
+		if (!Ready_OV.isempty() && !Free_Scooters.isempty()) {
 			Ready_OV.dequeue(pOrder);
 		}
 		break;

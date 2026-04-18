@@ -1,4 +1,5 @@
 #include"OD.h"
+#include "Table.h"
 OD::OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OrderType type) :Order(tq, id, size, price, t_serve)
 {
     num_of_seats = seats;

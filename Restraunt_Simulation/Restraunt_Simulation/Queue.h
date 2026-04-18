@@ -60,7 +60,7 @@ void Queue<T>::enqueue(T x)
 	}
 }
 
-template<class T>
+template<class T>          
 bool Queue<T>::dequeue(T& x)
 {
 	Node<T>* temp = front;
@@ -75,6 +75,7 @@ bool Queue<T>::dequeue(T& x)
 		delete temp;
 		return true;
 	}
+	x = nullptr;
 	return false;
 }
 

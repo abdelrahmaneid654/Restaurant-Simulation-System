@@ -1,7 +1,8 @@
 #pragma once
 #include<iostream>
-#include"Chef.h"
 #include"EnumTypes.h"
+
+class Chef;
 using namespace std;
 
 
