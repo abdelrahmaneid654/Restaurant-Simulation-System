@@ -11,7 +11,7 @@ public:
 	bool isempty();
 	void push(T x);
 	bool pop(T& x);
-	void print();
+	void print() const;
 	int getcount();
 	~Stack();
 };
@@ -64,7 +64,7 @@ bool Stack<T>::pop(T& x)
 }
 
 template<class T>
-void Stack<T>::print()
+void Stack<T>::print() const
 {
 	Node<T>* temp = top;
 	while (temp) {
