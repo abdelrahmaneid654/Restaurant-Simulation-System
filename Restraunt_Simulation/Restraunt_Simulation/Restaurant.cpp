@@ -222,23 +222,18 @@ void Restaurant::RandomSimulation()
 				case ODN:
 				{
 					Table* pTable = pickRandomTable();
-					if (pTable) {
-						((OD*)pOrder)->set_assigned_table(pTable);
-						InServ.enqueue(pOrder);
-					}
-						break;
+					((OD*)pOrder)->set_assigned_table(pTable);
+					InServ.enqueue(pOrder);
+					break;
 				}
 				case OVG:
 				case OVN:
 				case OVC:
 				{
 					Scooter* pScooter = pickRandomScooter();
-					if (pScooter)
-					{
-						((OV*)pOrder)->set_assigned_scooter(pScooter);
-						InServ.enqueue(pOrder);
-					}
-						break;
+					((OV*)pOrder)->set_assigned_scooter(pScooter);
+					InServ.enqueue(pOrder);
+					break;
 				}
 
 				case OT_O:
@@ -391,7 +386,6 @@ void Restaurant::CreateRandomOrder(int ArrivalTime)
 }
 void Restaurant::CreateRandomTables(int TableId)
 {
-
 	Table* pTable = new Table(TableId, TableId+5);
 	int type = rand() % 2;
 	if (type)
@@ -566,8 +560,18 @@ bool Restaurant::CancelOrder(int id) {
 	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
 	Order* cancelledReady = Ready_OV.Cancel_Order(id);
 
-	if (cancelledOVC || cancelledReady) 
+	if (cancelledOVC) 
 	{
+		Scooter* pScooter = ((OV*)cancelledOVC)->get_assigned_scooter();
+		((OV*)cancelledOVC)->set_assigned_scooter(nullptr);
+		Cancelled_Orders.enqueue(cancelledOVC);
+		return true;
+	}
+	else if (cancelledReady)
+	{ 
+		Scooter* pScooter = ((OV*)cancelledReady)->get_assigned_scooter();
+		((OV*)cancelledReady)->set_assigned_scooter(nullptr);
+		Cancelled_Orders.enqueue(cancelledReady);  
 		return true;
 	}
 	else if (cancelledCook) 
