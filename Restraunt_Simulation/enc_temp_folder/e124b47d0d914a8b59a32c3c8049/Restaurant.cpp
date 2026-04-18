@@ -277,6 +277,7 @@ void Restaurant::RandomSimulation()
 					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
 					
 					((OV*)pFinished)->set_assigned_scooter(nullptr);
+					if(pScooter)
 					Back_Scooters.enqueue(pScooter);  
 					break;
 				}

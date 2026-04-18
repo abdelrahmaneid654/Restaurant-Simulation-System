@@ -5,7 +5,7 @@ Table::Table(int id, int cap)
 	ID = id;
 	Capacity = cap;
 	free_seats = cap;
-	Is_sharable = false;
+	Is_sharable = Non_Sharable;
 }
 int Table::get_ID() const
 {
@@ -21,11 +21,11 @@ int Table::get_capacity() const
 }
 
 
-bool Table::get_Is_sharable() const
+TableType Table::get_Is_sharable() const
 {
 	return Is_sharable;
 }
-void Table::set_IS_sharable(bool s)
+void Table::set_IS_sharable(TableType s)
 {
 	Is_sharable = s;
 }
