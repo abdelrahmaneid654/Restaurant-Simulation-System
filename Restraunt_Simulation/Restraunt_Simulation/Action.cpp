@@ -1,7 +1,4 @@
-#include "Action.h"
-#include<iostream>
-using namespace std;
-
+#include"Action.h"
 Action::Action(Restaurant* r)
 {
 	pRes = r;
@@ -21,4 +18,3 @@ void Action::setOrder(Order* o)
 {
 	pOrder = o;
 }
-

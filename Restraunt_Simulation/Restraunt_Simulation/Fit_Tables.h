@@ -8,3 +8,4 @@ public:
 	Table* getBest(OD*o);
 };
 
+

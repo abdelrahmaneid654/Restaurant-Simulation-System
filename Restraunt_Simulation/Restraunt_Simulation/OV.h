@@ -15,3 +15,4 @@ public:
 	void set_assigned_scooter(Scooter *s);
 };
 
+

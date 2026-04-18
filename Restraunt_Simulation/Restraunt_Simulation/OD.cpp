@@ -1,6 +1,5 @@
-#include "OD.h"
-
-OD::OD(int tq, int id, int size, double price, int t_serve,int seats, int dur, bool share, OrderType type) :Order(tq,id,size,price,t_serve)
+#include"OD.h"
+OD::OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OrderType type) :Order(tq, id, size, price, t_serve)
 {
     num_of_seats = seats;
     duration = dur;
@@ -11,8 +10,8 @@ OD::OD(int tq, int id, int size, double price, int t_serve,int seats, int dur, b
 
 OrderType OD::gettype() const
 {
-    if (Type == ODG) 
-        return ODG;  
+    if (Type == ODG)
+        return ODG;
     else if (Type == ODN)
         return ODN;
     return UNKNOWN;

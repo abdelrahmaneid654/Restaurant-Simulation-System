@@ -17,7 +17,7 @@
 #include "Pending_OVC.h"//Derived from Queue class
 #include "RDY_OV.h"//Derived from Queue class
 
-#include "EnumTypes.cpp"
+#include "EnumTypes.h"
 
 class Action;
 class UI;
@@ -109,10 +109,10 @@ private:
 	//PRIVATE FUNCTIONS
 private: 
 	//Sequence Functions:
-	Order* FromPendingToCookingByType(Order* pOrder);//////0
+	//Order* FromPendingToCookingByType(Order* pOrder);//////0
 	Order* FromCookingToReadyByType(Order* pOrder);
-	Order* FromReadyToInServByType(Order* pOrder);/////
-	Order* FromInServToFinishedByType(Order* pOrder);///////
+	//Order* FromReadyToInServByType(Order* pOrder);/////
+	//Order* FromInServToFinishedByType(Order* pOrder);///////
 	void ReleaseResources(Order* pOrd);
 	//Random Functions: 
 	Order* CreateRandomOrder( int  ArrivalTime);

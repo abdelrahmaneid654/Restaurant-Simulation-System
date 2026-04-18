@@ -1,4 +1,4 @@
-#include "Scooter.h"
+#include"Scooter.h"
 
 Scooter::Scooter(int s, int id, int m_o, int m_d)
 {
@@ -46,7 +46,7 @@ int Scooter::get_Main_Dur() const
 	return Main_Dur;
 }
 
-void Scooter::update_info(int d,int b_time)
+void Scooter::update_info(int d, int b_time)
 {
 	counter++;
 	total_dis += d;
@@ -68,12 +68,7 @@ int Scooter::get_return_time()
 	return return_time;
 }
 
-int Scooter::calc_priority()
-{
-	return total_dis;
-}
-
-ostream& operator<<(ostream& out,const Scooter* s)
+ostream& operator<<(ostream& out, const Scooter* s)
 {
 	if (s)
 		out << s->get_ID();
