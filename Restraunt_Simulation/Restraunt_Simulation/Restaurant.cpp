@@ -45,73 +45,73 @@ void Restaurant::TakeOrderInputFile()
 
 //Now I comment this function ,for a later time .
 
-void Restaurant::MoveOrderLists()
-{/*
- I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
- so we start from Ready lists and put the orders in the IN_Serv lists then put in  finished lists and for each type : OV make all need implementations for
- Scooters and for OT [it is the most easiest logic] move to finish list,and for OD  make all need implementations for
- Tables Sharing and non_Sharing
-
- */
-
-	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
-	{
-		Order* pOrder;
-		Scooter* pScooter;
-		Free_Scooters.dequeue(pScooter);
-		Ready_OV.dequeue(pOrder);
-		OV* temp = (OV*)pOrder;
-		InServ.enqueue(pOrder);
-		temp->set_assigned_scooter(pScooter);
-		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-		int TravelTime = 2 * temp->get_distance()/ ScooterSpeed;
-		pScooter->set_return_time(CurrTimeStep + TravelTime);
-		pScooter->update_info(temp->get_distance(), TravelTime);
-
-		pOrder->set_TF(CurrTimeStep + TravelTime/2);
-		Finished_Orders.push(pOrder);
-		Back_Scooters.dequeue(pScooter);
-		Free_Scooters.enqueue(pScooter);
-
-
-	}
-	while (!Ready_OT.isempty())
-	{
-		Order* pOrder;
-		Ready_OT.dequeue(pOrder);
-
-		pOrder->set_TF(CurrTimeStep);
-		Finished_Orders.push(pOrder);
-
-	}
-
-	//It is for Dine in Orders but Still not Finished
-	while (!Ready_OD.isempty())
-	{
-		Order* pOrder; 
-		Table* pTable;
-		Ready_OD.dequeue(pOrder);
-		bool ShareableFlag = ((OD*)pOrder)->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
-		OD* temp = (OD*)pOrder;
-		pTable=Free_Tables.getBest(temp);
-		bool TableFlag = pTable->get_Is_sharable();
-		int NeededSeats= temp->get_num_of_seats();
-		switch (ShareableFlag)
-		{
-		case 0: //Shareable Order
-			if (!TableFlag)// 0 For sharable table
-			{
-				//int AvailableSeats = pTable->getAvailableSeats(); In this I tried to use variable to be better  in shape but I don't like it after that,Even It is still an option to me
-				temp->set_assigned_table(pTable);
-			}
-			break;
-		case 1://Not Shareable Order
-			temp->set_assigned_table(pTable);
-
-			break;
-		}
-	}
-}
+//void Restaurant::MoveOrderLists()
+//{/*
+// I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
+// so we start from Ready lists and put the orders in the IN_Serv lists then put in  finished lists and for each type : OV make all need implementations for
+// Scooters and for OT [it is the most easiest logic] move to finish list,and for OD  make all need implementations for
+// Tables Sharing and non_Sharing
+//
+// */
+//
+//	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
+//	{
+//		Order* pOrder;
+//		Scooter* pScooter;
+//		Free_Scooters.dequeue(pScooter);
+//		Ready_OV.dequeue(pOrder);
+//		OV* temp = (OV*)pOrder;
+//		InServ.enqueue(pOrder);
+//		temp->set_assigned_scooter(pScooter);
+//		//Time to return back:Time Travel is 2* distance/ScooterSpeed
+//		int TravelTime = 2 * temp->get_distance()/ ScooterSpeed;
+//		pScooter->set_return_time(CurrTimeStep + TravelTime);
+//		pScooter->update_info(temp->get_distance(), TravelTime);
+//
+//		pOrder->set_TF(CurrTimeStep + TravelTime/2);
+//		Finished_Orders.push(pOrder);
+//		Back_Scooters.dequeue(pScooter);
+//		Free_Scooters.enqueue(pScooter);
+//
+//
+//	}
+//	while (!Ready_OT.isempty())
+//	{
+//		Order* pOrder;
+//		Ready_OT.dequeue(pOrder);
+//
+//		pOrder->set_TF(CurrTimeStep);
+//		Finished_Orders.push(pOrder);
+//
+//	}
+//
+//	//It is for Dine in Orders but Still not Finished
+//	while (!Ready_OD.isempty())
+//	{
+//		Order* pOrder; 
+//		Table* pTable;
+//		Ready_OD.dequeue(pOrder);
+//		bool ShareableFlag = ((OD*)pOrder)->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
+//		OD* temp = (OD*)pOrder;
+//		pTable=Free_Tables.getBest(temp);
+//		T TableFlag = pTable->get_Is_sharable();
+//		int NeededSeats= temp->get_num_of_seats();
+//		switch (ShareableFlag)
+//		{
+//		case 0: //Shareable Order
+//			if (!TableFlag)// 0 For sharable table
+//			{
+//				//int AvailableSeats = pTable->getAvailableSeats(); In this I tried to use variable to be better  in shape but I don't like it after that,Even It is still an option to me
+//				temp->set_assigned_table(pTable);
+//			}
+//			break;
+//		case 1://Not Shareable Order
+//			temp->set_assigned_table(pTable);
+//
+//			break;
+//		}
+//	}
+//}
 
 int Restaurant::GetCurrentTimestep() const
 {
