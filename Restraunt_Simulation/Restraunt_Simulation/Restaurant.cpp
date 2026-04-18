@@ -131,7 +131,7 @@ void Restaurant::RandomSimulation()
 {
 	CurrTimeStep = 1;
 	//This loop for creataing random chefs and tables, and create scooters
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		CreateRandomChefs(i + 1);
 

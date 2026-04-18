@@ -9,7 +9,11 @@ Scooter::Scooter(int s, int id, int m_o, int m_d)
 	counter = 0;
 	total_dis = 0;
 	total_busy_time = 0;
+	return_time = 0;
 }
+int Scooter::calc_priority() {
+	return total_dis;
+};
 
 int Scooter::get_ID() const
 {
