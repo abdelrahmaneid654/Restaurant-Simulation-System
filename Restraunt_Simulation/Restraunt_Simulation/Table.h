@@ -15,7 +15,7 @@ public:
 	int get_free_seats() const;
 	bool get_Is_sharable() const;	
 	void set_IS_sharable(bool s);
-	void put_order(OD *o);
+	//void put_order(OD *o);
 	void  leave_order(int s);
 	int calc_priority();
 };
