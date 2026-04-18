@@ -1,5 +1,4 @@
 ﻿  Action.cpp
-  Chef.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(64,14): error C2535: 'int Order::calc_priority(void)': member function already defined or declared
   (compiling source file 'Action.cpp')
       D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.h(62,14):
@@ -345,6 +344,7 @@ D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Queue.h(63
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(7,7): error C2333: 'PriQueue<Scooter *>::enqueue': error in function declaration; skipping function body
   (compiling source file 'Action.cpp')
   
+  Chef.cpp
   Fit_Tables.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Node.h(35,19): error C2995: 'Node<T> *Node<T>::getnext(void)': function template has already been defined
   (compiling source file 'Fit_Tables.cpp')
