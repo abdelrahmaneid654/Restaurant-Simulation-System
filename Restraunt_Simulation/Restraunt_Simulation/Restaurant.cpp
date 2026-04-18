@@ -144,6 +144,9 @@ void Restaurant::RandomSimulation()
 	{
 		CreateRandomOrder(i + 1);  
 	}
+
+	UpdateInterface(); // shows the initial state
+
 	while (!AreAllOrdersFinishedOrCancelled())
 	{
 		for (int i = 0; i < 30; i++)
@@ -182,6 +185,20 @@ void Restaurant::RandomSimulation()
 				{
 					if (Cook_orders.dequeue(pOrder))
 					{
+						pOrder->set_assigned_chef(nullptr);
+						Chef* assignedChef = pOrder->get_assigned_chef();
+						ChefType type = assignedChef->gettype();
+
+						switch (type) //return the chef to free list
+						{
+						case CN:
+							Free_CN.enqueue(assignedChef);
+							break;
+						case CS:
+							Free_CS.enqueue(assignedChef);
+							break;
+						}
+
 						FromCookingToReadyByType(pOrder);
 					}
 					else
@@ -196,20 +213,6 @@ void Restaurant::RandomSimulation()
 
 			if (pOrder)
 			{
-
-				Chef* assignedChef = pOrder->get_assigned_chef();   
-				ChefType type = assignedChef->gettype(); 
-
-				switch (type) //return the chef to free list
-				{
-				case CN:
-					Free_CN.enqueue(assignedChef);
-					break;
-				case CS:
-					Free_CS.enqueue(assignedChef);
-					break;
-				}
-
 				switch (pOrder->gettype()) // add order to finsihed
 				{
 					case OT_O:
