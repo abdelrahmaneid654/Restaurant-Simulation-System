@@ -1,9 +1,37 @@
 #include"Order.h"
+#include"OD.h"
+#include"Table.h"
+#include"OV.h"
+
 ostream& operator<<(ostream& out, const Order* o) {
 
-	if (o) {
+	if(!((OD*)o)->get_assigned_table())
+	{
+		out << " [" << o->getID() << "] ";
+		return out; 
+	}
 
-		out << " [" << o->getID() <<"] ";
+	if (o) {
+	OrderType t = o->gettype();
+	switch (t)
+	{
+	case ODN:
+	case ODG:
+	{
+		out << " [" << o->getID() << "," << ((OD*)o)->get_assigned_table()->get_ID() << "] ";
+		break;
+	}
+	case OVC:
+	case OVN:
+	case OVG:
+	{
+		out << " [" << o->getID() << "," << ((OV*)o)->get_assigned_scooter()->get_ID() << "] "; 
+		break;
+	}
+	default:
+		out << " [" << o->getID() << "] "; 
+	}
+	
 	}
 	return out;
 }

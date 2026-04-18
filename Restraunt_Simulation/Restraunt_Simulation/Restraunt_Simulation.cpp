@@ -21,7 +21,6 @@
 
 		cout << "-----------------------------------" << endl;
 		cout << "Simulation Ended Successfully!" << endl;
-
 		return 0;
 	}
 
