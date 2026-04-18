@@ -1,26 +1,4 @@
-﻿  Action.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  (compiling source file 'Action.cpp')
-  
-  CancelAction.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  (compiling source file 'CancelAction.cpp')
-  
-  Fit_Tables.cpp
-  OD.cpp
-  Order.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  RequestAction.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  (compiling source file 'RequestAction.cpp')
-  
-  Table.cpp
-  UI.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  (compiling source file 'UI.cpp')
-  
-  Generating Code...
-CancelAction.obj : error LNK2005: "public: __cdecl Order::Order(int,int,int,double,int)" (??0Order@@QEAA@HHHNH@Z) already defined in Action.obj
+﻿CancelAction.obj : error LNK2005: "public: __cdecl Order::Order(int,int,int,double,int)" (??0Order@@QEAA@HHHNH@Z) already defined in Action.obj
 CancelAction.obj : error LNK2005: "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class Order const *)" (??6@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEAV01@PEBVOrder@@@Z) already defined in Action.obj
 CancelAction.obj : error LNK2005: "public: virtual int __cdecl Order::calc_priority(void)" (?calc_priority@Order@@UEAAHXZ) already defined in Action.obj
 CancelAction.obj : error LNK2005: "public: int __cdecl Order::getID(void)const " (?getID@Order@@QEBAHXZ) already defined in Action.obj
