@@ -248,36 +248,37 @@ void Restaurant::RandomSimulation()
 			int randomID = (rand() % totalGenerated) + 1;
 			CancelOrder(randomID); // handled the 3 cases inside it
 		}
+		for (int i = 0; i < 20; i++) {
+			if ((rand() % 100) < 25) {
+				Order* pFinished;
+				if (InServ.dequeue(pFinished))
+				{
+					OrderType type = pFinished->gettype();
 
-		if ((rand() % 100) < 25) {
-			Order* pFinished;
-			if (InServ.dequeue(pFinished)) 
-			{
-				OrderType type = pFinished->gettype();
+					switch (type)
+					{
+					case ODG:
+					case ODN:
+					{
+						Table* pTable = ((OD*)pFinished)->get_assigned_table();
+						((OD*)pFinished)->set_assigned_table(nullptr);
+						Free_Tables.enqueue(pTable);
+						break;
+					}
+					case OVC:
+					case OVG:
+					case OVN:
+					{
+						Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
 
-				switch (type)
-				{
-				case ODG:
-				case ODN:
-				{
-					Table* pTable = ((OD*)pFinished)->get_assigned_table();
-					((OD*)pFinished)->set_assigned_table(nullptr);
-					Free_Tables.enqueue(pTable); 
-					break;
+						((OV*)pFinished)->set_assigned_scooter(nullptr);
+						Back_Scooters.enqueue(pScooter);
+						break;
+					}
+					}
+
+					Finished_Orders.push(pFinished);
 				}
-				case OVC:
-				case OVG:
-				case OVN:
-				{
-					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
-					
-					((OV*)pFinished)->set_assigned_scooter(nullptr);
-					Back_Scooters.enqueue(pScooter);  
-					break;
-				}
-				}
-				
-				Finished_Orders.push(pFinished);
 			}
 		}
 		UpdateInterface();
