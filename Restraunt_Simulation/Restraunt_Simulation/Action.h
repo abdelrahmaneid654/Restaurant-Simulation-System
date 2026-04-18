@@ -1,7 +1,7 @@
 #pragma once
 #include"Order.h"
 #include "Restaurant.h" 
-
+class Restaurant;
 class Action
 {
 protected:
@@ -15,4 +15,4 @@ public:
 	int getTimeStep();
 	void setOrder(Order* o);
 };
-
+#include"Order.cpp"

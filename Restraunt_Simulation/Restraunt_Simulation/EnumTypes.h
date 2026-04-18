@@ -3,7 +3,7 @@ enum OrderType
 {
 	ODG,
 	ODN,
-	OT,
+	OT_O,
 	OVN,
 	OVG,
 	OVC,

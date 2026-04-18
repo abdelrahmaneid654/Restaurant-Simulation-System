@@ -12,7 +12,7 @@ int OV::get_distance()
 	return distance;
 }
 
-int OV::gettype()
+OrderType OV::gettype() const
 {
 	if (Type == OVG)
 		return OVG; 

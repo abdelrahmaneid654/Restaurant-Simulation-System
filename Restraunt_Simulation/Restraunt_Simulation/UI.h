@@ -12,7 +12,8 @@
 #include"EnumTypes.h"
 
 #include"Restaurant.h"
-
+class Action;
+class Restaurant;
 class UI
 {
 private:

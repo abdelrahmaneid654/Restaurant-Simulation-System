@@ -1,5 +1,5 @@
 #include "Restaurant.h"
-
+#include "Action.h"
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
@@ -22,7 +22,8 @@ Restaurant::Restaurant()
 	TotalChefsBusyTime = 0;
 	TotalScootersBusyTime = 0;
 	//DON'T forget the point6 variables
-	pUI = new UI(this);
+	Restaurant* temp = this;
+	pUI = new UI(temp);
 
 }
 /*
@@ -55,17 +56,17 @@ void Restaurant::MoveOrderLists()
 
 	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
 	{
-		OV* pOrder;
+		Order* pOrder;
 		Scooter* pScooter;
 		Free_Scooters.dequeue(pScooter);
 		Ready_OV.dequeue(pOrder);
-
+		OV* temp = (OV*)pOrder;
 		InServ.enqueue(pOrder);
-		pOrder->set_assigned_scooter(pScooter);
+		temp->set_assigned_scooter(pScooter);
 		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-		int TravelTime = 2 * pOrder->get_distance()/ ScooterSpeed;
+		int TravelTime = 2 * temp->get_distance()/ ScooterSpeed;
 		pScooter->set_return_time(CurrTimeStep + TravelTime);
-		pScooter->update_info(pOrder->get_distance(), TravelTime);
+		pScooter->update_info(temp->get_distance(), TravelTime);
 
 		pOrder->set_TF(CurrTimeStep + TravelTime/2);
 		Finished_Orders.push(pOrder);
@@ -89,22 +90,23 @@ void Restaurant::MoveOrderLists()
 	{
 		Order* pOrder;
 		Table* pTable;
-		Ready_OD.peek((OD*)pOrder);
-		bool ShareableFlag = pOrder->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
-		pTable=Free_Tables.getBest(pOrder);
+		Ready_OD.peek(pOrder);
+		bool ShareableFlag = ((OD*)pOrder)->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
+		OD* temp = (OD*)pOrder;
+		pTable=Free_Tables.getBest(temp);
 		bool TableFlag = pTable->get_Is_sharable();
-		int NeededSeats=pOrder->get_num_of_seats();
+		int NeededSeats= temp->get_num_of_seats();
 		switch (ShareableFlag)
 		{
 		case 0: //Shareable Order
 			if (!TableFlag)// 0 For sharable table
 			{
 				//int AvailableSeats = pTable->getAvailableSeats(); In this I tried to use variable to be better  in shape but I don't like it after that,Even It is still an option to me
-				pOrder->set_assigned_table(pTable);
+				temp->set_assigned_table(pTable);
 			}
 			break;
 		case 1://Not Shareable Order
-			pOrder->set_assigned_table(pTable);
+			temp->set_assigned_table(pTable);
 
 			break;
 		}
@@ -171,7 +173,7 @@ void Restaurant::RandomSimulation()
 		}
 		if ((rand() % 100) < 75)
 		{
-			Order* pOrder;
+			Order* pOrder=nullptr;
 			for (int i = 0; i < 15; i++)
 			{
 				if (Cook_orders.dequeue(pOrder))
@@ -189,20 +191,22 @@ void Restaurant::RandomSimulation()
 			{
 				switch (pOrder->gettype())
 				{
-					case OT:
+					case OT_O:
+
 						Ready_OT.dequeue(pOrder);
 						Finished_Orders.push(pOrder);
 						break;
 					case OVN:
 					case OVG:
 					case OVC:
+						
 						Ready_OV.dequeue(pOrder);
 						InServ.enqueue(pOrder);
 						break;
 					case ODN:
 					case ODG:
 						Ready_OD.dequeue(pOrder);
-						Table* pTable;
+						Table* pTable=nullptr;
 						((OD*)pOrder)->set_assigned_table(pTable);
 						InServ.enqueue(pOrder);
 						break;
@@ -257,6 +261,7 @@ void Restaurant::AddToPending(Order* pOrder)
 		break;
 	}
 }
+
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
 	if (Pend_ODG.isempty() &&
@@ -276,6 +281,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 }
 Order* Restaurant::CreateRandomOrder(int ArrivalTime)
 {
+	Order* pOrder=nullptr;
 	static int ID = 1;
 	OrderType type;
 	int RandomType = rand() % 5;
@@ -283,44 +289,38 @@ Order* Restaurant::CreateRandomOrder(int ArrivalTime)
 	{
 	case 0:
 		type = ODG;
+		 pOrder = new OD(ID + 2, ID++, ID * 2, ID * 3, ID * 5,ID+3,ID+17,ID%2,ODG);
+
 		break;
 	case 1:
 		type = ODN;
+		 pOrder = new OD(ID + 2, ID++, ID * 1, ID * 3, ID * 4, ID + 3, ID + 11, ID % 2, ODN);
+
 		break;
 	case 2:	
-		type = OT;
+		type = OT_O;
+		 pOrder = new OT(ID + 2, ID++, ID * 1, ID * 3, ID * 4);
+
 		break;
 	case 3:
 		type = OVN;
+		 pOrder = new OV(ID+2,ID++,ID*3,ID*3,ID*5,100*ID,OVN);
 		break;
 	case 4:
 		type = OVG;
+		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVG);
+
 		break;
 	}
-	Order* pOrder = new Order(ID+2,ID++,ID*2,ID*3,ID*5);
 
-	if (type == OVN || type == OVG)
-	{
-		int distance = rand() % 100 + 1;//Distance form 1 to 100
-		pOrder->(distance);
-	}
-	else if (type == ODN || type == ODG)
-	{
-		int SharableFlag = rand() % 2;
-		int EatingTime = rand() % 35 + 10;//Eating time from 10 to 45
-		int seats = rand() % 12 + 1;//Single person to combo Order
-		pOrder->setNumSeats(seats);
-		pOrder->setEatingTime(EatingTime);
-		pOrder->setSharableFlag(SharableFlag);
-	}
-	pOrder->setArrivalTime(ArrivalTime);
+
 
 	return pOrder;
 }
 Table* Restaurant::CreateRandomTables(int TableId)
 {
 
-	Table* pTable = new Table(TableId);
+	Table* pTable = new Table(TableId, TableId+5);
 	int type = rand() % 2;
 	if (type)
 		pTable->set_IS_sharable(Sharable);
@@ -331,7 +331,7 @@ Table* Restaurant::CreateRandomTables(int TableId)
 }
 Chef* Restaurant::CreateRandomChefs(int ChefID)
 {
-	Chef* pChef = new Chef(ChefID);
+	Chef* pChef = new Chef(ChefID*9,ChefID);
 	int type = rand() % 2;
 	if (type)
 	{
@@ -377,7 +377,7 @@ Order * Restaurant::pickRandomOrderFromPendingLists()
 }
 Chef* Restaurant::pickRandomChefs()
 {
-	Chef* pChef;
+	Chef* pChef=nullptr;
 	int randomPick = rand() % 2;
 	if (randomPick)
 	{
@@ -403,12 +403,16 @@ Order* Restaurant::pickRandomOrderFromReadyLists()
 			Ready_OT.peek(pOrder);
 		break;
 	case 1:
-		if (!Ready_OD.isempty())
+		if (!Ready_OD.isempty()) {
+			
 			Ready_OD.peek(pOrder);
+		}
 		break;
 	case 2:
-		if (!Ready_OV.isempty())
+		if (!Ready_OV.isempty()) {
+			OV* temp1 = (OV*)pOrder;
 			Ready_OV.peek(pOrder);
+		}
 		break;
 	
 	}
@@ -422,19 +426,24 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	switch(type)
 	{
 	case ODG: //Dine in Orders
-	case ODN:
-		Ready_OD.enqueue(pOrder);
+	case ODN: {
+		OD* temp = (OD*)pOrder;
+		Ready_OD.enqueue(temp);
 		break;
-	case OT://Take away Orders
-		Ready_OT.enqueue(pOrder);
+	}
+	case OT_O :{ //Take away Orders
+				Ready_OT.enqueue(pOrder);
+				break; }
+	case OVN:
+	case OVG: {
+		OV* temp1 = (OV*)pOrder;
+		Ready_OV.enqueue(temp1);
 		break;
-	case OVN://Delivery Orders
-	case OVG:
-		Ready_OV.enqueue(pOrder);
-		break;
-	default:
+	}
+	default: {
 		// To avoid Crashing
 		break;
+	}
 	}
 	return pOrder;
 	//Remember : After calling this func in any place ,You must dequeue the pOrder from the CookingList

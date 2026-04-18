@@ -1,7 +1,7 @@
 #include "UI.h"
 #include<iostream>
 using namespace std;
-
+#include "Action.h"
 UI::UI(Restaurant* p)
 {
 	pRes = p;
@@ -87,16 +87,18 @@ void UI::chooseMode()
 	cin >> choice;
 	switch (choice)
 	{
-	case 0:
+	case 0: {
 		Mode m = Silent;
 		setProgramMode(m);
 		cout << "Done, Program is in Silent Mode/n";
 		break;
-	case 1:
-		Mode m = Interactive;
-		setProgramMode(m);
+	}
+	case 1: {
+		Mode m1 = Interactive;
+		setProgramMode(m1);
 		cout << "Done, Program is in Interactive Mode/n";
 		break;
+	}
 	}
 	cout << "/n";
 }

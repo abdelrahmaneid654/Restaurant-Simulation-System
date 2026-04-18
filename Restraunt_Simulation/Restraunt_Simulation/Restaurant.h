@@ -8,7 +8,7 @@
 #include "Chef.h"
 #include "Scooter.h"
 #include "Table.h"
-
+#include"OT.h"
 #include "Stack.h"
 #include "Queue.h"
 #include "PriQueue.h"
@@ -19,8 +19,8 @@
 
 #include "EnumTypes.cpp"
 
-
-
+class Action;
+class UI;
 
 class Restaurant
 { 
@@ -45,8 +45,8 @@ private:
 	PriQueue <Order*> Pend_OVG;// Delivery Grilled [ it needs a special chef CS and a scooter ]
 	//2-Ready Orders 
 	Queue<Order*> Ready_OT;
-	Queue<OD*> Ready_OD;
-	RDY_OV<OV*> Ready_OV; //derived class from the queue 
+	Queue<Order*> Ready_OD;
+	RDY_OV<Order*> Ready_OV; //derived class from the queue 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
 	Cooking_Orders<Order*> Cook_orders; //Each cookin order points to the assigned chef
 	Queue <Order*> Cancelled_Orders;
@@ -109,7 +109,6 @@ private:
 	//PRIVATE FUNCTIONS
 private: 
 	//Sequence Functions:
-	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
 	Order* FromPendingToCookingByType(Order* pOrder);//////0
 	Order* FromCookingToReadyByType(Order* pOrder);
 	Order* FromReadyToInServByType(Order* pOrder);/////
@@ -122,10 +121,10 @@ private:
 	Chef* pickRandomChefs();
 	Order* pickRandomOrderFromPendingLists();
 	Order* pickRandomOrderFromReadyLists();
-	Order* FromCookingToReadyByType(Order* pOrder);
 	bool AreAllOrdersFinishedOrCancelled();
 
 public:
+	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
 	Restaurant();
 
 	/* 

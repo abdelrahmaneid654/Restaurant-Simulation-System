@@ -1,6 +1,7 @@
 #pragma once
 #include "Order.h"
 #include "Table.h"
+class Table;
 
 class OD : public Order
 {

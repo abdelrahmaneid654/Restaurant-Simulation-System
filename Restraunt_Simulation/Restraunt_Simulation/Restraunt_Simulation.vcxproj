@@ -132,6 +132,7 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="OD.cpp" />
     <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OT.cpp" />
     <ClCompile Include="OV.cpp" />
     <ClCompile Include="Pending_OVC.cpp" />
     <ClCompile Include="PriQueue.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Node.h" />
     <ClInclude Include="OD.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="OT.h" />
     <ClInclude Include="OV.h" />
     <ClInclude Include="Pending_OVC.h" />
     <ClInclude Include="PriQueue.h" />

@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include"OD.h"
+class OD;
 using namespace std;
 class Table
 {
