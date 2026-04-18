@@ -1,5 +1,5 @@
-#include "Table.h"
-
+#include"Table.h"
+#include"OD.h"
 Table::Table(int id, int cap)
 {
 	ID = id;
@@ -29,7 +29,7 @@ void Table::set_IS_sharable(bool s)
 {
 	Is_sharable = s;
 }
-void Table::put_order(OD*o)
+void Table::put_order(OD* o)
 {
 	Table* temp = this;
 	o->set_assigned_table(temp);

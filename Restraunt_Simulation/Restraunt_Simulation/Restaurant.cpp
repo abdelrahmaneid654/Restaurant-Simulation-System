@@ -1,4 +1,4 @@
-#include "Restaurant.h"
+﻿#include "Restaurant.h"
 #include "Action.h"
 Restaurant::Restaurant()
 {
@@ -88,9 +88,9 @@ void Restaurant::MoveOrderLists()
 	//It is for Dine in Orders but Still not Finished
 	while (!Ready_OD.isempty())
 	{
-		OD* pOrder; 
+		Order* pOrder; 
 		Table* pTable;
-		Ready_OD.peek(pOrder);
+		Ready_OD.dequeue(pOrder);
 		bool ShareableFlag = ((OD*)pOrder)->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
 		OD* temp = (OD*)pOrder;
 		pTable=Free_Tables.getBest(temp);
@@ -163,12 +163,28 @@ void Restaurant::RandomSimulation()
 	{
 		for (int i = 0; i < 30; i++)
 		{
-			Order* pOrder = pickRandomOrderFromPendingLists();
-			if (pOrder)//IT is always true but I made it for double check if I forget any thing in AreAllOrdersFinishedOrCancelled function
-			{	pOrder->set_assigned_chef(pickRandomChefs());
-			Cook_orders.enqueue(pOrder);
-				//Here I will make the needed implementations for each order type like for OV make the time of cooking and then move it to the ready list and for OD make the time of cooking and then move it to the ready list and for OT make the time of cooking and then move it to the ready list 
-				//I will make a function for each order type to do all these implementations and I will call this function here
+			Chef* pSelectedChef = pickRandomChefs();
+
+			if (pSelectedChef)
+			{
+				Order* pOrder = pickRandomOrderFromPendingLists();
+
+				if (pOrder)
+				{
+					pOrder->set_assigned_chef(pSelectedChef);
+					Cook_orders.enqueue(pOrder);
+				}
+				else
+				{
+					if (pSelectedChef->gettype() == CN) Free_CN.enqueue(pSelectedChef);
+					else Free_CS.enqueue(pSelectedChef);
+					break; // مفيش داعي نكمل الـ 30 لفة
+				}
+			}
+			else
+			{
+				
+				break;
 			}
 		}
 		if ((rand() % 100) < 75)
@@ -278,6 +294,9 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		return true;
 	else
 		return false;
+}
+void Restaurant::ReleaseResources(Order* pOrd)
+{
 }
 Order* Restaurant::CreateRandomOrder(int ArrivalTime)
 {

@@ -1,7 +1,6 @@
-#include "Chef.h"
-
-Chef::Chef(int s,int id)
-{	
+#include"Chef.h"
+Chef::Chef(int s, int id)
+{
 	ID = id;
 	speed = s;
 	total_busy_time = 0;
@@ -33,6 +32,3 @@ ostream& operator<<(ostream& out, const Chef* c) {
 	}
 	return out;
 }
-
-
-

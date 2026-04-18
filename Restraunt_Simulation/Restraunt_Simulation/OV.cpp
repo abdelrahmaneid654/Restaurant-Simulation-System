@@ -1,6 +1,5 @@
-#include "OV.h"
-
-OV::OV(int tq, int id, int size, double price, int t_serve, int dis, OrderType type):Order(tq, id, size, price, t_serve)
+#include"OV.h"
+OV::OV(int tq, int id, int size, double price, int t_serve, int dis, OrderType type) :Order(tq, id, size, price, t_serve)
 {
 	distance = dis;
 	assigned_scooter = nullptr;
@@ -15,13 +14,13 @@ int OV::get_distance()
 OrderType OV::gettype() const
 {
 	if (Type == OVG)
-		return OVG; 
+		return OVG;
 	else if (Type == OVN)
-		return OVN; 
+		return OVN;
 	else if (Type == OVC)
-		return OVC; 
+		return OVC;
 
-		return UNKNOWN;
+	return UNKNOWN;
 }
 
 Scooter* OV::get_assigned_scooter()
@@ -29,7 +28,7 @@ Scooter* OV::get_assigned_scooter()
 	return assigned_scooter;
 }
 
-void OV::set_assigned_scooter(Scooter *s)
+void OV::set_assigned_scooter(Scooter* s)
 {
 	assigned_scooter = s;
 }

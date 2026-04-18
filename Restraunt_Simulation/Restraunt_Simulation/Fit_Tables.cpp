@@ -1,5 +1,5 @@
-#include "Fit_Tables.h"
- Table* Fit_Tables::getBest(OD* o)
+#include"Fit_Tables.h"
+Table* Fit_Tables::getBest(OD* o)
 {
 	if (this->isempty()) return nullptr;
 
@@ -19,7 +19,7 @@
 
 	while (temp->getnext()) {
 		if (order_seats <= temp->getnext()->getdata()->get_free_seats()) {
-			Node<Table*>* todelete=temp->getnext();
+			Node<Table*>* todelete = temp->getnext();
 			if (todelete == this->rear)						// if best fit is rear node
 				this->rear = temp;
 

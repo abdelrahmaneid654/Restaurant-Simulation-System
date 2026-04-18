@@ -22,7 +22,7 @@ void UI::Print(Queue<Action*> ActionListR, Queue<Action*> ActionListC, Queue<Ord
 	ActionListR.print();
 	cout << "Cancel Actions Reamining: " << ActionListC.getcount() << " :";
 	ActionListC.print();*/
-	cout << "/n=================Pending Orders IDs================/n";
+	cout << "\n=================Pending Orders IDs================\n";
 	cout << Pend_ODG.getcount() << " " << "ODG ";
 	Pend_ODG.print();
 	cout << Pend_ODN.getcount() << " " << "ODN ";
@@ -35,54 +35,54 @@ void UI::Print(Queue<Action*> ActionListR, Queue<Action*> ActionListC, Queue<Ord
 	Pend_OVC.print();
 	cout << Pend_OVG.getcount() << " " << "OVG ";
 	Pend_OVG.print();
-	cout << "/n=================Available Chefs IDs================/n";
+	cout << "\n=================Available Chefs IDs================\n";
 	cout << Free_CS.getcount() << " " << "CS ";
 	Free_CS.print();
 	cout << Free_CN.getcount() << " " << "CN ";
 	Free_CN.print();
-	cout << "/n=================Cooking Orders [Orders ID, Chef ID]================/n";
+	cout << "\n=================Cooking Orders [Orders ID, Chef ID]================\n";
 	cout << Cooking_orders.getcount() << " ";
 	Cooking_orders.print();
-	cout << "/n=================Ready Orders IDs================/n";
+	cout << "\n=================Ready Orders IDs================\n";
 	cout << Ready_OT.getcount()<< " " << "OT ";
 	Ready_OT.print();
 	cout << Ready_OD.getcount() << " " << "OD ";
 	Ready_OD.print();
 	cout << Ready_OV.getcount() << " " << "OV ";
 	Ready_OV.print();
-	cout << "/n=================Available Scooters IDs================/n";
+	cout << "\n=================Available Scooters IDs================\n";
 	cout << Free_Scooters.getcount() << " ";
 	Free_Scooters.print();
-	cout << "/n=================Available Tables [ID, capacity, free seats]================/n";
+	cout << "\n=================Available Tables [ID, capacity, free seats]================\n";
 	cout << Free_Tables.getcount() << " ";
 	Free_Tables.print();
-	cout << "/n=================In - Service Orders [order ID, scooter / Table ID]================/n";
+	cout << "\n=================In - Service Orders [order ID, scooter / Table ID]================\n";
 	cout << InServ.getcount() << " ";
 	InServ.print();
-	cout << "/n=================In - maintainance scooters IDs================/n";
+	cout << "\n=================In - maintainance scooters IDs================\n";
 	cout << Maint_Scooters.getcount() << " ";
 	Maint_Scooters.print();
-	cout << "/n=================Scooters Back to Restaurant  IDs================/n";
+	cout << "\n=================Scooters Back to Restaurant  IDs================\n";
 	cout << Busy_Scooters.getcount();
 	Busy_Scooters.print();
-	cout << "/n=================Cancelled Orders IDs================/n";
+	cout << "\n=================Cancelled Orders IDs================\n";
 	cout << Cancelled_Orders.getcount() << " ";
 	Cancelled_Orders.print();
-	cout << "/n=================Finished orders IDs================/n";
+	cout << "\n=================Finished orders IDs================\n";
 	cout << Finished_Orders.getcount() << " ";
 	Finished_Orders.print();
 
-	cout << endl << "Press Enter To Move To Next Step!/n";
+	cout << endl << "Press Enter To Move To Next Step!\n";
 
 }
 
 void UI::chooseMode()
 {
-	cout << "========================/n";
+	cout << "========================\n";
 	cout << "        SIMULATION/n";
-	cout << "========================/n";
+	cout << "========================\n";
 	int choice;
-	cout << "Choose Simulation Mode: Silent - Interactive/n";
+	cout << "Choose Simulation Mode: Silent - Interactive\n";
 	cout << "(1) for Silent, (2) for Interactive: ";
 	cin >> choice;
 	switch (choice)
@@ -90,17 +90,17 @@ void UI::chooseMode()
 	case 0: {
 		Mode m = Silent;
 		setProgramMode(m);
-		cout << "Done, Program is in Silent Mode/n";
+		cout << "Done, Program is in Silent Mode\n";
 		break;
 	}
 	case 1: {
 		Mode m1 = Interactive;
 		setProgramMode(m1);
-		cout << "Done, Program is in Interactive Mode/n";
+		cout << "Done, Program is in Interactive Mode\n";
 		break;
 	}
 	}
-	cout << "/n";
+	cout << "\n";
 }
 
 void UI::setProgramMode(Mode m)
