@@ -193,9 +193,24 @@ void Restaurant::RandomSimulation()
 		for (int i = 0; i < 10; i++)
 		{
 			Order* pOrder = pickRandomOrderFromReadyLists();
+
 			if (pOrder)
 			{
-				switch (pOrder->gettype())
+
+				Chef* assignedChef = pOrder->get_assigned_chef();   
+				ChefType type = assignedChef->gettype(); 
+
+				switch (type) //return the chef to free list
+				{
+				case CN:
+					Free_CN.enqueue(assignedChef);
+					break;
+				case CS:
+					Free_CS.enqueue(assignedChef);
+					break;
+				}
+
+				switch (pOrder->gettype()) // add order to finsihed
 				{
 					case OT_O:
 					{
@@ -222,6 +237,9 @@ void Restaurant::RandomSimulation()
 				}
 
 			}
+
+			
+
 
 		}
 		int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
