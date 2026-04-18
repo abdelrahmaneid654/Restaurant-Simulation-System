@@ -61,7 +61,7 @@ public:
 	virtual OrderType gettype()  const = 0;
 	virtual int calc_priority();
 
-	virtual int calc_priority();
+	
 	virtual ~Order() = 0;
 
 };

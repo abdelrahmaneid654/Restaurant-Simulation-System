@@ -5,7 +5,7 @@ class PriQueue :public Queue<T>
 {
 public:
 
-	void PriQueue<T>::enqueue(T x);
+	void enqueue(T x);
 
 	
 };

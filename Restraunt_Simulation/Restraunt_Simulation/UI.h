@@ -21,14 +21,14 @@ private:
 public:
 	UI(Restaurant* p);
 
-	void Print(Queue<Action*>& ActionListR, Queue<Action*> &ActionListC,
-		Queue<Order*> &Pend_ODG, Queue<Order*> &Pend_ODN, Queue<Order*> &Pend_OT, Queue<Order*> &Pend_OVN,
-		Pending_OVC<Order*> &Pend_OVC, Queue<Order*> &Pend_OVG, Queue<Order*> &Ready_OT, Queue<Order*>& Ready_OD,
-		RDY_OV<Order*> &Ready_OV, Cooking_Orders<Order*> &Cooking_orders, Queue<Order*> &Cancelled_Orders, 
-		Stack<Order*> &Finished_Orders,PriQueue<Order*> &InServ, PriQueue<Order*> &Compo,
-		Queue<Chef*> &Free_CS, Queue<Chef*>& Free_CN,PriQueue<Scooter*> &Free_Scooters,
-		Queue<Scooter*> &Maint_Scooters, PriQueue<Scooter*> &Busy_Scooters,Fit_Tables &Free_Tables,
-		Fit_Tables &Busy_Sharable,Fit_Tables &Busy_No_Share);
+	void Print(const Queue<Action*>& ActionListR, const Queue<Action*> &ActionListC,
+		const Queue<Order*> &Pend_ODG, const Queue<Order*> &Pend_ODN, const Queue<Order*> &Pend_OT, const Queue<Order*> &Pend_OVN,
+		const Pending_OVC<Order*> &Pend_OVC, const Queue<Order*> &Pend_OVG, const Queue<Order*> &Ready_OT, const Queue<Order*>& Ready_OD,
+		const RDY_OV<Order*> &Ready_OV, const Cooking_Orders<Order*> &Cooking_orders, const Queue<Order*> &Cancelled_Orders,
+		const Stack<Order*> &Finished_Orders, const PriQueue<Order*> &InServ, const PriQueue<Order*> &Compo,
+		const Queue<Chef*> &Free_CS, const Queue<Chef*>& Free_CN, const PriQueue<Scooter*> &Free_Scooters,
+		const Queue<Scooter*> &Maint_Scooters, const PriQueue<Scooter*> &Busy_Scooters, const Fit_Tables &Free_Tables,
+		const Fit_Tables &Busy_Sharable, const Fit_Tables &Busy_No_Share);
 
 	void chooseMode();
 
