@@ -26,9 +26,7 @@ public:
 	void reset_counter();
 	void set_return_time(int t);
 	int get_return_time();
-	int calc_priority() {
-		return total_dis;
-	};
+	int calc_priority();
 
 };
 ostream& operator<<(ostream& out, const Scooter* s);
