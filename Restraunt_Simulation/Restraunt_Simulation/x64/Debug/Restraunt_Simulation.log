@@ -1,50 +1,50 @@
 ﻿  Action.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18,17): error C2061: syntax error: identifier 'OD'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,12): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,18): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(21,5): error C2061: syntax error: identifier 'Restaurant'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,19): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,26): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,47): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,54): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,16): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(36,9): error C2065: 'Action': undeclared identifier
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(36,16): error C2059: syntax error: '>'
+  (compiling source file 'Action.cpp')
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(125,9): error C2535: 'Order *Restaurant::FromCookingToReadyByType(Order *)': member function already defined or declared
+  (compiling source file 'Action.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(114,9):
+      see declaration of 'Restaurant::FromCookingToReadyByType'
+  
   CancelAction.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18,17): error C2061: syntax error: identifier 'OD'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,12): error C2143: syntax error: missing ';' before '*'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,18): error C2238: unexpected token(s) preceding ';'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(21,5): error C2061: syntax error: identifier 'Restaurant'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,19): error C2065: 'Action': undeclared identifier
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,26): error C2059: syntax error: '>'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,47): error C2065: 'Action': undeclared identifier
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(23,54): error C2059: syntax error: '>'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,9): error C2065: 'Action': undeclared identifier
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(35,16): error C2059: syntax error: '>'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(36,9): error C2065: 'Action': undeclared identifier
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(36,16): error C2059: syntax error: '>'
-  (compiling source file 'Action.cpp')
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(125,9): error C2535: 'Order *Restaurant::FromCookingToReadyByType(Order *)': member function already defined or declared
-  (compiling source file 'Action.cpp')
-      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(114,9):
-      see declaration of 'Restaurant::FromCookingToReadyByType'
-  
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18,17): error C2061: syntax error: identifier 'OD'
   (compiling source file 'CancelAction.cpp')
   
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\UI.h(19,12): error C2143: syntax error: missing ';' before '*'
@@ -88,8 +88,6 @@ D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant
       D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(114,9):
       see declaration of 'Restaurant::FromCookingToReadyByType'
   
-  Chef.cpp
-  Cooking_Orders.cpp
   EnumTypes.cpp
   Fit_Tables.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18,17): error C2061: syntax error: identifier 'OD'
@@ -102,7 +100,6 @@ D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18
   
   Order.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(48,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  OV.cpp
   RequestAction.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Table.h(18,17): error C2061: syntax error: identifier 'OD'
   (compiling source file 'RequestAction.cpp')
