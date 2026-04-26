@@ -7,15 +7,15 @@ Scooter::Scooter(int s,int id)
 	counter = 0;
 	total_dis = 0;
 	total_busy_time = 0;
-	return_time = 0;
+	state = Free;
 }
-int Scooter::calc_priorityForFree() { 
-	return total_dis;
+int Scooter::calc_priority() {
+	if(state == Free)
+		return total_dis;
+	else if(state == Back)
+		return returningDistance;
 }
-int Scooter::calc_priorityForBack()
-{
-	return returningDistance; 
-}
+
 
 int Scooter::get_ID() const
 {
@@ -47,11 +47,6 @@ int Scooter::getTimeStepOfMaint()
 	return timeStepOfMaint;
 }
 
-void Scooter::setReturnDistance(int d)
-{
-	returningDistance = d;
-}
-
 int Scooter::getReturnDistance()
 {
 	return returningDistance;
@@ -81,12 +76,13 @@ int Scooter::get_Main_Dur() const
 	return Main_Dur;
 }
 
-void Scooter::update_info(int d, int b_time)
+void Scooter::update_info(int d, int b_time, ScooterState s)
 {
 	counter++;
 	total_dis += d;
 	total_busy_time += b_time;
 	returningDistance = d / 2;
+	state = s;
 }
 
 void Scooter::reset_counter()
@@ -94,15 +90,7 @@ void Scooter::reset_counter()
 	counter = 0;
 }
 
-void Scooter::set_return_time(int t)
-{
-	return_time = t;
-}
 
-int Scooter::get_return_time()
-{
-	return return_time;
-}
 
 ostream& operator<<(ostream& out, const Scooter* s)
 {

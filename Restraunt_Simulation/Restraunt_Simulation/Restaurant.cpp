@@ -122,7 +122,7 @@ int Restaurant::GetCurrentTimestep() const
 	return CurrTimeStep;
 }
 
-void Restaurant::UpdateInterface()
+ void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
 	//Joke :Cnrl C Cntrl V function
@@ -326,7 +326,24 @@ void Restaurant::AddToPending(Order* pOrder)
 	case OVC:
 		Pend_OVC.enqueue(pOrder);//erorr in enqueue because it is from derived class from the queue and there is no implementation for the class yet.
 		break;
+
 	}
+}
+
+void Restaurant::createOutputFile()
+{
+	ofstream file("Output.txt");
+	if (file.is_open())
+	{
+		Order* pOrder = nullptr;
+
+		while (!Finished_Orders.isempty())
+		{
+			Finished_Orders.pop(pOrder);
+
+		}
+	}
+
 }
 
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
@@ -347,199 +364,31 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		return false;
 }
 
-//void Restaurant::CreateRandomOrder(int ArrivalTime)
-//{
-//	Order* pOrder=nullptr;
-//	int ID = ArrivalTime; 
-//	OrderType type;
-//	int RandomType = rand() % 6;
-//	switch (RandomType)
-//	{
-//	case 0:
-//	{
-//		type = ODG;
-//		pOrder = new OD(ID + 2, ID++, ID * 2, ID * 3, ID * 5, ID + 3, ID + 17, ID % 2, ODG);
-//		Pend_ODG.enqueue(pOrder);
-//		break;
-//	}
-//	case 1:
-//	{
-//		type = ODN;
-//		pOrder = new OD(ID + 2, ID++, ID * 1, ID * 3, ID * 4, ID + 3, ID + 11, ID % 2, ODN);
-//		Pend_ODN.enqueue(pOrder);
-//		break;
-//	}
-//	case 2:	
-//	{
-//		type = OT_O;
-//		pOrder = new OT(ID + 2, ID++, ID * 1, ID * 3, ID * 4);
-//		Pend_OT.enqueue(pOrder);
-//		break;
-//	}
-//	case 3:
-//	{
-//		type = OVN;
-//		pOrder = new OV(ID + 2, ID++, ID * 3, ID * 3, ID * 5, 100 * ID, OVN);
-//		Pend_OVN.enqueue(pOrder);
-//		break;
-//	}
-//	case 4:
-//	{
-//		type = OVG;
-//		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVG);
-//		Pend_OVG.enqueue(pOrder);
-//		break;
-//	}
-//	case 5:
-//	{
-//		type = OVC;
-//		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVC);
-//		Pend_OVC.enqueue(pOrder);
-//		break;
-//	}
-//	}
-//}
-//void Restaurant::CreateRandomTables(int TableId)
-//{
-//	Table* pTable = new Table(TableId, TableId+5);
-//	int type = rand() % 2;
-//	if (type)
-//	{
-//		pTable->set_IS_sharable(Sharable);
-//	}
-//	else
-//	{
-//		pTable->set_IS_sharable(Non_Sharable);
-//	}
-//	Free_Tables.enqueue(pTable); 
-//}
-//void Restaurant::CreatRandomScooter(int ScooterID)
-//{
-//	Scooter* pScooter = new Scooter(ScooterID * 10, ScooterID, ScooterID + 6, ScooterID + 10);
-//	Free_Scooters.enqueue(pScooter);
-//}
-//void Restaurant::CreateRandomChefs(int ChefID)
-//{
-//	Chef* pChef = new Chef(ChefID*9,ChefID);
-//	int type = rand() % 2;
-//	if (type)
-//	{
-//		pChef->setType(CN);
-//		Free_CN.enqueue(pChef);
-//	}
-//	else {
-//		pChef->setType(CS);
-//		Free_CS.enqueue(pChef); 
-//	}
-//}
-//Order * Restaurant::pickRandomOrderFromPendingLists()
-//{
-//	Order* pOrder=nullptr;
-//	int RandomList = rand() % 6;
-//	switch (RandomList)
-//	{
-//	case ODG: 
-//		if (!Pend_ODG.isempty())
-//			Pend_ODG.dequeue(pOrder);
-//		break;
-//	case ODN: 
-//		if (!Pend_ODN.isempty())
-//			Pend_ODN.dequeue(pOrder);
-//		break;
-//	case OT_O: 
-//		if (!Pend_OT.isempty())
-//			Pend_OT.dequeue(pOrder);
-//		break;
-//	case OVN: 
-//		if (!Pend_OVN.isempty())
-//			Pend_OVN.dequeue(pOrder);
-//		break;
-//	case OVG:
-//		if (!Pend_OVG.isempty())
-//			Pend_OVG.dequeue(pOrder);
-//		break;
-//	case OVC: 
-//		if (!Pend_OVC.isempty())
-//			Pend_OVC.dequeue(pOrder);
-//		break;
-//		
-//	}
-//	return pOrder;
-//}
-//Chef* Restaurant::pickRandomChefs()
-//{
-//	Chef* pChef=nullptr;
-//	int randomPick = rand() % 2;
-//	if (randomPick)
-//	{
-//		if (!Free_CN.isempty())
-//			Free_CN.dequeue(pChef);
-//
-//	}
-//	else
-//	{
-//		if (!Free_CS.isempty())
-//			Free_CS.dequeue(pChef); 
-//	}
-//	return pChef;
-//}
-//Scooter* Restaurant::pickRandomScooter()
-//{
-//	Scooter* pScoot;
-//	if (!Free_Scooters.dequeue(pScoot))
-//	{
-//		Back_Scooters.dequeue(pScoot);
-//	}
-//
-//	return pScoot;
-//}
-//Table* Restaurant::pickRandomTable()
-//{
-//	Table* pTable=nullptr;
-//	Free_Tables.dequeue(pTable);
-//
-//	if (pTable) {
-//		TableType type = pTable->get_Is_sharable();
-//		switch (type) {
-//		case Non_Sharable:
-//			Busy_No_Share.enqueue(pTable);
-//			break;
-//		case Sharable:
-//			Busy_Sharable.enqueue(pTable);
-//			break;
-//		}
-//	}
-//	return pTable;  
-//}
-//
-//Order* Restaurant::pickRandomOrderFromReadyLists()
-//{
-//	Order* pOrder=nullptr;
-//	int RandomList = rand() % 3;
-//	switch (RandomList)
-//	{
-//	case 0:
-//		if (!Ready_OT.isempty())
-//			Ready_OT.dequeue(pOrder);
-//		break;
-//	case 1:
-//		if (!Ready_OD.isempty() && !Free_Tables.isempty()) {
-//			Ready_OD.dequeue(pOrder);
-//		}
-//		break;
-//	case 2:
-//		if (!Ready_OV.isempty() && !Free_Scooters.isempty()) {
-//			Ready_OV.dequeue(pOrder);
-//		}
-//		break;
-//	
-//	}
-//	return pOrder;
-//}
+
 Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 {
 	if (!pOrder)
 		return NULL;
+	Chef* assignedChef = pOrder->get_assigned_chef();
+//	assignedChef->gettype() == CN ? Free_CN.enqueue(assignedChef) : Free_CS.enqueue(assignedChef);
+	if (assignedChef)//I make this instead of the above line to avoid the crash if the assignedchef is nullptr
+	{
+		
+		ChefType type = assignedChef->gettype();
+		switch (type)
+		{
+		case CN:
+			Free_CN.enqueue(assignedChef);
+			break;
+		case CS:
+			Free_CS.enqueue(assignedChef);
+			break;
+		}
+		assignedChef->update_info(CurrTimeStep - pOrder->get_TA());
+	pOrder->set_assigned_chef(nullptr);
+	
+	}
+	pOrder->set_TR(CurrTimeStep);
 	OrderType type = pOrder->gettype();
 	switch(type)
 	{
@@ -553,12 +402,25 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	}
 	case OT_O :
 	{ //Take away Orders
+//		FinalizeOT();
 		Ready_OT.enqueue(pOrder);
 		break; 
 	}
-	case OVN:
-	case OVG: 
 	case OVC:
+	{
+		Ready_OV.enqueue(pOrder);
+		//Scooter* pScooter = pickRandomScooter();
+		//((OV*)pOrder)->set_assigned_scooter(pScooter);
+		break;
+	}
+	case OVG: 
+	{
+		Ready_OV.enqueue(pOrder);
+		//Scooter* pScooter = pickRandomScooter();
+		//((OV*)pOrder)->set_assigned_scooter(pScooter);
+		break;
+	}
+	case OVN:
 	{
 		Ready_OV.enqueue(pOrder);
 		//Scooter* pScooter = pickRandomScooter();
@@ -572,6 +434,155 @@ Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 	}
 	return pOrder;
 }
+Order* Restaurant::AssingPendingToChef(Order* pOrder)
+{
+	if (!pOrder)
+		return NULL;
+	/*
+	 Pending Lists Name :
+			Pend_ODG
+			Pend_ODN
+			Pend_OT
+			Pend_OVN
+			Pend_OVC
+			Pend_OVG
+	 */
+
+	pOrder->set_TA(CurrTimeStep);
+	OrderType type = pOrder->gettype();
+	switch (type)
+	{
+		case ODG:
+		case OVG:
+		{
+			if (Free_CS.isempty())
+				return nullptr;
+			else
+			{
+				Chef* pChef;
+				Free_CS.dequeue(pChef);
+				pOrder->set_assigned_chef(pChef);
+				if (type == ODG)
+				{
+					Pend_ODG.dequeue(pOrder);
+				}
+				else
+				{
+					Pend_OVG.dequeue(pOrder);
+				}
+				Cook_orders.enqueue(pOrder);
+			}
+		}
+		break;
+		case ODN:
+		case OVC:
+		{
+
+			if (Free_CN.isempty())
+			{
+				if (Free_CS.isempty())
+					return nullptr;
+				else
+				{
+					Chef* pChef;
+					Free_CS.dequeue(pChef);
+					pOrder->set_assigned_chef(pChef);
+					if (type == ODN)
+					{
+						Pend_ODN.dequeue(pOrder);
+					}
+					else
+					{
+						Pend_OVC.dequeue(pOrder);
+					}
+					Cook_orders.enqueue(pOrder);
+				}
+			}
+			else
+			{
+					Chef* pChef;
+					Free_CN.dequeue(pChef);
+					pOrder->set_assigned_chef(pChef);
+				if (type == ODN)
+				{
+					Pend_ODN.dequeue(pOrder);
+				}
+				else
+				{
+					Pend_OVC.dequeue(pOrder);
+				}
+					Cook_orders.enqueue(pOrder);
+			}
+		}
+		break;
+		case OT_O:
+		case OVN:
+		{
+
+			if (Free_CN.isempty())
+				return NULL;
+
+			else
+			{
+					Chef* pChef;
+					Free_CN.dequeue(pChef);
+					pOrder->set_assigned_chef(pChef);
+				if (type == OVN)
+				{
+					Pend_OVN.dequeue(pOrder);
+				}
+				else
+				{
+					Pend_OT.dequeue(pOrder);
+				}
+					Cook_orders.enqueue(pOrder);
+			}
+		}
+		break;
+		default:
+			return nullptr; 
+		break;
+
+	}
+	return pOrder;
+}
+Order* Restaurant::AssignScooter()
+{
+	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
+	Order* pOrder =nullptr;
+	
+	Order* pnext=NULL;
+	if (Ready_OV.isempty() || Free_Scooters.isempty())
+		return NULL;
+	Ready_OV.peek(pOrder);
+	while (pOrder)
+	{
+		if (pOrder->gettype() == OVC)
+		{
+			break;
+		}
+		else
+		{
+			pnext = pOrder->next;
+			pOrder = pnext;
+
+		}
+	}
+	if (!pOrder)
+	{
+		Ready_OV.peek(pOrder);
+	}	
+		Scooter* pScooter;
+		Free_Scooters.dequeue(pScooter);
+		((OV*)pOrder)->set_assigned_scooter(pScooter);
+		pOrder->set_TS(CurrTimeStep);
+		InServ.enqueue(pOrder);
+		Ready_OV.dequeue(pOrder);
+		return pOrder;
+}
+
+
+
 
 void Restaurant::FromActionToPending(int time)
 {
@@ -587,26 +598,76 @@ void Restaurant::FromActionToPending(int time)
 void Restaurant::checkScootersList(int time)
 {
 	Scooter* pScooter;
+
 	Maint_Scooters.peek(pScooter);
 	if (pScooter->get_Main_Dur() == time - pScooter->getTimeStepOfMaint())
 	{
 		Maint_Scooters.dequeue(pScooter);
+		pScooter->update_info(0, 0, Free);
 		Free_Scooters.enqueue(pScooter); 
 	}
+
 	Back_Scooters.peek(pScooter);
 	if (pScooter->getReturnDistance() == 0)
 	{
 		Back_Scooters.dequeue(pScooter);
+
 		if (pScooter->get_Main_Ords() == pScooter->get_counter())
 		{
 			pScooter->setTimeStepOfMaint(time);
-			Maint_Scooters.enqueue(pScooter);
+			pScooter->update_info(0, pScooter->get_Main_Ords(),Maint); 
+			Maint_Scooters.enqueue(pScooter); 
 			pScooter->reset_counter();
 		}
 		else
 		{
+			pScooter->update_info(0, 0, Free);
 			Free_Scooters.enqueue(pScooter); 
 		}
+	}
+}
+
+bool Restaurant::assignTable(Order* o)
+{
+	OD* pOD = ((OD*)o);
+	if (pOD->IS_Sharable())
+	{
+		Table* pTable = Busy_Sharable.getBest(pOD);
+
+		if (pTable)
+		{
+			pTable->put_order(pOD);
+			return true;
+		}
+		else
+		{
+			pTable = Free_Tables.getBest(pOD);
+
+			if (pTable)
+			{
+				pTable->set_IS_sharable(Sharable);
+				pTable->put_order(pOD);
+				Busy_Sharable.enqueue(pTable);
+				return true;
+			}
+			else
+				return false;
+		}
+	}
+	else
+	{
+		Table* pTable = Free_Tables.getBest(pOD);
+
+		if (pTable)
+		{
+			pTable->put_order(pOD);
+			pTable->set_IS_sharable(Non_Sharable);
+			Busy_No_Share.enqueue(pTable);
+			return true;
+		}
+		else
+			return false;
+
 	}
 }
 

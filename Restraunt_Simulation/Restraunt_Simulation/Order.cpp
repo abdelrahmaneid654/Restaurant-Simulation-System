@@ -147,6 +147,10 @@ int Order::get_T_Serve() const
 int Order::calc_priority() {
 	return 0;
 }
+void Order::printInFile(ofstream& file)
+{
+	file << TF << " " << ID << " " << TQ << " " << TA << " " << TR << " " << TS << " " << get_TI() << " " << get_TC() << " " << get_TW() << " " << get_T_Serve();
+}
 Order::~Order() {
 	
 }

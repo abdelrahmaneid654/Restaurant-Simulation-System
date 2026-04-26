@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include<fstream>
 #include "UI.h"
 
 #include "Action.h"
@@ -114,6 +114,7 @@ private:
 	Order* FromCookingToReadyByType(Order* pOrder);
 	void FromActionToPending(int time);
 	void checkScootersList(int time);
+	bool assignTable(Order* o);
 	//Order* FromReadyToInServByType(Order* pOrder);/////
 	//Order* FromInServToFinishedByType(Order* pOrder);///////
 	// 
@@ -131,8 +132,11 @@ private:
 	bool AreAllOrdersFinishedOrCancelled();
 
 public:
-	void AddToPending(Order* pOrder);//I made this to take the order type and put it in the specific list.
+	// Declaration only: implementation must remain in Restaurant.cpp
 	Restaurant();
+	void AddToPending(Order* pOrder);
+	void createOutputFile(); 
+
 
 	/* 
 	Functions will be used in phase 2:
@@ -142,8 +146,9 @@ public:
 	//it takes the order data from the user [i/p file] and then add this order to the pending list 
 	*/
 	bool CancelOrder(int id);
-	
-	//void MoveOrderLists();
+	Order* AssingPendingToChef(Order* pOrder);
+	Order* AssignScooter();
+	//	void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 
 	// Assign pending orders to chefs 
 	// Assign ready orders to scooter/table or give to customer (OT orders)
