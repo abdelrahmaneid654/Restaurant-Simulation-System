@@ -19,4 +19,4 @@ void CancelAction::Act()
 	// it to canceled list
 
 	pRes->CancelOrder(pOrder->getID());
-
+}

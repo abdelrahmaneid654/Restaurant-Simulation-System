@@ -1,10 +1,60 @@
 ﻿  Action.cpp
-  Fit_Tables.cpp
+  OV.cpp
   Order.cpp
 D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(78,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
   Restaurant.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(22,11): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(22,11):
+      the template instantiation context (the oldest one first) is
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(66,21):
+          see reference to class template instantiation 'PriQueue<Scooter *>' being compiled
+          D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(14,32):
+          while compiling class template member function 'void PriQueue<Scooter *>::enqueue(T)'
+          with
+          [
+              T=Scooter *
+          ]
+              D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(590,24):
+              see the first reference to 'PriQueue<Scooter *>::enqueue' in 'Restaurant::checkScootersList'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(22,57): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(27,11): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(27,57): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(35,12): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\PriQueue.h(35,59): error C2039: 'calc_priority': is not a member of 'Scooter'
+  (compiling source file 'Restaurant.cpp')
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
   Restraunt_Simulation.cpp
-  Table.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restraunt_Simulation.cpp(18,10): error C2039: 'RandomSimulation': is not a member of 'Restaurant'
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.h(25,7):
+      see declaration of 'Restaurant'
+  
+  Scooter.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.cpp(52,15): error C2039: 'setReturnDistance': is not a member of 'Scooter'
+      D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.h(4,7):
+      see declaration of 'Scooter'
+  
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Scooter.cpp(54,2): error C2065: 'returningDistance': undeclared identifier
   UI.cpp
   Generating Code...
-  Restraunt_Simulation.vcxproj -> D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe

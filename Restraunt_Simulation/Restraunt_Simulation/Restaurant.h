@@ -111,11 +111,13 @@ private:
 	//Sequence Functions:
 	//Order* FromPendingToCookingByType(Order* pOrder);//////0
 	Order* FromCookingToReadyByType(Order* pOrder);
+	void FromActionToPending(int time);
+	void checkScootersList(int time);
 	//Order* FromReadyToInServByType(Order* pOrder);/////
 	//Order* FromInServToFinishedByType(Order* pOrder);///////
 	// 
 	//Random Functions: 
-	void CreateRandomOrder( int  ArrivalTime);
+	/*void CreateRandomOrder( int  ArrivalTime);
 	void CreateRandomChefs(int ChefID);
 	void CreateRandomTables(int TableId);
 	void CreatRandomScooter(int ScooterID);
@@ -124,7 +126,7 @@ private:
 	Scooter* pickRandomScooter();
 	Table* pickRandomTable();
 	Order* pickRandomOrderFromPendingLists();
-	Order* pickRandomOrderFromReadyLists();
+	Order* pickRandomOrderFromReadyLists();*/
 	bool AreAllOrdersFinishedOrCancelled();
 
 public:
@@ -140,11 +142,11 @@ public:
 	*/
 	bool CancelOrder(int id);
 	
-	void MoveOrderLists();
+	//void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 
 	// Assign pending orders to chefs 
 	// Assign ready orders to scooter/table or give to customer (OT orders)
-	void RandomSimulation();
+	//void RandomSimulation();
 
 	
 
