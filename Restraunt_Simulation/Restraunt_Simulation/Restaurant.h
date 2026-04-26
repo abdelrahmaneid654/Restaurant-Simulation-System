@@ -113,6 +113,7 @@ private:
 	Order* FromCookingToReadyByType(Order* pOrder);
 	void FromActionToPending(int time);
 	void checkScootersList(int time);
+	bool assignTable(Order* o);
 	//Order* FromReadyToInServByType(Order* pOrder);/////
 	//Order* FromInServToFinishedByType(Order* pOrder);///////
 	// 

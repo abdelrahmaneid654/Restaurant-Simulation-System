@@ -1,11 +1,11 @@
 #pragma once
 #include<iostream>
+#include"EnumTypes.h"
 using namespace std;
 class Scooter
 {
 	int Speed;
 	int ID;
-	int return_time;
 	int Main_Ords;
 	int	Main_Dur;
 	int counter;
@@ -13,6 +13,7 @@ class Scooter
 	int timeStepOfMaint;
 	int returningDistance;
 	int total_busy_time; // to calc Scooters utilization
+	ScooterState state;
 public:
 	Scooter(int s, int id, int m_o, int m_d);
 
@@ -30,12 +31,9 @@ public:
 	int get_Speed() const;
 	int get_Main_Ords() const;
 	int get_Main_Dur() const;
-	void update_info(int dis,int b_time); // used when a scooter is assigned, returning distance is setted here
+	void update_info(int dis,int b_time,ScooterState s); // used when a scooter is assigned, returning distance is setted here
 	void reset_counter();
-	void set_return_time(int t); // setted when assigning to scooter
-	int get_return_time();
-	int calc_priorityForFree();
-	int calc_priorityForBack();
+	int calc_priority();
 
 };
 ostream& operator<<(ostream& out, const Scooter* s);

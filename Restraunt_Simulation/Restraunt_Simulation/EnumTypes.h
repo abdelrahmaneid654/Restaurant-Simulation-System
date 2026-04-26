@@ -25,4 +25,10 @@ enum ChefType
 	CS,
 	CN
 };
+enum ScooterState
+{
+	Free,
+	Back,
+	Maint
+};
 

@@ -583,26 +583,76 @@ void Restaurant::FromActionToPending(int time)
 void Restaurant::checkScootersList(int time)
 {
 	Scooter* pScooter;
+
 	Maint_Scooters.peek(pScooter);
 	if (pScooter->get_Main_Dur() == time - pScooter->getTimeStepOfMaint())
 	{
 		Maint_Scooters.dequeue(pScooter);
+		pScooter->update_info(0, 0, Free);
 		Free_Scooters.enqueue(pScooter); 
 	}
+
 	Back_Scooters.peek(pScooter);
 	if (pScooter->getReturnDistance() == 0)
 	{
 		Back_Scooters.dequeue(pScooter);
+
 		if (pScooter->get_Main_Ords() == pScooter->get_counter())
 		{
 			pScooter->setTimeStepOfMaint(time);
-			Maint_Scooters.enqueue(pScooter);
+			pScooter->update_info(0, pScooter->get_Main_Ords(),Maint); 
+			Maint_Scooters.enqueue(pScooter); 
 			pScooter->reset_counter();
 		}
 		else
 		{
+			pScooter->update_info(0, 0, Free);
 			Free_Scooters.enqueue(pScooter); 
 		}
+	}
+}
+
+bool Restaurant::assignTable(Order* o)
+{
+	OD* pOD = ((OD*)o);
+	if (pOD->IS_Sharable())
+	{
+		Table* pTable = Busy_Sharable.getBest(pOD);
+
+		if (pTable)
+		{
+			pTable->put_order(pOD);
+			return true;
+		}
+		else
+		{
+			pTable = Free_Tables.getBest(pOD);
+
+			if (pTable)
+			{
+				pTable->set_IS_sharable(Sharable);
+				pTable->put_order(pOD);
+				Busy_Sharable.enqueue(pTable);
+				return true;
+			}
+			else
+				return false;
+		}
+	}
+	else
+	{
+		Table* pTable = Free_Tables.getBest(pOD);
+
+		if (pTable)
+		{
+			pTable->put_order(pOD);
+			pTable->set_IS_sharable(Non_Sharable);
+			Busy_No_Share.enqueue(pTable);
+			return true;
+		}
+		else
+			return false;
+
 	}
 }
 
