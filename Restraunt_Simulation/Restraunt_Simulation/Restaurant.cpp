@@ -326,6 +326,22 @@ void Restaurant::AddToPending(Order* pOrder)
 	}
 }
 
+void Restaurant::createOutputFile()
+{
+	ofstream file("Output.txt");
+	if (file.is_open())
+	{
+		Order* pOrder = nullptr;
+
+		while (!Finished_Orders.isempty())
+		{
+			Finished_Orders.pop(pOrder);
+
+		}
+	}
+
+}
+
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
 	if (Pend_ODG.isempty() &&
@@ -344,195 +360,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		return false;
 }
 
-void Restaurant::CreateRandomOrder(int ArrivalTime)
-{
-	Order* pOrder=nullptr;
-	int ID = ArrivalTime; 
-	OrderType type;
-	int RandomType = rand() % 6;
-	switch (RandomType)
-	{
-	case 0:
-	{
-		type = ODG;
-		pOrder = new OD(ID + 2, ID++, ID * 2, ID * 3, ID * 5, ID + 3, ID + 17, ID % 2, ODG);
-		Pend_ODG.enqueue(pOrder);
-		break;
-	}
-	case 1:
-	{
-		type = ODN;
-		pOrder = new OD(ID + 2, ID++, ID * 1, ID * 3, ID * 4, ID + 3, ID + 11, ID % 2, ODN);
-		Pend_ODN.enqueue(pOrder);
-		break;
-	}
-	case 2:	
-	{
-		type = OT_O;
-		pOrder = new OT(ID + 2, ID++, ID * 1, ID * 3, ID * 4);
-		Pend_OT.enqueue(pOrder);
-		break;
-	}
-	case 3:
-	{
-		type = OVN;
-		pOrder = new OV(ID + 2, ID++, ID * 3, ID * 3, ID * 5, 100 * ID, OVN);
-		Pend_OVN.enqueue(pOrder);
-		break;
-	}
-	case 4:
-	{
-		type = OVG;
-		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVG);
-		Pend_OVG.enqueue(pOrder);
-		break;
-	}
-	case 5:
-	{
-		type = OVC;
-		pOrder = new OV(ID + 2, ID++, ID * 2, ID * 3, ID * 5, 120 * ID, OVC);
-		Pend_OVC.enqueue(pOrder);
-		break;
-	}
-	}
-}
-void Restaurant::CreateRandomTables(int TableId)
-{
-	Table* pTable = new Table(TableId, TableId+5);
-	int type = rand() % 2;
-	if (type)
-	{
-		pTable->set_IS_sharable(Sharable);
-	}
-	else
-	{
-		pTable->set_IS_sharable(Non_Sharable);
-	}
-	Free_Tables.enqueue(pTable); 
-}
-void Restaurant::CreatRandomScooter(int ScooterID)
-{
-	Scooter* pScooter = new Scooter(ScooterID * 10, ScooterID, ScooterID + 6, ScooterID + 10);
-	Free_Scooters.enqueue(pScooter);
-}
-void Restaurant::CreateRandomChefs(int ChefID)
-{
-	Chef* pChef = new Chef(ChefID*9,ChefID);
-	int type = rand() % 2;
-	if (type)
-	{
-		pChef->setType(CN);
-		Free_CN.enqueue(pChef);
-	}
-	else {
-		pChef->setType(CS);
-		Free_CS.enqueue(pChef); 
-	}
-}
-Order * Restaurant::pickRandomOrderFromPendingLists()
-{
-	Order* pOrder=nullptr;
-	int RandomList = rand() % 6;
-	switch (RandomList)
-	{
-	case ODG: 
-		if (!Pend_ODG.isempty())
-			Pend_ODG.dequeue(pOrder);
-		break;
-	case ODN: 
-		if (!Pend_ODN.isempty())
-			Pend_ODN.dequeue(pOrder);
-		break;
-	case OT_O: 
-		if (!Pend_OT.isempty())
-			Pend_OT.dequeue(pOrder);
-		break;
-	case OVN: 
-		if (!Pend_OVN.isempty())
-			Pend_OVN.dequeue(pOrder);
-		break;
-	case OVG:
-		if (!Pend_OVG.isempty())
-			Pend_OVG.dequeue(pOrder);
-		break;
-	case OVC: 
-		if (!Pend_OVC.isempty())
-			Pend_OVC.dequeue(pOrder);
-		break;
-		
-	}
-	return pOrder;
-}
-Chef* Restaurant::pickRandomChefs()
-{
-	Chef* pChef=nullptr;
-	int randomPick = rand() % 2;
-	if (randomPick)
-	{
-		if (!Free_CN.isempty())
-			Free_CN.dequeue(pChef);
 
-	}
-	else
-	{
-		if (!Free_CS.isempty())
-			Free_CS.dequeue(pChef); 
-	}
-	return pChef;
-}
-Scooter* Restaurant::pickRandomScooter()
-{
-	Scooter* pScoot;
-	if (!Free_Scooters.dequeue(pScoot))
-	{
-		Back_Scooters.dequeue(pScoot);
-	}
-
-	return pScoot;
-}
-Table* Restaurant::pickRandomTable()
-{
-	Table* pTable=nullptr;
-	Free_Tables.dequeue(pTable);
-
-	if (pTable) {
-		TableType type = pTable->get_Is_sharable();
-		switch (type) {
-		case Non_Sharable:
-			Busy_No_Share.enqueue(pTable);
-			break;
-		case Sharable:
-			Busy_Sharable.enqueue(pTable);
-			break;
-		}
-	}
-	return pTable;  
-}
-
-Order* Restaurant::pickRandomOrderFromReadyLists()
-{
-	Order* pOrder=nullptr;
-	int RandomList = rand() % 3;
-	switch (RandomList)
-	{
-	case 0:
-		if (!Ready_OT.isempty())
-			Ready_OT.dequeue(pOrder);
-		break;
-	case 1:
-		if (!Ready_OD.isempty() && !Free_Tables.isempty()) {
-			Ready_OD.dequeue(pOrder);
-		}
-		break;
-	case 2:
-		if (!Ready_OV.isempty() && !Free_Scooters.isempty()) {
-			Ready_OV.dequeue(pOrder);
-		}
-		break;
-	
-	}
-	return pOrder;
-}
 Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 {
 	if (!pOrder)

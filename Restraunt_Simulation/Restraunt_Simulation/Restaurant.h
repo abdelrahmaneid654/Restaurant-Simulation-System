@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include<fstream>
 #include "UI.h"
 
 #include "Action.h"
@@ -132,9 +132,10 @@ private:
 
 public:
 	// Declaration only: implementation must remain in Restaurant.cpp
-	void AddToPending(Order* pOrder);
-
 	Restaurant();
+	void AddToPending(Order* pOrder);
+	void createOutputFile(); 
+
 
 	/* 
 	Functions will be used in phase 2:

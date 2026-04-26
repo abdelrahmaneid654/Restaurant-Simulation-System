@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<fstream>
 #include"EnumTypes.h"
 
 class Chef;
@@ -61,7 +62,8 @@ public:
 
 	virtual OrderType gettype()  const = 0;
 	virtual int calc_priority();
-
+	
+	void printInFile(ofstream& file); 
 	
 	virtual ~Order() = 0;
 

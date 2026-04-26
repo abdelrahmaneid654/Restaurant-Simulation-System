@@ -2,6 +2,7 @@
 #include<iostream>
 #include"EnumTypes.h"
 using namespace std;
+
 class Scooter
 {
 	int Speed;
