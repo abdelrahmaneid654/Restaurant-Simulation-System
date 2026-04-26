@@ -127,179 +127,177 @@ int Restaurant::GetCurrentTimestep() const
 		Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Back_Scooters,Free_Tables, 
 		Busy_Sharable, Busy_No_Share);
 }
- void Restaurant::RandomSimulation()
- {
-	 CurrTimeStep = 1;
-	 //This loop for creataing random chefs and tables, and create scooters
-	 for (int i = 0; i < 30; i++)
-	 {
-		 CreateRandomChefs(i + 1);
-
-		 CreateRandomTables(i + 1);
-
-		 CreatRandomScooter(i + 1);
-	 }
-	 //This loop for creating random orders and add them to the pending lists
-	 for (int i = 0; i < 500; i++)
-	 {
-		 CreateRandomOrder(i + 1);
-	 }
-
-	 UpdateInterface(); // shows the initial state
-
-	 while (!AreAllOrdersFinishedOrCancelled())
-	 {
-		 for (int i = 0; i < 30; i++)
-		 {
-			 Chef* pSelectedChef = pickRandomChefs(); // it dequeues inside it the assigned chef
-
-			 if (pSelectedChef)
-			 {
-				 Order* pOrder = pickRandomOrderFromPendingLists();// it dequeues inside it the order
-
-				 if (pOrder)
-				 {
-					 pOrder->set_assigned_chef(pSelectedChef);
-					 Cook_orders.enqueue(pOrder);
-				 }
-				 else
-				 {
-					 if (pSelectedChef->gettype() == CN)
-						 Free_CN.enqueue(pSelectedChef);
-					 else
-						 Free_CS.enqueue(pSelectedChef);
-					 break; // in both cases break
-				 }
-			 }
-			 else
-			 {
-				 break;
-			 }
-		 }
-		 // moving random order from cooking to ready by 75% percent
-		 {
-			 Order* pOrder = nullptr;
-			 for (int i = 0; i < 15; i++)
-			 {
-				 if ((rand() % 100) < 75)
-				 {
-					 if (Cook_orders.dequeue(pOrder)) // dequeue the cooking order
-					 {
-						 Chef* assignedChef = pOrder->get_assigned_chef();
-						 pOrder->set_assigned_chef(nullptr);
-						 ChefType type = assignedChef->gettype();
-
-						 switch (type) //return the chef to free list
-						 {
-						 case CN:
-							 Free_CN.enqueue(assignedChef);
-							 break;
-						 case CS:
-							 Free_CS.enqueue(assignedChef);
-							 break;
-						 }
-
-						 FromCookingToReadyByType(pOrder); // add the order here according to its type  
-
-					 }
-					 else
-						 break;
-				 }
-			 }
-		 }
-
-		 for (int i = 0; i < 10; i++)
-		 {
-			 Order* pOrder = pickRandomOrderFromReadyLists();
-
-			 if (pOrder)
-			 {
-				 OrderType type = pOrder->gettype();
-
-				 switch (type)
-				 {
-				 case ODG:
-				 case ODN:
-				 {
-					 Table* pTable = pickRandomTable();
-					 if (pTable)
-					 {
-						 ((OD*)pOrder)->set_assigned_table(pTable);
-						 InServ.enqueue(pOrder);
-					 }
-					 else
-					 {
-						 Ready_OD.enqueue(pOrder);
-					 }
-					 break;
-				 }
-				 case OVG:
-				 case OVN:
-				 case OVC:
-				 {
-					 Scooter* pScooter = pickRandomScooter();
-					 ((OV*)pOrder)->set_assigned_scooter(pScooter);
-					 if (pScooter)
-					 {
-						 InServ.enqueue(pOrder);
-					 }
-					 else
-					 {
-						 Ready_OV.enqueue(pOrder);
-					 }
-					 break;
-				 }
-
-				 case OT_O:
-					 Finished_Orders.push(pOrder);
-					 break;
-				 }
-			 }
-
-		 }
-		 int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
-		 if (totalGenerated > 0) {
-			 int randomID = (rand() % totalGenerated) + 1;
-			 CancelOrder(randomID); // handled the 3 cases inside it
-		 }
-		 for (int i = 0; i < 20; i++) {
-			 if ((rand() % 100) < 25) {
-				 Order* pFinished;
-				 if (InServ.dequeue(pFinished))
-				 {
-					 OrderType type = pFinished->gettype();
-
-					 switch (type)
-					 {
-					 case ODG:
-					 case ODN:
-					 {
-						 Table* pTable = ((OD*)pFinished)->get_assigned_table();
-						 ((OD*)pFinished)->set_assigned_table(nullptr);
-						 Free_Tables.enqueue(pTable);
-						 break;
-					 }
-					 case OVC:
-					 case OVG:
-					 case OVN:
-					 {
-						 Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
-						 ((OV*)pFinished)->set_assigned_scooter(nullptr);
-						 Back_Scooters.enqueue(pScooter);
-						 break;
-					 }
-					 }
-					 Finished_Orders.push(pFinished);
-				 }
-			 }
-			 UpdateInterface();
-
-			 pUI->WaitForClick();
-			 CurrTimeStep++;
-		 }
-
-	 }
- }
+//void Restaurant::RandomSimulation()
+//{
+//	CurrTimeStep = 1;
+//	//This loop for creataing random chefs and tables, and create scooters
+//	for (int i = 0; i < 30; i++)
+//	{
+//		CreateRandomChefs(i + 1);
+//
+//		CreateRandomTables(i + 1);
+//		
+//		CreatRandomScooter(i + 1); 
+//	}
+//	//This loop for creating random orders and add them to the pending lists
+//	for (int i = 0; i < 500; i++)
+//	{
+//		CreateRandomOrder(i + 1);  
+//	}
+//
+//	UpdateInterface(); // shows the initial state
+//
+//	while (!AreAllOrdersFinishedOrCancelled())
+//	{
+//		for (int i = 0; i < 30; i++)
+//		{
+//			Chef* pSelectedChef = pickRandomChefs(); // it dequeues inside it the assigned chef
+//
+//			if (pSelectedChef)
+//			{
+//				Order* pOrder = pickRandomOrderFromPendingLists();// it dequeues inside it the order
+//
+//				if (pOrder)
+//				{
+//					pOrder->set_assigned_chef(pSelectedChef);
+//					Cook_orders.enqueue(pOrder);
+//				}
+//				else
+//				{
+//					if (pSelectedChef->gettype() == CN) 
+//						Free_CN.enqueue(pSelectedChef);
+//					else 
+//						Free_CS.enqueue(pSelectedChef);
+//					break; // in both cases break
+//				}
+//			}
+//			else
+//			{
+//				break;
+//			}
+//		}
+//		// moving random order from cooking to ready by 75% percent
+//		{
+//			Order* pOrder=nullptr;
+//			for (int i = 0; i < 15; i++)
+//			{
+//				if ((rand() % 100) < 75)
+//				{
+//					if (Cook_orders.dequeue(pOrder)) // dequeue the cooking order
+//					{
+//						Chef* assignedChef = pOrder->get_assigned_chef();
+//						pOrder->set_assigned_chef(nullptr);
+//						ChefType type = assignedChef->gettype();
+//
+//						switch (type) //return the chef to free list
+//						{
+//						case CN:
+//							Free_CN.enqueue(assignedChef);
+//							break;
+//						case CS:
+//							Free_CS.enqueue(assignedChef);
+//							break;
+//						}
+//
+//						FromCookingToReadyByType(pOrder); // add the order here according to its type  
+//
+//					}
+//					else
+//						break;
+//				}
+//			}
+//		}
+//
+//		for (int i = 0; i < 10; i++)
+//		{
+//			Order* pOrder = pickRandomOrderFromReadyLists();
+//
+//			if (pOrder)
+//			{
+//				OrderType type = pOrder->gettype();
+//
+//				switch (type)
+//				{
+//				case ODG:
+//				case ODN:
+//				{
+//					Table* pTable = pickRandomTable();
+//					if(pTable) 
+//					{
+//					((OD*)pOrder)->set_assigned_table(pTable);
+//						InServ.enqueue(pOrder);
+//					}
+//					else
+//					{
+//						Ready_OD.enqueue(pOrder);
+//					}
+//					break;
+//				}
+//				case OVG:
+//				case OVN:
+//				case OVC:
+//				{
+//					Scooter* pScooter = pickRandomScooter();
+//					((OV*)pOrder)->set_assigned_scooter(pScooter);
+//					if(pScooter) 
+//					{
+//						InServ.enqueue(pOrder);
+//					}
+//					else
+//					{
+//						Ready_OV.enqueue(pOrder);
+//					}
+//					break;
+//				}
+//
+//				case OT_O:
+//					Finished_Orders.push(pOrder); 
+//					break;
+//				}
+//			}
+//
+//		}
+//		int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
+//		if (totalGenerated > 0) {
+//			int randomID = (rand() % totalGenerated) + 1;
+//			CancelOrder(randomID); // handled the 3 cases inside it
+//		}
+//
+//		if ((rand() % 100) < 25) {
+//			Order* pFinished;
+//			if (InServ.dequeue(pFinished)) 
+//			{
+//				OrderType type = pFinished->gettype();
+//
+//				switch (type)
+//				{
+//				case ODG:
+//				case ODN:
+//				{
+//					Table* pTable = ((OD*)pFinished)->get_assigned_table();
+//					((OD*)pFinished)->set_assigned_table(nullptr);
+//					Free_Tables.enqueue(pTable); 
+//					break;
+//				}
+//				case OVC:
+//				case OVG:
+//				case OVN:
+//				{
+//					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
+//					((OV*)pFinished)->set_assigned_scooter(nullptr);
+//					Back_Scooters.enqueue(pScooter);  
+//					break;
+//				}
+//				}
+//				Finished_Orders.push(pFinished);
+//			}
+//		}
+//		UpdateInterface();
+//
+//		pUI->WaitForClick();
+//		CurrTimeStep++;
+//	}
+//}
 void Restaurant::AddToPending(Order* pOrder)
 {
 	OrderType OrderType = pOrder->gettype();  
@@ -535,10 +533,6 @@ Order* Restaurant::pickRandomOrderFromReadyLists()
 	}
 	return pOrder;
 }
-
-
-
-//Adam Ehab Phase 2 : 
 Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
 {
 	if (!pOrder)
@@ -757,6 +751,43 @@ Order* Restaurant::AssignScooter()
 
 
 
+
+void Restaurant::FromActionToPending(int time)
+{
+	Action* pAction; 
+	ActionListR.peek(pAction);
+	if (time == pAction->getTimeStep())
+	{
+		pAction->Act();
+		ActionListR.dequeue(pAction); 
+	}
+}
+
+void Restaurant::checkScootersList(int time)
+{
+	Scooter* pScooter;
+	Maint_Scooters.peek(pScooter);
+	if (pScooter->get_Main_Dur() == time - pScooter->getTimeStepOfMaint())
+	{
+		Maint_Scooters.dequeue(pScooter);
+		Free_Scooters.enqueue(pScooter); 
+	}
+	Back_Scooters.peek(pScooter);
+	if (pScooter->getReturnDistance() == 0)
+	{
+		Back_Scooters.dequeue(pScooter);
+		if (pScooter->get_Main_Ords() == pScooter->get_counter())
+		{
+			pScooter->setTimeStepOfMaint(time);
+			Maint_Scooters.enqueue(pScooter);
+			pScooter->reset_counter();
+		}
+		else
+		{
+			Free_Scooters.enqueue(pScooter); 
+		}
+	}
+}
 
 bool Restaurant::CancelOrder(int id) {
 	

@@ -1,15 +1,2 @@
-﻿  Action.cpp
-  Chef.cpp
-  Fit_Tables.cpp
-  OD.cpp
-  Order.cpp
-C:\Users\DELL\source\repos\abdelrahmaneid654\Restaurant-Simulation-System\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(78,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
-  OT.cpp
-  OV.cpp
-  Restaurant.cpp
-  Restraunt_Simulation.cpp
-  Scooter.cpp
-  Table.cpp
-  UI.cpp
-  Generating Code...
-  Restraunt_Simulation.vcxproj -> C:\Users\DELL\source\repos\abdelrahmaneid654\Restaurant-Simulation-System\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
+﻿  LINK : D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe not found or not built by the last incremental link; performing full link
+  Restraunt_Simulation.vcxproj -> D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe

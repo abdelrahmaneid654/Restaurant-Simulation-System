@@ -11,9 +11,13 @@ Scooter::Scooter(int s, int id, int m_o, int m_d)
 	total_busy_time = 0;
 	return_time = 0;
 }
-int Scooter::calc_priority() {
+int Scooter::calc_priorityForFree() { 
 	return total_dis;
-};
+}
+int Scooter::calc_priorityForBack()
+{
+	return returningDistance; 
+}
 
 int Scooter::get_ID() const
 {
@@ -33,6 +37,35 @@ int Scooter::get_total_dis() const
 int Scooter::get_total_btime() const
 {
 	return total_busy_time;
+}
+
+void Scooter::setTimeStepOfMaint(int t)
+{
+	timeStepOfMaint = t;
+}
+
+int Scooter::getTimeStepOfMaint()
+{
+	return timeStepOfMaint;
+}
+
+void Scooter::setReturnDistance(int d)
+{
+	returningDistance = d;
+}
+
+int Scooter::getReturnDistance()
+{
+	return returningDistance;
+}
+
+void Scooter::updateReturningDistance()
+{
+	if(returningDistance > 0)
+		returningDistance -= Speed; 
+
+	if (returningDistance < 0)
+		returningDistance = 0;
 }
 
 int Scooter::get_Speed() const
@@ -55,6 +88,7 @@ void Scooter::update_info(int d, int b_time)
 	counter++;
 	total_dis += d;
 	total_busy_time += b_time;
+	returningDistance = d / 2;
 }
 
 void Scooter::reset_counter()
