@@ -1,2 +1,10 @@
-﻿  LINK : D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe not found or not built by the last incremental link; performing full link
+﻿  Action.cpp
+  Fit_Tables.cpp
+  Order.cpp
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Order.cpp(78,9): warning C4244: 'return': conversion from 'const double' to 'int', possible loss of data
+  Restaurant.cpp
+  Restraunt_Simulation.cpp
+  Table.cpp
+  UI.cpp
+  Generating Code...
   Restraunt_Simulation.vcxproj -> D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
