@@ -32,8 +32,8 @@ private:
 	UI * pUI; // to reach and control the functions in UI class
 //LISTS
 	//Action List
-	Queue <Action*> ActionListR;//Action List Request
-	Queue <Action*> ActionListC;//Action List Cancellation
+	Queue <Action*> ActionList;//Action List
+	//Queue <Action*> ActionListC;//Action List Cancellation
 
 	// Orders 
 	 //1- Pending Orders 
@@ -94,6 +94,7 @@ private:
 	int OverWaitOrders;
 		//Chefs
 	int TotalChefs;//TotalChefs = numCS + numCN
+	int TotalTables;
 	//numScooter
 	double FinishedOrderPercentage;//FinishedOrderPercentage = FinishedOrders / TotalOrders
 	double CancelledOrderPercentage;// CancelledOrderPercentage = CancelledOrders / TotalOrders
@@ -158,6 +159,8 @@ public:
 	//Return the current time step need when execute actions .
 
 	void setRestaurantMode(Mode m);
+	void Load_from_Input_File(string filename);
+
 
 	~Restaurant();
 };

@@ -25,7 +25,7 @@ class Order
 
 
 public:
-	Order(int tq, int id,int size,double price,int t_serve); //TQ ,T_Serve from input file // and T_serve differ if it's OD or OV
+	Order(int tq, int id,int size,double price); //TQ ,T_Serve from input file // and T_serve differ if it's OD or OV
 
 	Chef* get_assigned_chef() const;
 	void set_assigned_chef(Chef* c);

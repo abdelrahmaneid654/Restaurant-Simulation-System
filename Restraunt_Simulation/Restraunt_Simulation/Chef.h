@@ -6,7 +6,7 @@ using namespace std;
 class Chef
 {	
 	int ID;
-	int speed;
+	//int speed;
 	int total_busy_time; // to calc Chefs utilization
 	ChefType type; 
 public:

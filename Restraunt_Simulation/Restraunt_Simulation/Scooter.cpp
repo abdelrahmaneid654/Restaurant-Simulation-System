@@ -1,11 +1,9 @@
 #include"Scooter.h"
 
-Scooter::Scooter(int s, int id, int m_o, int m_d)
+Scooter::Scooter(int s,int id)
 {
 	Speed = s;
 	ID = id;
-	Main_Ords = m_o;
-	Main_Dur = m_d;
 	counter = 0;
 	total_dis = 0;
 	total_busy_time = 0;

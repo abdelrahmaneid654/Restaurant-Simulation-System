@@ -36,13 +36,13 @@ ostream& operator<<(ostream& out, const Order* o) {
 	return out;
 }
 
-Order::Order(int tq, int id, int size, double price, int t_serve)
+Order::Order(int tq, int id, int size, double price)
 {
 	TQ = tq;
 	ID = id;
 	Size = size;
 	Price = price;
-	T_Serve = t_serve;
+	T_Serve = 0;
 	assigned_Chef = nullptr;
 	TA = 0;
 	TR = 0;

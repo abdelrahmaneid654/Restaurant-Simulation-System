@@ -15,7 +15,7 @@
 
 		Restaurant* pRest = new Restaurant();
 
-		pRest->RandomSimulation();
+	//	pRest->RandomSimulation();
 
 		delete pRest;
 

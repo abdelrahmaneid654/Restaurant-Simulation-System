@@ -3,11 +3,19 @@
 class RequestAction : public Action
 {
 private:
+	Order* pOrder;
 
 public:
 	RequestAction(Restaurant* r);
 	void Act();
+	void setOrder(Order* o);
+
 };
+
+void RequestAction::setOrder(Order* o)
+{
+	pOrder = o;
+}
 RequestAction::RequestAction(Restaurant* r) :Action(r)
 {
 }

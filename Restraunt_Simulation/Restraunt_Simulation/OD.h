@@ -11,7 +11,7 @@ class OD : public Order
 	OrderType Type; 
 	 
 public:
-	OD(int tq, int id, int size, double price, int t_serve, int seats, int dur, bool share, OrderType type); 
+	OD(int tq, int id, int size, double price, int seats, int dur, bool share, OrderType type); 
 	OrderType gettype()  const;
 	int get_num_of_seats();
 	bool IS_Sharable();

@@ -14,7 +14,7 @@ class Scooter
 	int returningDistance;
 	int total_busy_time; // to calc Scooters utilization
 public:
-	Scooter(int s, int id, int m_o, int m_d);
+	Scooter(int s, int id);
 
 	int get_ID() const;
 	int get_counter() const;

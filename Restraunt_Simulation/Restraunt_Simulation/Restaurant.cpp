@@ -1,5 +1,9 @@
 ﻿#include "Restaurant.h"
 #include "Action.h"
+#include"RequestAction.h"
+#include"CancelAction.h"
+
+#include"fstream"
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
@@ -646,6 +650,136 @@ bool Restaurant::CancelOrder(int id) {
 void Restaurant::setRestaurantMode(Mode m)
 {
 	RestaurantMode = m;
+}
+void Restaurant::Load_from_Input_File(string filename)
+{	
+	char action_type,canshare;
+	string type;
+	int tq, id, size, price, no_of_seats, order_dur, distance;
+
+	int nom_of_table_same_capacity,  capacity;
+
+
+	ifstream infile;
+	infile.open(filename);
+	if (!infile.is_open())
+		cout << "Error File name";
+	//OverWaitTime
+	else {
+		infile >> numCN >> numCS >> SpeedCN >> SpeedCS
+			>> numScooter >> ScooterSpeed >> BeforeMainOrders >> mainDur
+			>> TotalTables;
+
+		TotalChefs = numCN + numCS;
+		int chef_id = 0;
+		for (int i = 0; i < numCN; i++) {
+			Chef* cHef = new Chef(SpeedCN, chef_id++);
+			cHef->setType(CN);
+			Free_CN.enqueue(cHef);
+		}
+		for (int i = 0; i < numCS; i++) {
+			Chef* cHef = new Chef(SpeedCS, chef_id++);
+			cHef->setType(CS);
+			Free_CS.enqueue(cHef);
+		}
+		int Scooter_id = 0;
+		for (int i = 0; i < numScooter; i++) {
+			Scooter* sCooter = new Scooter(SpeedCN, Scooter_id++);
+			Free_Scooters.enqueue(sCooter);
+		}
+		int count=0;
+		int temp = 0;
+		while (count < TotalTables) {
+			infile >> nom_of_table_same_capacity >> capacity;
+			count += nom_of_table_same_capacity;
+
+				for (int i = 0; i < nom_of_table_same_capacity; i++) {
+					Table* t = new Table(temp++, capacity);
+					Free_Tables.enqueue(t);
+				
+				}
+		}
+
+		//infile >> OverWaitTime; // bonous
+		count = 0;
+		infile >> TotalOrders;
+		while (count++ < TotalOrders) {
+			infile >> action_type;
+			if (action_type == 'Q') {
+
+				infile >> type >> tq >> id >> size >> price;
+				if (type == "ODG" || type=="ODN") {
+					infile>>no_of_seats >> order_dur >> canshare;
+					bool share;
+
+					if (canshare == 'Y')
+						share = true;
+					else
+						share = false;
+
+					OrderType type1;
+					if (type == "ODG")
+						type1 = ODG;
+					else
+						type1 = ODN;
+
+					OD* oRder = new OD(tq, id, size, price, no_of_seats, order_dur, share, type1);
+					Action* aCtion = new RequestAction(this);
+					aCtion->setOrder((Order*)oRder);
+					aCtion->setTimeStep(tq);
+
+					ActionList.enqueue(aCtion);
+
+				}
+				else if (type == "OVN" || type=="OVC" || type=="OVG") {
+
+					infile >>distance;
+					OrderType type1;
+					if (type == "OVG")
+						type1 = OVG;
+					else if (type == "OVN")
+						type1 = OVN;
+					else
+						type1 = OVC;
+
+					OV* oRder = new OV(tq, id, size, price, distance, type1);
+					Action* aCtion = new RequestAction(this);
+					aCtion->setOrder((Order*)oRder);
+					aCtion->setTimeStep(tq);
+					ActionList.enqueue(aCtion);
+
+
+				}
+				else {
+
+					OT* oRder = new OT(tq, id, size, price);
+					Action* aCtion = new RequestAction(this);
+					aCtion->setOrder((Order*)oRder);
+					aCtion->setTimeStep(tq);
+					ActionList.enqueue(aCtion);
+				}
+
+	
+			}
+			else if(action_type=='X'){
+			
+				int tcancel; // cancellation timestep
+				infile >> tcancel >> id;
+				Action* aCtion = new CancelAction(this,id);
+				aCtion->setTimeStep(tcancel);
+				ActionList.enqueue(aCtion);
+
+
+					
+
+			
+			}
+		}
+		
+
+
+
+	}
 }
 Restaurant::~Restaurant()
 {
