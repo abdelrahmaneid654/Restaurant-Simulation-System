@@ -77,11 +77,11 @@ private:
 	int numCN; //number of the normal chefs work in the restaurant [I need to ask teh TA about that]
 	int numCS; //number of the special chefs work in the restaurant [I need to ask teh TA about that]
 	int numScooter;//number of the scooters work in the restaurant [I need to ask teh TA about that]
-	int mainDur; //Maintainance duration for each scooter
+	int MainDur; //Maintainance duration for each scooter
+	int BeforeMainOrders; //Number of orders that the scooter take before it goes to the maintainace list
 	int ScooterSpeed;
 	int SpeedCN;
 	int SpeedCS;
-	int BeforeMainOrders; //Number of orders that the scooter take before it goes to the maintainace list
 	int OverWaitTime; //over wait threshold [ It is made for even if the { current time - the TQ(Time request) > OverWaitTime } the order will be inc in priority it is speacial for the OVG orders
 	//Statistics VAriables for the Output file 
 		//Orders : Total number of orders and total number of each order type 
@@ -92,6 +92,7 @@ private:
 	int FinishedOrders;
 	int CancelledOrders;
 	int OverWaitOrders;
+
 		//Chefs
 	int TotalChefs;//TotalChefs = numCS + numCN
 	int TotalTables;
@@ -112,7 +113,9 @@ private:
 	//Sequence Functions:
 	//Order* FromPendingToCookingByType(Order* pOrder);//////0
 	Order* FromCookingToReadyByType(Order* pOrder);
-	void FromActionToPending(int time);
+
+	//void FromActionToPending(int time); //NO NEED FOR IT, AS ALREADY FUNCTION Act MAKE THIS
+	void getAverage(); 
 	void checkScootersList(int time);
 	bool assignTable(Order* o);
 	//Order* FromReadyToInServByType(Order* pOrder);/////

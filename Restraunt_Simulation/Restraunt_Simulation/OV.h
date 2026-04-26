@@ -17,6 +17,7 @@ public:
 	int calc_priority();
 	int get_delivery_time();
 	void set_dilvery_time(int t);
+	virtual void printInFile(ofstream& file);
 
 };
 

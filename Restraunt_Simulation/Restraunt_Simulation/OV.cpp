@@ -31,6 +31,12 @@ void OV::set_dilvery_time(int t)
 	delivery_time = t;
 }
 
+void OV::printInFile(ofstream& file)
+{
+	Order::printInFile(file);
+	file << delivery_time << " ";
+}
+
 
 
 OrderType OV::gettype() const

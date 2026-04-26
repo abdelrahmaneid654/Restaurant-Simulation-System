@@ -8,5 +8,6 @@ public:
 	OT(int tq, int id, int size, double price);
 
 	OrderType gettype() const;
+	virtual void printInFile(ofstream& file);
 };
 

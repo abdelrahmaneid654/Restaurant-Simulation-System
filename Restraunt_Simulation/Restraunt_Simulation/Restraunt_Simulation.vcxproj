@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
+    <ClCompile Include="CancelAction.cpp" />
     <ClCompile Include="Chef.cpp" />
     <ClCompile Include="Fit_Tables.cpp" />
     <ClCompile Include="OD.cpp" />

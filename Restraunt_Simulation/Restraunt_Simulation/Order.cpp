@@ -139,17 +139,13 @@ void Order::set_TF(int tf)
 	TF = tf;
 }
 
-int Order::get_T_Serve() const
-{
-	return T_Serve;
-}
 
 int Order::calc_priority() {
 	return 0;
 }
 void Order::printInFile(ofstream& file)
 {
-	file << TF << " " << ID << " " << TQ << " " << TA << " " << TR << " " << TS << " " << get_TI() << " " << get_TC() << " " << get_TW() << " " << get_T_Serve();
+	file << TF << " " << ID << " " << TQ << " " << TA << " " << TR << " " << TS << " " << get_TI() << " " << get_TC() << " " << get_TW() << " ";
 }
 Order::~Order() {
 	

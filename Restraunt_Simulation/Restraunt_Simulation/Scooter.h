@@ -7,8 +7,6 @@ class Scooter
 {
 	int Speed;
 	int ID;
-	int Main_Ords;
-	int	Main_Dur;
 	int counter;
 	int total_dis;
 	int timeStepOfMaint;
@@ -30,8 +28,6 @@ public:
 	void updateReturningDistance(); // just decrement the returning distance
 
 	int get_Speed() const;
-	int get_Main_Ords() const;
-	int get_Main_Dur() const;
 	void update_info(int dis,int b_time,ScooterState s); // used when a scooter is assigned, returning distance is setted here
 	void reset_counter();
 	int calc_priority();

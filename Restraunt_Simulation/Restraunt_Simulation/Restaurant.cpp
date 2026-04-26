@@ -10,7 +10,7 @@ Restaurant::Restaurant()
 	CurrTimeStep = 0;
 	numCN = numCS = 0;
 	numScooter = 0;
-	mainDur = 0;
+	MainDur = 0;
 	OverWaitTime = 0;
 	////////////////////////////////////
 	ScooterSpeed = 0;
@@ -30,92 +30,10 @@ Restaurant::Restaurant()
 	pUI = new UI(temp);
 
 }
-/*
-void Restaurant::LoadFromFile()
-{
-
-}
-
-void Restaurant::SaveToFile()
-{
-
-}
-
-void Restaurant::TakeOrderInputFile()
-{
-
-}
-*/
 
 //Now I comment this function ,for a later time .
 
-//void Restaurant::MoveOrderLists()
-//{/*
-// I Write this only to make the reader to understand the logic : we move from back to front [in the sequence of the order]
-// so we start from Ready lists and put the orders in the IN_Serv lists then put in  finished lists and for each type : OV make all need implementations for
-// Scooters and for OT [it is the most easiest logic] move to finish list,and for OD  make all need implementations for
-// Tables Sharing and non_Sharing
-//
-// */
-//
-//	while (!Ready_OV.isempty() && !Free_Scooters.isempty())
-//	{
-//		Order* pOrder;
-//		Scooter* pScooter;
-//		Free_Scooters.dequeue(pScooter);
-//		Ready_OV.dequeue(pOrder);
-//		OV* temp = (OV*)pOrder;
-//		InServ.enqueue(pOrder);
-//		temp->set_assigned_scooter(pScooter);
-//		//Time to return back:Time Travel is 2* distance/ScooterSpeed
-//		int TravelTime = 2 * temp->get_distance()/ ScooterSpeed;
-//		pScooter->set_return_time(CurrTimeStep + TravelTime);
-//		pScooter->update_info(temp->get_distance(), TravelTime);
-//
-//		pOrder->set_TF(CurrTimeStep + TravelTime/2);
-//		Finished_Orders.push(pOrder);
-//		Back_Scooters.dequeue(pScooter);
-//		Free_Scooters.enqueue(pScooter);
-//
-//
-//	}
-//	while (!Ready_OT.isempty())
-//	{
-//		Order* pOrder;
-//		Ready_OT.dequeue(pOrder);
-//
-//		pOrder->set_TF(CurrTimeStep);
-//		Finished_Orders.push(pOrder);
-//
-//	}
-//
-//	//It is for Dine in Orders but Still not Finished
-//	while (!Ready_OD.isempty())
-//	{
-//		Order* pOrder; 
-//		Table* pTable;
-//		Ready_OD.dequeue(pOrder);
-//		bool ShareableFlag = ((OD*)pOrder)->IS_Sharable();// Function getFlag is specialized only about the Sharable flag .
-//		OD* temp = (OD*)pOrder;
-//		pTable=Free_Tables.getBest(temp);
-//		T TableFlag = pTable->get_Is_sharable();
-//		int NeededSeats= temp->get_num_of_seats();
-//		switch (ShareableFlag)
-//		{
-//		case 0: //Shareable Order
-//			if (!TableFlag)// 0 For sharable table
-//			{
-//				//int AvailableSeats = pTable->getAvailableSeats(); In this I tried to use variable to be better  in shape but I don't like it after that,Even It is still an option to me
-//				temp->set_assigned_table(pTable);
-//			}
-//			break;
-//		case 1://Not Shareable Order
-//			temp->set_assigned_table(pTable);
-//
-//			break;
-//		}
-//	}
-//}
+
 
 int Restaurant::GetCurrentTimestep() const
 {
@@ -336,12 +254,41 @@ void Restaurant::createOutputFile()
 	if (file.is_open())
 	{
 		Order* pOrder = nullptr;
+		Stack<Order*> temp; 
 
 		while (!Finished_Orders.isempty())
 		{
 			Finished_Orders.pop(pOrder);
+			pOrder->printInFile(file); 
+			file << endl;
 
+			temp.push(pOrder);
 		}
+
+		while (!temp.isempty()) // return elements back in Finished_Orders
+		{
+			Order* p;
+			temp.pop(p);
+			Finished_Orders.push(p); 
+		}
+
+		file << "Total number of orders: " << TotalOrders << endl;
+		file << "Dine-In Orders: " << OrdersOD << endl;
+		file << "Delivery Orders: " << OrdersOV << endl; 
+		file << "Takeaway Orders: " << OrdersOT << endl; 
+
+		file << "Total number of chefs: " << TotalChefs << endl;
+		file << "Special Chefs: " << numCS << endl;
+		file << "Normal Chefs: " << numCN << endl;
+
+		file << "Total number of Scooters: " << numScooter << endl;
+		/*file << "Special Chefs: " << numCS << endl;
+		file << "Normal Chefs: " << numCN << endl;*/
+		
+		file << "Percentage of Finished orders: " << 1.0*FinishedOrders/TotalOrders * 100.0 << endl;
+		file << "Percentage of Cancelled orders: " << 1.0 * CancelledOrders / TotalOrders * 100.0 << endl;
+
+		
 	}
 
 }
@@ -584,19 +531,24 @@ Order* Restaurant::AssignScooter()
 
 
 
-void Restaurant::FromActionToPending(int time)
-{
-	Action* pAction; 
-	ActionList.peek(pAction); 
 
-	if( ( (RequestAction*)pAction) )
+
+void Restaurant::getAverage()
+{
+	Stack<Order*> temp;
+	Order* pOrder;
+
+	// Avergae TI
+	double sumTI = 0;
+	for (int i = 0;i < FinishedOrders;i++)
 	{
-		if (time == pAction->getTimeStep())
-		{
-			pAction->Act();
-			ActionList.dequeue(pAction);
-		}
+		Finished_Orders.pop(pOrder);
+		sumTI += pOrder->get_TI();
+
+		temp.push(pOrder);
 	}
+
+
 }
 
 void Restaurant::checkScootersList(int time)
@@ -604,7 +556,7 @@ void Restaurant::checkScootersList(int time)
 	Scooter* pScooter;
 
 	Maint_Scooters.peek(pScooter);
-	if (pScooter->get_Main_Dur() == time - pScooter->getTimeStepOfMaint())
+	if (MainDur == time - pScooter->getTimeStepOfMaint())
 	{
 		Maint_Scooters.dequeue(pScooter);
 		pScooter->update_info(0, 0, Free);
@@ -616,10 +568,10 @@ void Restaurant::checkScootersList(int time)
 	{
 		Back_Scooters.dequeue(pScooter);
 
-		if (pScooter->get_Main_Ords() == pScooter->get_counter())
+		if (BeforeMainOrders == pScooter->get_counter())
 		{
 			pScooter->setTimeStepOfMaint(time);
-			pScooter->update_info(0, pScooter->get_Main_Ords(),Maint); 
+			pScooter->update_info(0, MainDur,Maint);  
 			Maint_Scooters.enqueue(pScooter); 
 			pScooter->reset_counter();
 		}
@@ -683,22 +635,21 @@ bool Restaurant::CancelOrder(int id) {
 
 	if (cancelledOVC) 
 	{
-		Scooter* pScooter = ((OV*)cancelledOVC)->get_assigned_scooter();
-		((OV*)cancelledOVC)->set_assigned_scooter(nullptr);
 		Cancelled_Orders.enqueue(cancelledOVC);
+		CancelledOrders++;
 		return true;
 	}
 	else if (cancelledReady)
 	{ 
-		Scooter* pScooter = ((OV*)cancelledReady)->get_assigned_scooter();
-		((OV*)cancelledReady)->set_assigned_scooter(nullptr);
 		Cancelled_Orders.enqueue(cancelledReady);  
+		CancelledOrders++;
 		return true;
 	}
 	else if (cancelledCook) 
 	{
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
 		ChefType type = assigned->gettype();  
+		CancelledOrders++;  
 		switch(type)
 		{
 		case CN:
@@ -732,7 +683,7 @@ void Restaurant::Load_from_Input_File(string filename)
 	//OverWaitTime
 	else {
 		infile >> numCN >> numCS >> SpeedCN >> SpeedCS
-			>> numScooter >> ScooterSpeed >> BeforeMainOrders >> mainDur
+			>> numScooter >> ScooterSpeed >> BeforeMainOrders >> MainDur
 			>> TotalTables;
 
 		TotalChefs = numCN + numCS;

@@ -21,7 +21,6 @@ class Order
 						//TC				//Order Cook Period
 						//TW				//Customer Wait Time
 	int TF;				//Order Finish Time
-	int T_Serve;		// Service Duration
 	
 
 
@@ -58,12 +57,11 @@ public:
 	int get_TF()	const;
 	void set_TF(int tf) ;
 
-	int get_T_Serve() const;
 
 	virtual OrderType gettype()  const = 0;
 	virtual int calc_priority();
 	
-	void printInFile(ofstream& file); 
+	virtual void printInFile(ofstream& file); 
 	
 	virtual ~Order() = 0;
 

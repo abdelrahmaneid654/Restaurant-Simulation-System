@@ -66,15 +66,6 @@ int Scooter::get_Speed() const
 	return Speed;
 }
 
-int Scooter::get_Main_Ords() const
-{
-	return Main_Ords;
-}
-
-int Scooter::get_Main_Dur() const
-{
-	return Main_Dur;
-}
 
 void Scooter::update_info(int d, int b_time, ScooterState s)
 {

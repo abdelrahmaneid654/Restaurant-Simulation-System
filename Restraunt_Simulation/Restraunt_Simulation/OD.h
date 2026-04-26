@@ -18,5 +18,6 @@ public:
 	int get_duration();
 	void set_assigned_table(Table* t);
 	Table* get_assigned_table();
+	virtual void printInFile(ofstream& file);
 };
 

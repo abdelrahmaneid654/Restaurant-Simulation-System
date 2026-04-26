@@ -42,3 +42,10 @@ Table* OD::get_assigned_table()
 {
     return assigned_table;
 }
+
+void OD::printInFile(ofstream& file)
+{
+    Order::printInFile(file);
+    file << duration << " ";
+
+}
