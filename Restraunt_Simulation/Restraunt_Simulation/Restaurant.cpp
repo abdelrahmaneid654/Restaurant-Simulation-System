@@ -745,7 +745,7 @@ void Restaurant::Load_from_Input_File(string filename)
 		}
 		int Scooter_id = 0;
 		for (int i = 0; i < numScooter; i++) {
-			Scooter* sCooter = new Scooter(SpeedCN, Scooter_id++);
+			Scooter* sCooter = new Scooter(ScooterSpeed, Scooter_id++);
 			Free_Scooters.enqueue(sCooter);
 		}
 		int count=0;
@@ -829,16 +829,8 @@ void Restaurant::Load_from_Input_File(string filename)
 				Action* aCtion = new CancelAction(this,id);
 				aCtion->setTimeStep(tcancel);
 				ActionList.enqueue(aCtion);
-
-
-					
-
-			
 			}
 		}
-		
-
-
 
 	}
 }
