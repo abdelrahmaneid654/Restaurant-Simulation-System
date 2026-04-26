@@ -21,7 +21,7 @@ private:
 public:
 	UI(Restaurant* p);
 
-	void Print(const Queue<Action*>& ActionListR, const Queue<Action*> &ActionListC,
+	void Print(const Queue<Action*>& ActionList, 
 		const Queue<Order*> &Pend_ODG, const Queue<Order*> &Pend_ODN, const Queue<Order*> &Pend_OT, const Queue<Order*> &Pend_OVN,
 		const Pending_OVC<Order*> &Pend_OVC, const Queue<Order*> &Pend_OVG, const Queue<Order*> &Ready_OT, const Queue<Order*>& Ready_OD,
 		const RDY_OV<Order*> &Ready_OV, const Cooking_Orders<Order*> &Cooking_orders, const Queue<Order*> &Cancelled_Orders,

@@ -5,7 +5,6 @@ class Restaurant;
 class Action
 {
 protected:
-	Order* pOrder;
 	int timeStep;
 	Restaurant* pRes;  
 public:
@@ -13,6 +12,5 @@ public:
 	virtual void Act() = 0;
 	void setTimeStep(int t);
 	int getTimeStep();
-	void setOrder(Order* o);
 };
 
