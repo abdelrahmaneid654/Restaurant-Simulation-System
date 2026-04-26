@@ -126,7 +126,7 @@ int Restaurant::GetCurrentTimestep() const
 {
 	//Don't forget that you didn't add any variable for point 6 
 	//Joke :Cnrl C Cntrl V function
-	pUI->Print(ActionListR, ActionListC, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG, 
+	pUI->Print(ActionList, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG,
 		Ready_OT, Ready_OD, Ready_OV, Cook_orders, Cancelled_Orders, Finished_Orders, InServ, 
 		Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Back_Scooters,Free_Tables, 
 		Busy_Sharable, Busy_No_Share);
@@ -587,11 +587,15 @@ Order* Restaurant::AssignScooter()
 void Restaurant::FromActionToPending(int time)
 {
 	Action* pAction; 
-	ActionListR.peek(pAction);
-	if (time == pAction->getTimeStep())
+	ActionList.peek(pAction); 
+
+	if( ( (RequestAction*)pAction) )
 	{
-		pAction->Act();
-		ActionListR.dequeue(pAction); 
+		if (time == pAction->getTimeStep())
+		{
+			pAction->Act();
+			ActionList.dequeue(pAction);
+		}
 	}
 }
 
@@ -784,9 +788,8 @@ void Restaurant::Load_from_Input_File(string filename)
 					else
 						type1 = ODN;
 
-					OD* oRder = new OD(tq, id, size, price, no_of_seats, order_dur, share, type1);
-					Action* aCtion = new RequestAction(this);
-					aCtion->setOrder((Order*)oRder);
+					Order* oRder = new OD(tq, id, size, price, no_of_seats, order_dur, share, type1); 
+					Action* aCtion = new RequestAction(this,oRder); 
 					aCtion->setTimeStep(tq);
 
 					ActionList.enqueue(aCtion);
@@ -803,20 +806,19 @@ void Restaurant::Load_from_Input_File(string filename)
 					else
 						type1 = OVC;
 
-					OV* oRder = new OV(tq, id, size, price, distance, type1);
-					Action* aCtion = new RequestAction(this);
-					aCtion->setOrder((Order*)oRder);
+					Order* oRder = new OV(tq, id, size, price, distance, type1); 
+					Action* aCtion = new RequestAction(this,oRder); 
 					aCtion->setTimeStep(tq);
-					ActionList.enqueue(aCtion);
 
+					ActionList.enqueue(aCtion);
 
 				}
 				else {
 
-					OT* oRder = new OT(tq, id, size, price);
-					Action* aCtion = new RequestAction(this);
-					aCtion->setOrder((Order*)oRder);
+					Order* oRder = new OT(tq, id, size, price);
+					Action* aCtion = new RequestAction(this,oRder); 
 					aCtion->setTimeStep(tq);
+
 					ActionList.enqueue(aCtion);
 				}
 

@@ -3,7 +3,6 @@
 class CancelAction :public Action
 {
 private:
-	// orderType here is just an order that holds order ID that need to be cancelled
 	int id;
 public:
 	CancelAction(Restaurant* r,int i);
