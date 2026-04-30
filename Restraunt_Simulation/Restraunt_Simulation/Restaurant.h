@@ -111,8 +111,13 @@ private:
 	//PRIVATE FUNCTIONS
 private: 
 	//Sequence Functions:
-	//Order* FromPendingToCookingByType(Order* pOrder);//////0
-	Order* FromCookingToReadyByType(Order* pOrder);
+	void AddToPending(Order* pOrder); //khaled 
+
+	void FromPendingToCooking();// khaled
+
+	void FromCookingToReady(); //khaled
+	void addOrderToReadyByType(Order* pOrder); // helper fn inside FromCookingToReady
+	void releaseChef(Order* pOrder); // helper fn inside FromCookingToReady
 
 	//void FromActionToPending(int time); //NO NEED FOR IT, AS ALREADY FUNCTION Act MAKE THIS
 	void getAverage(); 
@@ -137,7 +142,6 @@ private:
 public:
 	// Declaration only: implementation must remain in Restaurant.cpp
 	Restaurant();
-	void AddToPending(Order* pOrder);
 	void createOutputFile(); 
 
 

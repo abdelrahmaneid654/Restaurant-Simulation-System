@@ -248,6 +248,17 @@ void Restaurant::AddToPending(Order* pOrder)
 	}
 }
 
+void Restaurant::FromPendingToCooking()
+{
+	Order* pOrder; 
+	Pend_ODG.peek(pOrder);
+	 
+	if (CurrTimeStep == pOrder->get_TA())
+	{
+
+	}
+}
+
 void Restaurant::createOutputFile()
 {
 	ofstream file("Output.txt");
@@ -312,74 +323,72 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 }
 
 
-Order* Restaurant::FromCookingToReadyByType(Order* pOrder)
+void Restaurant::addOrderToReadyByType(Order* pOrder) 
 {
 	if (!pOrder)
-		return NULL;
-	Chef* assignedChef = pOrder->get_assigned_chef();
-//	assignedChef->gettype() == CN ? Free_CN.enqueue(assignedChef) : Free_CS.enqueue(assignedChef);
-	if (assignedChef)//I make this instead of the above line to avoid the crash if the assignedchef is nullptr
-	{
-		
-		ChefType type = assignedChef->gettype();
-		switch (type)
-		{
-		case CN:
-			Free_CN.enqueue(assignedChef);
-			break;
-		case CS:
-			Free_CS.enqueue(assignedChef);
-			break;
-		}
-		assignedChef->update_info(CurrTimeStep - pOrder->get_TA());
-	pOrder->set_assigned_chef(nullptr);
-	
-	}
-	pOrder->set_TR(CurrTimeStep);
+		return;
+
 	OrderType type = pOrder->gettype();
-	switch(type)
+	switch (type) 
 	{
-	case ODG: //Dine in Orders
+	case ODG:
 	case ODN: 
 	{
 		Ready_OD.enqueue(pOrder);
-		//Table* pTable = pickRandomTable();
-		//((OD*)pOrder)->set_assigned_table(pTable); 
-		break;
-	}
-	case OT_O :
-	{ //Take away Orders
-//		FinalizeOT();
-		Ready_OT.enqueue(pOrder);
-		break; 
-	}
-	case OVC:
-	{
-		Ready_OV.enqueue(pOrder);
-		//Scooter* pScooter = pickRandomScooter();
-		//((OV*)pOrder)->set_assigned_scooter(pScooter);
 		break;
 	}
 	case OVG: 
-	{
-		Ready_OV.enqueue(pOrder);
-		//Scooter* pScooter = pickRandomScooter();
-		//((OV*)pOrder)->set_assigned_scooter(pScooter);
-		break;
-	}
 	case OVN:
+	case OVC:
 	{
-		Ready_OV.enqueue(pOrder);
-		//Scooter* pScooter = pickRandomScooter();
-		//((OV*)pOrder)->set_assigned_scooter(pScooter);
+		Ready_OV.enqueue(pOrder); 
 		break;
 	}
-	default: {
-		// To avoid Crashing
+	case OT_O:
+	{
+		Ready_OT.enqueue(pOrder); 
 		break;
 	}
 	}
-	return pOrder;
+}
+
+void Restaurant::FromCookingToReady()
+{
+	Order* pOrder;
+	Cook_orders.peek(pOrder); 
+
+	if (CurrTimeStep == pOrder->get_TR()) 
+	{
+		Cook_orders.dequeue(pOrder);
+		addOrderToReadyByType(pOrder); 
+		releaseChef(pOrder); 
+		
+	}
+}
+void Restaurant::releaseChef(Order* pOrder)
+{
+	if (!pOrder)
+		return;
+
+	Chef* assignedChef = pOrder->get_assigned_chef();
+
+	if (assignedChef)
+	{
+
+		ChefType type = assignedChef->gettype(); 
+		switch (type) 
+		{
+		case CN: 
+			Free_CN.enqueue(assignedChef); 
+			break;
+		case CS: 
+			Free_CS.enqueue(assignedChef); 
+			break; 
+		}
+		assignedChef->update_info(CurrTimeStep - pOrder->get_TA()); 
+		pOrder->set_assigned_chef(nullptr); 
+
+	}
 }
 Order* Restaurant::AssingPendingToChef(Order* pOrder)
 {
