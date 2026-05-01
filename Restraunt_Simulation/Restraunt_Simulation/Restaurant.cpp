@@ -25,6 +25,12 @@ Restaurant::Restaurant()
 	///////////////////////////////////
 	TotalChefsBusyTime = 0;
 	TotalScootersBusyTime = 0;
+	////////////////////////////;
+	sumTI = 0;
+	sumTC = 0;
+	sumTserv=0;
+	sumTW = 0;
+
 	//DON'T forget the point6 variables
 	Restaurant* temp = this;
 	pUI = new UI(temp);
@@ -579,12 +585,12 @@ void Restaurant::releaseTable(Order* pOrder)
 	Free_Tables.enqueue(pTable); 
 }
 
-Order* Restaurant::AssignScooter(Order* p) 
+Order* Restaurant::AssignScooter(Order* p)
 {
 	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
-	Order* pOrder =nullptr;
-	
-	Order* pnext=NULL;
+	Order* pOrder = nullptr;
+
+	Order* pnext = NULL;
 	if (Ready_OV.isempty() || Free_Scooters.isempty())
 		return NULL;
 	Ready_OV.peek(pOrder);
@@ -599,8 +605,10 @@ Order* Restaurant::AssignScooter(Order* p)
 			pnext = pOrder->next;
 			pOrder = pnext;
 
-
-
+		}
+	}
+}
+		
 
 
 
@@ -744,10 +752,67 @@ void Restaurant::setRestaurantMode(Mode m)
 	RestaurantMode = m;
 }
 
+void Restaurant::Check_Finished_Dine_in() {
+	Order* finished;
+	InServ.dequeue(finished);
+	sumTI += finished->get_TI();
+	sumTC += finished->get_TC();
+	sumTserv += ((OD*)finished)->get_duration();
+	sumTW += finished->get_TW();
 
 
-void Check_Finished_Orders() {
+	Table* pTable = ((OD*)finished)->get_assigned_table();
+	int seats = ((OD*)finished)->get_num_of_seats();
 
+	
+		if (((OD*)finished)->IS_Sharable()) {					// remove then modify then enqueue
+			Busy_Sharable.remove_table(pTable);
+			pTable->leave_order(seats);
+			if (pTable->get_free_seats() == pTable->get_capacity())
+				Free_Tables.enqueue(pTable);
+			else
+				Busy_Sharable.enqueue(pTable);
+
+		}
+		else {
+
+			Busy_No_Share.remove_table(pTable);
+			pTable->leave_order(seats);
+			Free_Tables.enqueue(pTable);
+			
+
+		}
+
+	
+	((OD*)finished)->set_assigned_table(NULL);
+
+	Finished_Orders.push(finished);
+
+}
+
+
+void Restaurant::Check_Finished_Delivery() {
+
+	Order* finished;
+	InServ.dequeue(finished);
+	sumTI += finished->get_TI();
+	sumTC += finished->get_TC();
+	sumTserv += ((OV*)finished)->get_delivery_time();
+	sumTW += finished->get_TW();
+
+}
+
+
+void Restaurant::Check_Finished_Orders() {
+	Order* temp;
+
+	InServ.peek(temp);
+	if (temp->get_TF() == CurrTimeStep) {
+		if (temp->gettype() == ODN || temp->gettype() == ODG)
+			Check_Finished_Dine_in();
+		else
+			Check_Finished_Delivery();
+	}
 
 }
 void Restaurant::Load_from_Input_File(string filename)

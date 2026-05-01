@@ -13,12 +13,14 @@ int OV::get_distance()
 }
 
 
-int OV::calc_priority()
+int OV::calc_priority(int z)
 {
-	if (Type == ODG)
-	return (getsize() * getprice()) / get_distance();
+
+	if (z == 0)
+		return get_TF();
 	else
-		return 0;
+		return -1 * ((getsize() * getprice()) / get_distance());
+	
 }
 
 int OV::get_delivery_time()

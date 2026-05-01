@@ -41,7 +41,7 @@ void Table::leave_order(int s)
 	free_seats += s; 
 }
 
-int Table::calc_priority()
+int Table::calc_priority(int z)
 {
 	return free_seats;
 }

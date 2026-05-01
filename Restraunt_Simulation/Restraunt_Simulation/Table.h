@@ -18,7 +18,7 @@ public:
 	void set_IS_sharable(TableType s);
 	void put_order(OD *o);
 	void  leave_order(int s);
-	int calc_priority();
+	int calc_priority(int z=0);
 };
 ostream& operator<<(ostream& out, const Table *t);
 
