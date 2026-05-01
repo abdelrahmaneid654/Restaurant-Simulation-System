@@ -128,8 +128,7 @@ private:
 	void FromInServToFinished();// khaled
 	void releaseTable(Order* pOrder); //helper inside FromInServToFinished
 
-	void getAverage(); 
-	void checkScootersList(int time);
+	void checkScootersList();
 	bool assignTable(Order* o);
 	// 
 	//Random Functions: 
