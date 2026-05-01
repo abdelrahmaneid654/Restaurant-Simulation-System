@@ -116,6 +116,7 @@ private:
 	//PRIVATE FUNCTIONS
 private: 
 	//Sequence Functions:
+	Action* checkActions();
 
 	void FromPendingToCooking();// khaled
 	void assignChefToOrderByType(Order* pOrder); // helper inside FromPendingToCooking
@@ -149,8 +150,9 @@ public:
 	Restaurant();
 	void AddToPending(Order* pOrder); //khaled , public to let RequestAction class access it
 
-	void createOutputFile(); 
+	void createOutputFile(string fileName);  
 
+	void mainSimulation(); 
 
 	/* 
 	Functions will be used in phase 2:

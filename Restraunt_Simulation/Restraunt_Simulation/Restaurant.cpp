@@ -254,6 +254,20 @@ void Restaurant::AddToPending(Order* pOrder)
 	}
 }
 
+Action* Restaurant::checkActions()
+{
+	Action* pAction;
+	ActionList.peek(pAction);
+
+	if (pAction->getTimeStep() == CurrTimeStep)
+	{
+		ActionList.dequeue(pAction);
+		pAction->Act();
+		return pAction; 
+	}
+	return nullptr;
+}
+
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
@@ -389,10 +403,11 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 
 
 
-void Restaurant::createOutputFile()
+void Restaurant::createOutputFile(string fileName) 
 {
-	ofstream file("Output.txt");
-	if (file.is_open())
+	ofstream file(fileName); 
+
+	if (file.is_open()) 
 	{
 		Order* pOrder = nullptr;
 		Stack<Order*> temp; 
@@ -421,6 +436,17 @@ void Restaurant::createOutputFile()
 		file << "Chefs utilization % " << TotalChefsBusyTime / (CurrTimeStep * TotalChefs) << endl;
 	}
 
+}
+
+void Restaurant::mainSimulation()
+{
+	string fileName = pUI->getFileName(); 
+	Load_from_Input_File(fileName);
+
+	Mode m = pUI->chooseMode();
+
+	checkActions(); // has Act inside it
+	checkScootersList();
 }
 
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
@@ -604,31 +630,34 @@ void Restaurant::checkScootersList()
 {
 	Scooter* pScooter; 
 
-	Maint_Scooters.peek(pScooter);
-	if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
+	do
 	{
-		Maint_Scooters.dequeue(pScooter);
-		pScooter->update_info(0, 0, Free);
-		Free_Scooters.enqueue(pScooter); 
-	}
+		Maint_Scooters.peek(pScooter);
+		if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
+		{
+			Maint_Scooters.dequeue(pScooter);
+			pScooter->setState(Free);
+			Free_Scooters.enqueue(pScooter);
+		}
+	} while (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint());
 
 	Back_Scooters.peek(pScooter);
-	if (pScooter->getReturnDistance() == 0)
+	if (pScooter->getReturnTime() == CurrTimeStep)
 	{
 		Back_Scooters.dequeue(pScooter);
 
 		if (BeforeMainOrders == pScooter->get_counter())
 		{
 			pScooter->setTimeStepOfMaint(CurrTimeStep);
-			pScooter->update_info(0, MainDur,Maint);  
-			TotalScootersBusyTime += MainDur; 
+			pScooter->setState(Maint); 
+			TotalScootersBusyTime += MainDur;  
 			Maint_Scooters.enqueue(pScooter); 
 			pScooter->reset_counter();
 		}
 		else
 		{
-			pScooter->update_info(0, 0, Free);
-			Free_Scooters.enqueue(pScooter); 
+			pScooter->setState(Free); 
+			Free_Scooters.enqueue(pScooter);  
 		}
 	}
 }

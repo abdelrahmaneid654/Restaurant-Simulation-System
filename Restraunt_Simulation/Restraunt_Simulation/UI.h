@@ -30,10 +30,12 @@ public:
 		const Queue<Scooter*> &Maint_Scooters, const PriQueue<Scooter*> &Back_Scooters, const Fit_Tables &Free_Tables,
 		const Fit_Tables &Busy_Sharable, const Fit_Tables &Busy_No_Share);
 
-	void chooseMode();
+	Mode chooseMode();
 
 	void setProgramMode(Mode m);
 
 	void WaitForClick();
+
+	string getFileName();
 
 };

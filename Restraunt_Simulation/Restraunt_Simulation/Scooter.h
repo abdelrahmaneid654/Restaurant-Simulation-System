@@ -24,9 +24,11 @@ public:
 	void setTimeStepOfMaint(int t); // setted when counter == Main_Ord 
 	int getTimeStepOfMaint();
 
+	void setState(ScooterState s);
+	int getReturnTime();
 
 	int get_Speed() const;
-	void update_info(int dis,int b_time,ScooterState s); // used when a scooter is assigned, returning distance is setted here
+	void update_info(int dis,int currtimestep); // used when a scooter is assigned, returning distance is setted here
 	void reset_counter();
 	int calc_priority(int z);
 
