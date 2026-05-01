@@ -126,7 +126,6 @@ private:
 	void releaseChef(Order* pOrder); // helper fn inside FromCookingToReady
 
 	void FromReadyToInServ();// khaled 
-	void releaseTable(Order* pOrder); //helper inside FromInServToFinished
 
 	void checkScootersList();
 	bool assignTable(Order* o);
@@ -162,7 +161,7 @@ public:
 	*/
 	bool CancelOrder(int id);
 	
-	Order* AssignScooter(Order* p);
+	bool AssignScooter(Order* p);
 	//	void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 
 	// Assign pending orders to chefs 
@@ -182,7 +181,7 @@ public:
 	//Return the current time step need when execute actions .
 
 	void setRestaurantMode(Mode m);
-	void Load_from_Input_File(string filename);
+	bool Load_from_Input_File(string filename);
 
 
 	~Restaurant();

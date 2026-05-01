@@ -6,14 +6,14 @@ using namespace std;
 class Chef
 {	
 	int ID;
-	//int speed;
+	int speed;
 	int total_busy_time; // to calc Chefs utilization
 	ChefType type; 
 public:
 	Chef(int s, int id);
 	int getID() const;
-	int getspeed() const;
 	void update_info(int b_time);
+	int getSpeed();
 	void setType(ChefType s);
 	ChefType gettype() const;
 	virtual~Chef() {};
