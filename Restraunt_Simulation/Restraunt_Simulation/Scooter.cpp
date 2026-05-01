@@ -47,18 +47,27 @@ int Scooter::getTimeStepOfMaint()
 	return timeStepOfMaint;
 }
 
+void Scooter::setState(ScooterState s)
+{
+	state = s;
+}
+
+int Scooter::getReturnTime()
+{
+	return return_time;
+}
+
 int Scooter::get_Speed() const
 {
 	return Speed;
 }
 
 
-void Scooter::update_info(int d,int cuurent_timestep , ScooterState s)
+void Scooter::update_info(int d,int cuurent_timestep )
 {
 	counter++;
 	total_dis += d*2;
 	return_time= cuurent_timestep+(2*d/Speed);
-	state = s;
 }
 
 void Scooter::reset_counter()
