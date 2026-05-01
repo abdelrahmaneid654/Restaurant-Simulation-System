@@ -82,31 +82,33 @@ void UI::Print(const Queue<Action*> & ActionList, const Queue<Order*> &Pend_ODG,
 
 }
 
-void UI::chooseMode()
+Mode UI::chooseMode() 
 {
 	cout << "========================\n";
 	cout << "        SIMULATION/n";
 	cout << "========================\n";
 	int choice;
+	Mode m; 
 	cout << "Choose Simulation Mode: Silent - Interactive\n";
 	cout << "(1) for Silent, (2) for Interactive: ";
 	cin >> choice;
 	switch (choice)
 	{
 	case 0: {
-		Mode m = Silent;
+		m = Silent; 
 		setProgramMode(m);
 		cout << "Done, Program is in Silent Mode\n";
 		break;
 	}
 	case 1: {
-		Mode m1 = Interactive;
-		setProgramMode(m1);
+		m = Interactive;
+		setProgramMode(m);
 		cout << "Done, Program is in Interactive Mode\n";
 		break;
 	}
 	}
 	cout << "\n";
+	return m; 
 }
 
 void UI::setProgramMode(Mode m)
@@ -117,4 +119,12 @@ void UI::setProgramMode(Mode m)
 void UI::WaitForClick()
 {
 	cin.get(); // waited for enter
+}
+
+string UI::getFileName()
+{
+	string s;
+	cout << "Enter Input File Name: ";
+	cin >> s; 
+	return s; 
 }

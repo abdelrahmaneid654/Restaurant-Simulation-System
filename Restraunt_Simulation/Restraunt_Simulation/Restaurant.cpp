@@ -248,6 +248,20 @@ void Restaurant::AddToPending(Order* pOrder)
 	}
 }
 
+Action* Restaurant::checkActions()
+{
+	Action* pAction;
+	ActionList.peek(pAction);
+
+	if (pAction->getTimeStep() == CurrTimeStep)
+	{
+		ActionList.dequeue(pAction);
+		pAction->Act();
+		return pAction; 
+	}
+	return nullptr;
+}
+
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
@@ -383,10 +397,11 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 
 
 
-void Restaurant::createOutputFile()
+void Restaurant::createOutputFile(string fileName) 
 {
-	ofstream file("Output.txt");
-	if (file.is_open())
+	ofstream file(fileName); 
+
+	if (file.is_open()) 
 	{
 		Order* pOrder = nullptr;
 		Stack<Order*> temp; 
@@ -415,6 +430,17 @@ void Restaurant::createOutputFile()
 		file << "Chefs utilization % " << TotalChefsBusyTime / (CurrTimeStep * TotalChefs) << endl;
 	}
 
+}
+
+void Restaurant::mainSimulation()
+{
+	string fileName = pUI->getFileName(); 
+	Load_from_Input_File(fileName);
+
+	Mode m = pUI->chooseMode();
+
+	checkActions(); // has Act inside it
+	checkScootersList();
 }
 
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
