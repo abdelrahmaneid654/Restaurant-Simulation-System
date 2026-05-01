@@ -1,9 +1,5 @@
 #include "RequestAction.h"
 
-void RequestAction::setOrder(Order* o)
-{
-	pOrder = o;
-}
 RequestAction::RequestAction(Restaurant* r, Order* p) :Action(r)
 {
 }

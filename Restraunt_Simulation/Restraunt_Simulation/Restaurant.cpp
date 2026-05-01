@@ -251,13 +251,136 @@ void Restaurant::AddToPending(Order* pOrder)
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
-	Pend_ODG.peek(pOrder);
-	 
-	if (CurrTimeStep == pOrder->get_TA())
-	{
 
+	Pend_ODG.peek(pOrder);
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder); 
+		return;
+	}
+
+	Pend_ODN.peek(pOrder); 
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder);
+		return;
+	}
+
+	Pend_OT.peek(pOrder);
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder);
+		return;
+	}
+
+	Pend_OVG.peek(pOrder);
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder);
+		return;
+	}
+
+	Pend_OVC.peek(pOrder);
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder);
+		return;
+	}
+
+	Pend_OVN.peek(pOrder);
+	if (pOrder)
+	{
+		assignChefToOrderByType(pOrder);
+		return;
 	}
 }
+
+void Restaurant::assignChefToOrderByType(Order* pOrder)
+{ 
+	if (!pOrder)
+		return;
+	/*
+	 Pending Lists Name :
+			Pend_ODG
+			Pend_ODN
+			Pend_OT
+			Pend_OVN
+			Pend_OVC
+			Pend_OVG
+	 */
+
+
+	Chef* pChef;
+	OrderType type = pOrder->gettype();
+	switch (type)
+	{
+	case ODG:
+	case OVG:
+	{
+		if (Free_CS.isempty())
+			return;
+		else
+		{
+			Free_CS.dequeue(pChef);
+			if (type == ODG)
+				Pend_ODG.dequeue(pOrder);
+			else if (type == OVG)
+				Pend_OVG.dequeue(pOrder); 
+		}
+	break;
+	}
+	case ODN:
+	case OVC:
+	{
+		if (Free_CN.isempty())
+		{
+			if (Free_CS.isempty())
+				return;
+			else
+			{
+				Free_CS.dequeue(pChef);
+			}
+		}
+		else
+		{
+			Free_CN.dequeue(pChef);
+		}
+
+		if (type == ODN)
+			Pend_ODN.dequeue(pOrder);
+		else if (type == OVC)
+			Pend_OVC.dequeue(pOrder);
+	break;
+	}
+	case OT_O:
+	case OVN:
+	{
+		if (Free_CN.isempty())
+			return; 
+		else
+		{
+			Free_CN.dequeue(pChef);
+			if (type == OT_O)
+				Pend_OT.dequeue(pOrder);
+			else if (type == OVN)
+				Pend_OVN.dequeue(pOrder);
+		}
+	break;
+	}
+	default:
+		return;
+	}
+	pOrder->set_assigned_chef(pChef); 
+	pOrder->set_TA(CurrTimeStep);
+	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getspeed());
+
+	pChef->update_info(pOrder->get_TC());
+
+	Cook_orders.enqueue(pOrder);
+
+}
+
+
 
 void Restaurant::createOutputFile()
 {
@@ -360,9 +483,8 @@ void Restaurant::FromCookingToReady()
 	if (CurrTimeStep == pOrder->get_TR()) 
 	{
 		Cook_orders.dequeue(pOrder);
-		addOrderToReadyByType(pOrder); 
 		releaseChef(pOrder); 
-		
+		addOrderToReadyByType(pOrder); 
 	}
 }
 void Restaurant::releaseChef(Order* pOrder)
@@ -384,125 +506,80 @@ void Restaurant::releaseChef(Order* pOrder)
 		case CS: 
 			Free_CS.enqueue(assignedChef); 
 			break; 
-		}
-		assignedChef->update_info(CurrTimeStep - pOrder->get_TA()); 
+		} 
 		pOrder->set_assigned_chef(nullptr); 
 
 	}
 }
-Order* Restaurant::AssingPendingToChef(Order* pOrder)
+
+void Restaurant::FromReadyToInServ()
 {
-	if (!pOrder)
-		return NULL;
-	/*
-	 Pending Lists Name :
-			Pend_ODG
-			Pend_ODN
-			Pend_OT
-			Pend_OVN
-			Pend_OVC
-			Pend_OVG
-	 */
+	Order* pOrder;
 
-	pOrder->set_TA(CurrTimeStep);
-	OrderType type = pOrder->gettype();
-	switch (type)
+	Ready_OD.peek(pOrder); 
+	if (pOrder)
 	{
-		case ODG:
-		case OVG:
+		if(assignTable(pOrder))
 		{
-			if (Free_CS.isempty())
-				return nullptr;
-			else
-			{
-				Chef* pChef;
-				Free_CS.dequeue(pChef);
-				pOrder->set_assigned_chef(pChef);
-				if (type == ODG)
-				{
-					Pend_ODG.dequeue(pOrder);
-				}
-				else
-				{
-					Pend_OVG.dequeue(pOrder);
-				}
-				Cook_orders.enqueue(pOrder);
-			}
+			Ready_OD.dequeue(pOrder); 
+			pOrder->set_TS(CurrTimeStep);
+			pOrder->set_TF(CurrTimeStep + ((OD*)pOrder)->get_duration());
+			InServ.enqueue(pOrder);
+			return;
 		}
-		break;
-		case ODN:
-		case OVC:
-		{
-
-			if (Free_CN.isempty())
-			{
-				if (Free_CS.isempty())
-					return nullptr;
-				else
-				{
-					Chef* pChef;
-					Free_CS.dequeue(pChef);
-					pOrder->set_assigned_chef(pChef);
-					if (type == ODN)
-					{
-						Pend_ODN.dequeue(pOrder);
-					}
-					else
-					{
-						Pend_OVC.dequeue(pOrder);
-					}
-					Cook_orders.enqueue(pOrder);
-				}
-			}
-			else
-			{
-					Chef* pChef;
-					Free_CN.dequeue(pChef);
-					pOrder->set_assigned_chef(pChef);
-				if (type == ODN)
-				{
-					Pend_ODN.dequeue(pOrder);
-				}
-				else
-				{
-					Pend_OVC.dequeue(pOrder);
-				}
-					Cook_orders.enqueue(pOrder);
-			}
-		}
-		break;
-		case OT_O:
-		case OVN:
-		{
-
-			if (Free_CN.isempty())
-				return NULL;
-
-			else
-			{
-					Chef* pChef;
-					Free_CN.dequeue(pChef);
-					pOrder->set_assigned_chef(pChef);
-				if (type == OVN)
-				{
-					Pend_OVN.dequeue(pOrder);
-				}
-				else
-				{
-					Pend_OT.dequeue(pOrder);
-				}
-					Cook_orders.enqueue(pOrder);
-			}
-		}
-		break;
-		default:
-			return nullptr; 
-		break;
-
 	}
-	return pOrder;
+
+	Ready_OV.peek(pOrder);
+	if (pOrder)
+	{
+		if(AssignScooter(pOrder))
+		{
+			if (Ready_OV.dequeueOVC(pOrder))
+			{
+				pOrder->set_TS(CurrTimeStep);
+				pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
+				InServ.enqueue(pOrder);
+				return;
+			}
+
+			Ready_OV.dequeue(pOrder);
+			pOrder->set_TS(CurrTimeStep);
+			pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
+			InServ.enqueue(pOrder);
+			return;
+		}
+	}
 }
-Order* Restaurant::AssignScooter()
+
+void Restaurant::FromInServToFinished()
+{
+	Order* pOrder;
+	InServ.peek(pOrder);
+
+	if (CurrTimeStep == pOrder->get_TF())
+	{
+		OrderType type = pOrder->gettype();
+		switch (type)
+		{
+		case ODG:
+		case ODN:
+		{
+
+		}
+		}
+	}
+}
+
+void Restaurant::releaseTable(Order* pOrder)
+{
+	Table* pTable = ((OD*)pOrder)->get_assigned_table();
+	((OD*)pOrder)->set_assigned_table(nullptr);
+
+	pTable->set_IS_sharable(Non_Sharable);
+	Free_Tables.enqueue(pTable); 
+}
+
+Order* Restaurant::AssignScooter(Order* p) 
 {
 	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
 	Order* pOrder =nullptr;

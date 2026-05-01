@@ -5,6 +5,7 @@ class RDY_OV :public Queue<T>
 {
 public:
 	T Cancel_Order(int id); 
+	T dequeueOVC(Order*& pOrder);
 };
 
 template<class T>
@@ -39,3 +40,38 @@ T RDY_OV<T>::Cancel_Order(int id)
 		}
 		return nullptr;
 	}
+
+template<class T>
+T RDY_OV<T>::dequeueOVC(Order*& pOrder)
+{
+	if (!this->front) 
+		return nullptr;// if queue is empty
+
+	Node<T>* temp = this->front ;
+	if (this->front->getdata()->gettype() == OVC)
+	{
+		this->front = this->front->getnext();
+		temp->setnext(nullptr);
+		T deletedOrder = temp->getdata(); 
+		delete temp; 
+		return deletedOrder; 
+	}
+
+	Node<T>* tail = temp; 
+	temp = temp->getnext();  
+
+	while (temp)
+	{
+		if (temp->getdata()->gettype() == OVC)
+		{
+			tail->setnext(temp->getnext());
+			T deletedOrder = temp->getdata();
+			temp->setnext(nullptr);
+			delete temp;
+			return deletedOrder;
+		}
+		tail = temp; 
+		temp = temp->getnext();
+	}
+	return nullptr;
+}

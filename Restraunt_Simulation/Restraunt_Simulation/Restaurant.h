@@ -111,20 +111,21 @@ private:
 	//PRIVATE FUNCTIONS
 private: 
 	//Sequence Functions:
-	void AddToPending(Order* pOrder); //khaled 
 
 	void FromPendingToCooking();// khaled
+	void assignChefToOrderByType(Order* pOrder); // helper inside FromPendingToCooking
 
 	void FromCookingToReady(); //khaled
 	void addOrderToReadyByType(Order* pOrder); // helper fn inside FromCookingToReady
 	void releaseChef(Order* pOrder); // helper fn inside FromCookingToReady
 
-	//void FromActionToPending(int time); //NO NEED FOR IT, AS ALREADY FUNCTION Act MAKE THIS
+	void FromReadyToInServ();// khaled
+	void FromInServToFinished();// khaled
+	void releaseTable(Order* pOrder); //helper inside FromInServToFinished
+
 	void getAverage(); 
 	void checkScootersList(int time);
 	bool assignTable(Order* o);
-	//Order* FromReadyToInServByType(Order* pOrder);/////
-	//Order* FromInServToFinishedByType(Order* pOrder);///////
 	// 
 	//Random Functions: 
 	/*void CreateRandomOrder( int  ArrivalTime);
@@ -142,6 +143,8 @@ private:
 public:
 	// Declaration only: implementation must remain in Restaurant.cpp
 	Restaurant();
+	void AddToPending(Order* pOrder); //khaled , public to let RequestAction class access it
+
 	void createOutputFile(); 
 
 
@@ -153,8 +156,8 @@ public:
 	//it takes the order data from the user [i/p file] and then add this order to the pending list 
 	*/
 	bool CancelOrder(int id);
-	Order* AssingPendingToChef(Order* pOrder);
-	Order* AssignScooter();
+	
+	Order* AssignScooter(Order* p);
 	//	void MoveOrderLists();
 	//Move finished orders to “Finish” list and release the assigned scooter/table 
 	// Assign pending orders to chefs 

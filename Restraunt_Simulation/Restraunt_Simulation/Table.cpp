@@ -38,7 +38,7 @@ void Table::put_order(OD* o)
 
 void Table::leave_order(int s)
 {
-	free_seats += s;
+	free_seats += s; 
 }
 
 int Table::calc_priority()
