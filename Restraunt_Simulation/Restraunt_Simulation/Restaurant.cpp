@@ -25,7 +25,7 @@ Restaurant::Restaurant()
 	///////////////////////////////////
 	TotalChefsBusyTime = 0;
 	TotalScootersBusyTime = 0;
-	////////////////////////////;
+	////////////////////////////
 	sumTI = 0;
 	sumTC = 0;
 	sumTserv=0;
@@ -257,15 +257,18 @@ void Restaurant::AddToPending(Order* pOrder)
 Action* Restaurant::checkActions()
 {
 	Action* pAction;
-	ActionList.peek(pAction);
 
-	if (pAction->getTimeStep() == CurrTimeStep)
+	do
 	{
-		ActionList.dequeue(pAction);
-		pAction->Act();
-		Action_Counter++;
-		return pAction; 
-	}
+		ActionList.peek(pAction);
+		if (pAction->getTimeStep() == CurrTimeStep)
+		{
+			ActionList.dequeue(pAction);
+			pAction->Act();
+			return pAction;
+		}
+	} while (pAction->getTimeStep() == CurrTimeStep);
+
 	return nullptr;
 }
 
@@ -551,7 +554,6 @@ void Restaurant::FromReadyToInServ()
 			return;
 		}
 	}
-
 	Ready_OV.peek(pOrder);
 	if (pOrder)
 	{
@@ -572,26 +574,9 @@ void Restaurant::FromReadyToInServ()
 			return;
 		}
 	}
+
 }
 
-void Restaurant::FromInServToFinished()
-{
-	Order* pOrder;
-	InServ.peek(pOrder);
-
-	if (CurrTimeStep == pOrder->get_TF())
-	{
-		OrderType type = pOrder->gettype();
-		switch (type)
-		{
-		case ODG:
-		case ODN:
-		{
-
-		}
-		}
-	}
-}
 
 void Restaurant::releaseTable(Order* pOrder)
 {
@@ -642,25 +627,28 @@ void Restaurant::checkScootersList()
 		}
 	} while (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint());
 
-	Back_Scooters.peek(pScooter);
-	if (pScooter->getReturnTime() == CurrTimeStep)
+	do
 	{
-		Back_Scooters.dequeue(pScooter);
+		Back_Scooters.peek(pScooter);
+		if (pScooter->getReturnTime() == CurrTimeStep)
+		{
+			Back_Scooters.dequeue(pScooter);
 
-		if (BeforeMainOrders == pScooter->get_counter())
-		{
-			pScooter->setTimeStepOfMaint(CurrTimeStep);
-			pScooter->setState(Maint); 
-			TotalScootersBusyTime += MainDur;  
-			Maint_Scooters.enqueue(pScooter); 
-			pScooter->reset_counter();
+			if (BeforeMainOrders == pScooter->get_counter())
+			{
+				pScooter->setTimeStepOfMaint(CurrTimeStep);
+				pScooter->setState(Maint);
+				TotalScootersBusyTime += MainDur;
+				Maint_Scooters.enqueue(pScooter);
+				pScooter->reset_counter();
+			}
+			else
+			{
+				pScooter->setState(Free);
+				Free_Scooters.enqueue(pScooter);
+			}
 		}
-		else
-		{
-			pScooter->setState(Free); 
-			Free_Scooters.enqueue(pScooter);  
-		}
-	}
+	} while (pScooter->getReturnTime() == CurrTimeStep);
 }
 
 bool Restaurant::assignTable(Order* o)
@@ -815,13 +803,16 @@ void Restaurant::Check_Finished_Delivery() {
 void Restaurant::Check_Finished_Orders() {
 	Order* temp;
 
-	InServ.peek(temp);
-	if (temp->get_TF() == CurrTimeStep) {
-		if (temp->gettype() == ODN || temp->gettype() == ODG)
-			Check_Finished_Dine_in();
-		else
-			Check_Finished_Delivery();
-	}
+	do
+	{
+		InServ.peek(temp);
+		if (temp->get_TF() == CurrTimeStep) {
+			if (temp->gettype() == ODN || temp->gettype() == ODG)
+				Check_Finished_Dine_in();
+			else
+				Check_Finished_Delivery();
+		}
+	} while (temp->get_TF() == CurrTimeStep);
 
 }
 void Restaurant::Load_from_Input_File(string filename)
