@@ -789,6 +789,9 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTC += finished->get_TC();
 	sumTserv += ((OV*)finished)->get_delivery_time();
 	sumTW += finished->get_TW();
+	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
+	Back_Scooters.enqueue(sCooter);
+
 
 }
 
