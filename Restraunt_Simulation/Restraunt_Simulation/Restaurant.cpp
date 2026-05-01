@@ -805,6 +805,10 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTW += finished->get_TW();
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
 	Back_Scooters.enqueue(sCooter);
+	sCooter->setState(Back);
+	((OV*)finished)->set_assigned_scooter(NULL);
+	Finished_Orders.push(finished);
+
 
 
 }
