@@ -1,10 +1,10 @@
 #include"OV.h"
-OV::OV(int tq, int id, int size, double price, int dis, OrderType type) :Order(tq, id, size, price)
+OV::OV(int tq, int id, int size, double price, int dis, int del_time,OrderType type) :Order(tq, id, size, price)
 {
 	distance = dis;
 	assigned_scooter = nullptr;
 	Type = type;
-	delivery_time = 0;
+	delivery_time = del_time;
 }
 
 int OV::get_distance()

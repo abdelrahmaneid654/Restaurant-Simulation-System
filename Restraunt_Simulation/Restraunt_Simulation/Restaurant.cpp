@@ -502,40 +502,40 @@ Order* Restaurant::AssingPendingToChef(Order* pOrder)
 	}
 	return pOrder;
 }
-Order* Restaurant::AssignScooter()
-{
-	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
-	Order* pOrder =nullptr;
-	
-	Order* pnext=NULL;
-	if (Ready_OV.isempty() || Free_Scooters.isempty())
-		return NULL;
-	Ready_OV.peek(pOrder);
-	while (pOrder)
-	{
-		if (pOrder->gettype() == OVC)
-		{
-			break;
-		}
-		else
-		{
-			pnext = pOrder->next;
-			pOrder = pnext;
-
-		}
-	}
-	if (!pOrder)
-	{
-		Ready_OV.peek(pOrder);
-	}	
-		Scooter* pScooter;
-		Free_Scooters.dequeue(pScooter);
-		((OV*)pOrder)->set_assigned_scooter(pScooter);
-		pOrder->set_TS(CurrTimeStep);
-		InServ.enqueue(pOrder);
-		Ready_OV.dequeue(pOrder);
-		return pOrder;
-}
+//Order* Restaurant::AssignScooter()
+//{
+//	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
+//	Order* pOrder =nullptr;
+//	
+//	Order* pnext=NULL;
+//	if (Ready_OV.isempty() || Free_Scooters.isempty())
+//		return NULL;
+//	Ready_OV.peek(pOrder);
+//	while (pOrder)
+//	{
+//		if (pOrder->gettype() == OVC)
+//		{
+//			break;
+//		}
+//		else
+//		{
+//			pnext = pOrder->next;
+//			pOrder = pnext;
+//
+//		}
+//	}
+//	if (!pOrder)
+//	{
+//		Ready_OV.peek(pOrder);
+//	}	
+//		Scooter* pScooter;
+//		Free_Scooters.dequeue(pScooter);
+//		((OV*)pOrder)->set_assigned_scooter(pScooter);
+//		pOrder->set_TS(CurrTimeStep);
+//		InServ.enqueue(pOrder);
+//		Ready_OV.dequeue(pOrder);
+//		return pOrder;
+//}
 
 
 
@@ -639,8 +639,6 @@ bool Restaurant::assignTable(Order* o)
 bool Restaurant::CancelOrder(int id) {
 	
 	Order* cancelledOVC = Pend_OVC.Cancel_Order(id); 
-	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
-	Order* cancelledReady = Ready_OV.Cancel_Order(id);
 
 	if (cancelledOVC) 
 	{
@@ -648,13 +646,20 @@ bool Restaurant::CancelOrder(int id) {
 		CancelledOrders++;
 		return true;
 	}
-	else if (cancelledReady)
+
+
+	Order* cancelledReady = Ready_OV.Cancel_Order(id);
+	 if (cancelledReady)
 	{ 
 		Cancelled_Orders.enqueue(cancelledReady);  
 		CancelledOrders++;
 		return true;
 	}
-	else if (cancelledCook) 
+
+
+
+	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
+	 if (cancelledCook) 
 	{
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
 		ChefType type = assigned->gettype();  
@@ -676,6 +681,13 @@ void Restaurant::setRestaurantMode(Mode m)
 {
 	RestaurantMode = m;
 }
+
+
+
+void Check_Finished_Orders() {
+
+
+}
 void Restaurant::Load_from_Input_File(string filename)
 {	
 	char action_type,canshare;
@@ -688,8 +700,8 @@ void Restaurant::Load_from_Input_File(string filename)
 	ifstream infile;
 	infile.open(filename);
 	if (!infile.is_open())
-		cout << "Error File name";
-	//OverWaitTime
+		cout << "Error in File name";
+
 	else {
 		infile >> numCN >> numCS >> SpeedCN >> SpeedCS
 			>> numScooter >> ScooterSpeed >> BeforeMainOrders >> MainDur
@@ -766,7 +778,9 @@ void Restaurant::Load_from_Input_File(string filename)
 					else
 						type1 = OVC;
 
-					Order* oRder = new OV(tq, id, size, price, distance, type1); 
+					int delivery_time = distance / ScooterSpeed;
+
+					Order* oRder = new OV(tq, id, size, price, distance, delivery_time, type1);
 					Action* aCtion = new RequestAction(this,oRder); 
 					aCtion->setTimeStep(tq);
 

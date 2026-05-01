@@ -42,7 +42,7 @@ Order::Order(int tq, int id, int size, double price)
 	ID = id;
 	Size = size;
 	Price = price;
-	T_Serve = 0;
+	//T_Serve = 0;
 	assigned_Chef = nullptr;
 	TA = 0;
 	TR = 0;
