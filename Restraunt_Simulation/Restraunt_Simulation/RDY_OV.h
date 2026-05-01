@@ -11,6 +11,7 @@ public:
 template<class T>
 T RDY_OV<T>::Cancel_Order(int id) 
 	{
+
 		Node<T>* temp = this->front;
 		if (!this->front) return nullptr;// if queue is empty
 

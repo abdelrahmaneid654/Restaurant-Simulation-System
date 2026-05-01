@@ -7,9 +7,9 @@ class OV :public Order
 	Scooter* assigned_scooter;
 	int distance;
 	OrderType Type;
-	int delivery_time;
+	int delivery_time;	
 public:
-	OV(int tq, int id, int size, double price,int distance, OrderType type);
+	OV(int tq, int id, int size, double price,int distance,int del_time, OrderType type);
 	int get_distance();
 	OrderType gettype() const;
 	Scooter* get_assigned_scooter();
