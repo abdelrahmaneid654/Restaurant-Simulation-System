@@ -6,6 +6,7 @@ class Fit_Tables:public PriQueue<Table*>
 {
 public:
 	Table* getBest(OD*o);
+	void remove_table(Table* temp);
 };
 
 

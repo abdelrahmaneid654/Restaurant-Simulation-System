@@ -1,4 +1,5 @@
 #include"Fit_Tables.h"
+#include"Node.h"
 Table* Fit_Tables::getBest(OD* o)
 {
 	if (this->isempty()) return nullptr;
@@ -32,4 +33,32 @@ Table* Fit_Tables::getBest(OD* o)
 		temp = temp->getnext();
 	}
 	return nullptr;
+}
+
+void Fit_Tables::remove_table(Table* pTable)
+{
+	Node<Table*>*temp = this->front;
+
+	if (pTable == front->getdata()) {			// check if fdeleted node is front
+		if (pTable == rear->getdata())  // check if there is one node
+			rear = NULL;
+
+		front = front->getnext();
+	}
+
+	while (temp->getnext()) {
+		if (temp->getnext()->getdata() == pTable) {
+			if (pTable == rear->getdata()) {
+				rear = temp;
+
+			}
+			Node<Table*>* deleted = temp->getnext();
+			temp->setnext( deleted->getnext());
+			delete deleted;
+			break;
+		}
+		temp = temp->getnext();
+	}
+
+
 }

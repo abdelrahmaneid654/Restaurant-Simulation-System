@@ -140,8 +140,8 @@ void Order::set_TF(int tf)
 }
 
 
-int Order::calc_priority() {
-	return 0;
+int Order::calc_priority(int z) {
+	return TF;
 }
 void Order::printInFile(ofstream& file)
 {

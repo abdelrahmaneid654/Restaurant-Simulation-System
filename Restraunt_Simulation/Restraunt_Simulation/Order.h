@@ -59,7 +59,7 @@ public:
 
 
 	virtual OrderType gettype()  const = 0;
-	virtual int calc_priority();
+	virtual int calc_priority(int z=0);
 	
 	virtual void printInFile(ofstream& file); 
 	

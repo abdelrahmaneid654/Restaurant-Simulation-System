@@ -9,8 +9,8 @@ class Scooter
 	int ID;
 	int counter;
 	int total_dis;
+	int return_time;
 	int timeStepOfMaint;
-	int returningDistance;
 	int total_busy_time; // to calc Scooters utilization
 	ScooterState state;
 public:
@@ -23,14 +23,12 @@ public:
 
 	void setTimeStepOfMaint(int t); // setted when counter == Main_Ord 
 	int getTimeStepOfMaint();
-	int getReturnDistance();
 
-	void updateReturningDistance(); // just decrement the returning distance
 
 	int get_Speed() const;
 	void update_info(int dis,int b_time,ScooterState s); // used when a scooter is assigned, returning distance is setted here
 	void reset_counter();
-	int calc_priority();
+	int calc_priority(int z);
 
 };
 ostream& operator<<(ostream& out, const Scooter* s);

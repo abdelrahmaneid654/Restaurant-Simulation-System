@@ -7,7 +7,7 @@ class OD : public Order
 	Table* assigned_table;
 	int num_of_seats;
 	bool sharable;
-	int duration;
+	int duration; // =T_serv
 	OrderType Type; 
 	 
 public:

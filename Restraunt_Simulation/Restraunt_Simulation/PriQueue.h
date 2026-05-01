@@ -5,26 +5,28 @@ class PriQueue :public Queue<T>
 {
 public:
 
-	void enqueue(T x);
+	void enqueue(T x,int z=0);
 
 	
 };
 
 template<class T>
-void PriQueue<T>::enqueue(T x) {
+void PriQueue<T>::enqueue(T x,int z) {
 	Node<T>* trace = this->front;
 	Node<T>* temp = new Node<T>;
 	temp->setdata(x);
 	temp->setnext(nullptr);
+	
+
 	if (x) {
 		if (!this->isempty()) {
 
-			if (x->calc_priority() >= ((this->rear)->getdata())->calc_priority()) {
+			if (x->calc_priority(z) >= ((this->rear)->getdata())->calc_priority(z)) {
 				this->rear->setnext(temp);
 				this->rear = temp;
 				return;
 			}
-			if (x->calc_priority() < ((this->front)->getdata())->calc_priority()) {
+			if (x->calc_priority(z) < ((this->front)->getdata())->calc_priority(z)) {
 				temp->setnext(this->front);
 				this->front = temp;
 				return;
@@ -32,7 +34,7 @@ void PriQueue<T>::enqueue(T x) {
 
 			while (trace->getnext()) {
 
-				if (x->calc_priority() < trace->getnext()->getdata()->calc_priority()) { // small number has highest priority
+				if (x->calc_priority(z) < trace->getnext()->getdata()->calc_priority(z)) { // small number has highest priority
 					temp->setnext(trace->getnext());
 					trace->setnext(temp);
 					return;

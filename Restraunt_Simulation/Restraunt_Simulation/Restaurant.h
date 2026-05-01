@@ -171,6 +171,9 @@ public:
 	//void RandomSimulation();
 
 	
+	void Check_Finished_Orders();
+	void Check_Finished_Dine_in();
+	void Check_Finished_Delivery();
 
 
 	void UpdateInterface();
