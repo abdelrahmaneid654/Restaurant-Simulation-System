@@ -125,8 +125,7 @@ private:
 	void addOrderToReadyByType(Order* pOrder); // helper fn inside FromCookingToReady
 	void releaseChef(Order* pOrder); // helper fn inside FromCookingToReady
 
-	void FromReadyToInServ();// khaled
-	void FromInServToFinished();// khaled
+	void FromReadyToInServ();// khaled 
 	void releaseTable(Order* pOrder); //helper inside FromInServToFinished
 
 	void checkScootersList();
