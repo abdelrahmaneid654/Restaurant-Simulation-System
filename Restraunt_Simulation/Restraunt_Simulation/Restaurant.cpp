@@ -758,8 +758,10 @@ void Restaurant::Check_Finished_Dine_in() {
 		if (((OD*)finished)->IS_Sharable()) {					// remove then modify then enqueue
 			Busy_Sharable.remove_table(pTable);
 			pTable->leave_order(seats);
-			if (pTable->get_free_seats() == pTable->get_capacity())
+			if (pTable->get_free_seats() == pTable->get_capacity()) {
 				Free_Tables.enqueue(pTable);
+				pTable->set_IS_sharable(Non_Sharable);
+			}
 			else
 				Busy_Sharable.enqueue(pTable);
 
@@ -803,16 +805,21 @@ void Restaurant::Check_Finished_Delivery() {
 void Restaurant::Check_Finished_Orders() {
 	Order* temp;
 
+
 	do
 	{
 		InServ.peek(temp);
+		if (!temp)
+			return;
 		if (temp->get_TF() == CurrTimeStep) {
 			if (temp->gettype() == ODN || temp->gettype() == ODG)
-				Check_Finished_Dine_in();
+					Check_Finished_Dine_in();
 			else
-				Check_Finished_Delivery();
+					Check_Finished_Delivery();
 		}
-	} while (temp->get_TF() == CurrTimeStep);
+		
+		} while (temp->get_TF() == CurrTimeStep);
+	
 
 }
 void Restaurant::Load_from_Input_File(string filename)
