@@ -261,6 +261,9 @@ Action* Restaurant::checkActions()
 	do
 	{
 		ActionList.peek(pAction);
+		if (!pAction)
+			return nullptr;
+
 		if (pAction->getTimeStep() == CurrTimeStep)
 		{
 			ActionList.dequeue(pAction);
@@ -396,7 +399,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	}
 	pOrder->set_assigned_chef(pChef); 
 	pOrder->set_TA(CurrTimeStep);
-	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getspeed());
+	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getSpeed());
 
 	//pChef->update_info(pOrder->get_TC());
 	TotalChefsBusyTime += pOrder->get_TC(); 
@@ -445,12 +448,29 @@ void Restaurant::createOutputFile(string fileName)
 void Restaurant::mainSimulation()
 {
 	string fileName = pUI->getFileName(); 
-	Load_from_Input_File(fileName);
+	if (!Load_from_Input_File(fileName))
+		return;
 
 	Mode m = pUI->chooseMode();
 
-	checkActions(); // has Act inside it
-	checkScootersList();
+	while(!AreAllOrdersFinishedOrCancelled())
+	{
+
+		checkActions(); // has Act inside it
+		checkScootersList();
+		Check_Finished_Orders();
+
+		FromPendingToCooking();
+		FromCookingToReady();
+		FromReadyToInServ();
+
+		if (m == Interactive)
+			UpdateInterface();
+
+		pUI->WaitForClick();
+		CurrTimeStep++;
+	}
+	createOutputFile("Output.txt");
 }
 
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
@@ -504,14 +524,20 @@ void Restaurant::addOrderToReadyByType(Order* pOrder)
 void Restaurant::FromCookingToReady()
 {
 	Order* pOrder;
-	Cook_orders.peek(pOrder); 
 
-	if (CurrTimeStep == pOrder->get_TR()) 
+	do
 	{
-		Cook_orders.dequeue(pOrder);
-		releaseChef(pOrder); 
-		addOrderToReadyByType(pOrder); 
-	}
+		Cook_orders.peek(pOrder);
+		if (!pOrder)
+			return;
+
+		if (CurrTimeStep == pOrder->get_TR())
+		{
+			Cook_orders.dequeue(pOrder);
+			releaseChef(pOrder);
+			addOrderToReadyByType(pOrder);
+		}
+	} while (CurrTimeStep == pOrder->get_TR());
 }
 void Restaurant::releaseChef(Order* pOrder)
 {
@@ -577,38 +603,18 @@ void Restaurant::FromReadyToInServ()
 
 }
 
-
-void Restaurant::releaseTable(Order* pOrder)
+bool Restaurant::AssignScooter(Order* p)
 {
-	Table* pTable = ((OD*)pOrder)->get_assigned_table();
-	((OD*)pOrder)->set_assigned_table(nullptr);
+	if (!p)
+		return false;
 
-	pTable->set_IS_sharable(Non_Sharable);
-	Free_Tables.enqueue(pTable); 
-}
-
-Order* Restaurant::AssignScooter(Order* p)
-{
-	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
-	Order* pOrder = nullptr;
-
-	Order* pnext = NULL;
-	if (Ready_OV.isempty() || Free_Scooters.isempty())
-		return NULL;
-	Ready_OV.peek(pOrder);
-	while (pOrder)
+	Scooter* pScooter;
+	Free_Scooters.peek(pScooter); 
+	if(pScooter) 
 	{
-		if (pOrder->gettype() == OVC)
-		{
-			break;
-		}
-		else
-		{
-			pnext = pOrder->next;
-			pOrder = pnext;
-
-
-		}
+		Free_Scooters.dequeue(pScooter); 
+		((OV*)p)->set_assigned_scooter(pScooter);
+		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
 	}
 }
 
@@ -619,6 +625,10 @@ void Restaurant::checkScootersList()
 	do
 	{
 		Maint_Scooters.peek(pScooter);
+
+		if (!pScooter)
+			return;
+
 		if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
 		{
 			Maint_Scooters.dequeue(pScooter);
@@ -630,6 +640,10 @@ void Restaurant::checkScootersList()
 	do
 	{
 		Back_Scooters.peek(pScooter);
+
+		if (!pScooter)
+			return;
+
 		if (pScooter->getReturnTime() == CurrTimeStep)
 		{
 			Back_Scooters.dequeue(pScooter);
@@ -822,7 +836,7 @@ void Restaurant::Check_Finished_Orders() {
 	
 
 }
-void Restaurant::Load_from_Input_File(string filename)
+bool Restaurant::Load_from_Input_File(string filename)
 {	
 	char action_type,canshare;
 	string type;
@@ -834,7 +848,10 @@ void Restaurant::Load_from_Input_File(string filename)
 	ifstream infile;
 	infile.open(filename);
 	if (!infile.is_open())
-		cout << "Error in File name";
+	{
+		cout << "Error in File name\n";
+		return false;
+	}
 
 	else {
 		infile >> numCN >> numCS >> SpeedCN >> SpeedCS
@@ -943,6 +960,7 @@ void Restaurant::Load_from_Input_File(string filename)
 		}
 
 	}
+	return true;
 }
 Restaurant::~Restaurant()
 {

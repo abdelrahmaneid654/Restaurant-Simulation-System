@@ -12,8 +12,8 @@ class Chef
 public:
 	Chef(int s, int id);
 	int getID() const;
-	int getspeed() const;
 	void update_info(int b_time);
+	int getSpeed();
 	void setType(ChefType s);
 	ChefType gettype() const;
 	virtual~Chef() {};
