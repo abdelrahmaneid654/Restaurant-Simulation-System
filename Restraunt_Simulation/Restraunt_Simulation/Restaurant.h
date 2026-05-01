@@ -93,6 +93,11 @@ private:
 	int CancelledOrders;
 	int OverWaitOrders;
 
+	int sumTI;
+	int sumTC;
+	int sumTserv;
+	int sumTW;
+
 		//Chefs
 	int TotalChefs;//TotalChefs = numCS + numCN
 	int TotalTables;
