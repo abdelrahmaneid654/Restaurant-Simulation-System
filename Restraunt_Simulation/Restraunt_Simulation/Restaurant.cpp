@@ -374,7 +374,8 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	pOrder->set_TA(CurrTimeStep);
 	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getspeed());
 
-	pChef->update_info(pOrder->get_TC());
+	//pChef->update_info(pOrder->get_TC());
+	TotalChefsBusyTime += pOrder->get_TC(); 
 
 	Cook_orders.enqueue(pOrder);
 
@@ -390,21 +391,7 @@ void Restaurant::createOutputFile()
 		Order* pOrder = nullptr;
 		Stack<Order*> temp; 
 
-		while (!Finished_Orders.isempty())
-		{
-			Finished_Orders.pop(pOrder);
-			pOrder->printInFile(file); 
-			file << endl;
-
-			temp.push(pOrder);
-		}
-
-		while (!temp.isempty()) // return elements back in Finished_Orders
-		{
-			Order* p;
-			temp.pop(p);
-			Finished_Orders.push(p); 
-		}
+		Finished_Orders.printInFile(file); 
 
 		file << "Total number of orders: " << TotalOrders << endl;
 		file << "Dine-In Orders: " << OrdersOD << endl;
@@ -422,7 +409,10 @@ void Restaurant::createOutputFile()
 		file << "Percentage of Finished orders: " << 1.0*FinishedOrders/TotalOrders * 100.0 << endl;
 		file << "Percentage of Cancelled orders: " << 1.0 * CancelledOrders / TotalOrders * 100.0 << endl;
 
-		
+		file << "Average for Ti TC Tw Tserv for all finished orders " << sumTI / FinishedOrders << " " << sumTC / FinishedOrders << " " << sumTW / FinishedOrders << " " << sumTserv / FinishedOrders << endl;
+
+		file << "Scooters utilization % " << TotalScootersBusyTime / (CurrTimeStep * numScooter) << endl;
+		file << "Chefs utilization % " << TotalChefsBusyTime / (CurrTimeStep * TotalChefs) << endl;
 	}
 
 }
@@ -579,12 +569,12 @@ void Restaurant::releaseTable(Order* pOrder)
 	Free_Tables.enqueue(pTable); 
 }
 
-Order* Restaurant::AssignScooter(Order* p) 
+Order* Restaurant::AssignScooter(Order* p)
 {
 	//This function is still not finished because It has errors in dequeue process and looping in the ready OV list 
-	Order* pOrder =nullptr;
-	
-	Order* pnext=NULL;
+	Order* pOrder = nullptr;
+
+	Order* pnext = NULL;
 	if (Ready_OV.isempty() || Free_Scooters.isempty())
 		return NULL;
 	Ready_OV.peek(pOrder);
@@ -600,34 +590,16 @@ Order* Restaurant::AssignScooter(Order* p)
 			pOrder = pnext;
 
 
-
-
-
-
-void Restaurant::getAverage()
-{
-	Stack<Order*> temp;
-	Order* pOrder;
-
-	// Avergae TI
-	double sumTI = 0;
-	for (int i = 0;i < FinishedOrders;i++)
-	{
-		Finished_Orders.pop(pOrder);
-		sumTI += pOrder->get_TI();
-
-		temp.push(pOrder);
+		}
 	}
-
-
 }
 
-void Restaurant::checkScootersList(int time)
+void Restaurant::checkScootersList()
 {
-	Scooter* pScooter;
+	Scooter* pScooter; 
 
 	Maint_Scooters.peek(pScooter);
-	if (MainDur == time - pScooter->getTimeStepOfMaint())
+	if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
 	{
 		Maint_Scooters.dequeue(pScooter);
 		pScooter->update_info(0, 0, Free);
@@ -641,8 +613,9 @@ void Restaurant::checkScootersList(int time)
 
 		if (BeforeMainOrders == pScooter->get_counter())
 		{
-			pScooter->setTimeStepOfMaint(time);
+			pScooter->setTimeStepOfMaint(CurrTimeStep);
 			pScooter->update_info(0, MainDur,Maint);  
+			TotalScootersBusyTime += MainDur; 
 			Maint_Scooters.enqueue(pScooter); 
 			pScooter->reset_counter();
 		}
@@ -735,6 +708,7 @@ bool Restaurant::CancelOrder(int id) {
 			Free_CS.enqueue(assigned);
 			break;
 		}
+		TotalChefsBusyTime -= (cancelledCook->get_TR() - CurrTimeStep); // IMPORTANT
 		return true;
 	}
 	return false;

@@ -1,5 +1,8 @@
 #pragma once
 #include"Node.h"
+#include<iostream>
+using namespace std;
+#include<fstream>
 template<class T>
 
 class Stack
@@ -12,6 +15,7 @@ public:
 	void push(T x);
 	bool pop(T& x);
 	void print() const;
+	void printInFile(ofstream& file) const;
 	int getcount() const;
 	~Stack();
 };
@@ -72,6 +76,19 @@ void Stack<T>::print() const
 		temp = temp->getnext();
 	}
 	std::cout << "\n";
+}
+
+template<class T>
+void Stack<T>::printInFile(ofstream& file) const
+{
+	Node<T>* temp = top;
+	while (temp) {
+		T pOrder = temp->getdata();
+		pOrder->printInFile(file);  
+		file << endl; 
+
+		temp = temp->getnext();
+	}
 }
 
 template<class T>
