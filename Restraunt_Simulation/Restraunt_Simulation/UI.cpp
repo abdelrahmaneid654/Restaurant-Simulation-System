@@ -17,7 +17,7 @@ void UI::Print(const Queue<Action*> & ActionList, const Queue<Order*> &Pend_ODG,
 {
 	
 	cout << "Current Time Step: " << pRes->GetCurrentTimestep() << endl;
-	cout << "===================ACTIONS==================/n"; //not needed in this phase 
+	cout << "===================ACTIONS==================\n";  
 	cout << "Actions Remaining: " << pRes->getTotalActions() - pRes->getActionCounter() << " :";
 	ActionList.print();
 	

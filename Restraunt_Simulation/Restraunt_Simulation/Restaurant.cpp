@@ -31,6 +31,13 @@ Restaurant::Restaurant()
 	sumTserv=0;
 	sumTW = 0;
 
+	TotalTables = 0;
+	TotalOrders = 0;
+	TotalChefs = 0;
+	TotalActions = 0;
+	RestaurantMode = Silent;
+	Action_Counter = 0;
+
 	BackScooters = 0;
 	MaintScooters = 0;
 	//DON'T forget the point6 variables
@@ -232,7 +239,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	}
 	pOrder->set_assigned_chef(pChef); 
 	pOrder->set_TA(CurrTimeStep);
-	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getSpeed());
+	pOrder->set_TR(CurrTimeStep + ceil( 1.0 * pOrder->getsize() / pChef->getSpeed() ) ); 
 
 	//pChef->update_info(pOrder->get_TC());
 	TotalChefsBusyTime += pOrder->get_TC(); 
@@ -539,6 +546,7 @@ bool Restaurant::assignTable(Order* o)
 		if (pTable)
 		{
 			pTable->put_order(pOD);
+			pOD->set_assigned_table(pTable);
 			return true;
 		}
 		else
@@ -549,6 +557,7 @@ bool Restaurant::assignTable(Order* o)
 			{
 				pTable->set_IS_sharable(Sharable);
 				pTable->put_order(pOD);
+				pOD->set_assigned_table(pTable); 
 				Busy_Sharable.enqueue(pTable);
 				return true;
 			}
@@ -564,6 +573,7 @@ bool Restaurant::assignTable(Order* o)
 		{
 			pTable->put_order(pOD);
 			pTable->set_IS_sharable(Non_Sharable);
+			pOD->set_assigned_table(pTable); 
 			Busy_No_Share.enqueue(pTable);
 			return true;
 		}
@@ -628,7 +638,7 @@ void Restaurant::Check_Finished_Dine_in() {
 	sumTserv += ((OD*)finished)->get_duration();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
-	OrdersOD;
+	OrdersOD++;
 
 
 	Table* pTable = ((OD*)finished)->get_assigned_table();
@@ -651,11 +661,8 @@ void Restaurant::Check_Finished_Dine_in() {
 			Busy_No_Share.remove_table(pTable);
 			pTable->leave_order(seats);
 			Free_Tables.enqueue(pTable);
-			
-
 		}
 
-	
 	((OD*)finished)->set_assigned_table(NULL);
 
 	Finished_Orders.push(finished);
@@ -670,20 +677,17 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTserv += ((OV*)finished)->get_delivery_time();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
-	OrdersOV;
+	OrdersOV++;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
 	Back_Scooters.enqueue(sCooter);
 	sCooter->setState(Back);
 	((OV*)finished)->set_assigned_scooter(NULL);
 	Finished_Orders.push(finished);
-
-
-
 }
 void Restaurant::Check_Finished_Orders() {
+
+
 	Order* temp;
-
-
 	do
 	{
 		InServ.peek(temp);
@@ -697,17 +701,19 @@ void Restaurant::Check_Finished_Orders() {
 					Check_Finished_Delivery();
 		}
 		
-		} while (temp->get_TF() == CurrTimeStep);
+	} while (temp->get_TF() == CurrTimeStep);
 
 	    Ready_OT.peek(temp);
-		if(temp){
-			while (temp && temp->get_TF() == CurrTimeStep) {
+		if(temp)
+		{
+			while (temp && temp->get_TF() == CurrTimeStep) 
+			{
 				Ready_OT.dequeue(temp);
 				Finished_Orders.push(temp);
 				Ready_OT.peek(temp);
-				OrdersOT;
+				OrdersOT++;
 			}
-	}
+		}
 	
 
 }
@@ -804,9 +810,9 @@ bool Restaurant::Load_from_Input_File(string filename)
 					else
 						type1 = OVC;
 
-					int delivery_time = distance / ScooterSpeed;
+					double delivery_time = 1.0*distance / ScooterSpeed; 
 
-					Order* oRder = new OV(tq, id, size, price, distance, delivery_time, type1);
+					Order* oRder = new OV(tq, id, size, price, distance, ceil(delivery_time), type1); //ceil because it should be at least in the next time step
 					Action* aCtion = new RequestAction(this,Q,oRder); 
 					aCtion->setTimeStep(tq);
 

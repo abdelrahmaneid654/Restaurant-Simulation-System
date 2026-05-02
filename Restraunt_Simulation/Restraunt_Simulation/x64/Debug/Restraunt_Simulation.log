@@ -1,3 +1,5 @@
 ﻿  Restaurant.cpp
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(485,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(242,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(815,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(492,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
   Restraunt_Simulation.vcxproj -> D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
