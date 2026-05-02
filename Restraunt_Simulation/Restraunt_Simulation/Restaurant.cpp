@@ -692,8 +692,9 @@ void Restaurant::Check_Finished_Orders() {
 	do
 	{
 		InServ.peek(temp);
-		if (!temp)
-			break;
+		if (!temp) break;                        
+
+		if (temp->get_TF() != CurrTimeStep) break;
 
 		if (temp->get_TF() == CurrTimeStep) {
 			if (temp->gettype() == ODN || temp->gettype() == ODG)
