@@ -37,10 +37,6 @@ Restaurant::Restaurant()
 
 }
 
-//Now I comment this function ,for a later time .
-
-
-
 int Restaurant::GetCurrentTimestep() const
 {
 	return CurrTimeStep;
