@@ -445,11 +445,15 @@ void Restaurant::FromReadyToInServ()
 		}
 	} while (pOrder);
 
+
 	Ready_OT.peek(pOrder);
-	if (pOrder) {
+	while(pOrder){
+		 
+		Ready_OT.dequeue(pOrder);
 		pOrder->set_TF(CurrTimeStep + 1);
-		return;
-	}
+		Ready_OT.enqueue(pOrder);
+		Ready_OT.peek(pOrder);
+	} 
 
 }
 bool Restaurant::AssignScooter(Order* p)
