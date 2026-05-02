@@ -2,6 +2,7 @@
 
 RequestAction::RequestAction(Restaurant* r, Order* p) :Action(r)
 {
+	pOrder = p;
 }
 
 void RequestAction::Act()
