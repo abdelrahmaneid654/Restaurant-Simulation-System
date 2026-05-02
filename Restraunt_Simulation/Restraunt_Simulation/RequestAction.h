@@ -7,7 +7,7 @@ private:
 public:
 	RequestAction(Restaurant* r,ActionType t,Order* p);
 	void Act();
-
+	Order* getOrder() const;
 };
 
 
