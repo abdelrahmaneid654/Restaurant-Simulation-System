@@ -465,9 +465,12 @@ void Restaurant::mainSimulation()
 		FromReadyToInServ();
 
 		if (m == Interactive)
+		{
 			UpdateInterface();
+			pUI->WaitForClick(); 
+		}
 
-		pUI->WaitForClick();
+		
 		CurrTimeStep++;
 	}
 	createOutputFile("Output.txt");
@@ -530,7 +533,7 @@ void Restaurant::FromCookingToReady()
 	{
 		Cook_orders.peek(pOrder);
 		if (!pOrder)
-			return;
+			break;
 
 		if (CurrTimeStep == pOrder->get_TR())
 		{
