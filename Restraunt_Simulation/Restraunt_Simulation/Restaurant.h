@@ -93,6 +93,7 @@ private:
 	int CancelledOrders;
 	int OverWaitOrders;
 
+	int TotalActions;
 	int Action_Counter;
 
 	int sumTI;

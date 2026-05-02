@@ -6,7 +6,9 @@ Scooter::Scooter(int s,int id)
 	ID = id;
 	counter = 0;
 	total_dis = 0;
+	return_time = 0;
 	total_busy_time = 0;
+	timeStepOfMaint = 0;
 	state = Free;
 }
 int Scooter::calc_priority(int z) {

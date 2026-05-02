@@ -470,22 +470,26 @@ void Restaurant::mainSimulation()
 		FromReadyToInServ();
 
 		if (m == Interactive)
+		{
 			UpdateInterface();
+			pUI->WaitForClick(); 
+		}
 
-		pUI->WaitForClick();
+		
 		CurrTimeStep++;
 	}
 	createOutputFile("Output.txt");
 }
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
-	if (Pend_ODG.isempty() &&
+	if (ActionList.isempty()&&
+		Pend_ODG.isempty() &&
 		Pend_ODN.isempty() &&
 		Pend_OT.isempty() &&
 		Pend_OVN.isempty() &&
 		Pend_OVC.isempty() &&//error because it is from derived class
 		Pend_OVG.isempty() &&
-		Ready_OT.isempty() &&
+		//Ready_OT.isempty() &&
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
 		Cook_orders.isempty() &&//error because it is from derived class
@@ -530,7 +534,7 @@ void Restaurant::FromCookingToReady()
 	{
 		Cook_orders.peek(pOrder);
 		if (!pOrder)
-			return;
+			break;
 
 		if (CurrTimeStep == pOrder->get_TR())
 		{
@@ -625,7 +629,7 @@ void Restaurant::checkScootersList()
 		Maint_Scooters.peek(pScooter);
 
 		if (!pScooter)
-			return;
+			break;
 
 		if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
 		{
@@ -640,7 +644,7 @@ void Restaurant::checkScootersList()
 		Back_Scooters.peek(pScooter);
 
 		if (!pScooter)
-			return;
+			break;
 
 		if (pScooter->getReturnTime() == CurrTimeStep)
 		{
@@ -730,6 +734,8 @@ bool Restaurant::CancelOrder(int id) {
 	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
 	 if (cancelledCook) 
 	{
+		 Cancelled_Orders.enqueue(cancelledCook);
+
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
 		ChefType type = assigned->gettype();  
 		CancelledOrders++;  
@@ -758,6 +764,7 @@ void Restaurant::Check_Finished_Dine_in() {
 	sumTC += finished->get_TC();
 	sumTserv += ((OD*)finished)->get_duration();
 	sumTW += finished->get_TW();
+	FinishedOrders++;
 
 
 	Table* pTable = ((OD*)finished)->get_assigned_table();
@@ -798,6 +805,7 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTC += finished->get_TC();
 	sumTserv += ((OV*)finished)->get_delivery_time();
 	sumTW += finished->get_TW();
+	FinishedOrders++;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
 	Back_Scooters.enqueue(sCooter);
 	sCooter->setState(Back);
@@ -815,7 +823,8 @@ void Restaurant::Check_Finished_Orders() {
 	{
 		InServ.peek(temp);
 		if (!temp)
-			return;
+			break;
+
 		if (temp->get_TF() == CurrTimeStep) {
 			if (temp->gettype() == ODN || temp->gettype() == ODG)
 					Check_Finished_Dine_in();
@@ -881,8 +890,8 @@ bool Restaurant::Load_from_Input_File(string filename)
 
 		//infile >> OverWaitTime; // bonous
 		count = 0;
-		infile >> TotalOrders;
-		while (count++ < TotalOrders) {
+		infile >> TotalActions;
+		while (count++ < TotalActions) {
 			infile >> action_type;
 			if (action_type == 'Q') {
 
