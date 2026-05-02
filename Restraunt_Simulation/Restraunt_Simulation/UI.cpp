@@ -94,13 +94,13 @@ Mode UI::chooseMode()
 	cin >> choice;
 	switch (choice)
 	{
-	case 0: {
+	case 1: {
 		m = Silent; 
 		setProgramMode(m);
 		cout << "Done, Program is in Silent Mode\n";
 		break;
 	}
-	case 1: {
+	case 2: {
 		m = Interactive;
 		setProgramMode(m);
 		cout << "Done, Program is in Interactive Mode\n";
