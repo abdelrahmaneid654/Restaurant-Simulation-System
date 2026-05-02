@@ -4,7 +4,6 @@
 #include"OV.h"
 
 ostream& operator<<(ostream& out, const Order* o) {
-
 	if(!((OD*)o)->get_assigned_table())
 	{
 		out << " [" << o->getID() << "] ";

@@ -618,6 +618,7 @@ void Restaurant::Check_Finished_Dine_in() {
 	sumTserv += ((OD*)finished)->get_duration();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
+	OrdersOD;
 
 
 	Table* pTable = ((OD*)finished)->get_assigned_table();
@@ -659,6 +660,7 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTserv += ((OV*)finished)->get_delivery_time();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
+	OrdersOV;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
 	Back_Scooters.enqueue(sCooter);
 	sCooter->setState(Back);
@@ -693,6 +695,7 @@ void Restaurant::Check_Finished_Orders() {
 				Ready_OT.dequeue(temp);
 				Finished_Orders.push(temp);
 				Ready_OT.peek(temp);
+				OrdersOT;
 			}
 	}
 	

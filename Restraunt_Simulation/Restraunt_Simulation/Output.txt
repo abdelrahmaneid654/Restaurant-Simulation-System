@@ -1,15 +1,10 @@
-9 2 3 3 4 4 0 1 1 5 
-8 3 4 4 5 5 0 1 1 3 
-Total number of orders: 5
+Total number of orders: 0
 Dine-In Orders: 0
 Delivery Orders: 0
 Takeaway Orders: 0
-Total number of chefs: 2
-Special Chefs: 1
-Normal Chefs: 1
-Total number of Scooters: 1
-Percentage of Finished orders: 40
-Percentage of Cancelled orders: 20
-Average for Ti TC Tw Tserv for all finished orders 0 1 1 4
-Scooters utilization % 0
-Chefs utilization % 0
+Total number of chefs: 4
+Special Chefs: 2
+Normal Chefs: 2
+Total number of Scooters: 3
+Percentage of Finished orders: -nan(ind)
+Percentage of Cancelled orders: -nan(ind)
