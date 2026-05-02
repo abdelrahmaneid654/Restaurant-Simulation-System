@@ -101,7 +101,8 @@ private:
 	int sumTserv;
 	int sumTW;
 
-
+	int BackScooters;
+	int MaintScooters;
 
 		//Chefs
 	int TotalChefs;//TotalChefs = numCS + numCN
