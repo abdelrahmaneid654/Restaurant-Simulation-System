@@ -604,6 +604,12 @@ void Restaurant::FromReadyToInServ()
 		}
 	}
 
+	Ready_OT.peek(pOrder);
+	if (pOrder) {
+		pOrder->set_TF(CurrTimeStep + 1);
+		return;
+	}
+
 }
 
 bool Restaurant::AssignScooter(Order* p)
