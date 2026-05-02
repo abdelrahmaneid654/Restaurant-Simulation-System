@@ -423,27 +423,38 @@ void Restaurant::FromReadyToInServ()
 
 	do
 	{
+		Ready_OV.peekOVC(pOrder);
+		if (pOrder)
+		{
+			if (AssignScooter(pOrder))
+			{
+				Ready_OV.dequeueOVC(pOrder);
+				pOrder->set_TS(CurrTimeStep);
+				pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
+				InServ.enqueue(pOrder);
+			}
+			else
+				break;
+		}
+	} while (pOrder);
+
+	do
+	{
 		Ready_OV.peek(pOrder);
 		if (pOrder)
 		{
 			if (AssignScooter(pOrder))
 			{
-				if (Ready_OV.dequeueOVC(pOrder))
-				{
-					pOrder->set_TS(CurrTimeStep);
-					pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
-					InServ.enqueue(pOrder);
-					break;
-				}
-
 				Ready_OV.dequeue(pOrder);
 				pOrder->set_TS(CurrTimeStep);
 				pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
 				InServ.enqueue(pOrder);
-				return;
 			}
+			else
+				break;
+
 		}
-	} while (pOrder);
+	} while (pOrder); 
 
 
 	Ready_OT.peek(pOrder);
