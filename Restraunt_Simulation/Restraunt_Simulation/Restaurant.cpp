@@ -317,9 +317,9 @@ void Restaurant::mainSimulation()
 			pUI->WaitForClick(); 
 		}
 
-		
 		CurrTimeStep++;
 	}
+
 	createOutputFile("Output.txt");
 }
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
@@ -331,7 +331,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		Pend_OVN.isempty() &&
 		Pend_OVC.isempty() &&//error because it is from derived class
 		Pend_OVG.isempty() &&
-		//Ready_OT.isempty() &&
+		Ready_OT.isempty() &&
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
 		Cook_orders.isempty() &&//error because it is from derived class

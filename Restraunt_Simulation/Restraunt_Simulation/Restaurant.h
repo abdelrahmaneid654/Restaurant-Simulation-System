@@ -33,7 +33,6 @@ private:
 //LISTS
 	//Action List
 	Queue <Action*> ActionList;//Action List
-	//Queue <Action*> ActionListC;//Action List Cancellation
 
 	// Orders 
 	 //1- Pending Orders 
