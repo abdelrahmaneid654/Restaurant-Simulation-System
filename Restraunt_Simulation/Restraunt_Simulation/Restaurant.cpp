@@ -475,7 +475,8 @@ void Restaurant::mainSimulation()
 
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
-	if (Pend_ODG.isempty() &&
+	if (ActionList.isempty()&&
+		Pend_ODG.isempty() &&
 		Pend_ODN.isempty() &&
 		Pend_OT.isempty() &&
 		Pend_OVN.isempty() &&
@@ -825,6 +826,7 @@ void Restaurant::Check_Finished_Orders() {
 		InServ.peek(temp);
 		if (!temp)
 			return;
+
 		if (temp->get_TF() == CurrTimeStep) {
 			if (temp->gettype() == ODN || temp->gettype() == ODG)
 					Check_Finished_Dine_in();

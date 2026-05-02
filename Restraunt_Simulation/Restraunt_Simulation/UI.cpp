@@ -85,7 +85,7 @@ void UI::Print(const Queue<Action*> & ActionList, const Queue<Order*> &Pend_ODG,
 Mode UI::chooseMode() 
 {
 	cout << "========================\n";
-	cout << "        SIMULATION/n";
+	cout << "        SIMULATION\n";
 	cout << "========================\n";
 	int choice;
 	Mode m; 
