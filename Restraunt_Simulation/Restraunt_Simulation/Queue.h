@@ -30,6 +30,7 @@ bool Queue<T>::peek(T& x)
 		x = front->getdata();
 		return true;
 	}
+	x = nullptr;
 	return false;
 }
 

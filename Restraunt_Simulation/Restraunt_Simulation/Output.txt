@@ -1,0 +1,10 @@
+Total number of orders: 10
+Dine-In Orders: 0
+Delivery Orders: 0
+Takeaway Orders: 0
+Total number of chefs: 2
+Special Chefs: 1
+Normal Chefs: 1
+Total number of Scooters: 1
+Percentage of Finished orders: 0
+Percentage of Cancelled orders: 0
