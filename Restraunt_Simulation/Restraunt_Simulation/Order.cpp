@@ -140,7 +140,10 @@ void Order::set_TF(int tf)
 
 
 int Order::calc_priority(int z) {
-	return TF;
+	if(!z)
+		return TF;
+	else
+		return TR;
 }
 void Order::printInFile(ofstream& file)
 {
