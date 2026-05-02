@@ -2,8 +2,8 @@
 #include "Action.h"
 #include"RequestAction.h"
 #include"CancelAction.h"
-
 #include"fstream"
+
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
@@ -31,21 +31,17 @@ Restaurant::Restaurant()
 	sumTserv=0;
 	sumTW = 0;
 
+	BackScooters = 0;
+	MaintScooters = 0;
 	//DON'T forget the point6 variables
 	Restaurant* temp = this;
 	pUI = new UI(temp);
 
 }
-
-//Now I comment this function ,for a later time .
-
-
-
 int Restaurant::GetCurrentTimestep() const
 {
 	return CurrTimeStep;
 }
-
  void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
@@ -55,177 +51,7 @@ int Restaurant::GetCurrentTimestep() const
 		Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Back_Scooters,Free_Tables, 
 		Busy_Sharable, Busy_No_Share);
 }
-//void Restaurant::RandomSimulation()
-//{
-//	CurrTimeStep = 1;
-//	//This loop for creataing random chefs and tables, and create scooters
-//	for (int i = 0; i < 30; i++)
-//	{
-//		CreateRandomChefs(i + 1);
-//
-//		CreateRandomTables(i + 1);
-//		
-//		CreatRandomScooter(i + 1); 
-//	}
-//	//This loop for creating random orders and add them to the pending lists
-//	for (int i = 0; i < 500; i++)
-//	{
-//		CreateRandomOrder(i + 1);  
-//	}
-//
-//	UpdateInterface(); // shows the initial state
-//
-//	while (!AreAllOrdersFinishedOrCancelled())
-//	{
-//		for (int i = 0; i < 30; i++)
-//		{
-//			Chef* pSelectedChef = pickRandomChefs(); // it dequeues inside it the assigned chef
-//
-//			if (pSelectedChef)
-//			{
-//				Order* pOrder = pickRandomOrderFromPendingLists();// it dequeues inside it the order
-//
-//				if (pOrder)
-//				{
-//					pOrder->set_assigned_chef(pSelectedChef);
-//					Cook_orders.enqueue(pOrder);
-//				}
-//				else
-//				{
-//					if (pSelectedChef->gettype() == CN) 
-//						Free_CN.enqueue(pSelectedChef);
-//					else 
-//						Free_CS.enqueue(pSelectedChef);
-//					break; // in both cases break
-//				}
-//			}
-//			else
-//			{
-//				break;
-//			}
-//		}
-//		// moving random order from cooking to ready by 75% percent
-//		{
-//			Order* pOrder=nullptr;
-//			for (int i = 0; i < 15; i++)
-//			{
-//				if ((rand() % 100) < 75)
-//				{
-//					if (Cook_orders.dequeue(pOrder)) // dequeue the cooking order
-//					{
-//						Chef* assignedChef = pOrder->get_assigned_chef();
-//						pOrder->set_assigned_chef(nullptr);
-//						ChefType type = assignedChef->gettype();
-//
-//						switch (type) //return the chef to free list
-//						{
-//						case CN:
-//							Free_CN.enqueue(assignedChef);
-//							break;
-//						case CS:
-//							Free_CS.enqueue(assignedChef);
-//							break;
-//						}
-//
-//						FromCookingToReadyByType(pOrder); // add the order here according to its type  
-//
-//					}
-//					else
-//						break;
-//				}
-//			}
-//		}
-//
-//		for (int i = 0; i < 10; i++)
-//		{
-//			Order* pOrder = pickRandomOrderFromReadyLists();
-//
-//			if (pOrder)
-//			{
-//				OrderType type = pOrder->gettype();
-//
-//				switch (type)
-//				{
-//				case ODG:
-//				case ODN:
-//				{
-//					Table* pTable = pickRandomTable();
-//					if(pTable) 
-//					{
-//					((OD*)pOrder)->set_assigned_table(pTable);
-//						InServ.enqueue(pOrder);
-//					}
-//					else
-//					{
-//						Ready_OD.enqueue(pOrder);
-//					}
-//					break;
-//				}
-//				case OVG:
-//				case OVN:
-//				case OVC:
-//				{
-//					Scooter* pScooter = pickRandomScooter();
-//					((OV*)pOrder)->set_assigned_scooter(pScooter);
-//					if(pScooter) 
-//					{
-//						InServ.enqueue(pOrder);
-//					}
-//					else
-//					{
-//						Ready_OV.enqueue(pOrder);
-//					}
-//					break;
-//				}
-//
-//				case OT_O:
-//					Finished_Orders.push(pOrder); 
-//					break;
-//				}
-//			}
-//
-//		}
-//		int totalGenerated = Pend_ODG.getcount() + Pend_ODN.getcount() + Pend_OT.getcount() + Pend_OVN.getcount() + Pend_OVC.getcount() + Pend_OVG.getcount();
-//		if (totalGenerated > 0) {
-//			int randomID = (rand() % totalGenerated) + 1;
-//			CancelOrder(randomID); // handled the 3 cases inside it
-//		}
-//
-//		if ((rand() % 100) < 25) {
-//			Order* pFinished;
-//			if (InServ.dequeue(pFinished)) 
-//			{
-//				OrderType type = pFinished->gettype();
-//
-//				switch (type)
-//				{
-//				case ODG:
-//				case ODN:
-//				{
-//					Table* pTable = ((OD*)pFinished)->get_assigned_table();
-//					((OD*)pFinished)->set_assigned_table(nullptr);
-//					Free_Tables.enqueue(pTable); 
-//					break;
-//				}
-//				case OVC:
-//				case OVG:
-//				case OVN:
-//				{
-//					Scooter* pScooter = ((OV*)pFinished)->get_assigned_scooter();
-//					((OV*)pFinished)->set_assigned_scooter(nullptr);
-//					Back_Scooters.enqueue(pScooter);  
-//					break;
-//				}
-//				}
-//				Finished_Orders.push(pFinished);
-//			}
-//		}
-//		UpdateInterface();
-//
-//		pUI->WaitForClick();
-//		CurrTimeStep++;
-//	}
-//}
+
 void Restaurant::AddToPending(Order* pOrder)
 {
 	OrderType OrderType = pOrder->gettype();  
@@ -253,7 +79,6 @@ void Restaurant::AddToPending(Order* pOrder)
 
 	}
 }
-
 Action* Restaurant::checkActions()
 {
 	Action* pAction;
@@ -274,7 +99,6 @@ Action* Restaurant::checkActions()
 
 	return nullptr;
 }
-
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
@@ -321,7 +145,6 @@ void Restaurant::FromPendingToCooking()
 		return;
 	}
 }
-
 void Restaurant::assignChefToOrderByType(Order* pOrder)
 { 
 	if (!pOrder)
@@ -407,9 +230,24 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	Cook_orders.enqueue(pOrder);
 
 }
+void Restaurant::FinalizeTakeAwayOrders()
+{
+	Order* pOrder;
+	do
+	{
+		Ready_OT.peek(pOrder);
+		if (!pOrder)
+			return;
+		if (CurrTimeStep >=(1+ pOrder->get_TR()))
+		{
+			Ready_OT.dequeue(pOrder);
+			pOrder->set_TS(1 + pOrder->get_TR());
+			pOrder->set_TF(CurrTimeStep); 
+			Finished_Orders.push(pOrder);
+		}
+	} while (CurrTimeStep >= (1 + pOrder->get_TR()));
 
-
-
+}
 void Restaurant::createOutputFile(string fileName) 
 {
 	ofstream file(fileName); 
@@ -444,7 +282,6 @@ void Restaurant::createOutputFile(string fileName)
 	}
 
 }
-
 void Restaurant::mainSimulation()
 {
 	string fileName = pUI->getFileName(); 
@@ -464,17 +301,17 @@ void Restaurant::mainSimulation()
 		FromCookingToReady();
 		FromReadyToInServ();
 
-		if (m == Interactive) 
+		if (m == Interactive)
 		{
 			UpdateInterface();
-			pUI->WaitForClick();
+			pUI->WaitForClick(); 
 		}
 
+		
 		CurrTimeStep++;
 	}
 	createOutputFile("Output.txt");
 }
-
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
 	if (ActionList.isempty()&&
@@ -493,8 +330,6 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 	else
 		return false;
 }
-
-
 void Restaurant::addOrderToReadyByType(Order* pOrder) 
 {
 	if (!pOrder)
@@ -523,7 +358,6 @@ void Restaurant::addOrderToReadyByType(Order* pOrder)
 	}
 	}
 }
-
 void Restaurant::FromCookingToReady()
 {
 	Order* pOrder;
@@ -532,7 +366,7 @@ void Restaurant::FromCookingToReady()
 	{
 		Cook_orders.peek(pOrder);
 		if (!pOrder)
-			return;
+			break;
 
 		if (CurrTimeStep == pOrder->get_TR())
 		{
@@ -566,43 +400,50 @@ void Restaurant::releaseChef(Order* pOrder)
 
 	}
 }
-
 void Restaurant::FromReadyToInServ()
 {
 	Order* pOrder;
 
-	Ready_OD.peek(pOrder); 
-	if (pOrder)
+	do
 	{
-		if(assignTable(pOrder))
+		Ready_OD.peek(pOrder);
+		if (pOrder)
 		{
-			Ready_OD.dequeue(pOrder); 
-			pOrder->set_TS(CurrTimeStep);
-			pOrder->set_TF(CurrTimeStep + ((OD*)pOrder)->get_duration());
-			InServ.enqueue(pOrder);
-			return;
-		}
-	}
-	Ready_OV.peek(pOrder);
-	if (pOrder)
-	{
-		if(AssignScooter(pOrder))
-		{
-			if (Ready_OV.dequeueOVC(pOrder))
+			if (assignTable(pOrder))
 			{
+				Ready_OD.dequeue(pOrder);
+				pOrder->set_TS(CurrTimeStep);
+				pOrder->set_TF(CurrTimeStep + ((OD*)pOrder)->get_duration());
+				InServ.enqueue(pOrder);
+			}
+			else
+				break;
+		}
+	} while (pOrder); 
+
+	do
+	{
+		Ready_OV.peek(pOrder);
+		if (pOrder)
+		{
+			if (AssignScooter(pOrder))
+			{
+				if (Ready_OV.dequeueOVC(pOrder))
+				{
+					pOrder->set_TS(CurrTimeStep);
+					pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
+					InServ.enqueue(pOrder);
+					break;
+				}
+
+				Ready_OV.dequeue(pOrder);
 				pOrder->set_TS(CurrTimeStep);
 				pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
 				InServ.enqueue(pOrder);
 				return;
 			}
-
-			Ready_OV.dequeue(pOrder);
-			pOrder->set_TS(CurrTimeStep);
-			pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
-			InServ.enqueue(pOrder);
-			return;
 		}
-	}
+	} while (pOrder);
 
 	Ready_OT.peek(pOrder);
 	if (pOrder) {
@@ -611,7 +452,6 @@ void Restaurant::FromReadyToInServ()
 	}
 
 }
-
 bool Restaurant::AssignScooter(Order* p)
 {
 	if (!p)
@@ -626,7 +466,6 @@ bool Restaurant::AssignScooter(Order* p)
 		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
 	}
 }
-
 void Restaurant::checkScootersList()
 {
 	Scooter* pScooter; 
@@ -673,7 +512,6 @@ void Restaurant::checkScootersList()
 		}
 	} while (pScooter->getReturnTime() == CurrTimeStep);
 }
-
 bool Restaurant::assignTable(Order* o)
 {
 	OD* pOD = ((OD*)o);
@@ -717,7 +555,6 @@ bool Restaurant::assignTable(Order* o)
 
 	}
 }
-
 bool Restaurant::CancelOrder(int id) {
 	
 	Order* cancelledOVC = Pend_OVC.Cancel_Order(id); 
@@ -766,7 +603,6 @@ void Restaurant::setRestaurantMode(Mode m)
 {
 	RestaurantMode = m;
 }
-
 void Restaurant::Check_Finished_Dine_in() {
 	Order* finished;
 	InServ.dequeue(finished);
@@ -807,8 +643,6 @@ void Restaurant::Check_Finished_Dine_in() {
 	Finished_Orders.push(finished);
 
 }
-
-
 void Restaurant::Check_Finished_Delivery() {
 
 	Order* finished;
@@ -827,8 +661,6 @@ void Restaurant::Check_Finished_Delivery() {
 
 
 }
-
-
 void Restaurant::Check_Finished_Orders() {
 	Order* temp;
 

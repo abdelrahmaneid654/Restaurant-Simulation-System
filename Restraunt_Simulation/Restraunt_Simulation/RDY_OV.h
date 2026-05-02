@@ -6,6 +6,7 @@ class RDY_OV :public Queue<T>
 public:
 	T Cancel_Order(int id); 
 	T dequeueOVC(Order*& pOrder);
+	T peekOVC(Order*& pOrder); 
 };
 
 template<class T>
@@ -74,5 +75,22 @@ T RDY_OV<T>::dequeueOVC(Order*& pOrder)
 		tail = temp; 
 		temp = temp->getnext();
 	}
+	return nullptr;
+}
+
+template<class T>
+T RDY_OV<T>::peekOVC(Order*& pOrder)
+{
+	if (!this->front)
+		return nullptr;
+
+	Node<T>* temp = this->front;
+	while (temp)
+	{
+		if (temp->getdata()->gettype() == OVC)
+			return temp->getdata();
+		temp = temp->getnext();
+	}
+
 	return nullptr;
 }

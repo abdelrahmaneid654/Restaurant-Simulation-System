@@ -101,7 +101,8 @@ private:
 	int sumTserv;
 	int sumTW;
 
-
+	int BackScooters;
+	int MaintScooters;
 
 		//Chefs
 	int TotalChefs;//TotalChefs = numCS + numCN
@@ -157,13 +158,13 @@ public:
 
 	void mainSimulation(); 
 
-	/* 
-	Functions will be used in phase 2:
-	void LoadFromFile();//Load From input file 
-	void SaveToFile();//Save to Output file
-	void TakeOrderInputFile();
+	
+	//Functions will be used in phase 2:
+	//void LoadFromFile();//Load From input file 
+	//void SaveToFile();//Save to Output file
+	//void TakeOrderInputFile();
 	//it takes the order data from the user [i/p file] and then add this order to the pending list 
-	*/
+	
 	bool CancelOrder(int id);
 	
 	bool AssignScooter(Order* p);
@@ -184,7 +185,7 @@ public:
 
 	int GetCurrentTimestep() const;
 	//Return the current time step need when execute actions .
-
+	void FinalizeTakeAwayOrders();
 	void setRestaurantMode(Mode m);
 	bool Load_from_Input_File(string filename);
 
