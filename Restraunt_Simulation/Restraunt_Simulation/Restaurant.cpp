@@ -670,7 +670,7 @@ void Restaurant::Check_Finished_Delivery() {
 	sumTserv += ((OV*)finished)->get_delivery_time();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
-	OrdersOV;
+	OrdersOV++;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
 	Back_Scooters.enqueue(sCooter);
 	sCooter->setState(Back);
@@ -684,30 +684,29 @@ void Restaurant::Check_Finished_Orders() {
 	Order* temp;
 
 
-	do
+	while (true)
 	{
 		InServ.peek(temp);
-		if (!temp)
-			break;
+		if (!temp) break;                        
 
-		if (temp->get_TF() == CurrTimeStep) {
-			if (temp->gettype() == ODN || temp->gettype() == ODG)
-					Check_Finished_Dine_in();
-			else
-					Check_Finished_Delivery();
-		}
-		
-		} while (temp->get_TF() == CurrTimeStep);
+		if (temp->get_TF() != CurrTimeStep) break;
+
+		if (temp->gettype() == ODN || temp->gettype() == ODG)
+			Check_Finished_Dine_in();
+		else
+			Check_Finished_Delivery();
+	}
 
 	    Ready_OT.peek(temp);
-		if(temp){
+		if (temp)
+		{
 			while (temp && temp->get_TF() == CurrTimeStep) {
 				Ready_OT.dequeue(temp);
 				Finished_Orders.push(temp);
 				Ready_OT.peek(temp);
-				OrdersOT;
+				OrdersOT++;
 			}
-	}
+		}
 	
 
 }
