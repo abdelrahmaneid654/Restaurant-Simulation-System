@@ -31,6 +31,13 @@ Restaurant::Restaurant()
 	sumTserv=0;
 	sumTW = 0;
 
+	TotalTables = 0;
+	TotalOrders = 0;
+	TotalChefs = 0;
+	TotalActions = 0;
+	RestaurantMode = Silent;
+	Action_Counter = 0;
+
 	BackScooters = 0;
 	MaintScooters = 0;
 	//DON'T forget the point6 variables
@@ -232,7 +239,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	}
 	pOrder->set_assigned_chef(pChef); 
 	pOrder->set_TA(CurrTimeStep);
-	pOrder->set_TR(CurrTimeStep + pOrder->getsize() / pChef->getSpeed());
+	pOrder->set_TR(CurrTimeStep + ceil( 1.0 * pOrder->getsize() / pChef->getSpeed() ) ); 
 
 	//pChef->update_info(pOrder->get_TC());
 	TotalChefsBusyTime += pOrder->get_TC(); 
@@ -317,9 +324,9 @@ void Restaurant::mainSimulation()
 			pUI->WaitForClick(); 
 		}
 
-		
 		CurrTimeStep++;
 	}
+
 	createOutputFile("Output.txt");
 }
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
@@ -331,7 +338,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		Pend_OVN.isempty() &&
 		Pend_OVC.isempty() &&//error because it is from derived class
 		Pend_OVG.isempty() &&
-		//Ready_OT.isempty() &&
+		Ready_OT.isempty() &&
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
 		Cook_orders.isempty() &&//error because it is from derived class
@@ -539,6 +546,7 @@ bool Restaurant::assignTable(Order* o)
 		if (pTable)
 		{
 			pTable->put_order(pOD);
+			pOD->set_assigned_table(pTable);
 			return true;
 		}
 		else
@@ -549,6 +557,7 @@ bool Restaurant::assignTable(Order* o)
 			{
 				pTable->set_IS_sharable(Sharable);
 				pTable->put_order(pOD);
+				pOD->set_assigned_table(pTable); 
 				Busy_Sharable.enqueue(pTable);
 				return true;
 			}
@@ -564,6 +573,7 @@ bool Restaurant::assignTable(Order* o)
 		{
 			pTable->put_order(pOD);
 			pTable->set_IS_sharable(Non_Sharable);
+			pOD->set_assigned_table(pTable); 
 			Busy_No_Share.enqueue(pTable);
 			return true;
 		}
@@ -628,7 +638,7 @@ void Restaurant::Check_Finished_Dine_in() {
 	sumTserv += ((OD*)finished)->get_duration();
 	sumTW += finished->get_TW();
 	FinishedOrders++;
-	OrdersOD;
+	OrdersOD++;
 
 
 	Table* pTable = ((OD*)finished)->get_assigned_table();
@@ -651,11 +661,8 @@ void Restaurant::Check_Finished_Dine_in() {
 			Busy_No_Share.remove_table(pTable);
 			pTable->leave_order(seats);
 			Free_Tables.enqueue(pTable);
-			
-
 		}
 
-	
 	((OD*)finished)->set_assigned_table(NULL);
 
 	Finished_Orders.push(finished);
@@ -676,31 +683,32 @@ void Restaurant::Check_Finished_Delivery() {
 	sCooter->setState(Back);
 	((OV*)finished)->set_assigned_scooter(NULL);
 	Finished_Orders.push(finished);
-
-
-
 }
 void Restaurant::Check_Finished_Orders() {
+
+
 	Order* temp;
-
-
-	while (true)
+	do
 	{
 		InServ.peek(temp);
 		if (!temp) break;                        
 
 		if (temp->get_TF() != CurrTimeStep) break;
 
-		if (temp->gettype() == ODN || temp->gettype() == ODG)
-			Check_Finished_Dine_in();
-		else
-			Check_Finished_Delivery();
-	}
+		if (temp->get_TF() == CurrTimeStep) {
+			if (temp->gettype() == ODN || temp->gettype() == ODG)
+					Check_Finished_Dine_in();
+			else
+					Check_Finished_Delivery();
+		}
+		
+	} while (temp->get_TF() == CurrTimeStep);
 
 	    Ready_OT.peek(temp);
-		if (temp)
+		if(temp)
 		{
-			while (temp && temp->get_TF() == CurrTimeStep) {
+			while (temp && temp->get_TF() == CurrTimeStep) 
+			{
 				Ready_OT.dequeue(temp);
 				Finished_Orders.push(temp);
 				Ready_OT.peek(temp);
@@ -803,9 +811,9 @@ bool Restaurant::Load_from_Input_File(string filename)
 					else
 						type1 = OVC;
 
-					int delivery_time = distance / ScooterSpeed;
+					double delivery_time = 1.0*distance / ScooterSpeed; 
 
-					Order* oRder = new OV(tq, id, size, price, distance, delivery_time, type1);
+					Order* oRder = new OV(tq, id, size, price, distance, ceil(delivery_time), type1); //ceil because it should be at least in the next time step
 					Action* aCtion = new RequestAction(this,Q,oRder); 
 					aCtion->setTimeStep(tq);
 

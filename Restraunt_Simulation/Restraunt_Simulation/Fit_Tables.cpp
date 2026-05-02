@@ -39,6 +39,9 @@ void Fit_Tables::remove_table(Table* pTable)
 {
 	Node<Table*>*temp = this->front;
 
+	if (!temp)
+		return;
+
 	if (pTable == front->getdata()) {			// check if fdeleted node is front
 		if (pTable == rear->getdata())  // check if there is one node
 			rear = NULL;

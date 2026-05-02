@@ -33,7 +33,6 @@ private:
 //LISTS
 	//Action List
 	Queue <Action*> ActionList;//Action List
-	//Queue <Action*> ActionListC;//Action List Cancellation
 
 	// Orders 
 	 //1- Pending Orders 
@@ -108,9 +107,6 @@ private:
 	int TotalChefs;//TotalChefs = numCS + numCN
 	int TotalTables;
 	//numScooter
-	double FinishedOrderPercentage;//FinishedOrderPercentage = FinishedOrders / TotalOrders
-	double CancelledOrderPercentage;// CancelledOrderPercentage = CancelledOrders / TotalOrders
-	double OverWaitOrderPercentage; //OverWaitOrderPercentage = OverWaitOrders  / TotalOrders
 		//Busy Time
 	int TotalChefsBusyTime;//each time a one chef is busy this increment by one for a one chef 
 	int TotalScootersBusyTime;//time of deliver the order and return back for a one scooter [ I need to ask TA about the maintainance time of scooters will inc this variable or not ]
