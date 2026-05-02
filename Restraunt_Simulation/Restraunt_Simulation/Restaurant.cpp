@@ -104,14 +104,14 @@ Action* Restaurant::checkActions()
 		if (!pAction)
 			return nullptr;
 
-		if (pAction->getTimeStep() == CurrTimeStep)
+		if (pAction->getTimeStep() <= CurrTimeStep)
 		{
 			ActionList.dequeue(pAction);
 			pAction->Act();
 			Action_Counter++; 
-			return pAction;
+			
 		}
-	} while (pAction->getTimeStep() == CurrTimeStep);
+	} while (pAction->getTimeStep() <= CurrTimeStep);
 
 	return nullptr;
 }
@@ -249,20 +249,22 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 }
 void Restaurant::FinalizeTakeAwayOrders()
 {
-	Order* pOrder;
-	do
-	{
+		Order* pOrder;
+
+
 		Ready_OT.peek(pOrder);
-		if (!pOrder)
-			return;
-		if (CurrTimeStep >=(1+ pOrder->get_TR()))
-		{
-			Ready_OT.dequeue(pOrder);
-			pOrder->set_TS(1 + pOrder->get_TR());
-			pOrder->set_TF(CurrTimeStep); 
-			Finished_Orders.push(pOrder);
+		if (pOrder) {
+
+			while (pOrder && pOrder->get_TF() <= CurrTimeStep)
+			{
+				Ready_OT.dequeue(pOrder);
+				Finished_Orders.push(pOrder);
+				OrdersOT++;
+				Ready_OT.peek(pOrder);
+			}
+
 		}
-	} while (CurrTimeStep >= (1 + pOrder->get_TR()));
+		
 
 }
 void Restaurant::createOutputFile(string fileName) 
@@ -386,13 +388,13 @@ void Restaurant::FromCookingToReady()
 		if (!pOrder)
 			break;
 
-		if (CurrTimeStep == pOrder->get_TR())
+		if (CurrTimeStep >= pOrder->get_TR())
 		{
 			Cook_orders.dequeue(pOrder);
 			releaseChef(pOrder);
 			addOrderToReadyByType(pOrder);
 		}
-	} while (CurrTimeStep == pOrder->get_TR());
+	} while (CurrTimeStep >= pOrder->get_TR());
 }
 void Restaurant::releaseChef(Order* pOrder)
 {
@@ -489,7 +491,9 @@ bool Restaurant::AssignScooter(Order* p)
 		Free_Scooters.dequeue(pScooter); 
 		((OV*)p)->set_assigned_scooter(pScooter);
 		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
+		return true;
 	}
+	return false;
 }
 void Restaurant::checkScootersList()
 {
@@ -502,13 +506,13 @@ void Restaurant::checkScootersList()
 		if (!pScooter)
 			break;
 
-		if (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint())
+		if (MainDur <= CurrTimeStep - pScooter->getTimeStepOfMaint())
 		{
 			Maint_Scooters.dequeue(pScooter);
 			pScooter->setState(Free);
 			Free_Scooters.enqueue(pScooter);
 		}
-	} while (MainDur == CurrTimeStep - pScooter->getTimeStepOfMaint());
+	} while (MainDur <= CurrTimeStep - pScooter->getTimeStepOfMaint());
 
 	do
 	{
@@ -517,25 +521,26 @@ void Restaurant::checkScootersList()
 		if (!pScooter)
 			break;
 
-		if (pScooter->getReturnTime() == CurrTimeStep)
+		if (pScooter->getReturnTime() <= CurrTimeStep)
 		{
 			Back_Scooters.dequeue(pScooter);
 
-			if (BeforeMainOrders == pScooter->get_counter())
+			if (BeforeMainOrders <= pScooter->get_counter())
 			{
 				pScooter->setTimeStepOfMaint(CurrTimeStep);
 				pScooter->setState(Maint);
 				TotalScootersBusyTime += MainDur;
 				Maint_Scooters.enqueue(pScooter);
 				pScooter->reset_counter();
+
 			}
 			else
 			{
 				pScooter->setState(Free);
-				Free_Scooters.enqueue(pScooter);
+				Free_Scooters.enqueue(pScooter); // here enqueue according to total distance
 			}
 		}
-	} while (pScooter->getReturnTime() == CurrTimeStep);
+	} while (pScooter->getReturnTime() <= CurrTimeStep);
 }
 bool Restaurant::assignTable(Order* o)
 {
@@ -680,8 +685,8 @@ void Restaurant::Check_Finished_Delivery() {
 	FinishedOrders++;
 	OrdersOV++;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
-	Back_Scooters.enqueue(sCooter);
 	sCooter->setState(Back);
+	Back_Scooters.enqueue(sCooter); // here enqueue according to return time
 	((OV*)finished)->set_assigned_scooter(NULL);
 	Finished_Orders.push(finished);
 }
@@ -694,28 +699,21 @@ void Restaurant::Check_Finished_Orders() {
 		InServ.peek(temp);
 		if (!temp) break;                        
 
-		if (temp->get_TF() != CurrTimeStep) break;
+		if (temp->get_TF() > CurrTimeStep) break;
 
-		if (temp->get_TF() == CurrTimeStep) {
+		if (temp->get_TF() <= CurrTimeStep) {
 			if (temp->gettype() == ODN || temp->gettype() == ODG)
-					Check_Finished_Dine_in();
+				Check_Finished_Dine_in();
+			else if (temp->gettype() == OVN || temp->gettype() == OVG || temp->gettype() == OVC)
+				Check_Finished_Delivery();
 			else
-					Check_Finished_Delivery();
+				FinalizeTakeAwayOrders();
 		}
 		
-	} while (temp->get_TF() == CurrTimeStep);
+	} while (temp->get_TF() <= CurrTimeStep);
 
-	    Ready_OT.peek(temp);
-		if(temp)
-		{
-			while (temp && temp->get_TF() == CurrTimeStep) 
-			{
-				Ready_OT.dequeue(temp);
-				Finished_Orders.push(temp);
-				Ready_OT.peek(temp);
-				OrdersOT++;
-			}
-		}
+	FinalizeTakeAwayOrders();
+
 	
 
 }

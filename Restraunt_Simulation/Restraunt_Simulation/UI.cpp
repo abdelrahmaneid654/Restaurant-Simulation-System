@@ -68,7 +68,7 @@ void UI::Print(const Queue<Action*> & ActionList, const Queue<Order*> &Pend_ODG,
 	cout << Maint_Scooters.getcount() << " ";
 	Maint_Scooters.print();
 	cout << "\n=================Scooters Back to Restaurant  IDs================\n";
-	cout << Back_Scooters.getcount();
+	cout << Back_Scooters.getcount()<<" ";
 	Back_Scooters.print();
 	cout << "\n=================Cancelled Orders IDs================\n";
 	cout << Cancelled_Orders.getcount() << " ";

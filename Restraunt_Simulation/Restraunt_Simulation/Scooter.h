@@ -30,7 +30,7 @@ public:
 	int get_Speed() const;
 	void update_info(int dis,int currtimestep); // used when a scooter is assigned, returning distance is setted here
 	void reset_counter();
-	int calc_priority(int z);
+	int calc_priority(int z=0);
 
 };
 ostream& operator<<(ostream& out, const Scooter* s);

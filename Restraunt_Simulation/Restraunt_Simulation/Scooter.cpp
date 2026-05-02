@@ -1,5 +1,5 @@
 #include"Scooter.h"
-
+#include<cmath>
 Scooter::Scooter(int s,int id)
 {
 	Speed = s;
@@ -69,7 +69,9 @@ void Scooter::update_info(int d,int cuurent_timestep )
 {
 	counter++;
 	total_dis += d*2;
-	return_time= cuurent_timestep+(2*d/Speed);
+	double r_time = 2.0 * d / Speed;
+
+	return_time= cuurent_timestep+ceil(r_time);
 }
 
 void Scooter::reset_counter()
