@@ -17,11 +17,10 @@ void UI::Print(const Queue<Action*> & ActionList, const Queue<Order*> &Pend_ODG,
 {
 	
 	cout << "Current Time Step: " << pRes->GetCurrentTimestep() << endl;
-	//cout << "===================ACTIONS==================/n"; //not needed in this phase 
-	//cout << "Request Actions Remaining: " << ActionListR.getcount() << " :";
-	//ActionListR.print();
-	//cout << "Cancel Actions Reamining: " << ActionListC.getcount() << " :";
-	//ActionListC.print();
+	cout << "===================ACTIONS==================/n"; //not needed in this phase 
+	cout << "Actions Remaining: " << pRes->getTotalActions() - pRes->getActionCounter() << " :";
+	ActionList.print();
+	
 	cout << "\n=================Pending Orders IDs================\n";
 	cout << Pend_ODG.getcount() << " " << "ODG ";
 	Pend_ODG.print();

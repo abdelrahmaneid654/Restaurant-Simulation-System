@@ -15,3 +15,8 @@ void RequestAction::Act()
 
 
 }
+
+Order* RequestAction::getOrder() const
+{
+	return pOrder;
+}

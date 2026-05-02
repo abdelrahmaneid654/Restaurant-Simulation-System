@@ -12,3 +12,8 @@ void CancelAction::Act()
 	// it to canceled list
 	pRes->CancelOrder(id);
 }
+
+int CancelAction::getOrderID()
+{
+	return id; 
+}

@@ -7,6 +7,7 @@ private:
 public:
 	CancelAction(Restaurant* r,ActionType t,int i);
 	void Act();
+	int getOrderID();
 };
 
 

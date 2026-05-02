@@ -42,6 +42,14 @@ int Restaurant::GetCurrentTimestep() const
 {
 	return CurrTimeStep;
 }
+int Restaurant::getActionCounter() const
+{
+	return Action_Counter;
+}
+int Restaurant::getTotalActions() const
+{
+	return TotalActions;
+}
  void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
@@ -93,6 +101,7 @@ Action* Restaurant::checkActions()
 		{
 			ActionList.dequeue(pAction);
 			pAction->Act();
+			Action_Counter++; 
 			return pAction;
 		}
 	} while (pAction->getTimeStep() == CurrTimeStep);
@@ -121,6 +130,7 @@ void Restaurant::FromPendingToCooking()
 	if (pOrder)
 	{
 		assignChefToOrderByType(pOrder);
+		pOrder->set_TF(pOrder->get_TR() + 1); // setting TF
 		return;
 	}
 

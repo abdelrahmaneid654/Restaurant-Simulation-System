@@ -184,6 +184,8 @@ public:
 	//it is implemented only to pass the lists to the UI class1
 
 	int GetCurrentTimestep() const;
+	int getActionCounter() const;
+	int getTotalActions() const;
 	//Return the current time step need when execute actions .
 	void FinalizeTakeAwayOrders();
 	void setRestaurantMode(Mode m);
