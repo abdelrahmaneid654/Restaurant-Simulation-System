@@ -467,16 +467,8 @@ void Restaurant::FromReadyToInServ()
 	} while (pOrder); 
 
 
-	Ready_OT.peek(pOrder);
-	while(pOrder){ 
-		 
-		Ready_OT.dequeue(pOrder); 
-		pOrder->set_TF(CurrTimeStep + 1); 
-		Ready_OT.enqueue(pOrder); 
-		Ready_OT.peek(pOrder); 
-	} 
-
 }
+
 bool Restaurant::AssignScooter(Order* p)
 {
 	if (!p)
@@ -704,6 +696,13 @@ void Restaurant::Check_Finished_Orders() {
 		}
 		
 		} while (temp->get_TF() == CurrTimeStep);
+
+	    Ready_OT.peek(temp);
+	    while (temp->get_TF() == CurrTimeStep) {
+		Ready_OT.dequeue(temp);
+		Finished_Orders.push(temp);
+
+	}
 	
 
 }
