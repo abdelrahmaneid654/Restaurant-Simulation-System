@@ -5,5 +5,5 @@
   Restraunt_Simulation.cpp
   UI.cpp
   Generating Code...
-D:\CU Projects\DS_Project_2\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(619,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
-  Restraunt_Simulation.vcxproj -> D:\CU Projects\DS_Project_2\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
+C:\Users\DELL\Desktop\Restaurant Simultion\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(618,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
+  Restraunt_Simulation.vcxproj -> C:\Users\DELL\Desktop\Restaurant Simultion\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
