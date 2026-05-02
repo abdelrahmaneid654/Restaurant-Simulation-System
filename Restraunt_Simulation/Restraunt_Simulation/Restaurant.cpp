@@ -2,8 +2,8 @@
 #include "Action.h"
 #include"RequestAction.h"
 #include"CancelAction.h"
-
 #include"fstream"
+
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
@@ -38,16 +38,10 @@ Restaurant::Restaurant()
 	pUI = new UI(temp);
 
 }
-
-//Now I comment this function ,for a later time .
-
-
-
 int Restaurant::GetCurrentTimestep() const
 {
 	return CurrTimeStep;
 }
-
  void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
@@ -85,7 +79,6 @@ void Restaurant::AddToPending(Order* pOrder)
 
 	}
 }
-
 Action* Restaurant::checkActions()
 {
 	Action* pAction;
@@ -106,7 +99,6 @@ Action* Restaurant::checkActions()
 
 	return nullptr;
 }
-
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
@@ -153,7 +145,6 @@ void Restaurant::FromPendingToCooking()
 		return;
 	}
 }
-
 void Restaurant::assignChefToOrderByType(Order* pOrder)
 { 
 	if (!pOrder)
@@ -239,9 +230,24 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	Cook_orders.enqueue(pOrder);
 
 }
+void Restaurant::FinalizeTakeAwayOrders()
+{
+	Order* pOrder;
+	do
+	{
+		Ready_OT.peek(pOrder);
+		if (!pOrder)
+			return;
+		if (CurrTimeStep >=(1+ pOrder->get_TR()))
+		{
+			Ready_OT.dequeue(pOrder);
+			pOrder->set_TS(1 + pOrder->get_TR());
+			pOrder->set_TF(CurrTimeStep); 
+			Finished_Orders.push(pOrder);
+		}
+	} while (CurrTimeStep >= (1 + pOrder->get_TR()));
 
-
-
+}
 void Restaurant::createOutputFile(string fileName) 
 {
 	ofstream file(fileName); 
@@ -276,7 +282,6 @@ void Restaurant::createOutputFile(string fileName)
 	}
 
 }
-
 void Restaurant::mainSimulation()
 {
 	string fileName = pUI->getFileName(); 
@@ -307,7 +312,6 @@ void Restaurant::mainSimulation()
 	}
 	createOutputFile("Output.txt");
 }
-
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
 	if (ActionList.isempty()&&
@@ -326,8 +330,6 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 	else
 		return false;
 }
-
-
 void Restaurant::addOrderToReadyByType(Order* pOrder) 
 {
 	if (!pOrder)
@@ -356,7 +358,6 @@ void Restaurant::addOrderToReadyByType(Order* pOrder)
 	}
 	}
 }
-
 void Restaurant::FromCookingToReady()
 {
 	Order* pOrder;
@@ -399,7 +400,6 @@ void Restaurant::releaseChef(Order* pOrder)
 
 	}
 }
-
 void Restaurant::FromReadyToInServ()
 {
 	Order* pOrder;
@@ -446,7 +446,6 @@ void Restaurant::FromReadyToInServ()
 	} while (pOrder);
 
 }
-
 bool Restaurant::AssignScooter(Order* p)
 {
 	if (!p)
@@ -461,7 +460,6 @@ bool Restaurant::AssignScooter(Order* p)
 		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
 	}
 }
-
 void Restaurant::checkScootersList()
 {
 	Scooter* pScooter; 
@@ -508,7 +506,6 @@ void Restaurant::checkScootersList()
 		}
 	} while (pScooter->getReturnTime() == CurrTimeStep);
 }
-
 bool Restaurant::assignTable(Order* o)
 {
 	OD* pOD = ((OD*)o);
@@ -552,7 +549,6 @@ bool Restaurant::assignTable(Order* o)
 
 	}
 }
-
 bool Restaurant::CancelOrder(int id) {
 	
 	Order* cancelledOVC = Pend_OVC.Cancel_Order(id); 
@@ -601,7 +597,6 @@ void Restaurant::setRestaurantMode(Mode m)
 {
 	RestaurantMode = m;
 }
-
 void Restaurant::Check_Finished_Dine_in() {
 	Order* finished;
 	InServ.dequeue(finished);
@@ -642,8 +637,6 @@ void Restaurant::Check_Finished_Dine_in() {
 	Finished_Orders.push(finished);
 
 }
-
-
 void Restaurant::Check_Finished_Delivery() {
 
 	Order* finished;
@@ -662,8 +655,6 @@ void Restaurant::Check_Finished_Delivery() {
 
 
 }
-
-
 void Restaurant::Check_Finished_Orders() {
 	Order* temp;
 

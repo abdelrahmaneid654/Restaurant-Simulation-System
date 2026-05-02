@@ -1,3 +1,2 @@
 ﻿  Restaurant.cpp
-C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(622,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
-  Restraunt_Simulation.vcxproj -> C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe
+C:\Users\DELL\Desktop\Restaurant Simultion\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(622,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
