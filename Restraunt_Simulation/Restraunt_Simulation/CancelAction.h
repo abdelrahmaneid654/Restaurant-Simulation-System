@@ -5,7 +5,7 @@ class CancelAction :public Action
 private:
 	int id;
 public:
-	CancelAction(Restaurant* r,int i);
+	CancelAction(Restaurant* r,ActionType t,int i);
 	void Act();
 };
 

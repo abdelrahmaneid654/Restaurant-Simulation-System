@@ -31,4 +31,8 @@ enum ScooterState
 	Back,
 	Maint
 };
+enum ActionType {
+	Q,
+	X
+};
 

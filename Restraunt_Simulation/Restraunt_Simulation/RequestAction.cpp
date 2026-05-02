@@ -1,6 +1,6 @@
 #include "RequestAction.h"
 
-RequestAction::RequestAction(Restaurant* r, Order* p) :Action(r)
+RequestAction::RequestAction(Restaurant* r, ActionType t,Order* p) :Action(r,t)
 {
 	pOrder = p;
 }

@@ -698,10 +698,12 @@ void Restaurant::Check_Finished_Orders() {
 		} while (temp->get_TF() == CurrTimeStep);
 
 	    Ready_OT.peek(temp);
-	    while (temp->get_TF() == CurrTimeStep) {
-		Ready_OT.dequeue(temp);
-		Finished_Orders.push(temp);
-
+		if(temp){
+			while (temp && temp->get_TF() == CurrTimeStep) {
+				Ready_OT.dequeue(temp);
+				Finished_Orders.push(temp);
+				Ready_OT.peek(temp);
+			}
 	}
 	
 
@@ -782,7 +784,7 @@ bool Restaurant::Load_from_Input_File(string filename)
 						type1 = ODN;
 
 					Order* oRder = new OD(tq, id, size, price, no_of_seats, order_dur, share, type1); 
-					Action* aCtion = new RequestAction(this,oRder); 
+					Action* aCtion = new RequestAction(this,Q,oRder); 
 					aCtion->setTimeStep(tq);
 
 					ActionList.enqueue(aCtion);
@@ -802,7 +804,7 @@ bool Restaurant::Load_from_Input_File(string filename)
 					int delivery_time = distance / ScooterSpeed;
 
 					Order* oRder = new OV(tq, id, size, price, distance, delivery_time, type1);
-					Action* aCtion = new RequestAction(this,oRder); 
+					Action* aCtion = new RequestAction(this,Q,oRder); 
 					aCtion->setTimeStep(tq);
 
 					ActionList.enqueue(aCtion);
@@ -811,7 +813,7 @@ bool Restaurant::Load_from_Input_File(string filename)
 				else {
 
 					Order* oRder = new OT(tq, id, size, price);
-					Action* aCtion = new RequestAction(this,oRder); 
+					Action* aCtion = new RequestAction(this,Q,oRder); 
 					aCtion->setTimeStep(tq);
 
 					ActionList.enqueue(aCtion);
@@ -823,7 +825,7 @@ bool Restaurant::Load_from_Input_File(string filename)
 			
 				int tcancel; // cancellation timestep
 				infile >> tcancel >> id;
-				Action* aCtion = new CancelAction(this,id);
+				Action* aCtion = new CancelAction(this,X,id);
 				aCtion->setTimeStep(tcancel);
 				ActionList.enqueue(aCtion);
 			}
