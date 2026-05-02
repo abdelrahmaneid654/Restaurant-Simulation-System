@@ -7,7 +7,7 @@
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
-	CurrTimeStep = 0;
+	CurrTimeStep = 1;
 	numCN = numCS = 0;
 	numScooter = 0;
 	MainDur = 0;
@@ -244,7 +244,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	//pChef->update_info(pOrder->get_TC());
 	TotalChefsBusyTime += pOrder->get_TC(); 
 
-	Cook_orders.enqueue(pOrder);
+	Cook_orders.enqueue(pOrder,1);
 
 }
 void Restaurant::FinalizeTakeAwayOrders()
@@ -306,6 +306,7 @@ void Restaurant::mainSimulation()
 		return;
 
 	Mode m = pUI->chooseMode();
+	UpdateInterface(); 
 
 	while(!AreAllOrdersFinishedOrCancelled())
 	{

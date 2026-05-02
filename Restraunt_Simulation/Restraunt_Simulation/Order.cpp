@@ -140,7 +140,7 @@ void Order::set_TF(int tf)
 
 
 int Order::calc_priority(int z) {
-	if (z == 0)
+	if(!z)
 		return TF;
 	else
 		return TR;
