@@ -127,3 +127,12 @@ string UI::getFileName()
 	cin >> s; 
 	return s; 
 }
+string UI::get_out_name()
+{
+	string s;
+	cout << "Enter Output File Name: ";
+	cin >> s;
+	return s;
+}
+
+

@@ -2,8 +2,9 @@
   CancelAction.cpp
   RequestAction.cpp
   Restaurant.cpp
-C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(334,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(926,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(324,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(564,32): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(920,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Restraunt_Simulation.cpp
   UI.cpp
   Generating Code...

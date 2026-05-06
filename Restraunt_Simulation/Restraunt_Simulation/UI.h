@@ -37,5 +37,6 @@ public:
 	void WaitForClick();
 
 	string getFileName();
+	string get_out_name();
 
 };

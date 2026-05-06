@@ -60,7 +60,6 @@ int Restaurant::getTotalActions() const
  void Restaurant::UpdateInterface()
 {
 	//Don't forget that you didn't add any variable for point 6 
-	//Joke :Cnrl C Cntrl V function
 	pUI->Print(ActionList, Pend_ODG, Pend_ODN, Pend_OT, Pend_OVN, Pend_OVC, Pend_OVG,
 		Ready_OT, Ready_OD, Ready_OV, Cook_orders, Cancelled_Orders, Finished_Orders, InServ, 
 		Compo, Free_CS, Free_CN, Free_Scooters,Maint_Scooters , Back_Scooters,Free_Tables, 
@@ -258,15 +257,6 @@ bool Restaurant::assignChefToOrderByType(Order* pOrder)
 { 
 	if (!pOrder)
 		return false;
-	/*
-	 Pending Lists Name :
-			Pend_ODG
-			Pend_ODN
-			Pend_OT
-			Pend_OVN
-			Pend_OVC
-			Pend_OVG
-	 */
 
 
 	Chef* pChef;
@@ -406,7 +396,9 @@ void Restaurant::mainSimulation()
 		CurrTimeStep++;
 	}
 
-	createOutputFile("Output.txt");
+	string output_file_name = pUI->get_out_name();
+
+	createOutputFile(output_file_name);
 }
 bool Restaurant::AreAllOrdersFinishedOrCancelled()
 {
@@ -421,7 +413,9 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
 		Cook_orders.isempty() &&//error because it is from derived class
-		InServ.isempty())
+		InServ.isempty()&&
+		Back_Scooters.isempty() && 
+		Maint_Scooters.isempty())
 		return true;
 	else
 		return false;
@@ -567,7 +561,7 @@ bool Restaurant::AssignScooter(Order* p)
 		Free_Scooters.dequeue(pScooter); 
 		((OV*)p)->set_assigned_scooter(pScooter);
 		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
-		TotalScootersBusyTime += ((OV*)p)->get_delivery_time() * 2;
+		TotalScootersBusyTime += ceil((((OV*)p)->get_distance() * 2)/ScooterSpeed);
 		return true;
 	}
 	return false;
