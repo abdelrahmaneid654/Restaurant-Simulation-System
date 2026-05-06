@@ -396,6 +396,12 @@ void Restaurant::mainSimulation()
 		CurrTimeStep++;
 	}
 
+	while (!Back_Scooters.isempty() && !Maint_Scooters.isempty()) {
+		checkScootersList();
+		CurrTimeStep++;
+
+	}
+
 	string output_file_name = pUI->get_out_name();
 
 	createOutputFile(output_file_name);
@@ -413,9 +419,7 @@ bool Restaurant::AreAllOrdersFinishedOrCancelled()
 		Ready_OD.isempty() &&
 		Ready_OV.isempty() &&//error because it is from derived class
 		Cook_orders.isempty() &&//error because it is from derived class
-		InServ.isempty()&&
-		Back_Scooters.isempty() && 
-		Maint_Scooters.isempty())
+		InServ.isempty())
 		return true;
 	else
 		return false;
@@ -790,9 +794,11 @@ void Restaurant::Check_Finished_Delivery() {
 	FinishedOrders++;
 	OrdersOV++;
 	Scooter* sCooter = ((OV*)finished)->get_assigned_scooter();
-	sCooter->setState(Back);
-	Back_Scooters.enqueue(sCooter); // here enqueue according to return time
-	((OV*)finished)->set_assigned_scooter(NULL);
+	if (sCooter) {
+		sCooter->setState(Back);
+		Back_Scooters.enqueue(sCooter); // here enqueue according to return time
+		((OV*)finished)->set_assigned_scooter(NULL);
+	}
 	Finished_Orders.push(finished);
 }
 void Restaurant::Check_Finished_Orders() {
