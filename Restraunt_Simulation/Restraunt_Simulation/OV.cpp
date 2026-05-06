@@ -18,9 +18,9 @@ int OV::calc_priority(int z)
 
 	if (z == 0)  // priority for Insev queue
 		return get_TF();
-	else if(z==1 && Type==OVG)
+	else if(z==2)
 		return -1 * ((getsize() * getprice()) / get_distance()); // priority for pending ovg
-	else if (z == 2) {
+	else if (z == 1) {
 		return get_TR();  // priority for cooking orders
 	}
 	

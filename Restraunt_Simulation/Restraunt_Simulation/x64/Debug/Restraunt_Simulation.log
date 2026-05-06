@@ -1,3 +1,10 @@
-﻿  Restaurant.cpp
-C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(485,1): warning C4715: 'Restaurant::AssignScooter': not all control paths return a value
+﻿  Action.cpp
+  CancelAction.cpp
+  RequestAction.cpp
+  Restaurant.cpp
+C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(334,30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\Restraunt_Simulation\Restaurant.cpp(926,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Restraunt_Simulation.cpp
+  UI.cpp
+  Generating Code...
   Restraunt_Simulation.vcxproj -> C:\Users\boudy\Desktop\Projects_2\programming\Restraunt_Simulation\x64\Debug\Restraunt_Simulation.exe

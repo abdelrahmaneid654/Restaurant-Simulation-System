@@ -7,7 +7,7 @@
 Restaurant::Restaurant()
 {
 	//Here I will initialze all variables we use ,after the random function called it will overwrte this,and in phase 2 the input will overwirte 
-	CurrTimeStep = 1;
+	CurrTimeStep = 0;
 	numCN = numCS = 0;
 	numScooter = 0;
 	MainDur = 0;
@@ -67,10 +67,61 @@ int Restaurant::getTotalActions() const
 		Busy_Sharable, Busy_No_Share);
 }
 
+ int Restaurant::get_least_tq(int old_tq)
+ {
+
+
+	 Order* pOrder;
+	 Pend_ODG.peek(pOrder);
+	 int tq = INT_MAX;
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ()>old_tq)
+			 tq = pOrder->get_TQ();
+
+	 }
+
+	 Pend_ODN.peek(pOrder);
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ() > old_tq)
+			 tq = pOrder->get_TQ();
+	 }
+
+	 Pend_OT.peek(pOrder);
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ() > old_tq)
+			 tq = pOrder->get_TQ();
+	 }
+
+	 Pend_OVG.peek(pOrder);
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ() > old_tq)
+			 tq = pOrder->get_TQ();
+	 }
+
+	 Pend_OVC.peek(pOrder);
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ() > old_tq)
+			 tq = pOrder->get_TQ();
+	 }
+
+	 Pend_OVN.peek(pOrder);
+	 if (pOrder)
+	 {
+		 if (pOrder->get_TQ() < tq && pOrder->get_TQ() > old_tq)
+			 tq = pOrder->get_TQ();
+	 }
+	 return tq;
+
+ }
+
 void Restaurant::AddToPending(Order* pOrder)
 {
 	OrderType OrderType = pOrder->gettype();  
-
 	switch (OrderType)
 	{
 	case ODG:
@@ -86,13 +137,14 @@ void Restaurant::AddToPending(Order* pOrder)
 		Pend_OVN.enqueue(pOrder);
 		break;
 	case OVG:
-		Pend_OVG.enqueue(pOrder);//function in enqueue should be replaced by insert because it is a priority queue
+		Pend_OVG.enqueue(pOrder,2);//function in enqueue should be replaced by insert because it is a priority queue
 		break;
 	case OVC:
 		Pend_OVC.enqueue(pOrder);//erorr in enqueue because it is from derived class from the queue and there is no implementation for the class yet.
 		break;
 
 	}
+
 }
 Action* Restaurant::checkActions()
 {
@@ -118,54 +170,94 @@ Action* Restaurant::checkActions()
 void Restaurant::FromPendingToCooking()
 {
 	Order* pOrder; 
-
-	Pend_ODG.peek(pOrder);
-	if (pOrder)
+	int tq = INT_MIN;;
+	while(1)
 	{
-		assignChefToOrderByType(pOrder); 
-		return;
-	}
+		bool odg=false, odn=false, ovn=false, ovc=false, ovg=false, ot=false;
+		tq = get_least_tq(tq);
+		Pend_ODG.peek(pOrder);
+		if (pOrder && tq >= pOrder->get_TQ())
+		{
+			odg = assignChefToOrderByType(pOrder);
+			if (!odg)
+				tq = get_least_tq(tq);
 
-	Pend_ODN.peek(pOrder); 
-	if (pOrder)
-	{
-		assignChefToOrderByType(pOrder);
-		return;
-	}
+		}
+		else if (!pOrder) {
+			odg = false;
+		}
 
-	Pend_OT.peek(pOrder);
-	if (pOrder)
-	{
-		assignChefToOrderByType(pOrder);
-		pOrder->set_TF(pOrder->get_TR() + 1); // setting TF
-		return;
-	}
+		Pend_ODN.peek(pOrder);
+		if (pOrder && tq >= pOrder->get_TQ())
+		{
+			odn = assignChefToOrderByType(pOrder);
+			if (!odn)
+				tq = get_least_tq(tq);
+		}
+		else if (!pOrder) {
+			odn = false;
+		}
 
-	Pend_OVG.peek(pOrder);
-	if (pOrder)
-	{
-		assignChefToOrderByType(pOrder);
-		return;
-	}
+		Pend_OT.peek(pOrder);
+		if (pOrder && tq >= pOrder->get_TQ())
+		{
+			ot = assignChefToOrderByType(pOrder);
+			if (!ot)
+				tq = get_least_tq(tq);
 
-	Pend_OVC.peek(pOrder);
-	if (pOrder)
-	{
-		assignChefToOrderByType(pOrder);
-		return;
-	}
+			if(ot)
+			{
+				pOrder->set_TS(pOrder->get_TR());
+				pOrder->set_TF(pOrder->get_TR() + 1); // setting TF
+			}
+		}
 
-	Pend_OVN.peek(pOrder);
-	if (pOrder)
-	{
-		assignChefToOrderByType(pOrder);
-		return;
+		else if (!pOrder) {
+			ot = false;
+		}
+
+		Pend_OVG.peek(pOrder);
+		if (pOrder && tq >= pOrder->get_TQ())
+		{
+			ovg = assignChefToOrderByType(pOrder);
+			if (!ovg)
+				tq = get_least_tq(tq);
+		}
+		else if (!pOrder) {
+			ovg = false;
+		}
+
+		Pend_OVC.peek(pOrder);
+		if (pOrder && tq >= pOrder->get_TQ())
+		{
+			ovc = assignChefToOrderByType(pOrder);
+			if (!ovc)
+				tq = get_least_tq(tq);
+		}
+		else if (!pOrder) {
+			ovc = false;
+		}
+
+		Pend_OVN.peek(pOrder);
+		if (pOrder && (tq >= pOrder->get_TQ()))
+		{
+			ovn = assignChefToOrderByType(pOrder);
+			if (!ovn)
+				tq = get_least_tq(tq);
+		}
+		else if (!pOrder) {
+			ovn = false;
+		}
+
+		if (!odg && !odn && !ovg && !ovn && !ovc && !ot)
+			break;
+
 	}
 }
-void Restaurant::assignChefToOrderByType(Order* pOrder)
+bool Restaurant::assignChefToOrderByType(Order* pOrder)
 { 
 	if (!pOrder)
-		return;
+		return false;
 	/*
 	 Pending Lists Name :
 			Pend_ODG
@@ -185,7 +277,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	case OVG:
 	{
 		if (Free_CS.isempty())
-			return;
+			return false;
 		else
 		{
 			Free_CS.dequeue(pChef);
@@ -202,7 +294,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 		if (Free_CN.isempty())
 		{
 			if (Free_CS.isempty())
-				return;
+				return false;
 			else
 			{
 				Free_CS.dequeue(pChef);
@@ -223,7 +315,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	case OVN:
 	{
 		if (Free_CN.isempty())
-			return; 
+			return false; 
 		else
 		{
 			Free_CN.dequeue(pChef);
@@ -235,7 +327,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 	break;
 	}
 	default:
-		return;
+		return false;
 	}
 	pOrder->set_assigned_chef(pChef); 
 	pOrder->set_TA(CurrTimeStep);
@@ -246,26 +338,7 @@ void Restaurant::assignChefToOrderByType(Order* pOrder)
 
 	Cook_orders.enqueue(pOrder,1);
 
-}
-void Restaurant::FinalizeTakeAwayOrders()
-{
-		Order* pOrder;
-
-
-		Ready_OT.peek(pOrder);
-		if (pOrder) {
-
-			while (pOrder && pOrder->get_TF() <= CurrTimeStep)
-			{
-				Ready_OT.dequeue(pOrder);
-				Finished_Orders.push(pOrder);
-				OrdersOT++;
-				Ready_OT.peek(pOrder);
-			}
-
-		}
-		
-
+	return true;
 }
 void Restaurant::createOutputFile(string fileName) 
 {
@@ -278,26 +351,28 @@ void Restaurant::createOutputFile(string fileName)
 
 		Finished_Orders.printInFile(file); 
 
-		file << "Total number of orders: " << TotalOrders << endl;
-		file << "Dine-In Orders: " << OrdersOD << endl;
-		file << "Delivery Orders: " << OrdersOV << endl; 
-		file << "Takeaway Orders: " << OrdersOT << endl; 
+		file << endl << "Total number of orders: " << Finished_Orders.getcount()+Cancelled_Orders.getcount() << endl;
+		file << endl << "Canceled Orders: " << Cancelled_Orders.getcount() << endl;
 
-		file << "Total number of chefs: " << TotalChefs << endl;
-		file << "Special Chefs: " << numCS << endl;
-		file << "Normal Chefs: " << numCN << endl;
+		file << endl << "Dine-In Orders: " << OrdersOD << endl;
+		file << endl << "Delivery Orders: " << OrdersOV << endl;
+		file << endl << "Takeaway Orders: " << OrdersOT << endl;
 
-		file << "Total number of Scooters: " << numScooter << endl;
+		file << endl << "Total number of chefs: " << TotalChefs << endl;
+		file << endl << "Special Chefs: " << numCS << endl;
+		file << endl << "Normal Chefs: " << numCN << endl;
+
+		file << endl << "Total number of Scooters: " << numScooter << endl;
 		/*file << "Special Chefs: " << numCS << endl;
 		file << "Normal Chefs: " << numCN << endl;*/
 		
-		file << "Percentage of Finished orders: " << 1.0*FinishedOrders/TotalOrders * 100.0 << endl;
-		file << "Percentage of Cancelled orders: " << 1.0 * CancelledOrders / TotalOrders * 100.0 << endl;
+		file << endl << "Percentage of Finished orders: " << (1.0 * Finished_Orders.getcount() / (Finished_Orders.getcount() + Cancelled_Orders.getcount())) * 100.0 << "%" << endl;
+		file << endl << "Percentage of Cancelled orders: " << (1.0 * Cancelled_Orders.getcount() / (Finished_Orders.getcount() + Cancelled_Orders.getcount())) * 100.0 <<"%" << endl;
 
-		file << "Average for Ti TC Tw Tserv for all finished orders " << sumTI / FinishedOrders << " " << sumTC / FinishedOrders << " " << sumTW / FinishedOrders << " " << sumTserv / FinishedOrders << endl;
+		file << endl << "Average for Ti TC Tw Tserv for all finished orders\nTi =  " << 1.0*sumTI / FinishedOrders << " \nTc = " << 1.0*sumTC / FinishedOrders << " \nTw =  " << 1.0*sumTW / FinishedOrders << " \nTserv =  " << 1.0*sumTserv / FinishedOrders << endl;
 
-		file << "Scooters utilization % " << TotalScootersBusyTime / (CurrTimeStep * numScooter) << endl;
-		file << "Chefs utilization % " << TotalChefsBusyTime / (CurrTimeStep * TotalChefs) << endl;
+		file << endl << "Scooters utilization % " << 100.0*((1.0*TotalScootersBusyTime )/ (CurrTimeStep * numScooter)) << endl;
+		file << endl << "Chefs utilization % " << 100.0*(1.0*TotalChefsBusyTime )/ (CurrTimeStep * TotalChefs) << endl;
 	}
 
 }
@@ -309,6 +384,7 @@ void Restaurant::mainSimulation()
 
 	Mode m = pUI->chooseMode();
 	UpdateInterface(); 
+	CurrTimeStep++;
 
 	while(!AreAllOrdersFinishedOrCancelled())
 	{
@@ -443,12 +519,12 @@ void Restaurant::FromReadyToInServ()
 
 	do
 	{
-		Ready_OV.peekOVC(pOrder);
+		pOrder = Ready_OV.peekOVC();
 		if (pOrder)
 		{
 			if (AssignScooter(pOrder))
 			{
-				Ready_OV.dequeueOVC(pOrder);
+				pOrder = Ready_OV.dequeueOVC();
 				pOrder->set_TS(CurrTimeStep);
 				pOrder->set_TF(CurrTimeStep + ((OV*)pOrder)->get_delivery_time());
 				InServ.enqueue(pOrder);
@@ -491,6 +567,7 @@ bool Restaurant::AssignScooter(Order* p)
 		Free_Scooters.dequeue(pScooter); 
 		((OV*)p)->set_assigned_scooter(pScooter);
 		pScooter->update_info(((OV*)p)->get_distance(), CurrTimeStep);
+		TotalScootersBusyTime += ((OV*)p)->get_delivery_time() * 2;
 		return true;
 	}
 	return false;
@@ -544,6 +621,9 @@ void Restaurant::checkScootersList()
 }
 bool Restaurant::assignTable(Order* o)
 {
+	if (!o)
+		return false;
+
 	OD* pOD = ((OD*)o);
 	if (pOD->IS_Sharable())
 	{
@@ -601,7 +681,7 @@ bool Restaurant::CancelOrder(int id) {
 
 
 	Order* cancelledReady = Ready_OV.Cancel_Order(id);
-	 if (cancelledReady)
+	 if (cancelledReady )
 	{ 
 		Cancelled_Orders.enqueue(cancelledReady);  
 		CancelledOrders++;
@@ -611,9 +691,9 @@ bool Restaurant::CancelOrder(int id) {
 
 
 	Order* cancelledCook = Cook_orders.Cancel_Order(id); 
-	 if (cancelledCook) 
+	 if (cancelledCook )
 	{
-		 Cancelled_Orders.enqueue(cancelledCook);
+		 Cancelled_Orders.enqueue(cancelledCook );
 
 		Chef* assigned = cancelledCook->get_assigned_chef(); 
 		ChefType type = assigned->gettype();  
@@ -636,6 +716,33 @@ void Restaurant::setRestaurantMode(Mode m)
 {
 	RestaurantMode = m;
 }
+void Restaurant::FinalizeTakeAwayOrders()
+{
+		Order* pOrder;
+
+
+		Ready_OT.peek(pOrder);
+		if (pOrder) {
+
+			while (pOrder && pOrder->get_TF() <= CurrTimeStep)
+			{	
+				FinishedOrders++;
+				sumTI += pOrder->get_TI();
+				sumTC += pOrder->get_TC();
+				sumTW += pOrder->get_TW();
+
+
+			
+				Ready_OT.dequeue(pOrder);
+				Finished_Orders.push(pOrder);
+				OrdersOT++;
+				Ready_OT.peek(pOrder);
+			}
+
+		}
+		
+
+}
 void Restaurant::Check_Finished_Dine_in() {
 	Order* finished;
 	InServ.dequeue(finished);
@@ -653,6 +760,8 @@ void Restaurant::Check_Finished_Dine_in() {
 	
 		if (((OD*)finished)->IS_Sharable()) {					// remove then modify then enqueue
 			Busy_Sharable.remove_table(pTable);
+			if (!pTable)
+				return;
 			pTable->leave_order(seats);
 			if (pTable->get_free_seats() == pTable->get_capacity()) {
 				Free_Tables.enqueue(pTable);
@@ -665,8 +774,10 @@ void Restaurant::Check_Finished_Dine_in() {
 		else {
 
 			Busy_No_Share.remove_table(pTable);
-			pTable->leave_order(seats);
-			Free_Tables.enqueue(pTable);
+			if (pTable) {
+				pTable->leave_order(seats);
+				Free_Tables.enqueue(pTable);
+			}
 		}
 
 	((OD*)finished)->set_assigned_table(NULL);
@@ -706,8 +817,6 @@ void Restaurant::Check_Finished_Orders() {
 				Check_Finished_Dine_in();
 			else if (temp->gettype() == OVN || temp->gettype() == OVG || temp->gettype() == OVC)
 				Check_Finished_Delivery();
-			else
-				FinalizeTakeAwayOrders();
 		}
 		
 	} while (temp->get_TF() <= CurrTimeStep);
@@ -777,7 +886,8 @@ bool Restaurant::Load_from_Input_File(string filename)
 			if (action_type == 'Q') {
 
 				infile >> type >> tq >> id >> size >> price;
-				if (type == "ODG" || type=="ODN") {
+				if (type == "ODG" || type=="ODN") 
+				{
 					infile>>no_of_seats >> order_dur >> canshare;
 					bool share;
 
@@ -794,6 +904,7 @@ bool Restaurant::Load_from_Input_File(string filename)
 
 					Order* oRder = new OD(tq, id, size, price, no_of_seats, order_dur, share, type1); 
 					Action* aCtion = new RequestAction(this,Q,oRder); 
+
 					aCtion->setTimeStep(tq);
 
 					ActionList.enqueue(aCtion);

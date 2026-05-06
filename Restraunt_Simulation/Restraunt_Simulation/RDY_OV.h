@@ -5,8 +5,8 @@ class RDY_OV :public Queue<T>
 {
 public:
 	T Cancel_Order(int id); 
-	T dequeueOVC(Order*& pOrder);
-	T peekOVC(Order*& pOrder); 
+	T dequeueOVC();
+	T peekOVC();
 };
 
 template<class T>
@@ -16,7 +16,7 @@ T RDY_OV<T>::Cancel_Order(int id)
 		Node<T>* temp = this->front;
 		if (!this->front) return nullptr;// if queue is empty
 
-		if (this->front->getdata()->getID() == id) { // if order front of queue
+		if (this->front->getdata()->getID()==id &&temp->getdata()->gettype()==OVC) { // if order front of queue
 			if (this->front == this->rear)
 				this->rear = nullptr;  // if there is one order in queue 
 			this->front = this->front->getnext();
@@ -27,7 +27,7 @@ T RDY_OV<T>::Cancel_Order(int id)
 
 
 		while (temp->getnext()) {
-			if (temp->getnext()->getdata()->getID() == id) {
+			if (temp->getnext()->getdata()->getID() == id && temp->getdata()->gettype() == OVC) {
 				Node<T>* todelete = temp->getnext(); // to delete node from heap
 
 				if (temp->getnext() == this->rear) {
@@ -44,7 +44,7 @@ T RDY_OV<T>::Cancel_Order(int id)
 	}
 
 template<class T>
-T RDY_OV<T>::dequeueOVC(Order*& pOrder)
+T RDY_OV<T>::dequeueOVC()
 {
 	if (!this->front) 
 		return nullptr;// if queue is empty
@@ -79,7 +79,7 @@ T RDY_OV<T>::dequeueOVC(Order*& pOrder)
 }
 
 template<class T>
-T RDY_OV<T>::peekOVC(Order*& pOrder)
+T RDY_OV<T>::peekOVC()
 {
 	if (!this->front)
 		return nullptr;

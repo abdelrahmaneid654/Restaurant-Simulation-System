@@ -34,37 +34,33 @@ private:
 	//Action List
 	Queue <Action*> ActionList;//Action List
 
-	// Orders 
-	 //1- Pending Orders 
-	Queue <Order*> Pend_ODG; //Dine in Grilled [need special chef CS and need of table]
-	Queue <Order*> Pend_ODN;//Dine in Normal [need of table]
-	Queue <Order*> Pend_OT;// Takeaway Orders [On site picked by the user ,do not need of scooters or tables]
-	Queue <Order*> Pend_OVN;//Delivery Normal [Only need scooter] 
-	Pending_OVC<Order*> Pend_OVC;// Delivery cold [Only need scooter and to be deliverd cold]  {derived class from the queue} 
-	PriQueue <Order*> Pend_OVG;// Delivery Grilled [ it needs a special chef CS and a scooter ]
+ 
+	Queue <Order*> Pend_ODG; 
+	Queue <Order*> Pend_ODN;
+	Queue <Order*> Pend_OT;
+	Queue <Order*> Pend_OVN;
+	Pending_OVC<Order*> Pend_OVC;
+	PriQueue <Order*> Pend_OVG;
 	//2-Ready Orders 
 	Queue<Order*> Ready_OT;
 	Queue<Order*> Ready_OD;
-	RDY_OV<Order*> Ready_OV; //derived class from the queue 
+	RDY_OV<Order*> Ready_OV; 
 	//3- Cooking, Cancelled, Finished dn InServ Orders 
-	Cooking_Orders<Order*> Cook_orders; //Each cookin order points to the assigned chef
+	Cooking_Orders<Order*> Cook_orders;
 	Queue <Order*> Cancelled_Orders;
 	Stack <Order*> Finished_Orders;
-	PriQueue <Order*> InServ;//Each inserv order points to asssigned scooter [delivery] or table [dine in] 
+	PriQueue <Order*> InServ;
 	//4-Compo Orders
-	PriQueue<Order*> Compo; //It needs 4 chefs at least 1 is CS and 2 scooters or more ,They have the highest priority over all the orders type 
-
+	PriQueue<Order*> Compo; 
 	//Chefs
 	  // 1-Free Chefs
 	Queue <Chef*> Free_CS; //Free Special Chefs
 	Queue <Chef*> Free_CN; //Free Normal Chefs
-	//I choose PriQueue for busy chefs because it has a relation to the time and we must know and implement to them the needed equations
-	//I delete busy chefs because I will make the order points to the chef and before send order to finished List I will enqueue the chef to the list again.
 	
 	//Scooters 
-	PriQueue<Scooter*> Free_Scooters; //assigned based for the shortest distance
-	PriQueue<Scooter*> Back_Scooters; //Leaves the list based on the distance they cut back to the restaurant
-	Queue<Scooter*> Maint_Scooters; //scooters in the maintainance time ,they all have the same maintainance time
+	PriQueue<Scooter*> Free_Scooters; 
+	PriQueue<Scooter*> Back_Scooters; 
+	Queue<Scooter*> Maint_Scooters;
 
 	//Tables 
 	Fit_Tables Free_Tables;
@@ -72,18 +68,17 @@ private:
 	Fit_Tables Busy_No_Share;
 
 //Variables 
-	int CurrTimeStep; //Current time step to calculate all time needed to each order [action happened to this order]
-	int numCN; //number of the normal chefs work in the restaurant [I need to ask teh TA about that]
-	int numCS; //number of the special chefs work in the restaurant [I need to ask teh TA about that]
-	int numScooter;//number of the scooters work in the restaurant [I need to ask teh TA about that]
-	int MainDur; //Maintainance duration for each scooter
-	int BeforeMainOrders; //Number of orders that the scooter take before it goes to the maintainace list
+	int CurrTimeStep; 
+	int numCN; 
+	int numCS; 
+	int numScooter;
+	int MainDur; 
+	int BeforeMainOrders;
 	int ScooterSpeed;
 	int SpeedCN;
 	int SpeedCS;
-	int OverWaitTime; //over wait threshold [ It is made for even if the { current time - the TQ(Time request) > OverWaitTime } the order will be inc in priority it is speacial for the OVG orders
-	//Statistics VAriables for the Output file 
-		//Orders : Total number of orders and total number of each order type 
+	int OverWaitTime; 
+		
 	int TotalOrders;
 	int OrdersOD;//Dine in orders
 	int OrdersOT;//take away orders
@@ -108,8 +103,8 @@ private:
 	int TotalTables;
 	//numScooter
 		//Busy Time
-	int TotalChefsBusyTime;//each time a one chef is busy this increment by one for a one chef 
-	int TotalScootersBusyTime;//time of deliver the order and return back for a one scooter [ I need to ask TA about the maintainance time of scooters will inc this variable or not ]
+	int TotalChefsBusyTime;
+	int TotalScootersBusyTime;
 
 	//STILL I do not write the point 6 in the document num 1 page 6 
 
@@ -121,7 +116,7 @@ private:
 	Action* checkActions();
 
 	void FromPendingToCooking();// khaled
-	void assignChefToOrderByType(Order* pOrder); // helper inside FromPendingToCooking
+	bool assignChefToOrderByType(Order* pOrder); // helper inside FromPendingToCooking
 
 	void FromCookingToReady(); //khaled
 	void addOrderToReadyByType(Order* pOrder); // helper fn inside FromCookingToReady
@@ -131,18 +126,7 @@ private:
 
 	void checkScootersList();
 	bool assignTable(Order* o);
-	// 
-	//Random Functions: 
-	/*void CreateRandomOrder( int  ArrivalTime);
-	void CreateRandomChefs(int ChefID);
-	void CreateRandomTables(int TableId);
-	void CreatRandomScooter(int ScooterID);
-
-	Chef* pickRandomChefs() ;
-	Scooter* pickRandomScooter();
-	Table* pickRandomTable();
-	Order* pickRandomOrderFromPendingLists();
-	Order* pickRandomOrderFromReadyLists();*/
+	
 	bool AreAllOrdersFinishedOrCancelled();
 
 public:
@@ -155,21 +139,10 @@ public:
 	void mainSimulation(); 
 
 	
-	//Functions will be used in phase 2:
-	//void LoadFromFile();//Load From input file 
-	//void SaveToFile();//Save to Output file
-	//void TakeOrderInputFile();
-	//it takes the order data from the user [i/p file] and then add this order to the pending list 
-	
 	bool CancelOrder(int id);
 	
 	bool AssignScooter(Order* p);
-	//	void MoveOrderLists();
-	//Move finished orders to “Finish” list and release the assigned scooter/table 
-	// Assign pending orders to chefs 
-	// Assign ready orders to scooter/table or give to customer (OT orders)
-	//void RandomSimulation();
-
+	
 	
 	void Check_Finished_Orders();
 	void Check_Finished_Dine_in();
@@ -186,7 +159,7 @@ public:
 	void FinalizeTakeAwayOrders();
 	void setRestaurantMode(Mode m);
 	bool Load_from_Input_File(string filename);
-
+	int get_least_tq(int old_tq);
 
 	~Restaurant();
 };

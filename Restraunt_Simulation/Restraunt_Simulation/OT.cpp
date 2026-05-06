@@ -10,5 +10,5 @@ OrderType OT::gettype() const {
 void OT::printInFile(ofstream& file)
 {
 	Order::printInFile(file);
-	file << "No Tserv" << " ";
+	file << "No Service" << " ";
 }

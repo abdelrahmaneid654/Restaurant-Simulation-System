@@ -147,7 +147,7 @@ int Order::calc_priority(int z) {
 }
 void Order::printInFile(ofstream& file)
 {
-	file << TF << " " << ID << " " << TQ << " " << TA << " " << TR << " " << TS << " " << get_TI() << " " << get_TC() << " " << get_TW() << " ";
+	file << TF << "\t " << ID << "\t " << TQ << "\t " << TA << "\t " << TR << "\t " << TS << "\t " << get_TI() << "\t " << get_TC() << "\t " << get_TW() << "\t ";
 }
 Order::~Order() {
 	

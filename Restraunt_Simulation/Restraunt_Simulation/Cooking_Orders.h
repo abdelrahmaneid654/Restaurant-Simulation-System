@@ -15,7 +15,7 @@ T Cooking_Orders<T>::Cancel_Order(int id) {
 	Node<T>* temp = this->front;
 	if (!this->front) return nullptr;						// if queue is empty
 
-	if (this->front->getdata()->getID() == id) {			// if order front of queue
+	if (this->front->getdata()->getID() == id && temp->getdata()->gettype() == OVC) {			// if order front of queue
 		if (this->front == this->rear)
 			this->rear = nullptr;							// if there is one order in queue 
 		this->front = this->front->getnext();
@@ -25,7 +25,7 @@ T Cooking_Orders<T>::Cancel_Order(int id) {
 	}
 
 	while (temp->getnext()) {
-		if (temp->getnext()->getdata()->getID() == id) {
+		if (temp->getnext()->getdata()->getID() == id && temp->getdata()->gettype() == OVC) {
 			Node<T>* todelete = temp->getnext();					// to delete node from heap
 
 			if (temp->getnext() == this->rear) {
