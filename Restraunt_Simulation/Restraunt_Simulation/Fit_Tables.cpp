@@ -47,6 +47,7 @@ void Fit_Tables::remove_table(Table* pTable)
 			rear = NULL;
 
 		front = front->getnext();
+		return;
 	}
 
 	while (temp->getnext()) {
